@@ -1,7 +1,10 @@
-System.setProperty("file.encoding", "UTF-8")
+plugins {
+	id 'java'
+	id 'idea'
+	id 'eclipse'
+}
 
-apply plugin: 'java'
-apply plugin: 'idea'
+System.setProperty("file.encoding", "UTF-8")
 
 allprojects {
 	repositories {
