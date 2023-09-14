@@ -46,7 +46,7 @@ publishing {
 			pom {
 				name = "eossdk"
 				description = "Java wrapper for Epic Online Services SDK"
-				url = "https://dev.epicgames.com/docs/epic-online-services/release-notes"
+				url = "https://github.com/AN3Orik/eossdk"
 
 				developers {
 					developer {
@@ -58,8 +58,8 @@ publishing {
 
 				licenses {
 					license {
-						name = 'MIT License'
-						url = 'http://www.opensource.org/licenses/mit-license.php'
+						name = 'Apache-2.0 license'
+						url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
 					}
 				}
 			}
