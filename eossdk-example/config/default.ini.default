@@ -1,0 +1,35 @@
+# Operation mode
+is_server_mode = true
+
+# EOS product name
+product_name = product_name
+
+# EOS product version
+product_version = 1.0
+
+# EOS product ID
+product_id = product_id
+
+# EOS sandbox ID
+sandbox_id = sandbox_id
+
+# EOS deployment ID
+deployment_id = deployment_id
+
+# EOS client credentials (Format: client_id:client_secret)
+client_credentials = client_id;client_secret
+
+# EOS server credentials (Format: client_id:client_secret)
+server_credentials = client_id;client_secret
+
+# Tick frequency to Platform_Tick method (in milliseconds)
+platform_tick_rate = 100
+
+# Anti-cheat enable/disable flag
+anti_cheat_enabled = false
+
+# Anti-cheat server instance name
+anti_cheat_server_name = Test Server
+
+# Anti-cheat client register timeout at server (in seconds)
+anti_cheat_server_register_timeout = 60

@@ -1,0 +1,60 @@
+System.setProperty("file.encoding", "UTF-8")
+
+apply plugin: 'java-library'
+apply plugin: 'distribution'
+apply plugin: 'idea'
+
+buildscript {
+	ext {
+		springBootVersion = '3.1.1'
+	}
+	repositories {
+		maven { url "https://repo.spring.io/plugins-snapshot" }
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+		mavenCentral()
+		gradlePluginPortal()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+jar.enabled = false
+distTar.enabled = false
+distZip.dependsOn(":eossdk:distZip")
+
+distributions {
+	main {
+		archivesBaseName = 'EOSSDK'
+		contents {
+			from 'eossdk/build/distributions'
+		}
+	}
+}
+
+allprojects {
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+		gradlePluginPortal()
+	}
+	apply plugin: 'idea'
+	apply plugin: 'eclipse'
+}
+
+subprojects {
+	repositories {
+		mavenCentral()
+	}
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+idea {
+	module {
+		excludeDirs += file('gradle')
+		excludeDirs += file('tools')
+	}
+}

@@ -1,0 +1,6 @@
+/.gradle
+/.idea
+/eossdk/build
+/eossdk-example/build
+/tools
+/eossdk-example/config/default.ini

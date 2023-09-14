@@ -1,0 +1,80 @@
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+version = "1.16.1-SNAPSHOT"
+
+dependencies {
+	annotationProcessor('org.jetbrains:annotations:24.0.1')
+	compileOnly('org.jetbrains:annotations:24.0.1')
+	annotationProcessor('org.projectlombok:lombok:1.18.28')
+	compileOnly('org.projectlombok:lombok:1.18.28')
+	api("net.java.dev.jna:jna:5.13.0")
+	api('org.slf4j:slf4j-api:2.0.9')
+}
+
+compileJava {
+	doLast {
+		jar {
+			manifest {
+				attributes('Implementation-Title': project.name,
+						'Implementation-Version': version,
+						'Built-Date': new Date().toString(),
+						'Built-By': System.getProperty('user.name'),
+						'Built-JDK': System.getProperty('java.version'),
+						'Source-Compatibility': project.sourceCompatibility,
+						'Target-Compatibility': project.targetCompatibility
+				)
+			}
+		}
+	}
+}
+
+java {
+	withSourcesJar()
+	withJavadocJar()
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			groupId "host.anzo"
+			artifactId = "eossdk"
+			from components.java
+
+			pom {
+				name = "eossdk"
+				description = "Java wrapper for Epic Online Services SDK"
+				url = "https://dev.epicgames.com/docs/epic-online-services/release-notes"
+
+				developers {
+					developer {
+						id = 'ANZO'
+						name = 'Anton Lasevich'
+						email = 'mostproduct@gmail.com'
+					}
+				}
+
+				licenses {
+					license {
+						name = 'MIT License'
+						url = 'http://www.opensource.org/licenses/mit-license.php'
+					}
+				}
+			}
+		}
+	}
+
+	repositories {
+		maven {
+			def releasesRepoUrl = "https://nexus.anzo.host/repository/maven-releases/"
+			def snapshotsRepoUrl = "https://nexus.anzo.host/repository/maven-snapshots/"
+
+			name 'nexus'
+			url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+			credentials {
+				username "$nexusUsername"
+				password "$nexusPassword"
+			}
+		}
+	}
+}

@@ -1,0 +1,2 @@
+include 'eossdk'
+include 'eossdk-example'

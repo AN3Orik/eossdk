@@ -1,0 +1,48 @@
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+
+defaultTasks 'assemble'
+
+distTar.enabled = false
+bootJar.enabled = false
+bootDistTar.enabled = false
+bootDistZip.enabled = false
+bootStartScripts.enabled = false
+
+run.workingDir = new File("./")
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+application {
+	mainClass = "host.anzo.eossdk.example.ExampleServer"
+}
+
+dependencies {
+	annotationProcessor('org.jetbrains:annotations:24.0.1')
+	compileOnly('org.jetbrains:annotations:24.0.1')
+	annotationProcessor('org.projectlombok:lombok:1.18.28')
+	compileOnly('org.projectlombok:lombok:1.18.28')
+
+	implementation(project(':eossdk'))
+
+	implementation('org.slf4j:slf4j-api:2.0.9')
+	implementation('org.slf4j:slf4j-ext:2.0.9')
+	implementation('org.slf4j:slf4j-simple:2.0.9')
+}
+
+jar {
+	archiveClassifier = ''
+	manifest {
+		attributes(
+				'Implementation-Title': project.name,
+				'Built-Date': new Date().toString(),
+				'Built-By': System.getProperty('user.name'),
+				'Built-JDK': System.getProperty('java.version'),
+				'Source-Compatibility': project.sourceCompatibility,
+				'Target-Compatibility': project.targetCompatibility,
+				'Class-Path': configurations.runtimeClasspath.collect { it.getName() }.join(' ')
+		)
+	}
+}
