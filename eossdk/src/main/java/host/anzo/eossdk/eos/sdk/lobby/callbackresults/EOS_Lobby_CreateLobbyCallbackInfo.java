@@ -15,10 +15,10 @@ import static com.sun.jna.Structure.FieldOrder;
 @FieldOrder({"ResultCode", "ClientData", "LobbyId"})
 public class EOS_Lobby_CreateLobbyCallbackInfo extends Structure {
 	/**
-	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.<br/><br/>
-	 * {@link EOS_EResult#EOS_Success} if the creation completes successfully<br/>
-	 * {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect<br/>
-	 * {@link EOS_EResult#EOS_LimitExceeded} if the number of allowed lobbies is exceeded<br/>
+	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.<br><br>
+	 * {@link EOS_EResult#EOS_Success} if the creation completes successfully<br>
+	 * {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect<br>
+	 * {@link EOS_EResult#EOS_LimitExceeded} if the number of allowed lobbies is exceeded<br>
 	 */
 	public EOS_EResult ResultCode;
 	/** Context that was passed into EOS_Lobby_CreateLobby */

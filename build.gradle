@@ -1,37 +1,7 @@
 System.setProperty("file.encoding", "UTF-8")
 
-apply plugin: 'java-library'
-apply plugin: 'distribution'
+apply plugin: 'java'
 apply plugin: 'idea'
-
-buildscript {
-	ext {
-		springBootVersion = '3.1.1'
-	}
-	repositories {
-		maven { url "https://repo.spring.io/plugins-snapshot" }
-		maven { url "https://repo.spring.io/snapshot" }
-		maven { url "https://repo.spring.io/milestone" }
-		mavenCentral()
-		gradlePluginPortal()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
-}
-
-jar.enabled = false
-distTar.enabled = false
-distZip.dependsOn(":eossdk:distZip")
-
-distributions {
-	main {
-		archivesBaseName = 'EOSSDK'
-		contents {
-			from 'eossdk/build/distributions'
-		}
-	}
-}
 
 allprojects {
 	repositories {

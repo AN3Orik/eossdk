@@ -15,10 +15,10 @@ import static com.sun.jna.Structure.FieldOrder;
 @FieldOrder({"ResultCode", "ClientData", "LobbyId"})
 public class EOS_Lobby_DestroyLobbyCallbackInfo extends Structure {
 	/**
-	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.<br/><br/>
-	 * {@link EOS_EResult#EOS_Success} if the destroy completes successfully<br/>
-	 * {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect<br/>
-	 * {@link EOS_EResult#EOS_AlreadyPending} if the lobby is already marked for destroy<br/>
+	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.<br><br>
+	 * {@link EOS_EResult#EOS_Success} if the destroy completes successfully<br>
+	 * {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect<br>
+	 * {@link EOS_EResult#EOS_AlreadyPending} if the lobby is already marked for destroy<br>
 	 * {@link EOS_EResult#EOS_NotFound} if the lobby to be destroyed does not exist
 	 */
 	public EOS_EResult ResultCode;

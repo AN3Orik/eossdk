@@ -99,7 +99,7 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 			}
 
 			switch (options.getAntiCheatMode()) {
-				case EOS_ACCM_ClientServer -> {
+				case EOS_ACCM_ClientServer:
 					messageToServerNotificationId = antiCheatClient.addNotifyMessageToServer(new EOS_AntiCheatClient_AddNotifyMessageToServerOptions(),
 							null,
 							this::onMessageToServer);
@@ -113,8 +113,9 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 					if (clientIntegrityViolatedNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
 						throw new RuntimeException("Failed to addNotifyClientIntegrityViolated");
 					}
-				}
-				case EOS_ACCM_PeerToPeer -> throw new UnsupportedOperationException("Peer2Peer mode isn't implemented");
+					break;
+				case EOS_ACCM_PeerToPeer:
+					throw new UnsupportedOperationException("Peer2Peer mode isn't implemented");
 			}
 
 			final EOS_AntiCheatClient_BeginSessionOptions beginSessionOptions = new EOS_AntiCheatClient_BeginSessionOptions();
@@ -131,15 +132,16 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 	public void shutdown() {
 		if (antiCheatClient != null) {
 			switch (options.getAntiCheatMode()) {
-				case EOS_ACCM_ClientServer -> {
+				case EOS_ACCM_ClientServer:
 					if (messageToServerNotificationId != EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
 						antiCheatClient.removeNotifyMessageToServer(messageToServerNotificationId);
 					}
 					if (clientIntegrityViolatedNotificationId != EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
 						antiCheatClient.removeNotifyClientIntegrityViolated(clientIntegrityViolatedNotificationId);
 					}
-				}
-				case EOS_ACCM_PeerToPeer -> throw new UnsupportedOperationException("Peer2Peer mode isn't implemented");
+					break;
+				case EOS_ACCM_PeerToPeer:
+					throw new UnsupportedOperationException("Peer2Peer mode isn't implemented");
 			}
 			final EOS_EResult endSessionResult = antiCheatClient.endSession(new EOS_AntiCheatClient_EndSessionOptions());
 			if (!endSessionResult.isSuccess()) {

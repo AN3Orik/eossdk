@@ -136,21 +136,29 @@ import java.nio.IntBuffer;
 public interface EOSLibrary extends Library {
 	EOSLibrary instance = getLibraryInstance();
 
-	private static EOSLibrary getLibraryInstance() {
+	static EOSLibrary getLibraryInstance() {
 		String libName;
 		switch (Platform.getOSType()) {
-			case Platform.WINDOWS, Platform.WINDOWSCE -> {
+			case Platform.WINDOWS:
+			case Platform.WINDOWSCE:
 				if (Platform.is64Bit()) {
 					libName = "EOSSDK-Win64-Shipping";
 				}
 				else {
 					libName = "EOSSDK-Win32-Shipping";
 				}
-			}
-			case Platform.LINUX -> libName = "libEOSSDK-Linux-Shipping";
-			case Platform.MAC -> libName = "libEOSSDK-Mac-Shipping";
-			case Platform.ANDROID -> libName = "libEOSSDK-Android-Shipping";
-			default -> throw new RuntimeException("Unsupported platform: " + Platform.getOSType());
+				break;
+			case Platform.LINUX:
+				libName = "libEOSSDK-Linux-Shipping";
+				break;
+			case Platform.MAC:
+				libName = "libEOSSDK-Mac-Shipping";
+				break;
+			case Platform.ANDROID:
+				libName = "libEOSSDK-Android-Shipping";
+				break;
+			default:
+				throw new RuntimeException("Unsupported platform: " + Platform.getOSType());
 		}
 		return Native.load(libName, EOSLibrary.class);
 	}

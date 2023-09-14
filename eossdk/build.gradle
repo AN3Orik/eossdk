@@ -1,5 +1,7 @@
-apply plugin: 'java-library'
-apply plugin: 'maven-publish'
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+}
 
 version = "1.16.1-SNAPSHOT"
 
@@ -9,7 +11,7 @@ dependencies {
 	annotationProcessor('org.projectlombok:lombok:1.18.28')
 	compileOnly('org.projectlombok:lombok:1.18.28')
 	api("net.java.dev.jna:jna:5.13.0")
-	api('org.slf4j:slf4j-api:2.0.9')
+	compileOnly('org.slf4j:slf4j-api:2.0.9')
 }
 
 compileJava {

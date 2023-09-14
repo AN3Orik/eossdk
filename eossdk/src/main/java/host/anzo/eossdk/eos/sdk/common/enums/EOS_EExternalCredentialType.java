@@ -235,7 +235,7 @@ public @Getter enum EOS_EExternalCredentialType implements NativeMapped {
 	 * 3. Update the existing Steam identity provider credentials entry in EOS Dev Portal to use the same identity string identifier as the game client.<br>
 	 * <p>
 	 * <b>Example:</b><br>
-	 * SteamUser()->GetAuthTicketForWebApi("epiconlineservices");
+	 * {@code SteamUser()->GetAuthTicketForWebApi("epiconlineservices");}
 	 * <p>
 	 * The retrieved Auth Session Ticket byte buffer needs to be converted into a hex-encoded UTF-8 string (e.g. "FA87097A..") before passing it to the EOS_Auth_Login or EOS_Connect_Login APIs.
 	 * EOS_ByteArray_ToString can be used for this conversion.

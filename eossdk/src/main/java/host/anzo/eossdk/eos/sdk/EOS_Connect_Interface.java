@@ -62,8 +62,8 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @param clientData arbitrary data that is passed back to you in the CompletionDelegate.
 	 * @param completionDelegate a callback that is fired when the link operation completes, either successfully or in error.
 	 */
-	public void linkAccount(EOS_Connect_Interface handle, EOS_Connect_LinkAccountOptions options, Pointer clientData, EOS_Connect_OnLinkAccountCallback completionDelegate)  {
-		EOSLibrary.instance.EOS_Connect_LinkAccount(handle, options, clientData, completionDelegate);
+	public void linkAccount(EOS_Connect_LinkAccountOptions options, Pointer clientData, EOS_Connect_OnLinkAccountCallback completionDelegate)  {
+		EOSLibrary.instance.EOS_Connect_LinkAccount(this, options, clientData, completionDelegate);
 	}
 
 	/**
