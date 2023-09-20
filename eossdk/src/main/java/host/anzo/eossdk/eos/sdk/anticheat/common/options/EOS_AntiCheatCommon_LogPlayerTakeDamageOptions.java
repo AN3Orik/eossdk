@@ -15,6 +15,7 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_Vec3f;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonPlayerTakeDamageResult;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonPlayerTakeDamageSource;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonPlayerTakeDamageType;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -41,10 +42,10 @@ public class EOS_AntiCheatCommon_LogPlayerTakeDamageOptions extends Structure {
 	/** Attacker player's view rotation as a quaternion if applicable, otherwise NULL. */
 	public EOS_AntiCheatCommon_Quat.ByReference AttackerPlayerViewRotation;
 	/**
-	 * True if the damage was applied instantly at the time of attack from the game
-	 * simulation's perspective, otherwise false (simulated ballistics, arrow, etc).
+	 * {@link EOS_Bool#EOS_TRUE} if the damage was applied instantly at the time of attack from the game
+	 * simulation's perspective, otherwise {@link EOS_Bool#EOS_FALSE} (simulated ballistics, arrow, etc).
 	 */
-	public int bIsHitscanAttack;
+	public EOS_Bool bIsHitscanAttack;
 	/**
 	 * True if there is a visible line of sight between the attacker and the victim at the time
 	 * that damage is being applied, false if there is an obstacle like a wall or terrain in
@@ -56,8 +57,8 @@ public class EOS_AntiCheatCommon_LogPlayerTakeDamageOptions extends Structure {
 	 * to compute in your game.
 	 */
 	public int bHasLineOfSight;
-	/** True if this was a critical hit that causes extra damage (e.g. headshot) */
-	public int bIsCriticalHit;
+	/** {@link EOS_Bool#EOS_TRUE} if this was a critical hit that causes extra damage (e.g. headshot) */
+	public EOS_Bool bIsCriticalHit;
 	/** Deprecated - use DamagePosition instead */
 	public int HitBoneId_DEPRECATED;
 	/** Number of health points that the victim lost due to this damage event */

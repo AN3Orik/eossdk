@@ -11,6 +11,7 @@ import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_Quat;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_Vec3f;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -30,8 +31,8 @@ public class EOS_AntiCheatCommon_LogPlayerTickOptions extends Structure {
 	public EOS_AntiCheatCommon_Vec3f.ByReference PlayerPosition;
 	/** Player's view rotation as a quaternion */
 	public EOS_AntiCheatCommon_Quat.ByReference PlayerViewRotation;
-	/** True if the player's view is zoomed (e.g. using a sniper rifle), otherwise false */
-	public int bIsPlayerViewZoomed;
+	/** {@link EOS_Bool#EOS_TRUE} if the player's view is zoomed (e.g. using a sniper rifle), otherwise {@link EOS_Bool#EOS_FALSE} */
+	public EOS_Bool bIsPlayerViewZoomed;
 	/** Player's current health value */
 	public float PlayerHealth;
 	/** Any movement state applicable */

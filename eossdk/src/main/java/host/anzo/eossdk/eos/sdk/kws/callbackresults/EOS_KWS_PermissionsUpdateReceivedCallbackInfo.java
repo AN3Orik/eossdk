@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.kws.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -23,7 +24,7 @@ public class EOS_KWS_PermissionsUpdateReceivedCallbackInfo extends Structure {
 	/** Date of birth in ISO8601 form (YYYY-MM-DD) */
 	public String DateOfBirth;
 	/** Is this user a minor */
-	public int bIsMinor;
+	public EOS_Bool bIsMinor;
 	/** Parent email. This value may be set to an empty string if the originally registered email recipient declined to be the right person to give consent. */
 	public String ParentEmail;
 

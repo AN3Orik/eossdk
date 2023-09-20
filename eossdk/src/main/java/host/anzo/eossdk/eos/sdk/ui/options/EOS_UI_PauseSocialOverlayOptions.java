@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.ui.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -19,7 +20,7 @@ public class EOS_UI_PauseSocialOverlayOptions extends Structure {
 	/** API Version: Set this to EOS_UI_PAUSESOCIALOVERLAY_API_LATEST. */
 	public int ApiVersion;
 	/** The desired bIsPaused state of the overlay. */
-	public int bIsPaused;
+	public EOS_Bool bIsPaused;
 
 	public EOS_UI_PauseSocialOverlayOptions() {
 		super();

@@ -8,6 +8,7 @@ package host.anzo.eossdk.eos.sdk.connect.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
@@ -32,7 +33,7 @@ public class EOS_Connect_VerifyIdTokenCallbackInfo extends Structure {
 	 * <p>
 	 * This flag is always false for users that authenticated using EOS Connect Device ID.
 	 */
-	public boolean bIsAccountInfoPresent;
+	public EOS_Bool bIsAccountInfoPresent;
 	/**
 	 * The identity provider that the user authenticated with to EOS Connect.
 	 * <p>

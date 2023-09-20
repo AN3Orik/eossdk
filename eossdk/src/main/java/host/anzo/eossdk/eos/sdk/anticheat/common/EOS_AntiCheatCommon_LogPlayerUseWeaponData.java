@@ -8,6 +8,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.common;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -25,10 +26,10 @@ public class EOS_AntiCheatCommon_LogPlayerUseWeaponData extends Structure {
 	public EOS_AntiCheatCommon_Vec3f.ByReference PlayerPosition;
 	/** Attack direction as a quaternion */
 	public EOS_AntiCheatCommon_Quat.ByReference PlayerViewRotation;
-	/** True if the player's view is zoomed (e.g. using a sniper rifle), otherwise false */
-	public int bIsPlayerViewZoomed;
-	/** Set to true if the player is using a melee attack, otherwise false */
-	public int bIsMeleeAttack;
+	/** {@link EOS_Bool#EOS_TRUE} if the player's view is zoomed (e.g. using a sniper rifle), otherwise {@link EOS_Bool#EOS_FALSE} */
+	public EOS_Bool bIsPlayerViewZoomed;
+	/** Set to {@link EOS_Bool#EOS_TRUE} if the player is using a melee attack, otherwise {@link EOS_Bool#EOS_FALSE} */
+	public EOS_Bool bIsMeleeAttack;
 	/** Name of the weapon used. Will be truncated to EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_WEAPONNAME_MAX_LENGTH bytes if longer. */
 	public String WeaponName;
 

@@ -8,6 +8,7 @@ package host.anzo.eossdk.eos.sdk.auth.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -57,7 +58,7 @@ public class EOS_Auth_VerifyIdTokenCallbackInfo extends Structure {
 	 * <p>
 	 * This flag is set when the user has logged in to their Epic Account using external account credentials, e.g. through local platform authentication.
 	 */
-	public boolean bIsExternalAccountInfoPresent;
+	public EOS_Bool bIsExternalAccountInfoPresent;
 	/**
 	 * The identity provider that the user logged in with to their Epic Account.
 	 * <p>

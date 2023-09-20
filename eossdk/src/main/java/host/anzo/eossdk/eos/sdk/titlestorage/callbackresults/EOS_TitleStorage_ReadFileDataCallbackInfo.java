@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.titlestorage.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -23,7 +24,7 @@ public class EOS_TitleStorage_ReadFileDataCallbackInfo extends Structure {
 	/** The total file size of the file being read */
 	public int TotalFileSizeBytes;
 	/** Is this chunk the last chunk of data? */
-	public int bIsLastChunk;
+	public EOS_Bool bIsLastChunk;
 	/** The length of DataChunk in bytes that can be safely read */
 	public int DataChunkLengthBytes;
 	/** Pointer to the start of data to be read */

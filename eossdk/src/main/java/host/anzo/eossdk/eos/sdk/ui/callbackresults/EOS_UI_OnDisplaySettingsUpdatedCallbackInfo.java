@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.ui.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -13,13 +14,13 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_UI_OnDisplaySettingsUpdatedCallbackInfo extends Structure {
 	/** Context that was passed into EOS_UI_AddNotifyDisplaySettingsUpdated */
 	public Pointer ClientData;
-	/** True when any portion of the overlay is visible. */
-	public int bIsVisible;
+	/** {@link EOS_Bool#EOS_TRUE} when any portion of the overlay is visible. */
+	public EOS_Bool bIsVisible;
 	/**
-	 * True when the overlay has switched to exclusive input mode.
+	 * {@link EOS_Bool#EOS_TRUE} when the overlay has switched to exclusive input mode.
 	 * While in exclusive input mode, no keyboard or mouse input will be sent to the game.
 	 */
-	public int bIsExclusiveInput;
+	public EOS_Bool bIsExclusiveInput;
 
 	public EOS_UI_OnDisplaySettingsUpdatedCallbackInfo() {
 		super();

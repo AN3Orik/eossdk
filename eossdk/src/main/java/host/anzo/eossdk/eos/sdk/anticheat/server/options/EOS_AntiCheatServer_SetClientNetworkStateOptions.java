@@ -9,6 +9,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.server.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -24,8 +25,8 @@ public class EOS_AntiCheatServer_SetClientNetworkStateOptions extends Structure 
 	public int ApiVersion;
 	/** Locally unique value describing the remote user (e.g. a player object pointer) */
 	public EOS_AntiCheatCommon_ClientHandle ClientHandle;
-	/** True if the network is functioning normally, false if temporarily interrupted */
-	public int bIsNetworkActive;
+	/** {@link EOS_Bool#EOS_TRUE} if the network is functioning normally, {@link EOS_Bool#EOS_FALSE} if temporarily interrupted */
+	public EOS_Bool bIsNetworkActive;
 
 	public EOS_AntiCheatServer_SetClientNetworkStateOptions() {
 		super();

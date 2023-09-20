@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.kws.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
@@ -29,7 +30,7 @@ public class EOS_KWS_CreateUserCallbackInfo extends Structure {
 	/** KWS UserId created */
 	public String KWSUserId;
 	/** Is this user a minor */
-	public int bIsMinor;
+	public EOS_Bool bIsMinor;
 
 	public EOS_KWS_CreateUserCallbackInfo() {
 		super();

@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.presence.callbackresults.EOS_Presence_JoinGameAcceptedCallbackInfo;
@@ -142,7 +143,7 @@ public class EOS_UI_Interface extends PointerType {
 	 * @return {@code true} if the provided key combination is valid.
 	 */
 	public boolean isValidKeyCombination(EOS_UI_EKeyCombination keyCombination) {
-		return EOSLibrary.instance.EOS_UI_IsValidKeyCombination(this, keyCombination) == 1;
+		return EOSLibrary.instance.EOS_UI_IsValidKeyCombination(this, keyCombination) == EOS_Bool.EOS_TRUE;
 	}
 
 	/**
@@ -190,7 +191,7 @@ public class EOS_UI_Interface extends PointerType {
 	 * @see EOS_UI_EInputStateButtonFlags
 	 */
 	public boolean isValidButtonCombination(EOS_UI_EInputStateButtonFlags buttonCombination) {
-		return EOSLibrary.instance.EOS_UI_IsValidButtonCombination(this, buttonCombination) == 1;
+		return EOSLibrary.instance.EOS_UI_IsValidButtonCombination(this, buttonCombination) == EOS_Bool.EOS_TRUE;
 	}
 
 	/**
@@ -302,7 +303,7 @@ public class EOS_UI_Interface extends PointerType {
 	 * @see #pauseSocialOverlay(EOS_UI_PauseSocialOverlayOptions)
 	 */
 	public boolean isSocialOverlayPaused(EOS_UI_IsSocialOverlayPausedOptions options) {
-		return EOSLibrary.instance.EOS_UI_IsSocialOverlayPaused(this, options) == 1;
+		return EOSLibrary.instance.EOS_UI_IsSocialOverlayPaused(this, options) == EOS_Bool.EOS_TRUE;
 	}
 
 	/**

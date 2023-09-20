@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.achievements;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOS_Achievements_Interface;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -34,8 +35,8 @@ public class EOS_Achievements_Definition extends Structure implements AutoClosea
 	public String UnlockedIconId;
 	/** Text representing the icon to display in-game when achievement is locked. */
 	public String LockedIconId;
-	/** True if achievement is hidden, false otherwise. */
-	public int bIsHidden;
+	/** {@link EOS_Bool#EOS_TRUE} if achievement is hidden, {@link EOS_Bool#EOS_FALSE} otherwise. */
+	public EOS_Bool bIsHidden;
 	/** The number of stat thresholds. */
 	public int StatThresholdsCount;
 	/** Array of stat thresholds that need to be satisfied to unlock the achievement. */
