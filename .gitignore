@@ -4,3 +4,6 @@
 /eossdk-example/build
 /tools
 /eossdk-example/config/default.ini
+/eossdk-native-ios/build
+/eossdk-native-linux/build
+/eossdk-native-windows/build

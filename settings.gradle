@@ -1,2 +1,5 @@
 include 'eossdk'
+include 'eossdk-native-windows'
+include 'eossdk-native-linux'
+include 'eossdk-native-ios'
 include 'eossdk-example'

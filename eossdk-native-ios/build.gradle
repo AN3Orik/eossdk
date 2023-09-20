@@ -1,0 +1,68 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+}
+
+version = "1.16.1-SNAPSHOT"
+
+compileJava {
+	doLast {
+		jar {
+			manifest {
+				attributes('Implementation-Title': project.name,
+						'Implementation-Version': version,
+						'Built-Date': new Date().toString(),
+						'Built-By': System.getProperty('user.name'),
+						'Built-JDK': System.getProperty('java.version'),
+						'Source-Compatibility': project.sourceCompatibility,
+						'Target-Compatibility': project.targetCompatibility
+				)
+			}
+		}
+	}
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			groupId "host.anzo"
+			artifactId = "eossdk-native-ios"
+			from components.java
+
+			pom {
+				name = "eossdk-native-ios"
+				description = "Java wrapper iOS library for Epic Online Services SDK"
+				url = "https://github.com/AN3Orik/eossdk"
+
+				developers {
+					developer {
+						id = 'ANZO'
+						name = 'Anton Lasevich'
+						email = 'mostproduct@gmail.com'
+					}
+				}
+
+				licenses {
+					license {
+						name = 'Apache-2.0 license'
+						url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+					}
+				}
+			}
+		}
+	}
+
+	repositories {
+		maven {
+			def releasesRepoUrl = "https://nexus.anzo.host/repository/maven-releases/"
+			def snapshotsRepoUrl = "https://nexus.anzo.host/repository/maven-snapshots/"
+
+			name 'nexus'
+			url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+			credentials {
+				username "$nexusUsername"
+				password "$nexusPassword"
+			}
+		}
+	}
+}

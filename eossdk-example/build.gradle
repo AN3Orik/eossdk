@@ -31,6 +31,17 @@ dependencies {
 	implementation('org.slf4j:slf4j-ext:2.0.9')
 	implementation('org.slf4j:slf4j-simple:2.0.9')
 	implementation(project(':eossdk'))
+
+	def osName = System.getProperty("os.name").toLowerCase()
+	if (osName.contains("windows")) {
+		implementation(project(':eossdk-native-windows'))
+	}
+	else if (osName.contains("linux")) {
+		implementation(project(':eossdk-native-linux'))
+	}
+	else if (osName.contains("mac") || osName.contains("darwin")) {
+		implementation(project(':eossdk-native-mac'))
+	}
 }
 
 jar {

@@ -16,6 +16,13 @@ Please note that the library version corresponds to the EOS SDK version.
 // Gradle
 maven { url "https://nexus.anzo.host/repository/maven-snapshots/" }
 dependencies {
+    // EOS SDK wrapper library
     implementation "host.anzo:eossdk:1.16.1-SNAPSHOT"
+    // Windows native library
+    implementation "host.anzo:eossdk-native-windows:1.16.1-SNAPSHOT"
+    // Linux native library
+    implementation "host.anzo:eossdk-native-linux:1.16.1-SNAPSHOT"
+    // iOS native library
+    implementation "host.anzo:eossdk-native-ios:1.16.1-SNAPSHOT"
 }
 ```
