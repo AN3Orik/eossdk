@@ -12,7 +12,11 @@ public @Getter class EOS_Bool implements NativeMapped {
 	public static final EOS_Bool EOS_TRUE = new EOS_Bool(true);
 	public static final EOS_Bool EOS_FALSE = new EOS_Bool(false);
 
-	private final boolean value;
+	private final Boolean value;
+
+	public EOS_Bool() {
+		value = null;
+	}
 
 	private EOS_Bool(boolean value) {
 		this.value = value;
@@ -35,7 +39,7 @@ public @Getter class EOS_Bool implements NativeMapped {
 
 	@Override
 	public Object toNative() {
-		return value ? 1 : 0;
+		return value != null && value ? 1 : 0;
 	}
 
 	@Override
