@@ -8,12 +8,14 @@ Java wrapper for Epic Online Services SDK
 Work in progress.
 
 ## Distribution
-Because library in dev state, currently only private snapshot repository is available for tests
+Because library in dev state, currently only private snapshot repository is available for tests.
+
+Please note that the library version corresponds to the EOS SDK version.
 
 ```groovy
 // Gradle
 maven { url "https://nexus.anzo.host/repository/maven-snapshots/" }
 dependencies {
-    implementation "host.anzo:eossdk:+"
+    implementation "host.anzo:eossdk:1.16.1-SNAPSHOT"
 }
 ```
