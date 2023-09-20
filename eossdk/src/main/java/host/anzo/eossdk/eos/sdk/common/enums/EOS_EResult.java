@@ -9,6 +9,7 @@ package host.anzo.eossdk.eos.sdk.common.enums;
 import com.sun.jna.FromNativeContext;
 import com.sun.jna.NativeMapped;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -526,7 +527,7 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	 * @return True if this result means the operation is complete, false otherwise
 	 */
 	public boolean isOperationComplete() {
-		return EOSLibrary.instance.EOS_EResult_IsOperationComplete(this) == 1;
+		return EOSLibrary.instance.EOS_EResult_IsOperationComplete(this) == EOS_Bool.EOS_TRUE;
 	}
 
 	/**

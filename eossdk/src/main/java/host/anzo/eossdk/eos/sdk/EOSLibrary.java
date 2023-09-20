@@ -162,12 +162,12 @@ public interface EOSLibrary extends Library {
 
 	// Common
 	String EOS_EResult_ToString(EOS_EResult result);
-	int EOS_EResult_IsOperationComplete(EOS_EResult result);
+	EOS_Bool EOS_EResult_IsOperationComplete(EOS_EResult result);
 	EOS_EResult EOS_ByteArray_ToString(byte[] byteArray, int length, byte[] uutBuffer, IntBuffer inOutBufferLength);
-	int EOS_EpicAccountId_IsValid(EOS_EpicAccountId accountId);
+	EOS_Bool EOS_EpicAccountId_IsValid(EOS_EpicAccountId accountId);
 	EOS_EResult EOS_EpicAccountId_ToString(EOS_EpicAccountId accountId, String outBuffer, IntBuffer inOutBufferLength);
 	EOS_EpicAccountId EOS_EpicAccountId_FromString(String accountIdString);
-	int EOS_ProductUserId_IsValid(EOS_ProductUserId accountId);
+	EOS_Bool EOS_ProductUserId_IsValid(EOS_ProductUserId accountId);
 	EOS_EResult EOS_ProductUserId_ToString(EOS_ProductUserId accountId, String outBuffer, IntBuffer inOutBufferLength);
 	EOS_ProductUserId EOS_ProductUserId_FromString(String productUserIdString);
 	EOS_EResult EOS_ContinuanceToken_ToString(EOS_ContinuanceToken continuanceToken, String outBuffer, IntBuffer inOutBufferLength);
@@ -772,7 +772,7 @@ public interface EOSLibrary extends Library {
 	
 	// Presence
 	void EOS_Presence_QueryPresence(EOS_Presence_Interface handle, EOS_Presence_QueryPresenceOptions options, Pointer clientData, EOS_Presence_OnQueryPresenceCompleteCallback completionDelegate);
-	int EOS_Presence_HasPresence(EOS_Presence_Interface handle, EOS_Presence_HasPresenceOptions options);
+	EOS_Bool EOS_Presence_HasPresence(EOS_Presence_Interface handle, EOS_Presence_HasPresenceOptions options);
 	EOS_EResult EOS_Presence_CopyPresence(EOS_Presence_Interface handle, EOS_Presence_CopyPresenceOptions options, EOS_Presence_Info[] OutPresence);
 	EOS_EResult EOS_Presence_CreatePresenceModification(EOS_Presence_Interface handle, EOS_Presence_CreatePresenceModificationOptions options, EOS_PresenceModification OutPresenceModificationHandle);
 	void EOS_Presence_SetPresence(EOS_Presence_Interface handle, EOS_Presence_SetPresenceOptions options, Pointer clientData, EOS_Presence_SetPresenceCompleteCallback completionDelegate);
@@ -903,8 +903,8 @@ public interface EOSLibrary extends Library {
 	// UI
 	void EOS_UI_ShowFriends(EOS_UI_Interface handle, EOS_UI_ShowFriendsOptions options, Pointer clientData, EOS_UI_OnShowFriendsCallback completionDelegate);
 	void EOS_UI_HideFriends(EOS_UI_Interface handle, EOS_UI_HideFriendsOptions options, Pointer clientData, EOS_UI_OnHideFriendsCallback completionDelegate);
-	int EOS_UI_GetFriendsVisible(EOS_UI_Interface handle, EOS_UI_GetFriendsVisibleOptions options);
-	int EOS_UI_GetFriendsExclusiveInput(EOS_UI_Interface handle, EOS_UI_GetFriendsExclusiveInputOptions options);
+	EOS_Bool EOS_UI_GetFriendsVisible(EOS_UI_Interface handle, EOS_UI_GetFriendsVisibleOptions options);
+	EOS_Bool EOS_UI_GetFriendsExclusiveInput(EOS_UI_Interface handle, EOS_UI_GetFriendsExclusiveInputOptions options);
 	EOS_NotificationId EOS_UI_AddNotifyDisplaySettingsUpdated(EOS_UI_Interface handle, EOS_UI_AddNotifyDisplaySettingsUpdatedOptions options, Pointer clientData, EOS_UI_OnDisplaySettingsUpdatedCallback notificationFn);
 	void EOS_UI_RemoveNotifyDisplaySettingsUpdated(EOS_UI_Interface handle, EOS_NotificationId Id);
 	EOS_EResult EOS_UI_SetToggleFriendsKey(EOS_UI_Interface handle, EOS_UI_SetToggleFriendsKeyOptions options);

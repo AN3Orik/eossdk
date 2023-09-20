@@ -61,7 +61,7 @@ public class EOS_UI_Interface extends PointerType {
 	 * @return {@code true} If the overlay is visible.
 	 */
 	public boolean getFriendsVisible(EOS_UI_GetFriendsVisibleOptions options) {
-		return EOSLibrary.instance.EOS_UI_GetFriendsVisible(this, options) == 1;
+		return EOSLibrary.instance.EOS_UI_GetFriendsVisible(this, options) == EOS_Bool.EOS_TRUE;
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class EOS_UI_Interface extends PointerType {
 	 * @return {@code true} If the overlay has exclusive input.
 	 */
 	public boolean getFriendsExclusiveInput(EOS_UI_GetFriendsExclusiveInputOptions options) {
-		return EOSLibrary.instance.EOS_UI_GetFriendsExclusiveInput(this, options) == 1;
+		return EOSLibrary.instance.EOS_UI_GetFriendsExclusiveInput(this, options) == EOS_Bool.EOS_TRUE;
 	}
 
 	/**

@@ -53,10 +53,10 @@ public class EOS_EpicAccountId extends PointerType {
 	 * Check whether or not the given Epic Account ID is considered valid
 	 * NOTE: This will return true for any EOS_EpicAccountId created with EOS_EpicAccountId_FromString as there is no validation
 	 *
-	 * @return EOS_TRUE if the EOS_EpicAccountId is valid, otherwise EOS_FALSE
+	 * @return {@link EOS_Bool#EOS_TRUE} if the EOS_EpicAccountId is valid, otherwise {@link EOS_Bool#EOS_FALSE}
 	 */
 	public boolean isValid() {
-		return EOSLibrary.instance.EOS_EpicAccountId_IsValid(this) == 1;
+		return EOSLibrary.instance.EOS_EpicAccountId_IsValid(this) == EOS_Bool.EOS_TRUE;
 	}
 
 	@Override

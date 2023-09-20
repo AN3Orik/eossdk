@@ -21,7 +21,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ResultCode", "ClientData", "ApplicationId", "ClientId", "ProductId", "SandboxId", "DeploymentId", "DisplayName", "bIsExternalAccountInfoPresent", "ExternalAccountIdType", "ExternalAccountId", "ExternalAccountDisplayName", "Platform"})
 public class EOS_Auth_VerifyIdTokenCallbackInfo extends Structure {
-	/** The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors. */
+	/** The EOS_EResult code for the operation. {@link EOS_EResult#EOS_Success} indicates that the operation succeeded; other codes indicate errors. */
 	public EOS_EResult ResultCode;
 	/** Context that was passed into EOS_Auth_VerifyIdToken */
 	public Pointer ClientData;

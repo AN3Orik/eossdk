@@ -53,10 +53,10 @@ public class EOS_ProductUserId extends PointerType {
 	 * Check whether or not the given account unique ID is considered valid
 	 * NOTE: This will return true for any EOS_ProductUserId created with EOS_ProductUserId_FromString as there is no validation
 	 *
-	 * @return EOS_TRUE if the EOS_ProductUserId is valid, otherwise EOS_FALSE
+	 * @return {@link EOS_Bool#EOS_TRUE} if the EOS_ProductUserId is valid, otherwise {@link EOS_Bool#EOS_FALSE}
 	 */
 	public boolean isValid() {
-		return EOSLibrary.instance.EOS_ProductUserId_IsValid(this) == 1;
+		return EOSLibrary.instance.EOS_ProductUserId_IsValid(this) == EOS_Bool.EOS_TRUE;
 	}
 
 	@Override

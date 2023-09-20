@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.presence.EOS_PresenceModification;
@@ -54,7 +55,7 @@ public class EOS_Presence_Interface extends PointerType {
 	 * @return EOS_TRUE if we have presence for the requested user, or EOS_FALSE if the request was invalid or we do not have cached data
 	 */
 	public boolean hasPresence(EOS_Presence_HasPresenceOptions options) {
-		return EOSLibrary.instance.EOS_Presence_HasPresence(this, options) == 1;
+		return EOSLibrary.instance.EOS_Presence_HasPresence(this, options) == EOS_Bool.EOS_TRUE;
 	}
 
 	/**
