@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "TimePlaced", "Action", "TimeExpires", "ReferenceId"})
 public class EOS_Sanctions_PlayerSanction extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Sanctions_PlayerSanction struct. */
 	public static final int EOS_SANCTIONS_PLAYERSANCTION_API_LATEST = 2;
 
 	/** API Version: This will be set to EOS_SANCTIONS_PLAYERSANCTION_API_LATEST. */

@@ -8,9 +8,11 @@ package host.anzo.eossdk.eos.sdk.auth;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Auth_Interface;
 import host.anzo.eossdk.eos.sdk.auth.enums.EOS_EAuthTokenType;
 import host.anzo.eossdk.eos.sdk.auth.enums.EOS_ELoginCredentialType;
+import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_CopyUserAuthTokenOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -61,8 +63,14 @@ public class EOS_Auth_Token extends Structure implements AutoCloseable {
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with an EOS_Auth_Token structure. This must be called on data retrieved from EOS_Auth_CopyUserAuthToken.
+	 *
+	 * @see EOS_Auth_Token
+	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId, EOS_Auth_Token[])
+	 */
 	public void release() {
-		EOS_Auth_Interface.releaseAuthToken(this);
+		EOSLibrary.instance.EOS_Auth_Token_Release(this);
 	}
 
 	@Override

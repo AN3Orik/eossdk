@@ -2,7 +2,10 @@ package host.anzo.eossdk.eos.sdk.achievements;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Achievements_Interface;
+import host.anzo.eossdk.eos.sdk.achievements.options.EOS_Achievements_CopyAchievementDefinitionByAchievementIdOptions;
+import host.anzo.eossdk.eos.sdk.achievements.options.EOS_Achievements_CopyAchievementDefinitionByIndexOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -51,8 +54,16 @@ public class EOS_Achievements_Definition extends Structure implements AutoClosea
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with achievement definitions. This must be called on data retrieved from
+	 * EOS_Achievements_CopyAchievementDefinitionByIndex or EOS_Achievements_CopyAchievementDefinitionByAchievementId.
+	 *
+	 * @see EOS_Achievements_Definition
+	 * @see EOS_Achievements_Interface#copyAchievementDefinitionByIndex(EOS_Achievements_CopyAchievementDefinitionByIndexOptions, EOS_Achievements_Definition[])
+	 * @see EOS_Achievements_Interface#copyAchievementDefinitionByAchievementId(EOS_Achievements_CopyAchievementDefinitionByAchievementIdOptions, EOS_Achievements_Definition[])
+	 */
 	public void release() {
-		EOS_Achievements_Interface.releaseDefinition(this);
+		EOSLibrary.instance.EOS_Achievements_Definition_Release(this);
 	}
 
 	@Override

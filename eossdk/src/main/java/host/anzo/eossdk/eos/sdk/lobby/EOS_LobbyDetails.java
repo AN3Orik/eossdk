@@ -9,7 +9,7 @@ import host.anzo.eossdk.eos.sdk.lobby.options.*;
 
 /**
  * A "read only" representation of an existing lobby that games interact with externally.
- * Both the lobby and lobby search interfaces interface use this common class for lobby management and search results
+ * Both the lobby and lobby search interfaces use this common class for lobby management and search results
  *
  * @author Anton Lasevich
  * @since 8/16/2023
@@ -46,7 +46,7 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 *
 	 * @see EOS_LobbyDetails_Info
 	 * @see EOS_LobbyDetails_CopyInfoOptions
-	 * @see EOS_LobbyDetails#releaseLobbyDetailsInfo(EOS_LobbyDetails_Info)
+	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_EResult copyInfo(EOS_LobbyDetails_CopyInfoOptions options, EOS_LobbyDetails_Info[] outLobbyDetailsInfo) {
 		return EOSLibrary.instance.EOS_LobbyDetails_CopyInfo(this, options, outLobbyDetailsInfo);
@@ -76,7 +76,7 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 *
 	 * @see EOS_Lobby_Attribute
 	 * @see EOS_LobbyDetails_CopyAttributeByIndexOptions
-	 * @see EOS_LobbyDetails#releaseLobbyAttribute(EOS_Lobby_Attribute)
+	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_EResult copyAttributeByIndex(EOS_LobbyDetails_CopyAttributeByIndexOptions options, EOS_Lobby_Attribute[] outAttribute) {
 		return EOSLibrary.instance.EOS_LobbyDetails_CopyAttributeByIndex(this, options, outAttribute);
@@ -95,7 +95,7 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 *
 	 * @see EOS_Lobby_Attribute
 	 * @see EOS_LobbyDetails_CopyAttributeByKeyOptions
-	 * @see EOS_LobbyDetails#releaseLobbyAttribute(EOS_Lobby_Attribute)
+	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_EResult copyAttributeByKey(EOS_LobbyDetails_CopyAttributeByKeyOptions options, EOS_Lobby_Attribute[] outAttribute) {
 		return EOSLibrary.instance.EOS_LobbyDetails_CopyAttributeByKey(this, options, outAttribute);
@@ -153,7 +153,7 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 *
 	 * @see EOS_Lobby_Attribute
 	 * @see EOS_LobbyDetails_CopyMemberAttributeByIndexOptions
-	 * @see EOS_LobbyDetails#releaseLobbyAttribute(EOS_Lobby_Attribute)
+	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_EResult copyMemberAttributeByIndex(EOS_LobbyDetails_CopyMemberAttributeByIndexOptions options, EOS_Lobby_Attribute[] outAttribute) {
 		return EOSLibrary.instance.EOS_LobbyDetails_CopyMemberAttributeByIndex(this, options, outAttribute);
@@ -172,18 +172,10 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 *
 	 * @see EOS_Lobby_Attribute
 	 * @see EOS_LobbyDetails_CopyMemberAttributeByKeyOptions
-	 * @see EOS_LobbyDetails#releaseLobbyAttribute(EOS_Lobby_Attribute)
+	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_EResult copyMemberAttributeByKey(EOS_LobbyDetails_CopyMemberAttributeByKeyOptions options, EOS_Lobby_Attribute[] outAttribute) {
 		return EOSLibrary.instance.EOS_LobbyDetails_CopyMemberAttributeByKey(this, options, outAttribute);
-	}
-
-	public static void releaseLobbyDetailsInfo(EOS_LobbyDetails_Info lobbyDetailsInfo) {
-		EOSLibrary.instance.EOS_LobbyDetails_Info_Release(lobbyDetailsInfo);
-	}
-
-	public static void releaseLobbyAttribute(EOS_Lobby_Attribute lobbyAttribute) {
-		EOSLibrary.instance.EOS_Lobby_Attribute_Release(lobbyAttribute);
 	}
 
 	public void release() {

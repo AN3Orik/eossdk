@@ -140,7 +140,7 @@ public class EOS_Auth_Interface extends PointerType {
 	 * @param localUserId The Epic Account ID of the user being queried
 	 * @param outUserAuthToken The auth token for the given user, if it exists and is valid; use EOS_Auth_Token_Release when finished
 	 *
-	 * @see EOS_Auth_Interface#releaseAuthToken(EOS_Auth_Token)
+	 * @see EOS_Auth_Token#release()
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutUserAuthToken
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter
@@ -164,7 +164,7 @@ public class EOS_Auth_Interface extends PointerType {
 	 * @param options Structure containing the account ID for which to copy an ID token.
 	 * @param outIdToken An ID token for the given user, if it exists and is valid; use EOS_Auth_IdToken_Release when finished.
 	 *
-	 * @see EOS_Auth_Interface#releaseAuthIdToken(EOS_Auth_IdToken)
+	 * @see EOS_Auth_IdToken#release()
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutUserIdToken
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter
@@ -263,29 +263,5 @@ public class EOS_Auth_Interface extends PointerType {
 	 */
 	public void removeNotifyLoginStatusChanged(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Auth_RemoveNotifyLoginStatusChanged(this, inId);
-	}
-
-	/**
-	 * Release the memory associated with an EOS_Auth_Token structure. This must be called on data retrieved from EOS_Auth_CopyUserAuthToken.
-	 *
-	 * @param authToken The auth token structure to be released.
-	 *
-	 * @see EOS_Auth_Token
-	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId, EOS_Auth_Token[])
-	 */
-	public static void releaseAuthToken(EOS_Auth_Token authToken) {
-		EOSLibrary.instance.EOS_Auth_Token_Release(authToken);
-	}
-
-	/**
-	 * Release the memory associated with an EOS_Auth_IdToken structure. This must be called on data retrieved from EOS_Auth_CopyIdToken.
-	 *
-	 * @param idToken The ID token structure to be released.
-	 *
-	 * @see EOS_Auth_IdToken
-	 * @see EOS_Auth_Interface#copyIdToken(EOS_Auth_CopyIdTokenOptions, EOS_Auth_IdToken[])
-	 */
-	public static void releaseAuthIdToken(EOS_Auth_IdToken idToken) {
-		EOSLibrary.instance.EOS_Auth_IdToken_Release(idToken);
 	}
 }

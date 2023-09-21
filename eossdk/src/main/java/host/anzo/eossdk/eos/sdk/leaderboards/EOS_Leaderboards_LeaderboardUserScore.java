@@ -2,8 +2,11 @@ package host.anzo.eossdk.eos.sdk.leaderboards;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Leaderboards_Interface;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
+import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions;
+import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -33,8 +36,16 @@ public class EOS_Leaderboards_LeaderboardUserScore extends Structure implements 
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with leaderboard user score. This must be called on data retrieved from
+	 * EOS_Leaderboards_CopyLeaderboardUserScoreByIndex or EOS_Leaderboards_CopyLeaderboardUserScoreByUserId.
+	 *
+	 * @see EOS_Leaderboards_LeaderboardUserScore
+	 * @see EOS_Leaderboards_Interface#copyLeaderboardUserScoreByIndex(EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions, EOS_Leaderboards_LeaderboardUserScore[])
+	 * @see EOS_Leaderboards_Interface#copyLeaderboardUserScoreByUserId(EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions, EOS_Leaderboards_LeaderboardUserScore[])
+	 */
 	public void release() {
-		EOS_Leaderboards_Interface.releaseLeaderboardUserScore(this);
+		EOSLibrary.instance.EOS_Leaderboards_LeaderboardUserScore_Release(this);
 	}
 
 	@Override

@@ -2,7 +2,10 @@ package host.anzo.eossdk.eos.sdk.achievements;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Achievements_Interface;
+import host.anzo.eossdk.eos.sdk.achievements.options.EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions;
+import host.anzo.eossdk.eos.sdk.achievements.options.EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -33,8 +36,16 @@ public class EOS_Achievements_UnlockedAchievement extends Structure implements A
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with an unlocked achievement. This must be called on data retrieved from
+	 * EOS_Achievements_CopyUnlockedAchievementByIndex or EOS_Achievements_CopyUnlockedAchievementByAchievementId.
+	 *
+	 * @see EOS_Achievements_UnlockedAchievement
+	 * @see EOS_Achievements_Interface#copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions, EOS_Achievements_DefinitionV2[])
+	 * @see EOS_Achievements_Interface#copyAchievementDefinitionV2ByAchievementId(EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions, EOS_Achievements_DefinitionV2[])
+	 */
 	public void release() {
-		EOS_Achievements_Interface.releaseUnlockedAchievement(this);
+		EOSLibrary.instance.EOS_Achievements_UnlockedAchievement_Release(this);
 	}
 
 	@Override

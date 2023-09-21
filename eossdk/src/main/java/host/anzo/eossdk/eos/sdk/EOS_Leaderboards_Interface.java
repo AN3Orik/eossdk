@@ -211,46 +211,4 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	                                                                     EOS_Leaderboards_LeaderboardUserScore[] outLeaderboardUserScore) {
 		return EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardUserScoreByUserId(this, options, outLeaderboardUserScore);
 	}
-
-	/**
-	 * Release the memory associated with leaderboard user score. This must be called on data retrieved from
-	 * EOS_Leaderboards_CopyLeaderboardUserScoreByIndex or EOS_Leaderboards_CopyLeaderboardUserScoreByUserId.
-	 *
-	 * @param leaderboardUserScore - The Leaderboard user score to release.
-	 *
-	 * @see EOS_Leaderboards_LeaderboardUserScore
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardUserScoreByIndex(EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions, EOS_Leaderboards_LeaderboardUserScore[])
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardUserScoreByUserId(EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions, EOS_Leaderboards_LeaderboardUserScore[])
-	 */
-	public static void releaseLeaderboardUserScore(EOS_Leaderboards_LeaderboardUserScore leaderboardUserScore) {
-		EOSLibrary.instance.EOS_Leaderboards_LeaderboardUserScore_Release(leaderboardUserScore);
-	}
-
-	/**
-	 * Release the memory associated with a leaderboard definition. This must be called on data retrieved from
-	 * EOS_Leaderboards_CopyLeaderboardDefinitionByIndex or EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId.
-	 *
-	 * @param leaderboardDefinition - The Leaderboard definition to release.
-	 *
-	 * @see EOS_Leaderboards_Definition
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardDefinitionByIndex(EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions, EOS_Leaderboards_Definition[])
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardDefinitionByLeaderboardId(EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions, EOS_Leaderboards_Definition[])
-	 */
-	public static void releaseDefinition(EOS_Leaderboards_Definition leaderboardDefinition) {
-		EOSLibrary.instance.EOS_Leaderboards_Definition_Release(leaderboardDefinition);
-	}
-
-	/**
-	 * Release the memory associated with leaderboard record. This must be called on data retrieved from
-	 * EOS_Leaderboards_CopyLeaderboardRecordByIndex or EOS_Leaderboards_CopyLeaderboardRecordByUserId.
-	 *
-	 * @param leaderboardRecord - The Leaderboard record to release.
-	 *
-	 * @see EOS_Leaderboards_LeaderboardRecord
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardRecordByIndex(EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions, EOS_Leaderboards_LeaderboardRecord[])
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardRecordByUserId(EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions, EOS_Leaderboards_LeaderboardRecord[])
-	 */
-	public static void releaseLeaderboardRecord(EOS_Leaderboards_LeaderboardRecord leaderboardRecord) {
-		EOSLibrary.instance.EOS_Leaderboards_LeaderboardRecord_Release(leaderboardRecord);
-	}
 }

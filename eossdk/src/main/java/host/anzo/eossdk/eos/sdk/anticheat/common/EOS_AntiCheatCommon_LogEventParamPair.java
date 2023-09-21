@@ -28,7 +28,7 @@ public class EOS_AntiCheatCommon_LogEventParamPair extends Structure {
 
 	public static class ParamValue_union extends Union {
 		public EOS_AntiCheatCommon_ClientHandle ClientHandle;
-		/** Will be truncated if longer than {@link EOS_AntiCheatCommon_LogEventParamPair#EOS_ANTICHEATCOMMON_LOGEVENT_STRING_MAX_LENGTH} bytes. */
+		/** Will be truncated if longer than {@link #EOS_ANTICHEATCOMMON_LOGEVENT_STRING_MAX_LENGTH} bytes. */
 		public String String;
 		public int UInt32;
 		public int Int32;
@@ -47,9 +47,9 @@ public class EOS_AntiCheatCommon_LogEventParamPair extends Structure {
 			setType(String.class);
 		}
 
-		public ParamValue_union(EOS_AntiCheatCommon_ClientHandle ClientHandle) {
+		public ParamValue_union(EOS_AntiCheatCommon_ClientHandle clientHandle) {
 			super();
-			this.ClientHandle = ClientHandle;
+			this.ClientHandle = clientHandle;
 			setType(EOS_AntiCheatCommon_ClientHandle.class);
 		}
 

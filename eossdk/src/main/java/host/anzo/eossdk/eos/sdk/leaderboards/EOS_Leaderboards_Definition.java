@@ -2,8 +2,13 @@ package host.anzo.eossdk.eos.sdk.leaderboards;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Leaderboards_Interface;
 import host.anzo.eossdk.eos.sdk.leaderboards.enums.EOS_ELeaderboardAggregation;
+import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions;
+import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions;
+import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions;
+import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -41,8 +46,16 @@ public class EOS_Leaderboards_Definition extends Structure implements AutoClosea
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with leaderboard record. This must be called on data retrieved from
+	 * EOS_Leaderboards_CopyLeaderboardRecordByIndex or EOS_Leaderboards_CopyLeaderboardRecordByUserId.
+	 *
+	 * @see EOS_Leaderboards_LeaderboardRecord
+	 * @see EOS_Leaderboards_Interface#copyLeaderboardRecordByIndex(EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions, EOS_Leaderboards_LeaderboardRecord[])
+	 * @see EOS_Leaderboards_Interface#copyLeaderboardRecordByUserId(EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions, EOS_Leaderboards_LeaderboardRecord[])
+	 */
 	public void release() {
-		EOS_Leaderboards_Interface.releaseDefinition(this);
+		EOSLibrary.instance.EOS_Leaderboards_Definition_Release(this);
 	}
 
 	@Override

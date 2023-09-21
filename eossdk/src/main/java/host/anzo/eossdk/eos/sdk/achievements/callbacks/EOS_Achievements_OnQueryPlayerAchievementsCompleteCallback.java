@@ -15,7 +15,7 @@ public interface EOS_Achievements_OnQueryPlayerAchievementsCompleteCallback exte
 	 *
 	 * @param data An EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo containing the output information and result
 	 *
-	 * @see EOS_Achievements_Interface#releasePlayerAchievement(EOS_Achievements_PlayerAchievement)
+	 * @see EOS_Achievements_PlayerAchievement#release()
 	 */
 	void apply(EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo data);
 }

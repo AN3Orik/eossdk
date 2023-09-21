@@ -281,10 +281,10 @@ public class EOS_Platform_Interface extends PointerType {
 	 *                          The input buffer should include enough space to be null-terminated.
 	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
 	 *
-	 * @return An EOS_EResult that indicates whether the active locale code string was copied into the OutBuffer.
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter
-	 *         {@link EOS_EResult#EOS_NotFound} if there is neither an override nor an available locale code for the user.
+	 * @return An EOS_EResult that indicates whether the active locale code string was copied into the OutBuffer.<br>
+	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer<br>
+	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
+	 *         {@link EOS_EResult#EOS_NotFound} if there is neither an override nor an available locale code for the user.<br>
 	 *         {@link EOS_EResult#EOS_LimitExceeded} - The OutBuffer is not large enough to receive the locale code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
 	 * @see EOS_Platform_Options#EOS_LOCALECODE_MAX_LENGTH
@@ -302,9 +302,9 @@ public class EOS_Platform_Interface extends PointerType {
 	 *                          The input buffer should include enough space to be null-terminated.
 	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
 	 *
-	 * @return An EOS_EResult that indicates whether the override country code string was copied into the OutBuffer.
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter
+	 * @return An EOS_EResult that indicates whether the override country code string was copied into the OutBuffer.<br>
+	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer<br>
+	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
 	 *         {@link EOS_EResult#EOS_LimitExceeded} - The OutBuffer is not large enough to receive the country code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
 	 * @see EOS_Platform_Options#EOS_COUNTRYCODE_MAX_LENGTH
@@ -322,9 +322,9 @@ public class EOS_Platform_Interface extends PointerType {
 	 *                          The input buffer should include enough space to be null-terminated.
 	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
 	 *
-	 * @return An EOS_EResult that indicates whether the override locale code string was copied into the OutBuffer.
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter
+	 * @return An EOS_EResult that indicates whether the override locale code string was copied into the OutBuffer.<br>
+	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer<br>
+	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
 	 *         {@link EOS_EResult#EOS_LimitExceeded} - The OutBuffer is not large enough to receive the locale code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
 	 * @see EOS_Platform_Options#EOS_LOCALECODE_MAX_LENGTH
@@ -337,8 +337,8 @@ public class EOS_Platform_Interface extends PointerType {
 	 * Set the override country code that the SDK will send to services which require it.
 	 * This is not currently used for anything internally.
 	 * @param newCountryCode country code to override
-	 * @return An EOS_EResult that indicates whether the override country code string was saved.
-	 *         {@link EOS_EResult#EOS_Success} if the country code was overridden
+	 * @return An EOS_EResult that indicates whether the override country code string was saved.<br>
+	 *         {@link EOS_EResult#EOS_Success} if the country code was overridden<br>
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass an invalid country code
 	 *
 	 * @see EOS_Platform_Options#EOS_COUNTRYCODE_MAX_LENGTH
@@ -350,9 +350,9 @@ public class EOS_Platform_Interface extends PointerType {
 	/**
 	 * Set the override locale code that the SDK will send to services which require it.
 	 * This is used for localization. This follows ISO 639.
-	 *
-	 * @return An EOS_EResult that indicates whether the override locale code string was saved.
-	 *         {@link EOS_EResult#EOS_Success} if the locale code was overridden
+	 * @param newLocaleCode locale code to override
+	 * @return An EOS_EResult that indicates whether the override locale code string was saved.<br>
+	 *         {@link EOS_EResult#EOS_Success} if the locale code was overridden<br>
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass an invalid locale code
 	 *
 	 * @see EOS_Platform_Options#EOS_LOCALECODE_MAX_LENGTH
@@ -373,8 +373,8 @@ public class EOS_Platform_Interface extends PointerType {
 	 *
 	 * @return An EOS_EResult is returned to indicate success or an error.
 	 * <p>
-	 * {@link EOS_EResult#EOS_Success} is returned if the app is being restarted. You should quit your process as soon as possible.
-	 * {@link EOS_EResult#EOS_NoChange} is returned if the app was already launched through the Epic Launcher, and no action needs to be taken.
+	 * {@link EOS_EResult#EOS_Success} is returned if the app is being restarted. You should quit your process as soon as possible.<br>
+	 * {@link EOS_EResult#EOS_NoChange} is returned if the app was already launched through the Epic Launcher, and no action needs to be taken.<br>
 	 * {@link EOS_EResult#EOS_UnexpectedError} is returned if the LauncherCheck module failed to initialize, or the module tried and failed to restart the app.
 	 */
 	public EOS_EResult checkForLauncherAndRestart() {
@@ -395,7 +395,7 @@ public class EOS_Platform_Interface extends PointerType {
 	 * @param options input structure that specifies the API version.
 	 * @param outDesktopCrossplayStatusInfo output structure to receive the desktop crossplay status information.
 	 *
-	 * @return An EOS_EResult is returned to indicate success or an error.
+	 * @return An EOS_EResult is returned to indicate success or an error.<br>
 	 *		   {@link EOS_EResult#EOS_NotImplemented} is returned on non-Windows platforms.
 	 */
 	public EOS_EResult getDesktopCrossplayStatus(EOS_Platform_GetDesktopCrossplayStatusOptions options, EOS_Platform_DesktopCrossplayStatusInfo outDesktopCrossplayStatusInfo) {
@@ -408,9 +408,9 @@ public class EOS_Platform_Interface extends PointerType {
 	 *
 	 * @param newStatus The new status for the application.
 	 *
-	 * @return An EOS_EResult that indicates whether we changed the application status successfully.
-	 *         {@link EOS_EResult#EOS_Success} if the application was changed successfully.
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if the value of NewStatus is invalid.
+	 * @return An EOS_EResult that indicates whether we changed the application status successfully.<br>
+	 *         {@link EOS_EResult#EOS_Success} if the application was changed successfully.<br>
+	 *         {@link EOS_EResult#EOS_InvalidParameters} if the value of NewStatus is invalid.v
 	 *         {@link EOS_EResult#EOS_NotImplemented} if EOS_AS_BackgroundConstrained or EOS_AS_BackgroundUnconstrained are attempted to be set on platforms that do not have such application states.
 	 */
 	public EOS_EResult setApplicationStatus(EOS_EApplicationStatus newStatus) {
@@ -431,8 +431,8 @@ public class EOS_Platform_Interface extends PointerType {
 	 *
 	 * @param newStatus The new network status.
 	 *
-	 * @return An EOS_EResult that indicates whether we changed the network status successfully.
-	 *         {@link EOS_EResult#EOS_Success} if the network was changed successfully.
+	 * @return An EOS_EResult that indicates whether we changed the network status successfully.<br>
+	 *         {@link EOS_EResult#EOS_Success} if the network was changed successfully.<br>
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if the value of NewStatus is invalid.
 	 */
 	public EOS_EResult setNetworkStatus(EOS_ENetworkStatus newStatus) {

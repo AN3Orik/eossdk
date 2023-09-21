@@ -2,7 +2,10 @@ package host.anzo.eossdk.eos.sdk.achievements;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Achievements_Interface;
+import host.anzo.eossdk.eos.sdk.achievements.options.EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions;
+import host.anzo.eossdk.eos.sdk.achievements.options.EOS_Achievements_CopyPlayerAchievementByIndexOptions;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -55,8 +58,16 @@ public class EOS_Achievements_PlayerAchievement extends Structure implements Aut
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with a player achievement. This must be called on data retrieved from
+	 * EOS_Achievements_CopyPlayerAchievementByIndex or EOS_Achievements_CopyPlayerAchievementByAchievementId.
+	 *
+	 * @see EOS_Achievements_PlayerAchievement
+	 * @see EOS_Achievements_Interface#copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions, EOS_Achievements_PlayerAchievement[])
+	 * @see EOS_Achievements_Interface#copyPlayerAchievementByAchievementId(EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions, EOS_Achievements_PlayerAchievement[])
+	 */
 	public void release() {
-		EOS_Achievements_Interface.releasePlayerAchievement(this);
+		EOSLibrary.instance.EOS_Achievements_PlayerAchievement_Release(this);
 	}
 
 	@Override

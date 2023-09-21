@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.lobby;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -49,7 +50,7 @@ public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
 	}
 
 	public void release() {
-		EOS_LobbyDetails.releaseLobbyDetailsInfo(this);
+		EOSLibrary.instance.EOS_LobbyDetails_Info_Release(this);
 	}
 
 	@Override
