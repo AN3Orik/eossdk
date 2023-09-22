@@ -62,10 +62,10 @@ public class EOS_Connect_ExternalAccountInfo extends Structure implements AutoCl
 	 * EOS_Connect_CopyProductUserExternalAccountByIndex, EOS_Connect_CopyProductUserExternalAccountByAccountType,
 	 * EOS_Connect_CopyProductUserExternalAccountByAccountId or EOS_Connect_CopyProductUserInfo.
 	 *
-	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
-	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByAccountType(EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
-	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByAccountId(EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
-	 * @see EOS_Connect_Interface#copyProductUserInfo(EOS_Connect_CopyProductUserInfoOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
+	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions)
+	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByAccountType(EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions)
+	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByAccountId(EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions)
+	 * @see EOS_Connect_Interface#copyProductUserInfo(EOS_Connect_CopyProductUserInfoOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Connect_ExternalAccountInfo_Release(this);

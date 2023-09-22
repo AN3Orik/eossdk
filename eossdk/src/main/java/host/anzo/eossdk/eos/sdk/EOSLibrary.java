@@ -39,6 +39,7 @@ import host.anzo.eossdk.eos.sdk.friends.callbacks.*;
 import host.anzo.eossdk.eos.sdk.friends.enums.EOS_EFriendsStatus;
 import host.anzo.eossdk.eos.sdk.friends.options.*;
 import host.anzo.eossdk.eos.sdk.init.options.EOS_InitializeOptions;
+import host.anzo.eossdk.eos.sdk.integratedplatform.EOS_IntegratedPlatformOptionsContainer;
 import host.anzo.eossdk.eos.sdk.integratedplatform.callbacks.EOS_IntegratedPlatform_OnUserLoginStatusChangedCallback;
 import host.anzo.eossdk.eos.sdk.integratedplatform.callbacks.EOS_IntegratedPlatform_OnUserPreLogoutCallback;
 import host.anzo.eossdk.eos.sdk.integratedplatform.options.*;
@@ -71,7 +72,6 @@ import host.anzo.eossdk.eos.sdk.p2p.EOS_P2P_SocketId;
 import host.anzo.eossdk.eos.sdk.p2p.callbackresults.EOS_P2P_AddNotifyIncomingPacketQueueFullOptions;
 import host.anzo.eossdk.eos.sdk.p2p.callbacks.*;
 import host.anzo.eossdk.eos.sdk.p2p.options.*;
-import host.anzo.eossdk.eos.sdk.integratedplatform.EOS_IntegratedPlatformOptionsContainer;
 import host.anzo.eossdk.eos.sdk.platform.EOS_Platform_DesktopCrossplayStatusInfo;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_GetDesktopCrossplayStatusOptions;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
@@ -385,19 +385,19 @@ public interface EOSLibrary extends Library {
 
 	EOS_EResult EOS_Connect_CopyProductUserExternalAccountByIndex(EOS_Connect_Interface handle,
 	                                                              EOS_Connect_CopyProductUserExternalAccountByIndexOptions options,
-	                                                              EOS_Connect_ExternalAccountInfo.ByReference[] outExternalAccountInfo);
+	                                                              EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo);
 
 	EOS_EResult EOS_Connect_CopyProductUserExternalAccountByAccountType(EOS_Connect_Interface handle,
 	                                                                    EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions options,
-	                                                                    EOS_Connect_ExternalAccountInfo.ByReference[] outExternalAccountInfo);
+	                                                                    EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo);
 
 	EOS_EResult EOS_Connect_CopyProductUserExternalAccountByAccountId(EOS_Connect_Interface handle,
 	                                                                  EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions options,
-	                                                                  EOS_Connect_ExternalAccountInfo.ByReference[] outExternalAccountInfo);
+	                                                                  EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo);
 
 	EOS_EResult EOS_Connect_CopyProductUserInfo(EOS_Connect_Interface handle,
 	                                            EOS_Connect_CopyProductUserInfoOptions options,
-	                                            EOS_Connect_ExternalAccountInfo.ByReference[] OutExternalAccountInfo);
+	                                            EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo);
 
 	int EOS_Connect_GetLoggedInUsersCount(EOS_Connect_Interface handle);
 
@@ -419,7 +419,7 @@ public interface EOSLibrary extends Library {
 
 	void EOS_Connect_RemoveNotifyLoginStatusChanged(EOS_Connect_Interface handle, EOS_NotificationId InId);
 
-	EOS_EResult EOS_Connect_CopyIdToken(EOS_Connect_Interface handle, EOS_Connect_CopyIdTokenOptions options, EOS_Connect_IdToken.ByReference[] outIdToken);
+	EOS_EResult EOS_Connect_CopyIdToken(EOS_Connect_Interface handle, EOS_Connect_CopyIdTokenOptions options, EOS_Connect_IdToken.ByReference outIdToken);
 
 	void EOS_Connect_VerifyIdToken(EOS_Connect_Interface handle,
 	                               EOS_Connect_VerifyIdTokenOptions options,
@@ -446,9 +446,9 @@ public interface EOSLibrary extends Library {
 
 	EOS_ELoginStatus EOS_Auth_GetLoginStatus(EOS_Auth_Interface handle, EOS_EpicAccountId localUserId);
 
-	EOS_EResult EOS_Auth_CopyUserAuthToken(EOS_Auth_Interface handle, EOS_Auth_CopyUserAuthTokenOptions options, EOS_EpicAccountId LocalUserId, EOS_Auth_Token[] outUserAuthToken);
+	EOS_EResult EOS_Auth_CopyUserAuthToken(EOS_Auth_Interface handle, EOS_Auth_CopyUserAuthTokenOptions options, EOS_EpicAccountId LocalUserId, EOS_Auth_Token.ByReference outUserAuthToken);
 
-	EOS_EResult EOS_Auth_CopyIdToken(EOS_Auth_Interface handle, EOS_Auth_CopyIdTokenOptions options, EOS_Auth_IdToken[] outIdToken);
+	EOS_EResult EOS_Auth_CopyIdToken(EOS_Auth_Interface handle, EOS_Auth_CopyIdTokenOptions options, EOS_Auth_IdToken.ByReference outIdToken);
 
 	void EOS_Auth_QueryIdToken(EOS_Auth_Interface handle, EOS_Auth_QueryIdTokenOptions options, Pointer clientData, EOS_Auth_OnQueryIdTokenCallback completionDelegate);
 

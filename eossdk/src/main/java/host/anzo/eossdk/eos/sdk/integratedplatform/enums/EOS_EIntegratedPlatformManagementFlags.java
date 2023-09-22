@@ -3,7 +3,6 @@ package host.anzo.eossdk.eos.sdk.integratedplatform.enums;
 import com.sun.jna.FromNativeContext;
 import com.sun.jna.Pointer;
 import host.anzo.eossdk.eos.sdk.EOS_Lobby_Interface;
-import host.anzo.eossdk.eos.sdk.auth.enums.EOS_EAuthScopeFlags;
 import host.anzo.eossdk.eos.sdk.lobby.callbacks.EOS_Lobby_OnSendLobbyNativeInviteRequestedCallback;
 import host.anzo.eossdk.eos.sdk.lobby.options.EOS_Lobby_AddNotifySendLobbyNativeInviteRequestedOptions;
 import host.anzo.eossdk.jna.runtime.NativeMappedBitMask;

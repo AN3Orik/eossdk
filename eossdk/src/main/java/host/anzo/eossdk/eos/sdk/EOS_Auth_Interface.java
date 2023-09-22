@@ -10,6 +10,11 @@ import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_ELoginStatus;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidAuthException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidUserException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 
 /**
  * The Auth Interface is used to manage local user permissions and access to backend services through the verification of various forms of credentials.
@@ -93,7 +98,7 @@ public class EOS_Auth_Interface extends PointerType {
 	 * @param clientData arbitrary data that is passed back to you in the CompletionDelegate
 	 * @param completionDelegate a callback that is fired when the logout operation completes, either successfully or in error
 	 *
-	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId, EOS_Auth_Token[])
+	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId)
 	 */
 	public void verifyUserAuth(EOS_Auth_VerifyUserAuthOptions options, Pointer clientData, EOS_Auth_OnVerifyUserAuthCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Auth_VerifyUserAuth(this, options, clientData, completionDelegate);
@@ -138,17 +143,19 @@ public class EOS_Auth_Interface extends PointerType {
 	 *
 	 * @param options Structure containing the api version of CopyUserAuthToken to use
 	 * @param localUserId The Epic Account ID of the user being queried
-	 * @param outUserAuthToken The auth token for the given user, if it exists and is valid; use EOS_Auth_Token_Release when finished
-	 *
+	 * @return The auth token for the given user, if it exists and is valid; use EOS_Auth_Token_Release when finished
 	 * @see EOS_Auth_Token#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutUserAuthToken
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter
-	 *         {@link EOS_EResult#EOS_NotFound} if the auth token is not found or expired.
-	 *
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the auth token is not found or expired.
 	 */
-	public EOS_EResult copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions options, EOS_EpicAccountId localUserId, EOS_Auth_Token[] outUserAuthToken) {
-		return EOSLibrary.instance.EOS_Auth_CopyUserAuthToken(this, options, localUserId, outUserAuthToken);
+	public EOS_Auth_Token copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions options, EOS_EpicAccountId localUserId) throws EOSException {
+		final EOS_Auth_Token.ByReference authTokenReference = new EOS_Auth_Token.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Auth_CopyUserAuthToken(this, options, localUserId, authTokenReference);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return authTokenReference;
 	}
 
 	/**
@@ -162,17 +169,21 @@ public class EOS_Auth_Interface extends PointerType {
 	 * To retrieve it for the selected account ID, you can use EOS_Auth_CopyIdToken directly after a successful user login.
 	 *
 	 * @param options Structure containing the account ID for which to copy an ID token.
-	 * @param outIdToken An ID token for the given user, if it exists and is valid; use EOS_Auth_IdToken_Release when finished.
+	 * @return An ID token for the given user, if it exists and is valid; use EOS_Auth_IdToken_Release when finished.
 	 *
 	 * @see EOS_Auth_IdToken#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutUserIdToken
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter
-	 *         {@link EOS_EResult#EOS_NotFound} if the Id token is not found or expired.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the Id token is not found or expired.
 	 *
 	 */
-	public EOS_EResult copyIdToken(EOS_Auth_CopyIdTokenOptions options, EOS_Auth_IdToken[] outIdToken) {
-		return EOSLibrary.instance.EOS_Auth_CopyIdToken(this, options, outIdToken);
+	public EOS_Auth_IdToken copyIdToken(EOS_Auth_CopyIdTokenOptions options) throws EOSException {
+		final EOS_Auth_IdToken.ByReference authIdTokenReference = new EOS_Auth_IdToken.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Auth_CopyIdToken(this, options, authIdTokenReference);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return authIdTokenReference;
 	}
 
 	/**
@@ -205,16 +216,20 @@ public class EOS_Auth_Interface extends PointerType {
 	 * Fetch the selected account ID to the current application for a local authenticated user.
 	 *
 	 * @param localUserId The account ID of a currently logged in account.
-	 * @param outSelectedAccountId The selected account ID corresponding to the given account ID.
+	 * @return The selected account ID corresponding to the given account ID if the user is logged in and the information is available.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the user is logged in and the information is available.
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if the output parameter is NULL.
-	 *         {@link EOS_EResult#EOS_InvalidUser} if the input account ID is not locally known.
-	 *         {@link EOS_EResult#EOS_InvalidAuth} if the input account ID is not locally logged in.
-	 *         {@link EOS_EResult#EOS_NotFound} otherwise.
+	 * @throws EOSInvalidParametersException if the output parameter is NULL.
+	 * @throws EOSInvalidUserException if the input account ID is not locally known.
+	 * @throws EOSInvalidAuthException if the input account ID is not locally logged in.
+	 * @throws EOSNotFoundException otherwise.
 	 */
-	public EOS_EResult getSelectedAccountId(EOS_EpicAccountId localUserId, EOS_EpicAccountId outSelectedAccountId) {
-		return EOSLibrary.instance.EOS_Auth_GetSelectedAccountId(this, localUserId, outSelectedAccountId);
+	public EOS_EpicAccountId getSelectedAccountId(EOS_EpicAccountId localUserId) throws EOSException {
+		final EOS_EpicAccountId epicAccountId = new EOS_EpicAccountId();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Auth_GetSelectedAccountId(this, localUserId, epicAccountId);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return epicAccountId;
 	}
 
 	/**

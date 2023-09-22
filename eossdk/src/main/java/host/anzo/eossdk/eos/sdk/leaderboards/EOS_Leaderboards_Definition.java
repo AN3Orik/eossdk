@@ -5,8 +5,6 @@ import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Leaderboards_Interface;
 import host.anzo.eossdk.eos.sdk.leaderboards.enums.EOS_ELeaderboardAggregation;
-import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions;
-import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions;
 import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions;
 import host.anzo.eossdk.eos.sdk.leaderboards.options.EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions;
 

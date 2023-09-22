@@ -10,7 +10,6 @@ import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_Add
 import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_AddNotifyMessageToServerOptions;
 import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_BeginSessionOptions;
 import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_EndSessionOptions;
-import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatClientMode;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;

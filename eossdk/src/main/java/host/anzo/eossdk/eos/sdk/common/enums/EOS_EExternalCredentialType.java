@@ -11,8 +11,6 @@ import com.sun.jna.NativeMapped;
 import com.sun.jna.Pointer;
 import host.anzo.eossdk.eos.sdk.EOS_Auth_Interface;
 import host.anzo.eossdk.eos.sdk.EOS_Connect_Interface;
-import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_IdToken;
-import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_Token;
 import host.anzo.eossdk.eos.sdk.auth.callbacks.EOS_Auth_OnLoginCallback;
 import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_CopyIdTokenOptions;
 import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_CopyUserAuthTokenOptions;
@@ -50,8 +48,8 @@ public @Getter enum EOS_EExternalCredentialType implements NativeMapped {
 	 * <p>
 	 * Supported with EOS_Connect_Login.
 	 *
-	 * @see EOS_Auth_Interface#copyIdToken(EOS_Auth_CopyIdTokenOptions, EOS_Auth_IdToken[])
-	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId, EOS_Auth_Token[])
+	 * @see EOS_Auth_Interface#copyIdToken(EOS_Auth_CopyIdTokenOptions)
+	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId)
 	 */
 	EOS_ECT_EPIC(0),
 	/**

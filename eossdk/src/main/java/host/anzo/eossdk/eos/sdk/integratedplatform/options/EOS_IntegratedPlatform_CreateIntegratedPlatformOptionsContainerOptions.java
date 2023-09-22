@@ -3,7 +3,7 @@ package host.anzo.eossdk.eos.sdk.integratedplatform.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-import static com.sun.jna.Structure.*;
+import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * Data for the EOS_IntegratedPlatform_CreateIntegratedPlatformOptionsContainer function.

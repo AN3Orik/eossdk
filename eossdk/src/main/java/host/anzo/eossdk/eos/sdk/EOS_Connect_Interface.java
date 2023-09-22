@@ -10,6 +10,9 @@ import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_ExternalAccountInfo;
 import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_IdToken;
 import host.anzo.eossdk.eos.sdk.connect.callbacks.*;
 import host.anzo.eossdk.eos.sdk.connect.options.*;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
@@ -247,10 +250,10 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @see EOS_Connect_ExternalAccountInfo
 	 * @see #getProductUserExternalAccountCount(EOS_Connect_GetProductUserExternalAccountCountOptions)
 	 * @see #getProductUserIdMapping(EOS_Connect_GetProductUserIdMappingOptions, ByteBuffer, IntBuffer)
-	 * @see #copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
-	 * @see #copyProductUserExternalAccountByAccountType(EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
-	 * @see #copyProductUserExternalAccountByAccountId(EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
-	 * @see #copyProductUserInfo(EOS_Connect_CopyProductUserInfoOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
+	 * @see #copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions)
+	 * @see #copyProductUserExternalAccountByAccountType(EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions)
+	 * @see #copyProductUserExternalAccountByAccountId(EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions)
+	 * @see #copyProductUserInfo(EOS_Connect_CopyProductUserInfoOptions)
 	 *
 	 * @param options structure containing a list of Product User IDs to query for the external account representation.
 	 * @param clientData arbitrary data that is passed back to you in the CompletionDelegate.
@@ -297,7 +300,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 *
 	 * @param options The Options associated with retrieving the external account info count.
 	 *
-	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions, EOS_Connect_ExternalAccountInfo.ByReference[])
+	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions)
 	 *
 	 * @return Number of external accounts or 0 otherwise.
 	 */
@@ -310,18 +313,20 @@ public class EOS_Connect_Interface extends PointerType {
 	 * On a successful call, the caller must release the returned structure using the EOS_Connect_ExternalAccountInfo_Release API.
 	 *
 	 * @param options Structure containing the target index.
-	 * @param outExternalAccountInfo The external account info data for the user with given index.
+	 * @return The external account info data for the user with given index.
 	 *
 	 * @see EOS_Connect_ExternalAccountInfo#release()
 	 *
-	 * @return An EOS_EResult that indicates the external account data was copied into the OutExternalAccountInfo.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutExternalAccountInfo.<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter.<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the account data doesn't exist or hasn't been queried yet.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter.
+	 * @throws EOSNotFoundException if the account data doesn't exist or hasn't been queried yet.
 	 */
-	public EOS_EResult copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions options,
-	                                                         EOS_Connect_ExternalAccountInfo.ByReference[] outExternalAccountInfo)  {
-		return EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByIndex(this, options, outExternalAccountInfo);
+	public EOS_Connect_ExternalAccountInfo copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions options) throws EOSException {
+		final EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo = new EOS_Connect_ExternalAccountInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByIndex(this, options, outExternalAccountInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outExternalAccountInfo;
 	}
 
 	/**
@@ -329,18 +334,20 @@ public class EOS_Connect_Interface extends PointerType {
 	 * On a successful call, the caller must release the returned structure using the EOS_Connect_ExternalAccountInfo_Release API.
 	 *
 	 * @param options Structure containing the target external account type.
-	 * @param outExternalAccountInfo The external account info data for the user with given external account type.
+	 * @return The external account info data for the user with given external account type.
 	 *
 	 * @see EOS_Connect_ExternalAccountInfo#release()
 	 *
-	 * @return An EOS_EResult that indicates the external account data was copied into the OutExternalAccountInfo.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutExternalAccountInfo.<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter.<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the account data doesn't exist or hasn't been queried yet.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter.
+	 * @throws EOSNotFoundException if the account data doesn't exist or hasn't been queried yet.
 	 */
-	public EOS_EResult copyProductUserExternalAccountByAccountType(EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions options,
-	                                                               EOS_Connect_ExternalAccountInfo.ByReference[] outExternalAccountInfo) {
-		return EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByAccountType(this, options, outExternalAccountInfo);
+	public EOS_Connect_ExternalAccountInfo copyProductUserExternalAccountByAccountType(EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions options) throws EOSException {
+		final EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo = new EOS_Connect_ExternalAccountInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByAccountType(this, options, outExternalAccountInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outExternalAccountInfo;
 	}
 
 	/**
@@ -348,18 +355,20 @@ public class EOS_Connect_Interface extends PointerType {
 	 * On a successful call, the caller must release the returned structure using the EOS_Connect_ExternalAccountInfo_Release API.
 	 *
 	 * @param options Structure containing the target external account ID.
-	 * @param outExternalAccountInfo The external account info data for the user with given external account ID.
+	 * @return The external account info data for the user with given external account ID.
 	 *
 	 * @see EOS_Connect_ExternalAccountInfo#release()
 	 *
-	 * @return An EOS_EResult that indicates the external account data was copied into the OutExternalAccountInfo.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutExternalAccountInfo.<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter.<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the account data doesn't exist or hasn't been queried yet.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter.
+	 * @throws EOSNotFoundException if the account data doesn't exist or hasn't been queried yet.
 	 */
-	public EOS_EResult copyProductUserExternalAccountByAccountId(EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions options,
-	                                                             EOS_Connect_ExternalAccountInfo.ByReference[] outExternalAccountInfo) {
-		return EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByAccountId(this, options, outExternalAccountInfo);
+	public EOS_Connect_ExternalAccountInfo copyProductUserExternalAccountByAccountId(EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions options) throws EOSException {
+		final EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo = new EOS_Connect_ExternalAccountInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByAccountId(this, options, outExternalAccountInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outExternalAccountInfo;
 	}
 
 	/**
@@ -367,18 +376,20 @@ public class EOS_Connect_Interface extends PointerType {
 	 * On a successful call, the caller must release the returned structure using the EOS_Connect_ExternalAccountInfo_Release API.
 	 *
 	 * @param options Structure containing the target external account ID.
-	 * @param outExternalAccountInfo The external account info data last logged in for the user.
+	 * @return The external account info data last logged in for the user.
 	 *
 	 * @see EOS_Connect_ExternalAccountInfo#release()
 	 *
-	 * @return An EOS_EResult that indicates the external account data was copied into the OutExternalAccountInfo.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutExternalAccountInfo.<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter.<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the account data doesn't exist or hasn't been queried yet.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter.
+	 * @throws EOSNotFoundException if the account data doesn't exist or hasn't been queried yet.
 	 */
-	public EOS_EResult copyProductUserInfo(EOS_Connect_CopyProductUserInfoOptions options,
-	                                       EOS_Connect_ExternalAccountInfo.ByReference[] outExternalAccountInfo) {
-		return EOSLibrary.instance.EOS_Connect_CopyProductUserInfo(this, options, outExternalAccountInfo);
+	public EOS_Connect_ExternalAccountInfo copyProductUserInfo(EOS_Connect_CopyProductUserInfoOptions options) throws EOSException {
+		final EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo = new EOS_Connect_ExternalAccountInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyProductUserInfo(this, options, outExternalAccountInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outExternalAccountInfo;
 	}
 
 	/**
@@ -469,16 +480,19 @@ public class EOS_Connect_Interface extends PointerType {
 	 * Fetches an ID token for a Product User ID.
 	 *
 	 * @param options Structure containing information about the ID token to copy.
-	 * @param outIdToken The ID token for the given user, if it exists and is valid; use EOS_Connect_IdToken_Release when finished.
-	 *
+	 * @return The ID token for the given user, if it exists and is valid; use EOS_Connect_IdToken_Release when finished.
 	 * @see EOS_Connect_IdToken#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutIdToken.
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter.
-	 *         {@link EOS_EResult#EOS_NotFound} if the ID token is not found or expired.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter.
+	 * @throws EOSNotFoundException if the ID token is not found or expired.
 	 */
-	public EOS_EResult copyIdToken(EOS_Connect_CopyIdTokenOptions options, EOS_Connect_IdToken.ByReference[] outIdToken) {
-		return EOSLibrary.instance.EOS_Connect_CopyIdToken(this, options, outIdToken);
+	public EOS_Connect_IdToken copyIdToken(EOS_Connect_CopyIdTokenOptions options) throws EOSException {
+		final EOS_Connect_IdToken.ByReference outIdToken = new EOS_Connect_IdToken.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyIdToken(this, options, outIdToken);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outIdToken;
 	}
 
 	/**

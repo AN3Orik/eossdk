@@ -1,7 +1,6 @@
 package host.anzo.eossdk.eos.sdk.achievements.callbacks;
 
 import com.sun.jna.Callback;
-import host.anzo.eossdk.eos.sdk.EOS_Achievements_Interface;
 import host.anzo.eossdk.eos.sdk.achievements.EOS_Achievements_PlayerAchievement;
 import host.anzo.eossdk.eos.sdk.achievements.callbackresults.EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo;
 

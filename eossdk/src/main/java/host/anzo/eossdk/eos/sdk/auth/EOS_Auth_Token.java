@@ -67,7 +67,7 @@ public class EOS_Auth_Token extends Structure implements AutoCloseable {
 	 * Release the memory associated with an EOS_Auth_Token structure. This must be called on data retrieved from EOS_Auth_CopyUserAuthToken.
 	 *
 	 * @see EOS_Auth_Token
-	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId, EOS_Auth_Token[])
+	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Auth_Token_Release(this);

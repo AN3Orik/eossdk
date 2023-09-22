@@ -9,6 +9,7 @@ package host.anzo.eossdk.eos.sdk.connect.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_EExternalAccountType;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -20,6 +21,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "AccountIdType", "TargetProductUserId"})
 public class EOS_Connect_GetProductUserIdMappingOptions extends Structure {
+	/** The most recent version of the EOS_Connect_GetProductUserIdMapping API. */
 	public static int EOS_CONNECT_GETPRODUCTUSERIDMAPPING_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_GETPRODUCTUSERIDMAPPING_API_LATEST. */
@@ -27,7 +29,7 @@ public class EOS_Connect_GetProductUserIdMappingOptions extends Structure {
 	/** The Product User ID of the existing, logged-in user that is querying account mappings. */
 	private EOS_ProductUserId LocalUserId;
 	/** External auth service mapping to retrieve. */
-	private int AccountIdType;
+	private EOS_EExternalAccountType AccountIdType;
 	/** The Product User ID of the user whose information is being requested. */
 	private EOS_ProductUserId TargetProductUserId;
 

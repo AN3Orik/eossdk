@@ -12,7 +12,6 @@ import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 /**
  * @author Anton Lasevich

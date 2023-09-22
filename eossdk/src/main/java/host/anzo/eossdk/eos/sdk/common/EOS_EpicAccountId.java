@@ -34,6 +34,7 @@ public class EOS_EpicAccountId extends PointerType {
 	public EOS_EpicAccountId(Pointer address) {
 		super(address);
 	}
+
 	public EOS_EpicAccountId() {
 		super();
 	}

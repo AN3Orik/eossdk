@@ -17,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * A structure that contains an ID token.
- * These structures are created by {@link EOS_Connect_Interface#copyIdToken(EOS_Connect_CopyIdTokenOptions, ByReference[])} and must be passed to {@link EOS_Connect_IdToken#release()}
+ * These structures are created by {@link EOS_Connect_Interface#copyIdToken(EOS_Connect_CopyIdTokenOptions)} and must be passed to {@link EOS_Connect_IdToken#release()}
  *
  * @author Anton Lasevich
  * @since 8/5/2023
@@ -49,7 +49,7 @@ public class EOS_Connect_IdToken extends Structure implements AutoCloseable {
 	 * Release the memory associated with an EOS_Connect_IdToken structure. This must be called on data retrieved from EOS_Connect_CopyIdToken.
 	 *
 	 * @see EOS_Connect_IdToken
-	 * @see EOS_Connect_Interface#copyIdToken(EOS_Connect_CopyIdTokenOptions, EOS_Connect_IdToken.ByReference[])
+	 * @see EOS_Connect_Interface#copyIdToken(EOS_Connect_CopyIdTokenOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Connect_IdToken_Release(this);

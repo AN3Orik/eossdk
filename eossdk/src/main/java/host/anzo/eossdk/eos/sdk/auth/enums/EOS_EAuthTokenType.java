@@ -19,7 +19,7 @@ import java.util.Map;
 
 /**
  * Types of auth tokens
- * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId, EOS_Auth_Token[])
+ * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId)
  * @see EOS_Auth_Token
  *
  * @author Anton Lasevich

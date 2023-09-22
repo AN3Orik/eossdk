@@ -7,14 +7,9 @@
 package host.anzo.eossdk.eos.sdk.auth.enums;
 
 import com.sun.jna.FromNativeContext;
-import com.sun.jna.NativeMapped;
-import host.anzo.eossdk.eos.sdk.platform.enums.EOS_Platform_Create_Flag;
 import host.anzo.eossdk.jna.runtime.NativeMappedBitMask;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Flags that describe user permissions
