@@ -30,7 +30,7 @@ public class EOS_Auth_LinkAccountOptions extends Structure {
 	 * Combination of the enumeration flags to specify how the account linking operation will be performed.
 	 * @see EOS_ELinkAccountFlags
 	 */
-	public int LinkAccountFlags;
+	public EOS_ELinkAccountFlags LinkAccountFlags;
 	/**
 	 * Continuance token received from a previous call to the EOS_Auth_Login API.
 	 * <p>

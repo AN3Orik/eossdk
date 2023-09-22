@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "PlayerIndex"})
 public class EOS_ActiveSession_GetRegisteredPlayerByIndexOptions extends Structure {
+	/** The most recent version of the EOS_ActiveSession_GetRegisteredPlayerByIndex function. */
 	public static final int EOS_ACTIVESESSION_GETREGISTEREDPLAYERBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ACTIVESESSION_GETREGISTEREDPLAYERBYINDEX_API_LATEST. */

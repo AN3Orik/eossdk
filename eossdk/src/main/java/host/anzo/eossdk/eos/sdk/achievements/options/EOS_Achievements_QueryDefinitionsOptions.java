@@ -16,6 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "EpicUserId_DEPRECATED", "HiddenAchievementIds_DEPRECATED", "HiddenAchievementsCount_DEPRECATED"})
 public class EOS_Achievements_QueryDefinitionsOptions extends Structure {
+	/** The most recent version of the EOS_Achievements_QueryDefinitions struct. */
 	public static final int EOS_ACHIEVEMENTS_QUERYDEFINITIONS_API_LATEST = 3;
 
 	/** API Version: Set this to EOS_ACHIEVEMENTS_QUERYDEFINITIONS_API_LATEST. */

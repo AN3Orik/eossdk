@@ -32,9 +32,9 @@ public class EOS_ActiveSession extends PointerType implements AutoCloseable {
 	 * @param options Structure containing the input parameters
 	 * @param outActiveSessionInfo Out parameter used to receive the EOS_ActiveSession_Info structure.
 	 *
-	 * @return EOS_Success if the information is available and passed out in OutActiveSessionInfo
-	 *         EOS_InvalidParameters if you pass a null pointer for the out parameter
-	 *         EOS_IncompatibleVersion if the API version passed in is incorrect
+	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutActiveSessionInfo<br>
+	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
+	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
 	 *
 	 * @see EOS_ActiveSession_Info
 	 * @see EOS_ActiveSession_CopyInfoOptions

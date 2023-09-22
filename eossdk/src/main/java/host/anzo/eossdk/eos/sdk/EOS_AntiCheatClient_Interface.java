@@ -3,6 +3,9 @@ package host.anzo.eossdk.eos.sdk;
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSAntiCheatInvalidModeException;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbacks.*;
 import host.anzo.eossdk.eos.sdk.anticheat.client.options.*;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatClientMode;
@@ -187,36 +190,6 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	}
 
 	/**
-	 * Polls for changes in client integrity status.<br>
-	 * Mode: All
-	 * <p>
-	 * The purpose of this function is to allow the game to display information
-	 * about anti-cheat integrity problems to the user. These are often the result of a
-	 * corrupt game installation rather than cheating attempts. This function does not
-	 * check for violations, it only provides information about violations which have
-	 * automatically been discovered by the anti-cheat client. Such a violation may occur
-	 * at any time and afterwards the user will be unable to join any protected multiplayer
-	 * session until after restarting the game. Note that this function returns EOS_NotFound
-	 * when everything is normal and there is no violation to display.
-	 * <p>
-	 * @deprecated This API is deprecated. In order to get client status updates,
-	 * use {@link #addNotifyClientIntegrityViolated(EOS_AntiCheatClient_AddNotifyClientIntegrityViolatedOptions, Pointer, EOS_AntiCheatClient_OnClientIntegrityViolatedCallback)} to register a callback that will
-	 * be called when violations are triggered.
-	 *
-	 * @param options Structure containing input data.
-	 * @param outViolationType On success, receives a code describing the violation that occurred.
-	 * @param outMessage On success, receives a string describing the violation which should be displayed to the user.
-	 *
-	 * @return {@link EOS_EResult#EOS_Success} - If violation information was returned successfully
-	 *		   {@link EOS_EResult#EOS_LimitExceeded} - If OutMessage is too small to receive the message string. Call again with a larger OutMessage.
-	 *         {@link EOS_EResult#EOS_NotFound} - If no violation has occurred since the last call
-	 */
-	@Deprecated
-	public EOS_EResult pollStatus(EOS_AntiCheatClient_PollStatusOptions options, IntByReference outViolationType, Pointer outMessage) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_PollStatus(this, options, outViolationType, outMessage);
-	}
-
-	/**
 	 * Optional. Adds an integrity catalog and certificate pair from outside the game directory,
 	 * for example to support mods that load from elsewhere.<br>
 	 * Mode: All
@@ -252,14 +225,18 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * Mode: EOS_ACCM_ClientServer.
 	 *
 	 * @param options Structure containing input data.
-	 * @param outBufferSizeBytes On success, the OutBuffer length in bytes that is required to call ProtectMessage on the given input size.
+	 * @return On success, the OutBuffer length in bytes that is required to call ProtectMessage on the given input size.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} - If the output length was calculated successfully
-	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
-	 *         {@link EOS_EResult#EOS_AntiCheat_InvalidMode} - If the current mode does not support this function
+	 * @throws EOSInvalidParametersException If input data was invalid
+	 * @throws EOSAntiCheatInvalidModeException If the current mode does not support this function
 	 */
-	public EOS_EResult getProtectMessageOutputLength(EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions options, IntBuffer outBufferSizeBytes) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_GetProtectMessageOutputLength(this, options, outBufferSizeBytes);
+	public int getProtectMessageOutputLength(EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions options) throws EOSException {
+		final IntByReference sizeBytesReference = new IntByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_GetProtectMessageOutputLength(this, options, sizeBytesReference);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return sizeBytesReference.getValue();
 	}
 
 	/**
@@ -277,7 +254,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 *         {@link EOS_EResult#EOS_AntiCheat_InvalidMode} - If the current mode does not support this function
 	 */
-	public EOS_EResult protectMessage(EOS_AntiCheatClient_ProtectMessageOptions options, Pointer outBuffer, IntBuffer outBytesWritten)  {
+	public EOS_EResult protectMessage(EOS_AntiCheatClient_ProtectMessageOptions options, Pointer outBuffer, IntByReference outBytesWritten)  {
 		return EOSLibrary.instance.EOS_AntiCheatClient_ProtectMessage(this, options, outBuffer, outBytesWritten);
 	}
 
@@ -296,7 +273,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 *         {@link EOS_EResult#EOS_AntiCheat_InvalidMode} - If the current mode does not support this function
 	 */
-	public EOS_EResult unprotectMessage(EOS_AntiCheatClient_UnprotectMessageOptions options, Pointer outBuffer, IntBuffer outBytesWritten) {
+	public EOS_EResult unprotectMessage(EOS_AntiCheatClient_UnprotectMessageOptions options, Pointer outBuffer, IntByReference outBytesWritten) {
 		return EOSLibrary.instance.EOS_AntiCheatClient_UnprotectMessage(this, options, outBuffer, outBytesWritten);
 	}
 

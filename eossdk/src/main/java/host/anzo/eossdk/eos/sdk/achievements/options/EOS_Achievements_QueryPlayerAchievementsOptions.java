@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "TargetUserId", "LocalUserId"})
 public class EOS_Achievements_QueryPlayerAchievementsOptions extends Structure {
+	/** The most recent version of the EOS_Achievements_QueryPlayerAchievements struct. */
 	public static final int EOS_ACHIEVEMENTS_QUERYPLAYERACHIEVEMENTS_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_ACHIEVEMENTS_QUERYPLAYERACHIEVEMENTS_API_LATEST. */

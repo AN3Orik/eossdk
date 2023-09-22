@@ -17,11 +17,12 @@ public class EOS_AntiCheatClient_AddNotifyMessageToPeerOptions extends Structure
 	public int ApiVersion;
 	public EOS_AntiCheatClient_AddNotifyMessageToPeerOptions() {
 		super();
+		ApiVersion = EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST;
 	}
 
 	public EOS_AntiCheatClient_AddNotifyMessageToPeerOptions(Pointer peer) {
 		super(peer);
-		ApiVersion = EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST;
+
 	}
 
 	public static class ByReference extends EOS_AntiCheatClient_AddNotifyMessageToPeerOptions implements Structure.ByReference {

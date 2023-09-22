@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Achievements_GetAchievementDefinitionCountOptions extends Structure {
+	/** The most recent version of the EOS_Achievements_GetAchievementDefinitionCount API. */
 	public static final int EOS_ACHIEVEMENTS_GETACHIEVEMENTDEFINITIONCOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ACHIEVEMENTS_GETACHIEVEMENTDEFINITIONCOUNT_API_LATEST. */

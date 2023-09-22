@@ -12,6 +12,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "UserId"})
 public class EOS_Achievements_GetPlayerAchievementCountOptions extends Structure {
+	/** The most recent version of the EOS_Achievements_GetPlayerAchievementCount API. */
 	public static final int EOS_ACHIEVEMENTS_GETPLAYERACHIEVEMENTCOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ACHIEVEMENTS_GETPLAYERACHIEVEMENTCOUNT_API_LATEST. */

@@ -16,6 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "AchievementId", "UnlockedDisplayName", "UnlockedDescription", "LockedDisplayName", "LockedDescription", "FlavorText", "UnlockedIconURL", "LockedIconURL", "bIsHidden", "StatThresholdsCount", "StatThresholds"})
 public class EOS_Achievements_DefinitionV2 extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Achievements_DefinitionV2 struct. */
 	public static final int EOS_ACHIEVEMENTS_DEFINITIONV2_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_ACHIEVEMENTS_DEFINITIONV2_API_LATEST. */

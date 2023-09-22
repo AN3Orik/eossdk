@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "AchievementIndex"})
 public class EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions extends Structure {
+	/** The most recent version of the EOS_Achievements_CopyAchievementDefinitionByIndexOptions struct. */
 	public static final int EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYINDEX_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYINDEX_API_LATEST. */

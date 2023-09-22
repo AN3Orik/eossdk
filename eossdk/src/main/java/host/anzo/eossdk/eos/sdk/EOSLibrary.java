@@ -329,20 +329,19 @@ public interface EOSLibrary extends Library {
 	void EOS_AntiCheatClient_RemoveNotifyClientIntegrityViolated(EOS_AntiCheatClient_Interface handle, EOS_NotificationId NotificationId);
 	EOS_EResult EOS_AntiCheatClient_BeginSession(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_BeginSessionOptions options);
 	EOS_EResult EOS_AntiCheatClient_EndSession(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_EndSessionOptions options);
-	EOS_EResult EOS_AntiCheatClient_PollStatus(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_PollStatusOptions options, IntByReference outViolationType, Pointer outMessage);
 	EOS_EResult EOS_AntiCheatClient_AddExternalIntegrityCatalog(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_AddExternalIntegrityCatalogOptions options);
 	EOS_EResult EOS_AntiCheatClient_ReceiveMessageFromServer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_ReceiveMessageFromServerOptions options);
 	EOS_EResult EOS_AntiCheatClient_GetProtectMessageOutputLength(EOS_AntiCheatClient_Interface handle,
 	                                                              EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions options,
-	                                                              IntBuffer outBufferSizeBytes);
+	                                                              IntByReference outBufferSizeBytes);
 	EOS_EResult EOS_AntiCheatClient_ProtectMessage(EOS_AntiCheatClient_Interface handle,
 	                                               EOS_AntiCheatClient_ProtectMessageOptions options,
 	                                               Pointer outBuffer,
-	                                               IntBuffer outBytesWritten);
+	                                               IntByReference outBytesWritten);
 	EOS_EResult EOS_AntiCheatClient_UnprotectMessage(EOS_AntiCheatClient_Interface handle,
 	                                                 EOS_AntiCheatClient_UnprotectMessageOptions options,
 	                                                 Pointer outBuffer,
-	                                                 IntBuffer outBytesWritten);
+	                                                 IntByReference outBytesWritten);
 	EOS_EResult EOS_AntiCheatClient_RegisterPeer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_RegisterPeerOptions options);
 	EOS_EResult EOS_AntiCheatClient_UnregisterPeer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_UnregisterPeerOptions options);
 	EOS_EResult EOS_AntiCheatClient_ReceiveMessageFromPeer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_ReceiveMessageFromPeerOptions options);
