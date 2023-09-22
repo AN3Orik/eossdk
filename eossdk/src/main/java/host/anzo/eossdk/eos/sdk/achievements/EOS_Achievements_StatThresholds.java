@@ -14,7 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  *   MIN (Tracks the minimum value)
  *   SUM (Generates a rolling sum of the value)
  *
- * @see EOS_Achievements_Definition
+ * @see EOS_Achievements_DefinitionV2
  *
  * @author Anton Lasevich
  * @since 8/19/2023

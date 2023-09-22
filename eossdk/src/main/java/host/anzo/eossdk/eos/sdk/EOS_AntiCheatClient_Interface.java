@@ -25,7 +25,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 
 	/**
 	 * Add a callback issued when a new message must be dispatched to the game server. The bound function will only be called
-	 * between a successful call to {@link EOS_AntiCheatClient_Interface#beginSession(EOS_AntiCheatClient_BeginSessionOptions)} and the matching {@link EOS_AntiCheatClient_Interface#endSession(EOS_AntiCheatClient_EndSessionOptions)} call in mode EOS_ACCM_ClientServer.
+	 * between a successful call to {@link #beginSession(EOS_AntiCheatClient_BeginSessionOptions)} and the matching {@link #endSession(EOS_AntiCheatClient_EndSessionOptions)} call in mode EOS_ACCM_ClientServer.
 	 * <p>
 	 * Mode: {@link EOS_EAntiCheatClientMode#EOS_ACCM_ClientServer}.
 	 *

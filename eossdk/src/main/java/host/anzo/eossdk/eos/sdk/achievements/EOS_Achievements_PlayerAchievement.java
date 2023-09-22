@@ -17,6 +17,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "AchievementId", "Progress", "UnlockTime", "StatInfoCount", "StatInfo", "DisplayName", "Description", "IconURL", "FlavorText"})
 public class EOS_Achievements_PlayerAchievement extends Structure implements AutoCloseable {
+	/** Timestamp value representing an undefined UnlockTime for EOS_Achievements_PlayerAchievement */
+	public static final int EOS_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED = -1;
+
+	/** The most recent version of the EOS_Achievements_PlayerAchievement struct. */
 	public static final int EOS_ACHIEVEMENTS_PLAYERACHIEVEMENT_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_ACHIEVEMENTS_PLAYERACHIEVEMENT_API_LATEST. */
@@ -25,7 +29,7 @@ public class EOS_Achievements_PlayerAchievement extends Structure implements Aut
 	public String AchievementId;
 	/** Progress towards completing this achievement (as a percentage). */
 	public double Progress;
-	/** The POSIX timestamp when the achievement was unlocked. If the achievement has not been unlocked, this value will be {@link EOS_Achievements_UnlockedAchievement#EOS_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED}. */
+	/** The POSIX timestamp when the achievement was unlocked. If the achievement has not been unlocked, this value will be {@link #EOS_ACHIEVEMENTS_ACHIEVEMENT_UNLOCKTIME_UNDEFINED}. */
 	public long UnlockTime;
 	/** The number of player stat info entries associated with this achievement. */
 	public int StatInfoCount;
@@ -63,8 +67,8 @@ public class EOS_Achievements_PlayerAchievement extends Structure implements Aut
 	 * EOS_Achievements_CopyPlayerAchievementByIndex or EOS_Achievements_CopyPlayerAchievementByAchievementId.
 	 *
 	 * @see EOS_Achievements_PlayerAchievement
-	 * @see EOS_Achievements_Interface#copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions, EOS_Achievements_PlayerAchievement[])
-	 * @see EOS_Achievements_Interface#copyPlayerAchievementByAchievementId(EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions, EOS_Achievements_PlayerAchievement[])
+	 * @see EOS_Achievements_Interface#copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions)
+	 * @see EOS_Achievements_Interface#copyPlayerAchievementByAchievementId(EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Achievements_PlayerAchievement_Release(this);

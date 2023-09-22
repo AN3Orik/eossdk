@@ -57,8 +57,8 @@ public class EOS_Achievements_DefinitionV2 extends Structure implements AutoClos
 	 * EOS_Achievements_CopyAchievementDefinitionV2ByIndex or EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId.
 	 *
 	 * @see EOS_Achievements_DefinitionV2
-	 * @see EOS_Achievements_Interface#copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions, EOS_Achievements_DefinitionV2[])
-	 * @see EOS_Achievements_Interface#copyAchievementDefinitionV2ByAchievementId(EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions, EOS_Achievements_DefinitionV2[])
+	 * @see EOS_Achievements_Interface#copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions)
+	 * @see EOS_Achievements_Interface#copyAchievementDefinitionV2ByAchievementId(EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Achievements_DefinitionV2_Release(this);

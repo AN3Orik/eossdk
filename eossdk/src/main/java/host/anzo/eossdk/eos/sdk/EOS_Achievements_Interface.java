@@ -2,10 +2,12 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
-import host.anzo.eossdk.eos.sdk.achievements.EOS_Achievements_Definition;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidProductUserIDException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.achievements.EOS_Achievements_DefinitionV2;
 import host.anzo.eossdk.eos.sdk.achievements.EOS_Achievements_PlayerAchievement;
-import host.anzo.eossdk.eos.sdk.achievements.EOS_Achievements_UnlockedAchievement;
 import host.anzo.eossdk.eos.sdk.achievements.callbacks.*;
 import host.anzo.eossdk.eos.sdk.achievements.options.*;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
@@ -49,7 +51,7 @@ public class EOS_Achievements_Interface extends PointerType {
 	 *
 	 * @param options The Options associated with retrieving the achievement definition count
 	 *
-	 * @see EOS_Achievements_Interface#copyAchievementDefinitionByIndex(EOS_Achievements_CopyAchievementDefinitionByIndexOptions, EOS_Achievements_Definition[])
+	 * @see #copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions)
 	 *
 	 * @return Number of achievement definitions or 0 if there is an error
 	 */
@@ -61,41 +63,47 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * Fetches an achievement definition from a given index.
 	 *
 	 * @param options Structure containing the index being accessed
-	 * @param outDefinition The achievement definition for the given index, if it exists and is valid, use EOS_Achievements_Definition_Release when finished
+	 * @return The achievement definition for the given index, if it exists and is valid, use EOS_Achievements_Definition_Release when finished
 	 *
 	 * @see EOS_Achievements_DefinitionV2#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outDefinition<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the achievement definition is not found<br>
-	 *         {@link EOS_EResult#EOS_Invalid_ProductUserID} if any of the userid options are incorrect
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the achievement definition is not found
+	 * @throws EOSInvalidProductUserIDException if any of the userid options are incorrect
 	 */
-	public EOS_EResult copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions options,
-	                                                      EOS_Achievements_DefinitionV2[] outDefinition) {
-		return EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionV2ByIndex(this, options, outDefinition);
+	public EOS_Achievements_DefinitionV2 copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions options) throws EOSException {
+		final EOS_Achievements_DefinitionV2.ByReference achievementsDefinitionReference = new EOS_Achievements_DefinitionV2.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionV2ByIndex(this, options, achievementsDefinitionReference);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return achievementsDefinitionReference;
 	}
 
 	/**
 	 * Fetches an achievement definition from a given achievement ID.
 	 *
 	 * @param options Structure containing the achievement ID being accessed
-	 * @param outDefinition The achievement definition for the given achievement ID, if it exists and is valid, use EOS_Achievements_Definition_Release when finished
+	 * @return The achievement definition for the given achievement ID, if it exists and is valid, use EOS_Achievements_Definition_Release when finished
 	 *
 	 * @see EOS_Achievements_DefinitionV2#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outDefinition<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the achievement definition is not found<br>
-	 *         {@link EOS_EResult#EOS_Invalid_ProductUserID} if any of the userid options are incorrect
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the achievement definition is not found
+	 * @throws EOSInvalidProductUserIDException if any of the userid options are incorrect
 	 */
-	public EOS_EResult copyAchievementDefinitionV2ByAchievementId(EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions options,
-	                                                              EOS_Achievements_DefinitionV2[] outDefinition) {
-		return EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(this, options, outDefinition);
+	public EOS_Achievements_DefinitionV2 copyAchievementDefinitionV2ByAchievementId(EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions options) throws EOSException {
+		final EOS_Achievements_DefinitionV2.ByReference achievementsDefinitionReference = new EOS_Achievements_DefinitionV2.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(this, options, achievementsDefinitionReference);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return achievementsDefinitionReference;
 	}
 
 	/**
 	 * Query for a list of achievements for a specific player, including progress towards completion for each achievement.<br>
-	 * <b> When the Social Overlay is enabled then this will be called automatically.  The Social Overlay is enabled by default (seeEOS_Platform_Create_Flag#EOS_PF_DISABLE_SOCIAL_OVERLAY).</b>
+	 * <b> When the Social Overlay is enabled then this will be called automatically.  The Social Overlay is enabled by default (see EOS_Platform_Create_Flag#EOS_PF_DISABLE_SOCIAL_OVERLAY).</b>
 	 *
 	 * @param options Structure containing information about the player whose achievements we're retrieving.
 	 * @param clientData Arbitrary data that is passed back to you in the completionDelegate
@@ -104,7 +112,7 @@ public class EOS_Achievements_Interface extends PointerType {
 	 */
 	public void queryPlayerAchievements(EOS_Achievements_QueryPlayerAchievementsOptions options,
 	                                                     Pointer clientData,
-	                                                     EOS_Achievements_OnQueryPlayerAchievementsCompleteCallback completionDelegate){
+	                                                     EOS_Achievements_OnQueryPlayerAchievementsCompleteCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Achievements_QueryPlayerAchievements(this, options, clientData, completionDelegate);
 	}
 
@@ -113,7 +121,7 @@ public class EOS_Achievements_Interface extends PointerType {
 	 *
 	 * @param options The Options associated with retrieving the player achievement count
 	 *
-	 * @see EOS_Achievements_Interface#copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions, EOS_Achievements_PlayerAchievement[])
+	 * @see #copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions)
 	 *
 	 * @return Number of player achievements or 0 if there is an error
 	 */
@@ -125,34 +133,42 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * Fetches a player achievement from a given index.
 	 *
 	 * @param options Structure containing the Product User ID and index being accessed
-	 * @param outAchievement The player achievement data for the given index, if it exists and is valid, use EOS_Achievements_PlayerAchievement_Release when finished
+	 * @return The player achievement data for the given index, if it exists and is valid, use EOS_Achievements_PlayerAchievement_Release when finished
 	 *
 	 * @see EOS_Achievements_PlayerAchievement#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutAchievement<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the player achievement is not found<br>
-	 *         {@link EOS_EResult#EOS_Invalid_ProductUserID} if you pass an invalid user ID
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the player achievement is not found
+	 * @throws EOSInvalidProductUserIDException if you pass an invalid user ID
 	 */
-	public EOS_EResult copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions options, EOS_Achievements_PlayerAchievement[] outAchievement) {
-		return EOSLibrary.instance.EOS_Achievements_CopyPlayerAchievementByIndex(this, options, outAchievement);
+	public EOS_Achievements_PlayerAchievement copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions options) throws EOSException {
+		final EOS_Achievements_PlayerAchievement.ByReference playerAchievementReference = new EOS_Achievements_PlayerAchievement.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyPlayerAchievementByIndex(this, options, playerAchievementReference);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return playerAchievementReference;
 	}
 
 	/**
 	 * Fetches a player achievement from a given achievement ID.
 	 *
 	 * @param options Structure containing the Product User ID and achievement ID being accessed
-	 * @param outAchievement The player achievement data for the given achievement ID, if it exists and is valid, use EOS_Achievements_PlayerAchievement_Release when finished
+	 * @return The player achievement data for the given achievement ID, if it exists and is valid, use EOS_Achievements_PlayerAchievement_Release when finished
 	 *
 	 * @see EOS_Achievements_PlayerAchievement#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutAchievement<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the player achievement is not found<br>
-	 *         {@link EOS_EResult#EOS_Invalid_ProductUserID} if you pass an invalid user ID
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the player achievement is not found
+	 * @throws EOSInvalidProductUserIDException if you pass an invalid user ID
 	 */
-	public EOS_EResult copyPlayerAchievementByAchievementId(EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions options, EOS_Achievements_PlayerAchievement[] outAchievement) {
-		return EOSLibrary.instance.EOS_Achievements_CopyPlayerAchievementByAchievementId(this, options, outAchievement);
+	public EOS_Achievements_PlayerAchievement copyPlayerAchievementByAchievementId(EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions options) throws EOSException {
+		final EOS_Achievements_PlayerAchievement.ByReference playerAchievementReference = new EOS_Achievements_PlayerAchievement.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyPlayerAchievementByAchievementId(this, options, playerAchievementReference);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return playerAchievementReference;
 	}
 
 	/**
@@ -170,7 +186,7 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * Register to receive achievement unlocked notifications.<br>
 	 * <b>Must call EOS_Achievements_RemoveNotifyAchievementsUnlocked to remove the notification</b>
 	 *
-	 * @see EOS_Achievements_Interface#removeNotifyAchievementsUnlocked(EOS_NotificationId)
+	 * @see #removeNotifyAchievementsUnlocked(EOS_NotificationId)
 	 *
 	 * @param options Structure containing information about the achievement unlocked notification
 	 * @param clientData Arbitrary data that is passed back to you in the completionDelegate
@@ -187,120 +203,11 @@ public class EOS_Achievements_Interface extends PointerType {
 	/**
 	 * Unregister from receiving achievement unlocked notifications.
 	 *
-	 * @see EOS_Achievements_Interface#addNotifyAchievementsUnlocked(EOS_Achievements_AddNotifyAchievementsUnlockedOptions, Pointer, EOS_Achievements_OnAchievementsUnlockedCallback)
+	 * @see #addNotifyAchievementsUnlockedV2(EOS_Achievements_AddNotifyAchievementsUnlockedV2Options, Pointer, EOS_Achievements_OnAchievementsUnlockedCallbackV2)
 	 *
 	 * @param inId Handle representing the registered callback
 	 */
 	public void removeNotifyAchievementsUnlocked(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Achievements_RemoveNotifyAchievementsUnlocked(this, inId);
-	}
-
-	/**
-	 * Fetches an achievement definition from a given index.
-	 * @deprecated Use {@link #copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions, EOS_Achievements_DefinitionV2[])} instead.
-	 * @param options Structure containing the index being accessed
-	 * @param outDefinition The achievement definition for the given index, if it exists and is valid, use EOS_Achievements_Definition_Release when finished
-	 *
-	 * @see EOS_Achievements_Interface#copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions, EOS_Achievements_DefinitionV2[])
-	 * @see EOS_Achievements_Definition#release()
-	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outDefinition<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the achievement definition is not found
-	 */
-	@Deprecated
-	public EOS_EResult copyAchievementDefinitionByIndex(EOS_Achievements_CopyAchievementDefinitionByIndexOptions options,
-	                                                                     EOS_Achievements_Definition[] outDefinition) {
-		return EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionByIndex(this, options, outDefinition);
-	}
-
-	/**
-	 * Fetches an achievement definition from a given achievement ID.
-	 * @deprecated Use {@link #copyAchievementDefinitionV2ByAchievementId(EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions, EOS_Achievements_DefinitionV2[])} instead.
-	 * @param options Structure containing the achievement ID being accessed
-	 * @param outDefinition The achievement definition for the given achievement ID, if it exists and is valid, use EOS_Achievements_Definition_Release when finished
-	 *
-	 * @see EOS_Achievements_Definition#release()
-	 * @see EOS_Achievements_Interface#copyAchievementDefinitionV2ByAchievementId(EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions, EOS_Achievements_DefinitionV2[])
-	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outDefinition<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the achievement definition is not found
-	 */
-	@Deprecated
-	public EOS_EResult copyAchievementDefinitionByAchievementId(EOS_Achievements_CopyAchievementDefinitionByAchievementIdOptions options,
-	                                                                             EOS_Achievements_Definition[] outDefinition) {
-		return EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionByAchievementId(this, options, outDefinition);
-	}
-
-	/**
-	 * Fetch the number of unlocked achievements that are cached locally.
-	 * @deprecated Use {@link #getPlayerAchievementCount(EOS_Achievements_GetPlayerAchievementCountOptions)},
-	 * {@link #copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions, EOS_Achievements_PlayerAchievement[])}
-	 * and filter for unlocked instead.
-	 * @param options The Options associated with retrieving the unlocked achievement count
-	 *
-	 * @see EOS_Achievements_Interface#copyUnlockedAchievementByIndex(EOS_Achievements_CopyUnlockedAchievementByIndexOptions, EOS_Achievements_UnlockedAchievement[])
-	 *
-	 * @return Number of unlocked achievements or 0 if there is an error
-	 */
-	@Deprecated
-	public int getUnlockedAchievementCount(EOS_Achievements_GetUnlockedAchievementCountOptions options) {
-		return EOSLibrary.instance.EOS_Achievements_GetUnlockedAchievementCount(this, options);
-	}
-
-	/**
-	 * Fetches an unlocked achievement from a given index.
-	 * @deprecated Use {@link #copyPlayerAchievementByAchievementId(EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions, EOS_Achievements_PlayerAchievement[])} instead.
-	 * @param options Structure containing the Product User ID and index being accessed
-	 * @param outAchievement The unlocked achievement data for the given index, if it exists and is valid, use EOS_Achievements_UnlockedAchievement_Release when finished
-	 *
-	 * @see EOS_Achievements_UnlockedAchievement#release()
-	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutAchievement<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the unlocked achievement is not found
-	 */
-	@Deprecated
-	public EOS_EResult copyUnlockedAchievementByIndex(EOS_Achievements_CopyUnlockedAchievementByIndexOptions options,
-	                                                                   EOS_Achievements_UnlockedAchievement[] outAchievement) {
-		return EOSLibrary.instance.EOS_Achievements_CopyUnlockedAchievementByIndex(this, options, outAchievement);
-	}
-
-	/**
-	 * Fetches an unlocked achievement from a given achievement ID.
-	 * @deprecated Use {@link #copyPlayerAchievementByAchievementId(EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions, EOS_Achievements_PlayerAchievement[])} instead.
-	 * @param options Structure containing the Product User ID and achievement ID being accessed
-	 * @param outAchievement The unlocked achievement data for the given achievement ID, if it exists and is valid, use EOS_Achievements_UnlockedAchievement_Release when finished
-	 *
-	 * @see EOS_Achievements_UnlockedAchievement#release()
-	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutAchievement<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the unlocked achievement is not found
-	 */
-	@Deprecated
-	public EOS_EResult copyUnlockedAchievementByAchievementId(EOS_Achievements_CopyUnlockedAchievementByAchievementIdOptions options, EOS_Achievements_UnlockedAchievement[] outAchievement) {
-		return EOSLibrary.instance.EOS_Achievements_CopyUnlockedAchievementByAchievementId(this, options, outAchievement);
-	}
-
-	/**
-	 * Register to receive achievement unlocked notifications.
-	 * <p>
-	 * <b>Must call {@link #removeNotifyAchievementsUnlocked(EOS_NotificationId)} to remove the notification</b>
-	 * @deprecated Use {@link #addNotifyAchievementsUnlockedV2(EOS_Achievements_AddNotifyAchievementsUnlockedV2Options, Pointer, EOS_Achievements_OnAchievementsUnlockedCallbackV2)} instead.
-	 * @see EOS_Achievements_Interface#removeNotifyAchievementsUnlocked(EOS_NotificationId)
-	 *
-	 * @param options Structure containing information about the achievement unlocked notification
-	 * @param clientData Arbitrary data that is passed back to you in the completionDelegate
-	 * @param notificationFn A callback that is fired when an achievement unlocked notification for a user has been received
-	 *
-	 * @return handle representing the registered callback
-	 */
-	@Deprecated
-	public EOS_NotificationId addNotifyAchievementsUnlocked(EOS_Achievements_AddNotifyAchievementsUnlockedOptions options,
-	                                                                         Pointer clientData,
-	                                                                         EOS_Achievements_OnAchievementsUnlockedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_Achievements_AddNotifyAchievementsUnlocked(this, options, clientData, notificationFn);
 	}
 }
