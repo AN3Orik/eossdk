@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.*;
 import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_IdToken;
 import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_Token;
 import host.anzo.eossdk.eos.sdk.auth.callbacks.*;
@@ -10,11 +11,6 @@ import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_ELoginStatus;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
-import host.anzo.eossdk.eos.exceptions.EOSException;
-import host.anzo.eossdk.eos.exceptions.EOSInvalidAuthException;
-import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
-import host.anzo.eossdk.eos.exceptions.EOSInvalidUserException;
-import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 
 /**
  * The Auth Interface is used to manage local user permissions and access to backend services through the verification of various forms of credentials.

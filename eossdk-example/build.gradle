@@ -30,6 +30,8 @@ dependencies {
 	implementation('org.slf4j:slf4j-api:2.0.9')
 	implementation('org.slf4j:slf4j-ext:2.0.9')
 	implementation('org.slf4j:slf4j-simple:2.0.9')
+	implementation("org.apache.httpcomponents.client5:httpclient5-fluent:+")
+	implementation("org.json:json:+")
 	implementation(project(':eossdk'))
 
 	def osName = System.getProperty("os.name").toLowerCase()

@@ -28,6 +28,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Token", "Type"})
 public class EOS_Connect_Credentials extends Structure {
+	/** The most recent version of the EOS_Connect_Credentials struct. */
 	public static int EOS_CONNECT_CREDENTIALS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_AUTH_CREDENTIALS_API_LATEST. */

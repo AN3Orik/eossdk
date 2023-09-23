@@ -2,6 +2,9 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_ELoginStatus;
@@ -10,9 +13,6 @@ import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_ExternalAccountInfo;
 import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_IdToken;
 import host.anzo.eossdk.eos.sdk.connect.callbacks.*;
 import host.anzo.eossdk.eos.sdk.connect.options.*;
-import host.anzo.eossdk.eos.exceptions.EOSException;
-import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
-import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;

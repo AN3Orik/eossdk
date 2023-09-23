@@ -12,8 +12,6 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatClientMode;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
-import java.nio.IntBuffer;
-
 /**
  * @author Anton Lasevich
  * @since 8/15/2023

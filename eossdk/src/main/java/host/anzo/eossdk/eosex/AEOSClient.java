@@ -3,7 +3,6 @@ package host.anzo.eossdk.eosex;
 import com.sun.jna.Pointer;
 import host.anzo.eossdk.eos.sdk.EOS_AntiCheatClient_Interface;
 import host.anzo.eossdk.eos.sdk.EOS_Auth_Interface;
-import host.anzo.eossdk.eos.sdk.EOS_Connect_Interface;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults.EOS_AntiCheatClient_OnClientIntegrityViolatedCallbackInfo;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults.EOS_AntiCheatClient_OnMessageToServerCallbackInfo;
 import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_AddNotifyClientIntegrityViolatedOptions;
@@ -13,7 +12,6 @@ import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_End
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
-import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_Credentials;
 import host.anzo.eossdk.eos.sdk.connect.callbackresults.EOS_Connect_CreateUserCallbackInfo;
 import host.anzo.eossdk.eos.sdk.connect.callbackresults.EOS_Connect_LoginCallbackInfo;
 import host.anzo.eossdk.eos.sdk.connect.options.EOS_Connect_CreateUserOptions;
@@ -43,14 +41,13 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 			final EOS_Auth_Interface authInterface = platform.getAuthInterface();
 		}
 		else {
-			final EOS_Connect_Interface connectInterface = platform.getConnectInterface();
-
-			final EOS_Connect_Credentials credentials = new EOS_Connect_Credentials();
-			credentials.Token = options.getAuthToken();
-			credentials.Type = options.getAuthExternalCredentialType();
-			connectInterface.login(new EOS_Connect_LoginOptions(new EOS_Connect_Credentials.ByReference(credentials.getPointer())), Pointer.NULL, this::onConnectLogin);
+			platform.getConnectInterface().login(getConnectLoginOptions(), Pointer.NULL, this::onConnectLogin);
 		}
 		return this;
+	}
+
+	protected EOS_Connect_LoginOptions getConnectLoginOptions() {
+		return null;
 	}
 
 	private void onConnectLogin(@NotNull EOS_Connect_LoginCallbackInfo data) {

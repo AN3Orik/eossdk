@@ -1,7 +1,7 @@
 package host.anzo.eossdk.example;
 
-import host.anzo.eossdk.eosex.AEOSServer;
 import host.anzo.eossdk.eos.sdk.logging.EOS_LogMessage;
+import host.anzo.eossdk.eosex.AEOSServer;
 import host.anzo.eossdk.eosex.IEOSNetworkClient;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

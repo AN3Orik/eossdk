@@ -25,6 +25,18 @@ server_credentials = client_id;client_secret
 # Tick frequency to Platform_Tick method (in milliseconds)
 platform_tick_rate = 100
 
+# External authorization user login
+client_auth_user_login = userlogin
+
+# External authorization user password
+client_auth_user_password = userpassword
+
+# External authorization type
+client_auth_external_type = EOS_ECT_OPENID_ACCESS_TOKEN
+
+# Url for OpenID external authorization type
+client_auth_openid_url = https://localhost/OpenID/sign_in
+
 # Anti-cheat enable/disable flag
 anti_cheat_enabled = false
 

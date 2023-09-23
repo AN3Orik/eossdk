@@ -49,6 +49,10 @@ public class ExampleServer {
 						.clientId(DefaultConfig.CLIENT_CREDENTIALS[0])
 						.clientSecret(DefaultConfig.CLIENT_CREDENTIALS[1])
 						.antiCheatEnabled(DefaultConfig.ANTI_CHEAT_ENABLED)
+						.authExternalCredentialType(DefaultConfig.CLIENT_AUTH_EXTERNAL_TYPE)
+						.openIdSignInUrl(DefaultConfig.CLIENT_AUTH_OPENID_URL)
+						.userLogin(DefaultConfig.CLIENT_AUTH_USER_LOGIN)
+						.userPassword(DefaultConfig.CLIENT_AUTH_USER_PASSWORD)
 						.build());
 	}
 

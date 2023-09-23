@@ -1,5 +1,6 @@
 package host.anzo.eossdk.example;
 
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_EExternalCredentialType;
 import jfork.nproperty.Cfg;
 
 /**
@@ -26,6 +27,14 @@ public class DefaultConfig {
 	public static String[] SERVER_CREDENTIALS;
 	@Cfg("platform_tick_rate")
 	public static int PLATFORM_TICK_RATE;
+	@Cfg("client_auth_user_login")
+	public static String CLIENT_AUTH_USER_LOGIN;
+	@Cfg("client_auth_user_password")
+	public static String CLIENT_AUTH_USER_PASSWORD;
+	@Cfg("client_auth_external_type")
+	public static EOS_EExternalCredentialType CLIENT_AUTH_EXTERNAL_TYPE;
+	@Cfg("client_auth_openid_url")
+	public static String CLIENT_AUTH_OPENID_URL;
 	@Cfg("anti_cheat_server_name")
 	public static String ANTI_CHEAT_SERVER_NAME;
 	@Cfg("anti_cheat_enabled")
