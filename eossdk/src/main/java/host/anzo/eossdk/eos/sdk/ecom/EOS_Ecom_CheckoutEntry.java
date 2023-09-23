@@ -11,6 +11,7 @@ import com.sun.jna.Structure;
  * @since 8/20/2023
  */
 public class EOS_Ecom_CheckoutEntry extends Structure {
+	/** The most recent version of the EOS_Ecom_CheckoutEntry struct. */
 	public static final int EOS_ECOM_CHECKOUTENTRY_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_CHECKOUTENTRY_API_LATEST. */

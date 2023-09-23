@@ -16,6 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "CompatibleAppIdCount", "CompatibleAppIds", "CompatiblePlatformCount", "CompatiblePlatforms", "ReleaseNote"})
 public class EOS_Ecom_CatalogRelease extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Ecom_CatalogRelease struct. */
 	public static final int EOS_ECOM_CATALOGRELEASE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_CATALOGRELEASE_API_LATEST. */

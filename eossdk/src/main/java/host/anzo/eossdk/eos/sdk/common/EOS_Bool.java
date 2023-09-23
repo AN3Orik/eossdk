@@ -5,7 +5,7 @@ import com.sun.jna.NativeMapped;
 import lombok.Getter;
 
 /**
- * @author ANZO
+ * @author Anton Lasevich
  * @since 9/20/2023
  */
 public @Getter class EOS_Bool implements NativeMapped {

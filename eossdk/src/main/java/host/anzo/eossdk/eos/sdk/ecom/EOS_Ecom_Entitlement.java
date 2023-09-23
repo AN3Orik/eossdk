@@ -16,6 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "EntitlementName", "EntitlementId", "CatalogItemId", "ServerIndex", "bRedeemed", "EndTimestamp"})
 public class EOS_Ecom_Entitlement extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Ecom_Entitlement struct. */
 	public static final int EOS_ECOM_ENTITLEMENT_API_LATEST = 2;
 
 	/** Timestamp value representing an undefined EndTimestamp for EOS_Ecom_Entitlement */

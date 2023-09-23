@@ -2,6 +2,13 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSEcomCatalogItemStaleException;
+import host.anzo.eossdk.eos.exceptions.EOSEcomCatalogOfferPriceInvalidException;
+import host.anzo.eossdk.eos.exceptions.EOSEcomCatalogOfferStaleException;
+import host.anzo.eossdk.eos.exceptions.EOSEcomEntitlementStaleException;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.ecom.*;
 import host.anzo.eossdk.eos.sdk.ecom.callbackresults.EOS_Ecom_CheckoutCallbackInfo;
@@ -102,7 +109,9 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @param clientData arbitrary data that is passed back to you in the CompletionDelegate
 	 * @param completionDelegate a callback that is fired when the async operation completes, either successfully or in error
 	 */
-	public void queryEntitlementToken(EOS_Ecom_QueryEntitlementTokenOptions options, Pointer clientData, EOS_Ecom_OnQueryEntitlementTokenCallback completionDelegate) {
+	public void queryEntitlementToken(EOS_Ecom_QueryEntitlementTokenOptions options,
+	                                  Pointer clientData,
+	                                  EOS_Ecom_OnQueryEntitlementTokenCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Ecom_QueryEntitlementToken(this, options, clientData, completionDelegate);
 	}
 
@@ -153,7 +162,7 @@ public class EOS_Ecom_Interface extends PointerType {
 	 *
 	 * @param options structure containing the Epic Account ID
 	 *
-	 * @see EOS_Ecom_Interface#copyLastRedeemedEntitlementByIndex(EOS_Ecom_CopyLastRedeemedEntitlementByIndexOptions, ByteBuffer, IntBuffer)
+	 * @see #copyLastRedeemedEntitlementByIndex(EOS_Ecom_CopyLastRedeemedEntitlementByIndexOptions, ByteBuffer, IntBuffer)
 	 *
 	 * @return the number of the redeemed entitlements.
 	 */
@@ -186,7 +195,7 @@ public class EOS_Ecom_Interface extends PointerType {
 	 *
 	 * @param options structure containing the Epic Account ID being accessed
 	 *
-	 * @see EOS_Ecom_Interface#copyEntitlementByIndex(EOS_Ecom_CopyEntitlementByIndexOptions, EOS_Ecom_Entitlement[])
+	 * @see #copyEntitlementByIndex(EOS_Ecom_CopyEntitlementByIndexOptions)
 	 *
 	 * @return the number of entitlements found.
 	 */
@@ -199,7 +208,7 @@ public class EOS_Ecom_Interface extends PointerType {
 	 *
 	 * @param options structure containing the Epic Account ID and name being accessed
 	 *
-	 * @see EOS_Ecom_Interface#copyEntitlementByNameAndIndex(EOS_Ecom_CopyEntitlementByNameAndIndexOptions, EOS_Ecom_Entitlement[])
+	 * @see #copyEntitlementByNameAndIndex(EOS_Ecom_CopyEntitlementByNameAndIndexOptions)
 	 *
 	 * @return the number of entitlements found.
 	 */
@@ -211,17 +220,21 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * Fetches an entitlement from a given index.
 	 *
 	 * @param options structure containing the Epic Account ID and index being accessed
-	 * @param outEntitlement the entitlement for the given index, if it exists and is valid, use {@link EOS_Ecom_Entitlement#release()} when finished
+	 * @return the entitlement for the given index, if it exists and is valid, use {@link EOS_Ecom_Entitlement#release()} when finished
 	 *
 	 * @see EOS_Ecom_Entitlement#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutEntitlement<br>
-	 *         {@link EOS_EResult#EOS_Ecom_EntitlementStale} if the entitlement information is stale and passed out in OutEntitlement<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the entitlement is not found
+	 * @throws EOSEcomEntitlementStaleException if the entitlement information is stale and passed out in OutEntitlement
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the entitlement is not found
 	 */
-	public EOS_EResult copyEntitlementByIndex(EOS_Ecom_CopyEntitlementByIndexOptions options, EOS_Ecom_Entitlement[] outEntitlement) {
-		return EOSLibrary.instance.EOS_Ecom_CopyEntitlementByIndex(this, options, outEntitlement);
+	public EOS_Ecom_Entitlement copyEntitlementByIndex(EOS_Ecom_CopyEntitlementByIndexOptions options) throws EOSException {
+		final EOS_Ecom_Entitlement.ByReference entitlementReference = new EOS_Ecom_Entitlement.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyEntitlementByIndex(this, options, entitlementReference);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return entitlementReference;
 	}
 
 	/**
@@ -230,35 +243,43 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * one less than the result from EOS_Ecom_GetEntitlementsByNameCount.
 	 *
 	 * @param options structure containing the Epic Account ID, entitlement name, and index being accessed
-	 * @param outEntitlement the entitlement for the given name index pair, if it exists and is valid, use {@link EOS_Ecom_Entitlement#release()} when finished
+	 * @return the entitlement for the given name index pair, if it exists and is valid, use {@link EOS_Ecom_Entitlement#release()} when finished
 	 *
 	 * @see EOS_Ecom_Entitlement#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutEntitlement<br>
-	 *         {@link EOS_EResult#EOS_Ecom_EntitlementStale} if the entitlement information is stale and passed out in OutEntitlement<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the entitlement is not found
+	 * @throws EOSEcomEntitlementStaleException if the entitlement information is stale and passed out in OutEntitlement
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the entitlement is not found
 	 */
-	public EOS_EResult copyEntitlementByNameAndIndex(EOS_Ecom_CopyEntitlementByNameAndIndexOptions options, EOS_Ecom_Entitlement[] outEntitlement) {
-		return EOSLibrary.instance.EOS_Ecom_CopyEntitlementByNameAndIndex(this, options, outEntitlement);
+	public EOS_Ecom_Entitlement copyEntitlementByNameAndIndex(EOS_Ecom_CopyEntitlementByNameAndIndexOptions options) throws EOSException {
+		final EOS_Ecom_Entitlement.ByReference outEntitlement = new EOS_Ecom_Entitlement.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyEntitlementByNameAndIndex(this, options, outEntitlement);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outEntitlement;
 	}
 
 	/**
 	 * Fetches the entitlement with the given ID.
 	 *
 	 * @param options structure containing the Epic Account ID and entitlement ID being accessed
-	 * @param outEntitlement the entitlement for the given ID, if it exists and is valid, use {@link EOS_Ecom_Entitlement#release()} when finished
+	 * @return the entitlement for the given ID, if it exists and is valid, use {@link EOS_Ecom_Entitlement#release()} when finished
 	 *
-	 * @see EOS_Ecom_Interface#copyEntitlementByNameAndIndex(EOS_Ecom_CopyEntitlementByNameAndIndexOptions, EOS_Ecom_Entitlement[])
+	 * @see #copyEntitlementByNameAndIndex(EOS_Ecom_CopyEntitlementByNameAndIndexOptions)
 	 * @see EOS_Ecom_Entitlement#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutEntitlement<br>
-	 *         {@link EOS_EResult#EOS_Ecom_EntitlementStale} if the entitlement information is stale and passed out in OutEntitlement<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the entitlement is not found
+	 * @throws EOSEcomEntitlementStaleException if the entitlement information is stale and passed out in OutEntitlement
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the entitlement is not found
 	 */
-	public EOS_EResult copyEntitlementById(EOS_Ecom_CopyEntitlementByIdOptions options, EOS_Ecom_Entitlement[] outEntitlement) {
-		return EOSLibrary.instance.EOS_Ecom_CopyEntitlementById(this, options, outEntitlement);
+	public EOS_Ecom_Entitlement copyEntitlementById(EOS_Ecom_CopyEntitlementByIdOptions options) throws EOSException {
+		final EOS_Ecom_Entitlement.ByReference outEntitlement = new EOS_Ecom_Entitlement.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyEntitlementById(this, options, outEntitlement);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outEntitlement;
 	}
 
 	/**
@@ -266,7 +287,7 @@ public class EOS_Ecom_Interface extends PointerType {
 	 *
 	 * @param options structure containing the Epic Account ID being accessed
 	 *
-	 * @see EOS_Ecom_Interface#copyOfferByIndex(EOS_Ecom_CopyOfferByIndexOptions, EOS_Ecom_CatalogOffer[])
+	 * @see #copyOfferByIndex(EOS_Ecom_CopyOfferByIndexOptions)
 	 *
 	 * @return the number of offers found.
 	 */
@@ -278,38 +299,46 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * Fetches an offer from a given index.  The pricing and text are localized to the provided account.
 	 *
 	 * @param options structure containing the Epic Account ID and index being accessed
-	 * @param outOffer the offer for the given index, if it exists and is valid, use EOS_Ecom_CatalogOffer_Release when finished
+	 * @return the offer for the given index, if it exists and is valid, use EOS_Ecom_CatalogOffer_Release when finished
 	 *
 	 * @see EOS_Ecom_CatalogOffer#release()
-	 * @see EOS_Ecom_Interface#getOfferItemCount(EOS_Ecom_GetOfferItemCountOptions)
+	 * @see #getOfferItemCount(EOS_Ecom_GetOfferItemCountOptions)
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutOffer<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogOfferStale} if the offer information is stale and passed out in OutOffer<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogOfferPriceInvalid} if the offer information has an invalid price and passed out in OutOffer<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameterv
-	 *         {@link EOS_EResult#EOS_NotFound} if the offer is not found
+	 * @throws EOSEcomCatalogOfferStaleException if the offer information is stale and passed out in OutOffer
+	 * @throws EOSEcomCatalogOfferPriceInvalidException if the offer information has an invalid price and passed out in OutOffer
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the offer is not found
 	 */
-	public EOS_EResult copyOfferByIndex(EOS_Ecom_CopyOfferByIndexOptions options, EOS_Ecom_CatalogOffer[] outOffer) {
-		return EOSLibrary.instance.EOS_Ecom_CopyOfferByIndex(this, options, outOffer);
+	public EOS_Ecom_CatalogOffer copyOfferByIndex(EOS_Ecom_CopyOfferByIndexOptions options) throws EOSException {
+		final EOS_Ecom_CatalogOffer.ByReference outOffer = new EOS_Ecom_CatalogOffer.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyOfferByIndex(this, options, outOffer);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outOffer;
 	}
 
 	/**
 	 * Fetches an offer with a given ID.  The pricing and text are localized to the provided account.
 	 *
 	 * @param options structure containing the Epic Account ID and offer ID being accessed
-	 * @param outOffer the offer for the given index, if it exists and is valid, use {@link EOS_Ecom_CatalogOffer#release()} when finished
+	 * @return the offer for the given index, if it exists and is valid, use {@link EOS_Ecom_CatalogOffer#release()} when finished
 	 *
 	 * @see EOS_Ecom_CatalogOffer#release()
-	 * @see EOS_Ecom_Interface#getOfferItemCount(EOS_Ecom_GetOfferItemCountOptions)
+	 * @see #getOfferItemCount(EOS_Ecom_GetOfferItemCountOptions)
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutOffer<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogOfferStale} if the offer information is stale and passed out in OutOffer<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogOfferPriceInvalid} if the offer information has an invalid price and passed out in OutOffer<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the offer is not found
+	 * @throws EOSEcomCatalogOfferStaleException if the offer information is stale and passed out in OutOffer
+	 * @throws EOSEcomCatalogOfferPriceInvalidException if the offer information has an invalid price and passed out in OutOffer
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the offer is not found
 	 */
-	public EOS_EResult copyOfferById(EOS_Ecom_CopyOfferByIdOptions options, EOS_Ecom_CatalogOffer[] outOffer) {
-		return EOSLibrary.instance.EOS_Ecom_CopyOfferById(this, options, outOffer);
+	public EOS_Ecom_CatalogOffer copyOfferById(EOS_Ecom_CopyOfferByIdOptions options) throws EOSException {
+		final EOS_Ecom_CatalogOffer.ByReference outOffer = new EOS_Ecom_CatalogOffer.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyOfferById(this, options, outOffer);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outOffer;
 	}
 
 	/**
@@ -325,38 +354,46 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * Fetches an item from a given index.
 	 *
 	 * @param options structure containing the Epic Account ID and index being accessed
-	 * @param outItem the item for the given index, if it exists and is valid, use EOS_Ecom_CatalogItem_Release when finished
+	 * @return the item for the given index, if it exists and is valid, use EOS_Ecom_CatalogItem_Release when finished
 	 *
 	 * @see EOS_Ecom_CatalogItem#release()
-	 * @see EOS_Ecom_Interface#getItemImageInfoCount(EOS_Ecom_GetItemImageInfoCountOptions)
-	 * @see EOS_Ecom_Interface#getItemReleaseCount(EOS_Ecom_GetItemReleaseCountOptions)
+	 * @see #getItemImageInfoCount(EOS_Ecom_GetItemImageInfoCountOptions)
+	 * @see #getItemReleaseCount(EOS_Ecom_GetItemReleaseCountOptions)
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutItem<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogItemStale} if the item information is stale<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the item is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSEcomCatalogItemStaleException  if the item information is stale
+	 * @throws EOSNotFoundException if the item is not found
 	 */
-	public EOS_EResult copyOfferItemByIndex(EOS_Ecom_CopyOfferItemByIndexOptions options, EOS_Ecom_CatalogItem[] outItem) {
-		return EOSLibrary.instance.EOS_Ecom_CopyOfferItemByIndex(this, options, outItem);
+	public EOS_Ecom_CatalogItem copyOfferItemByIndex(EOS_Ecom_CopyOfferItemByIndexOptions options) throws EOSException {
+		final EOS_Ecom_CatalogItem.ByReference outItem = new EOS_Ecom_CatalogItem.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyOfferItemByIndex(this, options, outItem);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outItem;
 	}
 
 	/**
 	 * Fetches an item with a given ID.
 	 *
 	 * @param options structure containing the item ID being accessed
-	 * @param outItem the item for the given index, if it exists and is valid, use EOS_Ecom_CatalogItem_Release when finished
+	 * @return the item for the given index, if it exists and is valid, use EOS_Ecom_CatalogItem_Release when finished
 	 *
 	 * @see EOS_Ecom_CatalogItem#release()
-	 * @see EOS_Ecom_Interface#getItemImageInfoCount(EOS_Ecom_GetItemImageInfoCountOptions)
-	 * @see EOS_Ecom_Interface#getItemReleaseCount(EOS_Ecom_GetItemReleaseCountOptions)
+	 * @see #getItemImageInfoCount(EOS_Ecom_GetItemImageInfoCountOptions)
+	 * @see #getItemReleaseCount(EOS_Ecom_GetItemReleaseCountOptions)
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutItem<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogItemStale} if the item information is stale and passed out in OutItem<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the offer is not found
+	 * @throws EOSEcomCatalogItemStaleException if the item information is stale and passed out in OutItem
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the offer is not found
 	 */
-	public EOS_EResult copyItemById(EOS_Ecom_CopyItemByIdOptions options, EOS_Ecom_CatalogItem[] outItem) {
-		return EOSLibrary.instance.EOS_Ecom_CopyItemById(this, options, outItem);
+	public EOS_Ecom_CatalogItem copyItemById(EOS_Ecom_CopyItemByIdOptions options) throws EOSException {
+		final EOS_Ecom_CatalogItem.ByReference outItem = new EOS_Ecom_CatalogItem.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyItemById(this, options, outItem);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outItem;
 	}
 
 	/**
@@ -372,17 +409,21 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * Fetches an image from a given index.
 	 *
 	 * @param options structure containing the offer ID and index being accessed
-	 * @param outImageInfo the image for the given index, if it exists and is valid, use EOS_Ecom_KeyImageInfo_Release when finished
+	 * @return the image for the given index, if it exists and is valid, use EOS_Ecom_KeyImageInfo_Release when finished
 	 *
 	 * @see EOS_Ecom_KeyImageInfo#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outImageInfo<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogOfferStale} if the associated offer information is stale<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the image is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSEcomCatalogOfferStaleException if the associated offer information is stale
+	 * @throws EOSNotFoundException if the image is not found
 	 */
-	public EOS_EResult copyOfferImageInfoByIndex(EOS_Ecom_CopyOfferImageInfoByIndexOptions options, EOS_Ecom_KeyImageInfo[] outImageInfo) {
-		return EOSLibrary.instance.EOS_Ecom_CopyOfferImageInfoByIndex(this, options, outImageInfo);
+	public EOS_Ecom_KeyImageInfo copyOfferImageInfoByIndex(EOS_Ecom_CopyOfferImageInfoByIndexOptions options) throws EOSException {
+		final EOS_Ecom_KeyImageInfo.ByReference outImageInfo = new EOS_Ecom_KeyImageInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyOfferImageInfoByIndex(this, options, outImageInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outImageInfo;
 	}
 
 	/**
@@ -398,17 +439,21 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * Fetches an image from a given index.
 	 *
 	 * @param options structure containing the item ID and index being accessed
-	 * @param outImageInfo the image for the given index, if it exists and is valid, use {@link EOS_Ecom_KeyImageInfo#release()} when finished
+	 * @return the image for the given index, if it exists and is valid, use {@link EOS_Ecom_KeyImageInfo#release()} when finished
 	 *
 	 * @see EOS_Ecom_KeyImageInfo#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutImageInfo<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogItemStale} if the associated item information is stale<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the image is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSEcomCatalogItemStaleException if the associated item information is stale
+	 * @throws EOSNotFoundException if the image is not found
 	 */
-	public EOS_EResult copyItemImageInfoByIndex(EOS_Ecom_CopyItemImageInfoByIndexOptions options, EOS_Ecom_KeyImageInfo[] outImageInfo) {
-		return EOSLibrary.instance.EOS_Ecom_CopyItemImageInfoByIndex(this, options, outImageInfo);
+	public EOS_Ecom_KeyImageInfo copyItemImageInfoByIndex(EOS_Ecom_CopyItemImageInfoByIndexOptions options) throws EOSException {
+		final EOS_Ecom_KeyImageInfo.ByReference outImageInfo = new EOS_Ecom_KeyImageInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyItemImageInfoByIndex(this, options, outImageInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outImageInfo;
 	}
 
 	/**
@@ -424,24 +469,28 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * Fetches a release from a given index.
 	 *
 	 * @param options structure containing the item ID and index being accessed
-	 * @param outRelease the release for the given index, if it exists and is valid, use {@link EOS_Ecom_CatalogRelease#release()} when finished
+	 * @return the release for the given index, if it exists and is valid, use {@link EOS_Ecom_CatalogRelease#release()} when finished
 	 *
 	 * @see EOS_Ecom_CatalogRelease#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutRelease<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_Ecom_CatalogItemStale} if the associated item information is stale<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the release is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSEcomCatalogItemStaleException if the associated item information is stale
+	 * @throws EOSNotFoundException if the release is not found
 	 */
-	public EOS_EResult copyItemReleaseByIndex(EOS_Ecom_CopyItemReleaseByIndexOptions options, EOS_Ecom_CatalogRelease[] outRelease) {
-		return EOSLibrary.instance.EOS_Ecom_CopyItemReleaseByIndex(this, options, outRelease);
+	public EOS_Ecom_CatalogRelease copyItemReleaseByIndex(EOS_Ecom_CopyItemReleaseByIndexOptions options) throws EOSException {
+		final EOS_Ecom_CatalogRelease.ByReference outRelease = new EOS_Ecom_CatalogRelease.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyItemReleaseByIndex(this, options, outRelease);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outRelease;
 	}
 
 	/**
 	 * Fetch the number of transactions that are cached for a given local user.
 	 *
 	 * @see EOS_Ecom_CheckoutCallbackInfo
-	 * @see EOS_Ecom_Interface#copyTransactionByIndex(EOS_Ecom_CopyTransactionByIndexOptions, EOS_Ecom_Transaction)
+	 * @see #copyTransactionByIndex(EOS_Ecom_CopyTransactionByIndexOptions)
 	 *
 	 * @return the number of transactions found.
 	 */
@@ -457,12 +506,16 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @see EOS_Ecom_CheckoutCallbackInfo
 	 * @see EOS_Ecom_Transaction#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutTransaction<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the transaction is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the transaction is not found
 	 */
-	public EOS_EResult copyTransactionByIndex(EOS_Ecom_CopyTransactionByIndexOptions options, EOS_Ecom_Transaction outTransaction) {
-		return EOSLibrary.instance.EOS_Ecom_CopyTransactionByIndex(this, options, outTransaction);
+	public EOS_Ecom_Transaction copyTransactionByIndex(EOS_Ecom_CopyTransactionByIndexOptions options) throws EOSException {
+		final EOS_Ecom_Transaction.ByReference outTransaction = new EOS_Ecom_Transaction.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyTransactionByIndex(this, options, outTransaction);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outTransaction;
 	}
 
 	/**
@@ -473,11 +526,15 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @see EOS_Ecom_CheckoutCallbackInfo
 	 * @see EOS_Ecom_Transaction#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutTransaction<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the transaction is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the transaction is not found
 	 */
-	public EOS_EResult copyTransactionById(EOS_Ecom_CopyTransactionByIdOptions options, EOS_Ecom_Transaction outTransaction) {
-		return EOSLibrary.instance.EOS_Ecom_CopyTransactionById(this, options, outTransaction);
+	public EOS_Ecom_Transaction copyTransactionById(EOS_Ecom_CopyTransactionByIdOptions options) throws EOSException {
+		final EOS_Ecom_Transaction.ByReference outTransaction = new EOS_Ecom_Transaction.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyTransactionById(this, options, outTransaction);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outTransaction;
 	}
 }

@@ -18,6 +18,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "ServerIndex", "CatalogNamespace", "Id", "TitleText", "DescriptionText", "LongDescriptionText", "TechnicalDetailsText_DEPRECATED", "CurrencyCode", "PriceResult", "OriginalPrice_DEPRECATED", "CurrentPrice_DEPRECATED", "DiscountPercentage", "ExpirationTimestamp", "PurchasedCount_DEPRECATED", "PurchaseLimit", "bAvailableForPurchase", "OriginalPrice64", "CurrentPrice64", "DecimalPoint", "ReleaseDateTimestamp", "EffectiveDateTimestamp"})
 public class EOS_Ecom_CatalogOffer extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Ecom_CatalogOffer struct. */
 	public static final int EOS_ECOM_CATALOGOFFER_API_LATEST = 5;
 
 	/** Timestamp value representing an undefined ExpirationTimestamp for EOS_Ecom_CatalogOffer */

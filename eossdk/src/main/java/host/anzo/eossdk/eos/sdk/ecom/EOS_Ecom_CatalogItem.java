@@ -5,12 +5,13 @@ import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Ecom_Interface;
 import host.anzo.eossdk.eos.sdk.ecom.enums.EOS_EEcomItemType;
+import host.anzo.eossdk.eos.sdk.ecom.options.EOS_Ecom_CopyOfferItemByIndexOptions;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * Contains information about a single item within the catalog. Instances of this structure are created
- * by {@link EOS_Ecom_Interface#copyOfferItemByIndex(EOS_Ecom_CopyOfferItemByIndexOptions, EOS_Ecom_CatalogItem[])}.<br>
+ * by {@link EOS_Ecom_Interface#copyOfferItemByIndex(EOS_Ecom_CopyOfferItemByIndexOptions)}.<br>
  * They must be passed to {@link EOS_Ecom_CatalogItem#release()}
  *
  * @author Anton Lasevich
@@ -18,6 +19,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "CatalogNamespace", "Id", "EntitlementName", "TitleText", "DescriptionText", "LongDescriptionText", "TechnicalDetailsText", "DeveloperText", "ItemType", "EntitlementEndTimestamp"})
 public class EOS_Ecom_CatalogItem extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Ecom_CatalogItem struct. */
 	public static final int EOS_ECOM_CATALOGITEM_API_LATEST = 1;
 
 	/** Timestamp value representing an undefined EntitlementEndTimestamp for EOS_Ecom_CatalogItem */

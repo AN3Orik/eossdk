@@ -14,7 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * A Key Image is defined within Dev Portal and is associated with a Catalog Item.  A Key Image is
  * intended to be used to provide imagery for an in-game store.
  *
- * @see EOS_Ecom_Interface#copyItemImageInfoByIndex(EOS_Ecom_CopyItemImageInfoByIndexOptions, EOS_Ecom_KeyImageInfo[])
+ * @see EOS_Ecom_Interface#copyItemImageInfoByIndex(EOS_Ecom_CopyItemImageInfoByIndexOptions)
  * @see EOS_Ecom_KeyImageInfo#release()
  *
  * @author Anton Lasevich
@@ -22,6 +22,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Type", "Url", "Width", "Height"})
 public class EOS_Ecom_KeyImageInfo extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Ecom_KeyImageInfo struct. */
 	public static final int EOS_ECOM_KEYIMAGEINFO_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_KEYIMAGEINFO_API_LATEST. */
