@@ -14,10 +14,8 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SessionName", "LocalUserId", "TargetUserId"})
 public class EOS_Sessions_SendInviteOptions extends Structure {
+	/** The most recent version of the EOS_Sessions_SendInvite API. */
 	public static final int EOS_SESSIONS_SENDINVITE_API_LATEST = 1;
-
-	/** Max length of an invite ID */
-	public static final int EOS_SESSIONS_INVITEID_MAX_LENGTH = 64;
 
 	/** API Version: Set this to EOS_SESSIONS_SENDINVITE_API_LATEST. */
 	public int ApiVersion;

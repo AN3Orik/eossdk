@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SessionName"})
 public class EOS_Sessions_UpdateSessionModificationOptions extends Structure {
+	/** The most recent version of the EOS_Sessions_UpdateSessionModification API. */
 	public static final int EOS_SESSIONS_UPDATESESSIONMODIFICATION_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_SESSIONS_UPDATESESSIONMODIFICATION_API_LATEST. */

@@ -2,11 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
-import host.anzo.eossdk.eos.exceptions.EOSException;
-import host.anzo.eossdk.eos.exceptions.EOSIncompatibleVersionException;
-import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
-import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
-import host.anzo.eossdk.eos.exceptions.EOSUserInfoBestDisplayNameIndeterminateException;
+import host.anzo.eossdk.eos.exceptions.*;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_OnlinePlatformType;
 import host.anzo.eossdk.eos.sdk.connect.callbacks.EOS_Connect_OnQueryExternalAccountMappingsCallback;
@@ -47,7 +43,7 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the async operation completes, either successfully or in error
 	 *
 	 * @see EOS_UserInfo
-	 * @see #copyUserInfo(EOS_UserInfo_CopyUserInfoOptions, EOS_UserInfo[])
+	 * @see #copyUserInfo(EOS_UserInfo_CopyUserInfoOptions)
 	 * @see EOS_UserInfo_QueryUserInfoOptions
 	 * @see EOS_UserInfo_OnQueryUserInfoCallback
 	 */
@@ -64,7 +60,7 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the async operation completes, either successfully or in error
 	 *
 	 * @see EOS_UserInfo
-	 * @see #copyUserInfo(EOS_UserInfo_CopyUserInfoOptions, EOS_UserInfo[])
+	 * @see #copyUserInfo(EOS_UserInfo_CopyUserInfoOptions)
 	 * @see EOS_UserInfo_QueryUserInfoByDisplayNameOptions
 	 * @see EOS_UserInfo_OnQueryUserInfoByDisplayNameCallback
 	 */
@@ -96,19 +92,23 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * If the call returns an EOS_Success result, the out parameter, OutUserInfo, must be passed to EOS_UserInfo_Release to release the memory associated with it.
 	 *
 	 * @param options structure containing the input parameters
-	 * @param outUserInfo out parameter used to receive the EOS_UserInfo structure.
+	 * @return out parameter used to receive the EOS_UserInfo structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutUserInfo<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the user info is not locally cached. The information must have been previously cached by a call to EOS_UserInfo_QueryUserInfo
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
+	 * @throws EOSNotFoundException if the user info is not locally cached. The information must have been previously cached by a call to EOS_UserInfo_QueryUserInfo
 	 *
 	 * @see EOS_UserInfo
 	 * @see EOS_UserInfo_CopyUserInfoOptions
 	 * @see EOS_UserInfo#release() 
 	 */
-	public EOS_EResult copyUserInfo(EOS_UserInfo_CopyUserInfoOptions options, EOS_UserInfo[] outUserInfo) {
-		return EOSLibrary.instance.EOS_UserInfo_CopyUserInfo(this, options, outUserInfo);
+	public EOS_UserInfo copyUserInfo(EOS_UserInfo_CopyUserInfoOptions options) throws EOSException {
+		final EOS_UserInfo.ByReference outUserInfo = new EOS_UserInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyUserInfo(this, options, outUserInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outUserInfo;
 	}
 
 	/**

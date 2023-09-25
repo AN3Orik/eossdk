@@ -2,6 +2,10 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.integratedplatform.enums.EOS_EIntegratedPlatformManagementFlags;
@@ -11,9 +15,6 @@ import host.anzo.eossdk.eos.sdk.sessions.EOS_SessionModification;
 import host.anzo.eossdk.eos.sdk.sessions.EOS_SessionSearch;
 import host.anzo.eossdk.eos.sdk.sessions.callbacks.*;
 import host.anzo.eossdk.eos.sdk.sessions.options.*;
-
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 /**
  * The Session Interface is used to manage sessions that can be advertised with the backend service
@@ -26,6 +27,9 @@ import java.nio.IntBuffer;
  * @since 9/5/2023
  */
 public class EOS_Sessions_Interface extends PointerType {
+	/** Max length of an invite ID */
+	public static final int EOS_SESSIONS_INVITEID_MAX_LENGTH = 64;
+
 	public EOS_Sessions_Interface(Pointer address) {
 		super(address);
 	}
@@ -192,16 +196,22 @@ public class EOS_Sessions_Interface extends PointerType {
 	 * Retrieve an invite ID from a list of active invites for a given user
 	 *
 	 * @param options Structure containing the input parameters
+	 * @return invite ID
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the input is valid and an invite ID was returned<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the invite doesn't exist
+	 * @throws EOSInvalidParametersException if any of the options are incorrect
+	 * @throws EOSNotFoundException if the invite doesn't exist
 	 *
 	 * @see #getInviteCount(EOS_Sessions_GetInviteCountOptions)
 	 * @see #copySessionHandleByInviteId(EOS_Sessions_CopySessionHandleByInviteIdOptions, EOS_SessionDetails)
 	 */
-	public EOS_EResult getInviteIdByIndex(EOS_Sessions_GetInviteIdByIndexOptions options, ByteBuffer outBuffer, IntBuffer inOutBufferLength) {
-		return EOSLibrary.instance.EOS_Sessions_GetInviteIdByIndex(this, options, outBuffer, inOutBufferLength);
+	public String getInviteIdByIndex(EOS_Sessions_GetInviteIdByIndexOptions options) throws EOSException {
+		final IntByReference inOutBufferLength = new IntByReference(EOS_SESSIONS_INVITEID_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_SESSIONS_INVITEID_MAX_LENGTH];
+		final EOS_EResult result = EOSLibrary.instance.EOS_Sessions_GetInviteIdByIndex(this, options, outBuffer, inOutBufferLength);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return new String(outBuffer, 0, inOutBufferLength.getValue());
 	}
 
 	/**
@@ -322,7 +332,9 @@ public class EOS_Sessions_Interface extends PointerType {
 	 *
 	 * @return handle representing the registered callback
 	 */
-	public EOS_NotificationId addNotifyJoinSessionAccepted(EOS_Sessions_AddNotifyJoinSessionAcceptedOptions options, Pointer clientData, EOS_Sessions_OnJoinSessionAcceptedCallback notificationFn) {
+	public EOS_NotificationId addNotifyJoinSessionAccepted(EOS_Sessions_AddNotifyJoinSessionAcceptedOptions options,
+	                                                       Pointer clientData,
+	                                                       EOS_Sessions_OnJoinSessionAcceptedCallback notificationFn) {
 		return EOSLibrary.instance.EOS_Sessions_AddNotifyJoinSessionAccepted(this, options, clientData, notificationFn);
 	}
 
@@ -432,7 +444,9 @@ public class EOS_Sessions_Interface extends PointerType {
 	 *
 	 * @return handle representing the registered callback
 	 */
-	public EOS_NotificationId addNotifyLeaveSessionRequested(EOS_Sessions_AddNotifyLeaveSessionRequestedOptions options, Pointer clientData, EOS_Sessions_OnLeaveSessionRequestedCallback notificationFn) {
+	public EOS_NotificationId addNotifyLeaveSessionRequested(EOS_Sessions_AddNotifyLeaveSessionRequestedOptions options,
+	                                                         Pointer clientData,
+	                                                         EOS_Sessions_OnLeaveSessionRequestedCallback notificationFn) {
 		return EOSLibrary.instance.EOS_Sessions_AddNotifyLeaveSessionRequested(this, options, clientData, notificationFn);
 	}
 

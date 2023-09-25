@@ -4,7 +4,6 @@ import com.sun.jna.FromNativeContext;
 import com.sun.jna.NativeMapped;
 import host.anzo.eossdk.eos.sdk.EOS_Presence_Interface;
 import host.anzo.eossdk.eos.sdk.presence.EOS_PresenceModification;
-import host.anzo.eossdk.eos.sdk.presence.EOS_Presence_Info;
 import host.anzo.eossdk.eos.sdk.presence.options.EOS_PresenceModification_SetStatusOptions;
 import host.anzo.eossdk.eos.sdk.presence.options.EOS_Presence_CopyPresenceOptions;
 import lombok.Getter;
@@ -15,7 +14,7 @@ import java.util.Map;
 /**
  * Presence Status states of a user
  *
- * @see EOS_Presence_Interface#copyPresence(EOS_Presence_CopyPresenceOptions, EOS_Presence_Info[])
+ * @see EOS_Presence_Interface#copyPresence(EOS_Presence_CopyPresenceOptions)
  * @see EOS_PresenceModification#setStatus(EOS_PresenceModification_SetStatusOptions)
  *
  * @author Anton Lasevich

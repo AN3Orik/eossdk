@@ -2,6 +2,11 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSLimitExceededException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
@@ -12,9 +17,6 @@ import host.anzo.eossdk.eos.sdk.presence.callbacks.EOS_Presence_OnPresenceChange
 import host.anzo.eossdk.eos.sdk.presence.callbacks.EOS_Presence_OnQueryPresenceCompleteCallback;
 import host.anzo.eossdk.eos.sdk.presence.callbacks.EOS_Presence_SetPresenceCompleteCallback;
 import host.anzo.eossdk.eos.sdk.presence.options.*;
-
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 /**
  * The Presence methods enable you to query and read other player's presence information, or modify your own.
@@ -62,13 +64,17 @@ public class EOS_Presence_Interface extends PointerType {
 	 * Get a user's cached presence object. If successful, this data must be released by calling EOS_Presence_Info_Release
 	 *
 	 * @param options Object containing properties related to who is requesting presence and for what user
-	 * @param outPresence A pointer to a pointer of Presence Info. If the returned result is success, this will be set to data that must be later released, otherwise this will be set to NULL
-	 * @return {@link EOS_EResult#EOS_Success} if we have cached data, or an error result if the request was invalid or we do not have cached data.
+	 * @return A pointer to a pointer of Presence Info. If the returned result is success, this will be set to data that must be later released, otherwise this will be set to NULL
 	 *
 	 * @see EOS_Presence_Info#release()
 	 */
-	public EOS_EResult copyPresence(EOS_Presence_CopyPresenceOptions options, EOS_Presence_Info[] outPresence) {
-		return EOSLibrary.instance.EOS_Presence_CopyPresence(this, options, outPresence);
+	public EOS_Presence_Info copyPresence(EOS_Presence_CopyPresenceOptions options) throws EOSException {
+		final EOS_Presence_Info.ByReference outPresence = new EOS_Presence_Info.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Presence_CopyPresence(this, options, outPresence);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outPresence;
 	}
 
 	/**
@@ -162,20 +168,21 @@ public class EOS_Presence_Interface extends PointerType {
 	 * This value will be valid only after a QueryPresence call has successfully completed.
 	 *
 	 * @param options Object containing an associated user
-	 * @param outBuffer The buffer into which the character data should be written.  The buffer must be long enough to hold a string of EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH.
-	 * @param inOutBufferLength Used as an input to define the OutBuffer length.
-	 *                          The input buffer should include enough space to be null-terminated.
-	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
+	 * @return join info custom game-data string for a specific user
 	 *
-	 * @return An EOS_EResult that indicates whether the location string was copied into the OutBuffer.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if there is user or the location string was not found.<br>
-	 *         {@link EOS_EResult#EOS_LimitExceeded} - The OutBuffer is not large enough to receive the location string. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if there is user or the location string was not found
+	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the location string. InOutBufferLength contains the required minimum length to perform the operation successfully
 	 *
 	 * @see EOS_PresenceModification#EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH
 	 */
-	public EOS_EResult getJoinInfo(EOS_Presence_GetJoinInfoOptions options, ByteBuffer outBuffer, IntBuffer inOutBufferLength) {
-		return EOSLibrary.instance.EOS_Presence_GetJoinInfo(this, options, outBuffer, inOutBufferLength);
+	public String getJoinInfo(EOS_Presence_GetJoinInfoOptions options) throws EOSException {
+		final IntByReference inOutBufferLength = new IntByReference(EOS_PresenceModification.EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_PresenceModification.EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH];
+		final EOS_EResult result = EOSLibrary.instance.EOS_Presence_GetJoinInfo(this, options, outBuffer, inOutBufferLength);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return new String(outBuffer, 0, inOutBufferLength.getValue());
 	}
 }

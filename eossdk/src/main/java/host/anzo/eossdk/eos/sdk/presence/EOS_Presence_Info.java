@@ -13,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
 /**
  * All the known presence information for a specific user. This object must be released by calling EOS_Presence_Info_Release.
  *
- * @see EOS_Presence_Interface#copyPresence(EOS_Presence_CopyPresenceOptions, EOS_Presence_Info[])
+ * @see EOS_Presence_Interface#copyPresence(EOS_Presence_CopyPresenceOptions)
  * @see EOS_Presence_Info#release()
  *
  * @author Anton Lasevich
