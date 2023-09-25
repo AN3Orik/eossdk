@@ -18,6 +18,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "UserId", "Score"})
 public class EOS_Leaderboards_LeaderboardUserScore extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Leaderboards_LeaderboardUserScore struct. */
 	public static final int EOS_LEADERBOARDS_LEADERBOARDUSERSCORE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_LEADERBOARDUSERSCORE_API_LATEST. */
@@ -41,8 +42,8 @@ public class EOS_Leaderboards_LeaderboardUserScore extends Structure implements 
 	 * EOS_Leaderboards_CopyLeaderboardUserScoreByIndex or EOS_Leaderboards_CopyLeaderboardUserScoreByUserId.
 	 *
 	 * @see EOS_Leaderboards_LeaderboardUserScore
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardUserScoreByIndex(EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions, EOS_Leaderboards_LeaderboardUserScore[])
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardUserScoreByUserId(EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions, EOS_Leaderboards_LeaderboardUserScore[])
+	 * @see EOS_Leaderboards_Interface#copyLeaderboardUserScoreByIndex(EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions)
+	 * @see EOS_Leaderboards_Interface#copyLeaderboardUserScoreByUserId(EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Leaderboards_LeaderboardUserScore_Release(this);

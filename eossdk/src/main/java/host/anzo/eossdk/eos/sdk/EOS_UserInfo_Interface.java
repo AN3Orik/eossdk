@@ -2,6 +2,11 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSIncompatibleVersionException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
+import host.anzo.eossdk.eos.exceptions.EOSUserInfoBestDisplayNameIndeterminateException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_OnlinePlatformType;
 import host.anzo.eossdk.eos.sdk.connect.callbacks.EOS_Connect_OnQueryExternalAccountMappingsCallback;
@@ -111,7 +116,7 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 *
 	 * @param options The options associated with retrieving the external user info count
 	 *
-	 * @see #copyExternalUserInfoByIndex(EOS_UserInfo_CopyExternalUserInfoByIndexOptions, EOS_UserInfo_ExternalUserInfo[])
+	 * @see #copyExternalUserInfoByIndex(EOS_UserInfo_CopyExternalUserInfoByIndexOptions)
 	 *
 	 * @return The number of external user infos, or 0 if there is an error
 	 */
@@ -123,48 +128,60 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * Fetches an external user info from a given index.
 	 *
 	 * @param options Structure containing the index being accessed
-	 * @param outExternalUserInfo The external user info. If it exists and is valid, use EOS_UserInfo_ExternalUserInfo_Release when finished
+	 * @return The external user info. If it exists and is valid, use EOS_UserInfo_ExternalUserInfo_Release when finished
 	 *
 	 * @see EOS_UserInfo_ExternalUserInfo#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outExternalUserInfo<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the external user info is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the external user info is not found
 	 */
-	public EOS_EResult copyExternalUserInfoByIndex(EOS_UserInfo_CopyExternalUserInfoByIndexOptions options, EOS_UserInfo_ExternalUserInfo[] outExternalUserInfo) {
-		return EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByIndex(this, options, outExternalUserInfo);
+	public EOS_UserInfo_ExternalUserInfo copyExternalUserInfoByIndex(EOS_UserInfo_CopyExternalUserInfoByIndexOptions options) throws EOSException {
+		final EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo = new EOS_UserInfo_ExternalUserInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByIndex(this, options, outExternalUserInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outExternalUserInfo;
 	}
 
 	/**
 	 * Fetches an external user info for a given external account type.
 	 *
 	 * @param options Structure containing the account type being accessed
-	 * @param outExternalUserInfo The external user info. If it exists and is valid, use EOS_UserInfo_ExternalUserInfo_Release when finished
+	 * @return The external user info. If it exists and is valid, use EOS_UserInfo_ExternalUserInfo_Release when finished
 	 *
 	 * @see EOS_UserInfo_ExternalUserInfo#release() 
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outExternalUserInfo<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the external user info is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the external user info is not found
 	 */
-	public EOS_EResult copyExternalUserInfoByAccountType(EOS_UserInfo_CopyExternalUserInfoByAccountTypeOptions options, EOS_UserInfo_ExternalUserInfo[] outExternalUserInfo)  {
-		return EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByAccountType(this, options, outExternalUserInfo);
+	public EOS_UserInfo_ExternalUserInfo copyExternalUserInfoByAccountType(EOS_UserInfo_CopyExternalUserInfoByAccountTypeOptions options) throws EOSException {
+		final EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo = new EOS_UserInfo_ExternalUserInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByAccountType(this, options, outExternalUserInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outExternalUserInfo;
 	}
 
 	/**
 	 * Fetches an external user info for a given external account ID.
 	 *
 	 * @param options Structure containing the account ID being accessed
-	 * @param outExternalUserInfo The external user info. If it exists and is valid, use EOS_UserInfo_ExternalUserInfo_Release when finished
+	 * @return The external user info. If it exists and is valid, use EOS_UserInfo_ExternalUserInfo_Release when finished
 	 *
 	 * @see EOS_UserInfo_ExternalUserInfo#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outExternalUserInfo<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound}  if the external user info is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the external user info is not found
 	 */
-	public EOS_EResult copyExternalUserInfoByAccountId(EOS_UserInfo_CopyExternalUserInfoByAccountIdOptions options, EOS_UserInfo_ExternalUserInfo[] outExternalUserInfo) {
-		return EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByAccountId(this, options, outExternalUserInfo);
+	public EOS_UserInfo_ExternalUserInfo copyExternalUserInfoByAccountId(EOS_UserInfo_CopyExternalUserInfoByAccountIdOptions options) throws EOSException {
+		final EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo = new EOS_UserInfo_ExternalUserInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByAccountId(this, options, outExternalUserInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outExternalUserInfo;
 	}
 
 	/**
@@ -178,25 +195,28 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * <li>3. Target is in same rtc room, then use rtc room platform to determine display name (this requires the target's product user id to be cached)
 	 * </ul>
 	 * @param options structure containing the input parameters
-	 * @param outBestDisplayName out parameter used to receive the EOS_UserInfo_BestDisplayName structure.
+	 * @return out parameter used to receive the EOS_UserInfo_BestDisplayName structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outBestDisplayName<br>
-	 *         {@link EOS_EResult#EOS_UserInfo_BestDisplayNameIndeterminate} unable to determine a cert friendly display name for user, one potential solution would be to call EOS_UserInfo_CopyBestDisplayNameWithPlatform with EOS_OPT_Epic for the platform, see doc for more details<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the user info or product user id is not locally cached
+	 * @throws EOSUserInfoBestDisplayNameIndeterminateException unable to determine a cert friendly display name for user, one potential solution would be to call EOS_UserInfo_CopyBestDisplayNameWithPlatform with EOS_OPT_Epic for the platform, see doc for more details
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the user info or product user id is not locally cached
 	 *
-	 * @see EOS_UserInfo_Interface#queryUserInfo(EOS_UserInfo_QueryUserInfoOptions, Pointer, EOS_UserInfo_OnQueryUserInfoCallback) 
-	 * @see EOS_UserInfo_Interface#queryUserInfoByDisplayName(EOS_UserInfo_QueryUserInfoByDisplayNameOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByDisplayNameCallback)
-	 * @see EOS_UserInfo_Interface#queryUserInfoByExternalAccount(EOS_UserInfo_QueryUserInfoByExternalAccountOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByExternalAccountCallback)
+	 * @see #queryUserInfo(EOS_UserInfo_QueryUserInfoOptions, Pointer, EOS_UserInfo_OnQueryUserInfoCallback)
+	 * @see #queryUserInfoByDisplayName(EOS_UserInfo_QueryUserInfoByDisplayNameOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByDisplayNameCallback)
+	 * @see #queryUserInfoByExternalAccount(EOS_UserInfo_QueryUserInfoByExternalAccountOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByExternalAccountCallback)
 	 * @see EOS_Connect_Interface#queryExternalAccountMappings(EOS_Connect_QueryExternalAccountMappingsOptions, Pointer, EOS_Connect_OnQueryExternalAccountMappingsCallback)
-	 * @see EOS_UserInfo_Interface#copyBestDisplayNameWithPlatform(EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions, EOS_UserInfo_BestDisplayName[])
+	 * @see #copyBestDisplayNameWithPlatform(EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions)
 	 * @see EOS_UserInfo_CopyBestDisplayNameOptions
 	 * @see EOS_UserInfo_BestDisplayName
 	 * @see EOS_UserInfo_BestDisplayName#release() 
 	 */
-	public EOS_EResult copyBestDisplayName(EOS_UserInfo_CopyBestDisplayNameOptions options, EOS_UserInfo_BestDisplayName[] outBestDisplayName) {
-		return EOSLibrary.instance.EOS_UserInfo_CopyBestDisplayName(this, options, outBestDisplayName);
+	public EOS_UserInfo_BestDisplayName copyBestDisplayName(EOS_UserInfo_CopyBestDisplayNameOptions options) throws EOSException {
+		final EOS_UserInfo_BestDisplayName.ByReference outBestDisplayName = new EOS_UserInfo_BestDisplayName.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyBestDisplayName(this, options, outBestDisplayName);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outBestDisplayName;
 	}
 
 	/**
@@ -210,13 +230,12 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * <li>3. If platform is epic and user has no epic display name, then use linked external account display name
 	 * </ul>
 	 * @param options structure containing the input parameters
-	 * @param outBestDisplayName out parameter used to receive the EOS_UserInfo_BestDisplayName structure.
+	 * @return out parameter used to receive the EOS_UserInfo_BestDisplayName structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outBestDisplayName<br>
-	 *         {@link EOS_EResult#EOS_UserInfo_BestDisplayNameIndeterminate} unable to determine a cert friendly display name for user<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the user info is not locally cached
+	 * @throws EOSUserInfoBestDisplayNameIndeterminateException unable to determine a cert friendly display name for user
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
+	 * @throws EOSNotFoundException if the user info is not locally cached
 	 *
 	 * @see EOS_UserInfo_Interface#queryUserInfo(EOS_UserInfo_QueryUserInfoOptions, Pointer, EOS_UserInfo_OnQueryUserInfoCallback)
 	 * @see EOS_UserInfo_Interface#queryUserInfoByDisplayName(EOS_UserInfo_QueryUserInfoByDisplayNameOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByDisplayNameCallback)
@@ -225,8 +244,13 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @see EOS_UserInfo_BestDisplayName
 	 * @see EOS_UserInfo_BestDisplayName#release()
 	 */
-	public EOS_EResult copyBestDisplayNameWithPlatform(EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions options, EOS_UserInfo_BestDisplayName[] outBestDisplayName) {
-		return EOSLibrary.instance.EOS_UserInfo_CopyBestDisplayNameWithPlatform(this, options, outBestDisplayName);
+	public EOS_UserInfo_BestDisplayName copyBestDisplayNameWithPlatform(EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions options) throws EOSException {
+		final EOS_UserInfo_BestDisplayName.ByReference outBestDisplayName = new EOS_UserInfo_BestDisplayName.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyBestDisplayNameWithPlatform(this, options, outBestDisplayName);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outBestDisplayName;
 	}
 
 	/**

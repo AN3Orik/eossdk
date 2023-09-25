@@ -27,9 +27,9 @@ public class EOS_Leaderboards_QueryLeaderboardUserScoresOptions extends Structur
 	public EOS_Leaderboards_UserScoresQueryStatInfo.ByReference StatInfo;
 	/** The number of stats to query */
 	public int StatInfoCount;
-	/** An optional POSIX timestamp, or EOS_LEADERBOARDS_TIME_UNDEFINED; results will only include scores made after this time */
+	/** An optional POSIX timestamp, or {@link EOS_Leaderboards_QueryLeaderboardDefinitionsOptions#EOS_LEADERBOARDS_TIME_UNDEFINED}; results will only include scores made after this time */
 	public long StartTime;
-	/** An optional POSIX timestamp, or EOS_LEADERBOARDS_TIME_UNDEFINED; results will only include scores made before this time */
+	/** An optional POSIX timestamp, or {@link EOS_Leaderboards_QueryLeaderboardDefinitionsOptions#EOS_LEADERBOARDS_TIME_UNDEFINED}; results will only include scores made before this time */
 	public long EndTime;
 	/**
 	 * Product User ID for user who is querying user scores.

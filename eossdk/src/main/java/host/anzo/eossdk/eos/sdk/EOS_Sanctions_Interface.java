@@ -2,6 +2,9 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.sanctions.EOS_Sanctions_PlayerSanction;
 import host.anzo.eossdk.eos.sdk.sanctions.callbacks.EOS_Sanctions_OnQueryActivePlayerSanctionsCallback;
@@ -30,7 +33,7 @@ public class EOS_Sanctions_Interface extends PointerType {
 	 * @param completionDelegate A callback that is fired when the async operation completes, either successfully or in error
 	 *
 	 * @see #getPlayerSanctionCount(EOS_Sanctions_GetPlayerSanctionCountOptions)
-	 * @see #copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions, EOS_Sanctions_PlayerSanction[])
+	 * @see #copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions)
 	 */
 	public void queryActivePlayerSanctions(EOS_Sanctions_QueryActivePlayerSanctionsOptions options,
 	                                                     Pointer clientData,
@@ -45,7 +48,7 @@ public class EOS_Sanctions_Interface extends PointerType {
 	 * @param options Structure containing the input parameters
 	 *
 	 * @see #queryActivePlayerSanctions(EOS_Sanctions_QueryActivePlayerSanctionsOptions, Pointer, EOS_Sanctions_OnQueryActivePlayerSanctionsCallback)
-	 * @see #copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions, EOS_Sanctions_PlayerSanction[])
+	 * @see #copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions)
 	 *
 	 * @return Number of available sanctions for this player.
 	 */
@@ -59,16 +62,20 @@ public class EOS_Sanctions_Interface extends PointerType {
 	 * On success, EOS_Sanctions_PlayerSanction_Release must be called on OutSanction to free memory.
 	 *
 	 * @param options Structure containing the input parameters
-	 * @param outSanction The player sanction data for the given index, if it exists and is valid
+	 * @return The player sanction data for the given index, if it exists and is valid
 	 *
 	 * @see #queryActivePlayerSanctions(EOS_Sanctions_QueryActivePlayerSanctionsOptions, Pointer, EOS_Sanctions_OnQueryActivePlayerSanctionsCallback)
 	 * @see EOS_Sanctions_PlayerSanction#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in outSanction<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the player achievement is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the player achievement is not found
 	 */
-	public EOS_EResult copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions options, EOS_Sanctions_PlayerSanction[] outSanction) {
-		return EOSLibrary.instance.EOS_Sanctions_CopyPlayerSanctionByIndex(this, options, outSanction);
+	public EOS_Sanctions_PlayerSanction copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions options) throws EOSException {
+		final EOS_Sanctions_PlayerSanction.ByReference outSanction = new EOS_Sanctions_PlayerSanction.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Sanctions_CopyPlayerSanctionByIndex(this, options, outSanction);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outSanction;
 	}
 }

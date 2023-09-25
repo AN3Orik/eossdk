@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.titlestorage.EOS_TitleStorageFileTransferRequest;
 import host.anzo.eossdk.eos.sdk.titlestorage.EOS_TitleStorage_FileMetadata;
@@ -35,8 +36,8 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 * @param completionCallback This function is called when the query operation completes
 	 *
 	 * @see #getFileMetadataCount(EOS_TitleStorage_GetFileMetadataCountOptions)
-	 * @see #copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions, EOS_TitleStorage_FileMetadata[])
-	 * @see #copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions, EOS_TitleStorage_FileMetadata[])
+	 * @see #copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions)
+	 * @see #copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions)
 	 */
 	public void queryFile(EOS_TitleStorage_QueryFileOptions options, Pointer clientData, EOS_TitleStorage_OnQueryFileCompleteCallback completionCallback) {
 		EOSLibrary.instance.EOS_TitleStorage_QueryFile(this, options, clientData, completionCallback);
@@ -51,8 +52,8 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 * @param completionCallback This function is called when the query operation completes
 	 *
 	 * @see #getFileMetadataCount(EOS_TitleStorage_GetFileMetadataCountOptions)
-	 * @see #copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions, EOS_TitleStorage_FileMetadata[])
-	 * @see #copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions, EOS_TitleStorage_FileMetadata[])
+	 * @see #copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions)
+	 * @see #copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions)
 	 */
 	public void queryFileList(EOS_TitleStorage_QueryFileListOptions options,
 	                                           Pointer clientData,
@@ -65,11 +66,15 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 * completed writing. The returned pointer must be released by the user when no longer needed.
 	 *
 	 * @param options Object containing properties related to which user is requesting metadata, and for which filename
-	 * @param outMetadata A copy of the FileMetadata structure will be set if successful.  This data must be released by calling EOS_TitleStorage_FileMetadata_Release.
-	 * @return {@link EOS_EResult#EOS_Success} if the metadata is currently cached, otherwise an error result explaining what went wrong
+	 * @return A copy of the FileMetadata structure will be set if successful. This data must be released by calling EOS_TitleStorage_FileMetadata_Release.
 	 */
-	public EOS_EResult copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions options, EOS_TitleStorage_FileMetadata[] outMetadata) {
-		return EOSLibrary.instance.EOS_TitleStorage_CopyFileMetadataByFilename(this, options, outMetadata);
+	public EOS_TitleStorage_FileMetadata copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions options) throws EOSException {
+		final EOS_TitleStorage_FileMetadata.ByReference outMetadata = new EOS_TitleStorage_FileMetadata.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_TitleStorage_CopyFileMetadataByFilename(this, options, outMetadata);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outMetadata;
 	}
 
 	/**
@@ -78,7 +83,7 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 * @param options Object containing properties related to which user is requesting the metadata count
 	 * @return If successful, the count of metadata currently cached. Returns 0 on failure.
 	 *
-	 * @see #copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions, EOS_TitleStorage_FileMetadata[])
+	 * @see #copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions)
 	 */
 	public int getFileMetadataCount(EOS_TitleStorage_GetFileMetadataCountOptions options) {
 		return EOSLibrary.instance.EOS_TitleStorage_GetFileMetadataCount(this, options);
@@ -88,14 +93,18 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 * Get the cached copy of a file's metadata by index. The metadata will be for the last retrieved version. The returned pointer must be released by the user when no longer needed.
 	 *
 	 * @param options Object containing properties related to which user is requesting metadata, and at what index
-	 * @param outMetadata A copy of the FileMetadata structure will be set if successful.  This data must be released by calling EOS_TitleStorage_FileMetadata_Release.
-	 * @return {@link EOS_EResult#EOS_Success} if the requested metadata is currently cached, otherwise an error result explaining what went wrong.
+	 * @return A copy of the FileMetadata structure will be set if successful.  This data must be released by calling EOS_TitleStorage_FileMetadata_Release.
 	 *
 	 * @see #getFileMetadataCount(EOS_TitleStorage_GetFileMetadataCountOptions)
 	 * @see EOS_TitleStorage_FileMetadata#release()
 	 */
-	public EOS_EResult copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions options, EOS_TitleStorage_FileMetadata[] outMetadata) {
-		return EOSLibrary.instance.EOS_TitleStorage_CopyFileMetadataAtIndex(this, options, outMetadata);
+	public EOS_TitleStorage_FileMetadata copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions options) throws EOSException {
+		final EOS_TitleStorage_FileMetadata.ByReference outMetadata = new EOS_TitleStorage_FileMetadata.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_TitleStorage_CopyFileMetadataAtIndex(this, options, outMetadata);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outMetadata;
 	}
 
 	/**

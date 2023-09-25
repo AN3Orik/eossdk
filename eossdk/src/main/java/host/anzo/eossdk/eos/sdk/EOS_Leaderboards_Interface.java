@@ -2,6 +2,9 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.leaderboards.EOS_Leaderboards_Definition;
 import host.anzo.eossdk.eos.sdk.leaderboards.EOS_Leaderboards_LeaderboardRecord;
@@ -46,8 +49,8 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 *
 	 * @param options The Options associated with retrieving the leaderboard count.
 	 *
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardDefinitionByIndex(EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions, EOS_Leaderboards_Definition[])
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardDefinitionByLeaderboardId(EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions, EOS_Leaderboards_Definition[])
+	 * @see #copyLeaderboardDefinitionByIndex(EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions)
+	 * @see #copyLeaderboardDefinitionByLeaderboardId(EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions)
 	 *
 	 * @return Number of leaderboards or 0 if there is an error
 	 */
@@ -59,34 +62,39 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 * Fetches a leaderboard definition from the cache using an index.
 	 *
 	 * @param options Structure containing the index being accessed.
-	 * @param outLeaderboardDefinition The leaderboard data for the given index, if it exists and is valid, use EOS_Leaderboards_Definition_Release when finished.
-	 *
+	 * @return The leaderboard data for the given index, if it exists and is valid, use EOS_Leaderboards_Definition_Release when finished.
 	 * @see EOS_Leaderboards_Definition#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutLeaderboardDefinition<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the leaderboard is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the leaderboard is not found
 	 */
-	public EOS_EResult copyLeaderboardDefinitionByIndex(EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions options,
-	                                                                     EOS_Leaderboards_Definition[] outLeaderboardDefinition) {
-		return EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardDefinitionByIndex(this, options, outLeaderboardDefinition);
+	public EOS_Leaderboards_Definition copyLeaderboardDefinitionByIndex(EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions options) throws EOSException {
+		final EOS_Leaderboards_Definition.ByReference outLeaderboardDefinition = new EOS_Leaderboards_Definition.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardDefinitionByIndex(this, options, outLeaderboardDefinition);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outLeaderboardDefinition;
 	}
 
 	/**
 	 * Fetches a leaderboard definition from the cache using a leaderboard ID.
 	 *
 	 * @param options Structure containing the leaderboard ID being accessed.
-	 * @param outLeaderboardDefinition The leaderboard definition for the given leaderboard ID, if it exists and is valid, use EOS_Leaderboards_Definition_Release when finished.
+	 * @return The leaderboard definition for the given leaderboard ID, if it exists and is valid, use EOS_Leaderboards_Definition_Release when finished.
 	 *
 	 * @see EOS_Leaderboards_Definition#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutLeaderboardDefinition<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the leaderboard data is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the leaderboard data is not found
 	 */
-	public EOS_EResult copyLeaderboardDefinitionByLeaderboardId(EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions options,
-	                                                                             EOS_Leaderboards_Definition[] outLeaderboardDefinition) {
-		return EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId(this, options, outLeaderboardDefinition);
+	public EOS_Leaderboards_Definition copyLeaderboardDefinitionByLeaderboardId(EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions options) throws EOSException {
+		final EOS_Leaderboards_Definition.ByReference outLeaderboardDefinition = new EOS_Leaderboards_Definition.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId(this, options, outLeaderboardDefinition);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outLeaderboardDefinition;
 	}
 
 	/**
@@ -107,8 +115,8 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 *
 	 * @param options The Options associated with retrieving the leaderboard record count.
 	 *
-	 * @see #copyLeaderboardRecordByIndex(EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions, EOS_Leaderboards_LeaderboardRecord[])
-	 * @see #copyLeaderboardRecordByUserId(EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions, EOS_Leaderboards_LeaderboardRecord[])
+	 * @see #copyLeaderboardRecordByIndex(EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions)
+	 * @see #copyLeaderboardRecordByUserId(EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions)
 	 *
 	 * @return Number of leaderboard records or 0 if there is an error
 	 */
@@ -120,34 +128,40 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 * Fetches a leaderboard record from a given index.
 	 *
 	 * @param options Structure containing the index being accessed.
-	 * @param outLeaderboardRecord The leaderboard record for the given index, if it exists and is valid, use EOS_Leaderboards_LeaderboardRecord_Release when finished.
+	 * @return The leaderboard record for the given index, if it exists and is valid, use EOS_Leaderboards_LeaderboardRecord_Release when finished.
 	 *
 	 * @see EOS_Leaderboards_LeaderboardRecord#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the leaderboard record is available and passed out in outLeaderboardRecord<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the leaderboard is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the leaderboard is not found
 	 */
-	public EOS_EResult copyLeaderboardRecordByIndex(EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions options,
-	                                                                 EOS_Leaderboards_LeaderboardRecord[] outLeaderboardRecord) {
-		return EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardRecordByIndex(this, options, outLeaderboardRecord);
+	public EOS_Leaderboards_LeaderboardRecord copyLeaderboardRecordByIndex(EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions options) throws EOSException {
+		final EOS_Leaderboards_LeaderboardRecord.ByReference outLeaderboardRecord = new EOS_Leaderboards_LeaderboardRecord.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardRecordByIndex(this, options, outLeaderboardRecord);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outLeaderboardRecord;
 	}
 
 	/**
 	 * Fetches a leaderboard record from a given user ID.
 	 *
 	 * @param options Structure containing the user ID being accessed.
-	 * @param outLeaderboardRecord The leaderboard record for the given user ID, if it exists and is valid, use EOS_Leaderboards_LeaderboardRecord_Release when finished.
+	 * @return The leaderboard record for the given user ID, if it exists and is valid, use EOS_Leaderboards_LeaderboardRecord_Release when finished.
 	 *
 	 * @see EOS_Leaderboards_LeaderboardRecord#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the leaderboard record is available and passed out in outLeaderboardRecord<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the leaderboard data is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the leaderboard data is not found
 	 */
-	public EOS_EResult copyLeaderboardRecordByUserId(EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions options,
-	                                                                  EOS_Leaderboards_LeaderboardRecord[] outLeaderboardRecord) {
-		return EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardRecordByUserId(this, options, outLeaderboardRecord);
+	public EOS_Leaderboards_LeaderboardRecord copyLeaderboardRecordByUserId(EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions options) throws EOSException {
+		final EOS_Leaderboards_LeaderboardRecord.ByReference outLeaderboardRecord = new EOS_Leaderboards_LeaderboardRecord.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardRecordByUserId(this, options, outLeaderboardRecord);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outLeaderboardRecord;
 	}
 
 	/**
@@ -168,8 +182,8 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 *
 	 * @param options The Options associated with retrieving the leaderboard user scores count.
 	 *
-	 * @see #copyLeaderboardUserScoreByIndex(EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions, EOS_Leaderboards_LeaderboardUserScore[])
-	 * @see #copyLeaderboardUserScoreByUserId(EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions, EOS_Leaderboards_LeaderboardUserScore[])
+	 * @see #copyLeaderboardUserScoreByIndex(EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions)
+	 * @see #copyLeaderboardUserScoreByUserId(EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions)
 	 *
 	 * @return Number of leaderboard records or 0 if there is an error
 	 *
@@ -182,33 +196,39 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 * Fetches leaderboard user score from a given index.
 	 *
 	 * @param options Structure containing the index being accessed.
-	 * @param outLeaderboardUserScore The leaderboard user score for the given index, if it exists and is valid, use EOS_Leaderboards_LeaderboardUserScore_Release when finished.
+	 * @return The leaderboard user score for the given index, if it exists and is valid, use EOS_Leaderboards_LeaderboardUserScore_Release when finished.
 	 *
 	 * @see EOS_Leaderboards_LeaderboardUserScore#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the leaderboard scores are available and passed out in outLeaderboardUserScore<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the leaderboard user scores are not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the leaderboard user scores are not found
 	 */
-	public EOS_EResult copyLeaderboardUserScoreByIndex(EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions options,
-	                                                                    EOS_Leaderboards_LeaderboardUserScore[] outLeaderboardUserScore) {
-		return EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardUserScoreByIndex(this, options, outLeaderboardUserScore);
+	public EOS_Leaderboards_LeaderboardUserScore copyLeaderboardUserScoreByIndex(EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions options) throws EOSException {
+		final EOS_Leaderboards_LeaderboardUserScore.ByReference outLeaderboardUserScore = new EOS_Leaderboards_LeaderboardUserScore.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardUserScoreByIndex(this, options, outLeaderboardUserScore);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outLeaderboardUserScore;
 	}
 
 	/**
 	 * Fetches leaderboard user score from a given user ID.
 	 *
 	 * @param options Structure containing the user ID being accessed.
-	 * @param outLeaderboardUserScore The leaderboard user score for the given user ID, if it exists and is valid, use EOS_Leaderboards_LeaderboardUserScore_Release when finished.
+	 * @return The leaderboard user score for the given user ID, if it exists and is valid, use EOS_Leaderboards_LeaderboardUserScore_Release when finished.
 	 *
 	 * @see EOS_Leaderboards_LeaderboardUserScore#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the leaderboard scores are available and passed out in outLeaderboardUserScore<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the leaderboard user scores are not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the leaderboard user scores are not found
 	 */
-	public EOS_EResult copyLeaderboardUserScoreByUserId(EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions options,
-	                                                                     EOS_Leaderboards_LeaderboardUserScore[] outLeaderboardUserScore) {
-		return EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardUserScoreByUserId(this, options, outLeaderboardUserScore);
+	public EOS_Leaderboards_LeaderboardUserScore copyLeaderboardUserScoreByUserId(EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions options) throws EOSException {
+		final EOS_Leaderboards_LeaderboardUserScore.ByReference outLeaderboardUserScore = new EOS_Leaderboards_LeaderboardUserScore.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Leaderboards_CopyLeaderboardUserScoreByUserId(this, options, outLeaderboardUserScore);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outLeaderboardUserScore;
 	}
 }

@@ -46,8 +46,8 @@ public class EOS_UserInfo_BestDisplayName extends Structure implements AutoClose
 	/**
 	 * Release the memory associated with EOS_UserInfo_BestDisplayName. This must be called on data retrieved from
 	 * EOS_UserInfo_CopyBestDisplayNameWithPlatform.
-	 * @see EOS_UserInfo_Interface#copyBestDisplayName(EOS_UserInfo_CopyBestDisplayNameOptions, EOS_UserInfo_BestDisplayName[])
-	 * @see EOS_UserInfo_Interface#copyBestDisplayNameWithPlatform(EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions, EOS_UserInfo_BestDisplayName[])
+	 * @see EOS_UserInfo_Interface#copyBestDisplayName(EOS_UserInfo_CopyBestDisplayNameOptions)
+	 * @see EOS_UserInfo_Interface#copyBestDisplayNameWithPlatform(EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_UserInfo_BestDisplayName_Release(this);

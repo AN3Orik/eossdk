@@ -19,6 +19,7 @@ public class EOS_Leaderboards_QueryLeaderboardDefinitionsOptions extends Structu
 	/** Timestamp value representing an undefined time for EOS_HLeaderboards. */
 	public static final int EOS_LEADERBOARDS_TIME_UNDEFINED = -1;
 
+	/** The most recent version of the EOS_Leaderboards_QueryLeaderboardDefinitions struct. */
 	public static final int EOS_LEADERBOARDS_QUERYLEADERBOARDDEFINITIONS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_QUERYLEADERBOARDDEFINITIONS_API_LATEST. */

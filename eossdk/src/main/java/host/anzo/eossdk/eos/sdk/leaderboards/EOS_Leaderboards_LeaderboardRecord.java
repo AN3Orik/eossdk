@@ -18,6 +18,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "UserId", "Rank", "Score", "UserDisplayName"})
 public class EOS_Leaderboards_LeaderboardRecord extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Leaderboards_LeaderboardRecord struct. */
 	public static final int EOS_LEADERBOARDS_LEADERBOARDRECORD_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_LEADERBOARDRECORD_API_LATEST. */
@@ -45,8 +46,8 @@ public class EOS_Leaderboards_LeaderboardRecord extends Structure implements Aut
 	 * EOS_Leaderboards_CopyLeaderboardRecordByIndex or EOS_Leaderboards_CopyLeaderboardRecordByUserId.
 	 *
 	 * @see EOS_Leaderboards_LeaderboardRecord
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardRecordByIndex(EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions, EOS_Leaderboards_LeaderboardRecord[])
-	 * @see EOS_Leaderboards_Interface#copyLeaderboardRecordByUserId(EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions, EOS_Leaderboards_LeaderboardRecord[])
+	 * @see EOS_Leaderboards_Interface#copyLeaderboardRecordByIndex(EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions)
+	 * @see EOS_Leaderboards_Interface#copyLeaderboardRecordByUserId(EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Leaderboards_LeaderboardRecord_Release(this);

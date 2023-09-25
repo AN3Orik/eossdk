@@ -2,6 +2,9 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.stats.EOS_Stats_Stat;
 import host.anzo.eossdk.eos.sdk.stats.callbacks.EOS_Stats_OnIngestStatCompleteCallback;
@@ -57,7 +60,8 @@ public class EOS_Stats_Interface extends PointerType {
 	 *
 	 * @param options The Options associated with retrieving the stat count
 	 *
-	 * @see EOS_Stats_Interface#copyStatByIndex(EOS_Stats_CopyStatByIndexOptions, EOS_Stats_Stat[])
+	 * @see #copyStatByIndex(EOS_Stats_CopyStatByIndexOptions)
+	 * @see #copyStatByName(EOS_Stats_CopyStatByNameOptions)
 	 *
 	 * @return Number of stats or 0 if there is an error
 	 */
@@ -69,31 +73,39 @@ public class EOS_Stats_Interface extends PointerType {
 	 * Fetches a stat from a given index. Use EOS_Stats_Stat_Release when finished with the data.
 	 *
 	 * @param options Structure containing the Product User ID and index being accessed
-	 * @param outStat The stat data for the given index, if it exists and is valid
+	 * @return The stat data for the given index, if it exists and is valid
 	 *
 	 * @see EOS_Stats_Stat#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutStat<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the stat is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the stat is not found
 	 */
-	public EOS_EResult copyStatByIndex(EOS_Stats_CopyStatByIndexOptions options, EOS_Stats_Stat[] outStat) {
-		return EOSLibrary.instance.EOS_Stats_CopyStatByIndex(this, options, outStat);
+	public EOS_Stats_Stat copyStatByIndex(EOS_Stats_CopyStatByIndexOptions options) throws EOSException {
+		final EOS_Stats_Stat.ByReference outStat = new EOS_Stats_Stat.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Stats_CopyStatByIndex(this, options, outStat);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outStat;
 	}
 
 	/**
 	 * Fetches a stat from cached stats by name. Use EOS_Stats_Stat_Release when finished with the data.
 	 *
 	 * @param options Structure containing the Product User ID and name being accessed
-	 * @param outStat The stat data for the given name, if it exists and is valid
+	 * @return The stat data for the given name, if it exists and is valid
 	 *
 	 * @see EOS_Stats_Stat#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutStat<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the stat is not found
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if the stat is not found
 	 */
-	public EOS_EResult copyStatByName(EOS_Stats_CopyStatByNameOptions options, EOS_Stats_Stat[] outStat) {
-		return EOSLibrary.instance.EOS_Stats_CopyStatByName(this, options, outStat);
+	public EOS_Stats_Stat copyStatByName(EOS_Stats_CopyStatByNameOptions options) throws EOSException {
+		final EOS_Stats_Stat.ByReference outStat = new EOS_Stats_Stat.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Stats_CopyStatByName(this, options, outStat);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outStat;
 	}
 }

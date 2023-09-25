@@ -37,6 +37,10 @@ public @Getter class EOSException extends Exception {
 				return new EOSInvalidUserException();
 			case EOS_NotFound:
 				return new EOSNotFoundException();
+			case EOS_UserInfo_BestDisplayNameIndeterminate:
+				return new EOSUserInfoBestDisplayNameIndeterminateException();
+			case EOS_IncompatibleVersion:
+				return new EOSIncompatibleVersionException();
 			default:
 				return new EOSException(result);
 		}

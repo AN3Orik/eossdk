@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "UserId", "AchievementIds", "AchievementsCount"})
 public class EOS_Achievements_UnlockAchievementsOptions extends Structure {
+	/** The most recent version of the EOS_Achievements_UnlockAchievements struct. */
 	public static final int EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST. */

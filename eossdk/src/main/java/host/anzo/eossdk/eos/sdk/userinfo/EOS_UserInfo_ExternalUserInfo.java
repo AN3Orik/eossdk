@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.userinfo;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
+import host.anzo.eossdk.eos.sdk.EOS_UserInfo_Interface;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EExternalAccountType;
 import host.anzo.eossdk.eos.sdk.userinfo.options.EOS_UserInfo_CopyExternalUserInfoByIndexOptions;
 
@@ -42,7 +43,7 @@ public class EOS_UserInfo_ExternalUserInfo extends Structure implements AutoClos
 	 * Release the memory associated with external user info. This must be called on data retrieved from
 	 * EOS_UserInfo_CopyExternalUserInfoByIndexOptions.
 	 * @see EOS_UserInfo_ExternalUserInfo
-	 * @see host.anzo.eossdk.eos.sdk.EOS_UserInfo_Interface#copyExternalUserInfoByIndex(EOS_UserInfo_CopyExternalUserInfoByIndexOptions, EOS_UserInfo_ExternalUserInfo[])
+	 * @see EOS_UserInfo_Interface#copyExternalUserInfoByIndex(EOS_UserInfo_CopyExternalUserInfoByIndexOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_UserInfo_ExternalUserInfo_Release(this);
