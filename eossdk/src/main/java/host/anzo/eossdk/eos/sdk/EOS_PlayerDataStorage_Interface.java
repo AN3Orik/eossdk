@@ -2,13 +2,13 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.playerdatastorage.EOS_PlayerDataStorageFileTransferRequest;
 import host.anzo.eossdk.eos.sdk.playerdatastorage.EOS_PlayerDataStorage_FileMetadata;
 import host.anzo.eossdk.eos.sdk.playerdatastorage.callbacks.*;
 import host.anzo.eossdk.eos.sdk.playerdatastorage.options.*;
-
-import java.nio.IntBuffer;
 
 /**
  * The following EOS_PlayerDataStorage_* functions allow you to query file metadata; create/upload files; and duplicate, read, and delete existing files
@@ -35,9 +35,9 @@ public class EOS_PlayerDataStorage_Interface extends PointerType {
 	 * @param clientData Optional pointer to help clients track this request, that is returned in the completion callback
 	 * @param completionCallback This function is called when the query operation completes
 	 *
-	 * @see #getFileMetadataCount(EOS_PlayerDataStorage_GetFileMetadataCountOptions, IntBuffer)
-	 * @see #copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions, EOS_PlayerDataStorage_FileMetadata[])
-	 * @see #copyFileMetadataByFilename(EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions, EOS_PlayerDataStorage_FileMetadata[])
+	 * @see #getFileMetadataCount(EOS_PlayerDataStorage_GetFileMetadataCountOptions)
+	 * @see #copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions)
+	 * @see #copyFileMetadataByFilename(EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions)
 	 */
 	public void queryFile(EOS_PlayerDataStorage_QueryFileOptions queryFileOptions,
 	                      Pointer clientData,
@@ -53,9 +53,9 @@ public class EOS_PlayerDataStorage_Interface extends PointerType {
 	 * @param clientData Optional pointer to help clients track this request, that is returned in the completion callback
 	 * @param completionCallback This function is called when the query operation completes
 	 *
-	 * @see #getFileMetadataCount(EOS_PlayerDataStorage_GetFileMetadataCountOptions, IntBuffer)
-	 * @see #copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions, EOS_PlayerDataStorage_FileMetadata[])
-	 * @see #copyFileMetadataByFilename(EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions, EOS_PlayerDataStorage_FileMetadata[])
+	 * @see #getFileMetadataCount(EOS_PlayerDataStorage_GetFileMetadataCountOptions)
+	 * @see #copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions)
+	 * @see #copyFileMetadataByFilename(EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions)
 	 */
 	public void queryFileList(EOS_PlayerDataStorage_QueryFileListOptions queryFileListOptions,
 	                          Pointer clientData,
@@ -68,26 +68,36 @@ public class EOS_PlayerDataStorage_Interface extends PointerType {
 	 * completed writing. The returned pointer must be released by the user when no longer needed.
 	 *
 	 * @param copyFileMetadataOptions Object containing properties related to which user is requesting metadata, and for which filename
-	 * @param outMetadata A copy of the FileMetadata structure will be set if successful.  This data must be released by calling EOS_PlayerDataStorage_FileMetadata_Release.
-	 * @return {@link EOS_EResult#EOS_Success} if the metadata is currently cached, otherwise an error result explaining what went wrong
+	 * @return A copy of the FileMetadata structure will be set if successful.  This data must be released by calling EOS_PlayerDataStorage_FileMetadata_Release.
+	 *
+	 * @throws EOSException error result explaining what went wrong if the metadata isn't cached
 	 */
-	public EOS_EResult copyFileMetadataByFilename(EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions copyFileMetadataOptions,
-	                                              EOS_PlayerDataStorage_FileMetadata[] outMetadata) {
-		return EOSLibrary.instance.EOS_PlayerDataStorage_CopyFileMetadataByFilename(this, copyFileMetadataOptions, outMetadata);
+	public EOS_PlayerDataStorage_FileMetadata copyFileMetadataByFilename(EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions copyFileMetadataOptions) throws EOSException {
+		final EOS_PlayerDataStorage_FileMetadata.ByReference outMetadata = new EOS_PlayerDataStorage_FileMetadata.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_PlayerDataStorage_CopyFileMetadataByFilename(this, copyFileMetadataOptions, outMetadata);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outMetadata;
 	}
 
 	/**
 	 * Get the count of files we have previously queried information for and files we have previously read from / written to.
 	 *
 	 * @param getFileMetadataCountOptions Object containing properties related to which user is requesting the metadata count
-	 * @param outFileMetadataCount If successful, the count of metadata currently cached
-	 * @return {@link EOS_EResult#EOS_Success} if the input was valid, otherwise an error result explaining what went wrong
+	 * @return the count of metadata currently cached
 	 *
-	 * @see #copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions, EOS_PlayerDataStorage_FileMetadata[])
+	 * @throws EOSException error result explaining what went wrong if the input was invalid
+	 *
+	 * @see #copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions)
 	 */
-	public EOS_EResult getFileMetadataCount(EOS_PlayerDataStorage_GetFileMetadataCountOptions getFileMetadataCountOptions,
-	                                        IntBuffer outFileMetadataCount) {
-		return EOSLibrary.instance.EOS_PlayerDataStorage_GetFileMetadataCount(this, getFileMetadataCountOptions, outFileMetadataCount);
+	public int getFileMetadataCount(EOS_PlayerDataStorage_GetFileMetadataCountOptions getFileMetadataCountOptions) throws EOSException {
+		final IntByReference outFileMetadataCount = new IntByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_PlayerDataStorage_GetFileMetadataCount(this, getFileMetadataCountOptions, outFileMetadataCount);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outFileMetadataCount.getValue();
 	}
 
 	/**
@@ -95,15 +105,20 @@ public class EOS_PlayerDataStorage_Interface extends PointerType {
 	 * committed by calling SaveFile. The returned pointer must be released by the user when no longer needed.
 	 *
 	 * @param copyFileMetadataOptions Object containing properties related to which user is requesting metadata, and at what index
-	 * @param outMetadata A copy of the FileMetadata structure will be set if successful.  This data must be released by calling EOS_PlayerDataStorage_FileMetadata_Release.
-	 * @return {@link EOS_EResult#EOS_Success} if the requested metadata is currently cached, otherwise an error result explaining what went wrong
+	 * @return A copy of the FileMetadata structure will be set if successful. This data must be released by calling EOS_PlayerDataStorage_FileMetadata_Release.
 	 *
-	 * @see #getFileMetadataCount(EOS_PlayerDataStorage_GetFileMetadataCountOptions, IntBuffer)
+	 * @throws EOSException error result explaining what went wrong if the requested metadata isn't cached
+	 *
+	 * @see #getFileMetadataCount(EOS_PlayerDataStorage_GetFileMetadataCountOptions)
 	 * @see EOS_PlayerDataStorage_FileMetadata#release()
 	 */
-	public EOS_EResult copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions copyFileMetadataOptions,
-	                                           EOS_PlayerDataStorage_FileMetadata[] outMetadata) {
-		return EOSLibrary.instance.EOS_PlayerDataStorage_CopyFileMetadataAtIndex(this, copyFileMetadataOptions, outMetadata);
+	public EOS_PlayerDataStorage_FileMetadata copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions copyFileMetadataOptions) throws EOSException {
+		final EOS_PlayerDataStorage_FileMetadata.ByReference outMetadata = new EOS_PlayerDataStorage_FileMetadata.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_PlayerDataStorage_CopyFileMetadataAtIndex(this, copyFileMetadataOptions, outMetadata);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outMetadata;
 	}
 
 	/**

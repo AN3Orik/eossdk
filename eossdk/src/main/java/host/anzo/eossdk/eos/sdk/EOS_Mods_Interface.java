@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.mods.EOS_Mods_ModInfo;
 import host.anzo.eossdk.eos.sdk.mods.callbacks.EOS_Mods_OnEnumerateModsCallback;
@@ -69,13 +70,19 @@ public class EOS_Mods_Interface extends PointerType {
 	 * Types of the cached enumerated mods can be specified through EOS_Mods_CopyModInfoOptions<br>
 	 * <b>This request may fail with an EOS_NotFound code if an enumeration of a certain type was not performed before this call.</b>
 	 * @param options structure containing the game identifier for which requesting enumerated mods
-	 * @param outEnumeratedMods Enumerated mods Info. If the returned result is success, this will be set to data that must be later released, otherwise this will be set to NULL
-	 * @return {@link EOS_EResult#EOS_Success} if we have cached data, or an error result if the request was invalid or we do not have cached data.
+	 * @return Enumerated mods Info. If the returned result is success, this will be set to data that must be later released, otherwise this will be set to NULL
+	 *
+	 * @throws EOSException if the request was invalid or we do not have cached data.
 	 *
 	 * @see EOS_Mods_ModInfo#release()
 	 */
-	public EOS_EResult copyModInfo(EOS_Mods_CopyModInfoOptions options, EOS_Mods_ModInfo[] outEnumeratedMods) {
-		return EOSLibrary.instance.EOS_Mods_CopyModInfo(this, options, outEnumeratedMods);
+	public EOS_Mods_ModInfo copyModInfo(EOS_Mods_CopyModInfoOptions options) throws EOSException {
+		final EOS_Mods_ModInfo.ByReference outEnumeratedMods = new EOS_Mods_ModInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Mods_CopyModInfo(this, options, outEnumeratedMods);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outEnumeratedMods;
 	}
 
 	/**

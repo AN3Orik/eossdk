@@ -2,12 +2,13 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSProgressionSnapshotSnapshotIdUnavailableException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.progressionsnapshot.callbacks.EOS_ProgressionSnapshot_OnDeleteSnapshotCallback;
 import host.anzo.eossdk.eos.sdk.progressionsnapshot.callbacks.EOS_ProgressionSnapshot_OnSubmitSnapshotCallback;
 import host.anzo.eossdk.eos.sdk.progressionsnapshot.options.*;
-
-import java.nio.IntBuffer;
 
 /**
  * Progression Snapshots allow you to store player specific game state.
@@ -36,13 +37,17 @@ public class EOS_ProgressionSnapshot_Interface extends PointerType {
 	 * Creates a new progression-snapshot resource for a given user.
 	 *
 	 * @param options Object containing properties that identifies the PUID this Snapshot will belong to.
-	 * @param outSnapshotId A progression-snapshot identifier output parameter. Use that identifier to reference the snapshot in the other APIs.
+	 * @return A progression-snapshot identifier output parameter. Use that identifier to reference the snapshot in the other APIs.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} when successful.c
-	 *         {@link EOS_EResult#EOS_ProgressionSnapshot_SnapshotIdUnavailable} when no IDs are available. This is irrecoverable state.
+	 * @throws EOSProgressionSnapshotSnapshotIdUnavailableException when no IDs are available. This is irrecoverable state.
 	 */
-	public EOS_EResult beginSnapshot(EOS_ProgressionSnapshot_BeginSnapshotOptions options, IntBuffer outSnapshotId) {
-		return EOSLibrary.instance.EOS_ProgressionSnapshot_BeginSnapshot(this, options, outSnapshotId);
+	public int beginSnapshot(EOS_ProgressionSnapshot_BeginSnapshotOptions options) throws EOSException {
+		final IntByReference outSnapshotId = new IntByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_ProgressionSnapshot_BeginSnapshot(this, options, outSnapshotId);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outSnapshotId.getValue();
 	}
 
 	/**

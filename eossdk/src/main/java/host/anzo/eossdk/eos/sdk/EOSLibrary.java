@@ -475,7 +475,7 @@ public interface EOSLibrary extends Library {
 	void EOS_Mods_InstallMod(EOS_Mods_Interface handle, EOS_Mods_InstallModOptions options, Pointer ClientData, EOS_Mods_OnInstallModCallback completionDelegate);
 	void EOS_Mods_UninstallMod(EOS_Mods_Interface handle, EOS_Mods_UninstallModOptions options, Pointer clientData, EOS_Mods_OnUninstallModCallback completionDelegate);
 	void EOS_Mods_EnumerateMods(EOS_Mods_Interface handle, EOS_Mods_EnumerateModsOptions options, Pointer clientData, EOS_Mods_OnEnumerateModsCallback completionDelegate);
-	EOS_EResult EOS_Mods_CopyModInfo(EOS_Mods_Interface handle, EOS_Mods_CopyModInfoOptions options, EOS_Mods_ModInfo[] outEnumeratedMods);
+	EOS_EResult EOS_Mods_CopyModInfo(EOS_Mods_Interface handle, EOS_Mods_CopyModInfoOptions options, EOS_Mods_ModInfo.ByReference outEnumeratedMods);
 	void EOS_Mods_UpdateMod(EOS_Mods_Interface handle, EOS_Mods_UpdateModOptions options, Pointer clientData, EOS_Mods_OnUpdateModCallback completionDelegate);
 	void EOS_Mods_ModInfo_Release(EOS_Mods_ModInfo modInfo);
 	
@@ -687,13 +687,13 @@ public interface EOSLibrary extends Library {
 	void EOS_KWS_UpdateParentEmail(EOS_KWS_Interface handle, EOS_KWS_UpdateParentEmailOptions options, Pointer clientData, EOS_KWS_OnUpdateParentEmailCallback completionDelegate);
 	void EOS_KWS_RequestPermissions(EOS_KWS_Interface handle, EOS_KWS_RequestPermissionsOptions options, Pointer clientData, EOS_KWS_OnRequestPermissionsCallback completionDelegate);
 	int EOS_KWS_GetPermissionsCount(EOS_KWS_Interface handle, EOS_KWS_GetPermissionsCountOptions options);
-	EOS_EResult EOS_KWS_CopyPermissionByIndex(EOS_KWS_Interface handle, EOS_KWS_CopyPermissionByIndexOptions options, EOS_KWS_PermissionStatus[] outPermission);
+	EOS_EResult EOS_KWS_CopyPermissionByIndex(EOS_KWS_Interface handle, EOS_KWS_CopyPermissionByIndexOptions options, EOS_KWS_PermissionStatus.ByReference outPermission);
 	EOS_EResult EOS_KWS_GetPermissionByKey(EOS_KWS_Interface handle, EOS_KWS_GetPermissionByKeyOptions options, IntBuffer outPermission);
 	EOS_NotificationId EOS_KWS_AddNotifyPermissionsUpdateReceived(EOS_KWS_Interface handle,
 	                                                              EOS_KWS_AddNotifyPermissionsUpdateReceivedOptions options,
 	                                                              Pointer clientData,
 	                                                              EOS_KWS_OnPermissionsUpdateReceivedCallback notificationFn);
-	void EOS_KWS_RemoveNotifyPermissionsUpdateReceived(EOS_KWS_Interface handle, EOS_NotificationId InId);
+	void EOS_KWS_RemoveNotifyPermissionsUpdateReceived(EOS_KWS_Interface handle, EOS_NotificationId inId);
 
 	void EOS_KWS_PermissionStatus_Release(EOS_KWS_PermissionStatus permissionStatus);
 	
@@ -746,18 +746,18 @@ public interface EOSLibrary extends Library {
 	EOS_EResult EOS_P2P_ClearPacketQueue(EOS_P2P_Interface handle, EOS_P2P_ClearPacketQueueOptions options);
 
 	// Player Datastorage
-	void EOS_PlayerDataStorage_QueryFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_QueryFileOptions QueryFileOptions, Pointer ClientData, EOS_PlayerDataStorage_OnQueryFileCompleteCallback CompletionCallback);
-	void EOS_PlayerDataStorage_QueryFileList(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_QueryFileListOptions QueryFileListOptions, Pointer clientData, EOS_PlayerDataStorage_OnQueryFileListCompleteCallback CompletionCallback);
-	EOS_EResult EOS_PlayerDataStorage_CopyFileMetadataByFilename(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions CopyFileMetadataOptions, EOS_PlayerDataStorage_FileMetadata[] OutMetadata);
-	EOS_EResult EOS_PlayerDataStorage_GetFileMetadataCount(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_GetFileMetadataCountOptions GetFileMetadataCountOptions, IntBuffer OutFileMetadataCount);
-	EOS_EResult EOS_PlayerDataStorage_CopyFileMetadataAtIndex(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions copyFileMetadataOptions, EOS_PlayerDataStorage_FileMetadata[] outMetadata);
-	void EOS_PlayerDataStorage_DuplicateFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_DuplicateFileOptions DuplicateOptions, Pointer clientData, EOS_PlayerDataStorage_OnDuplicateFileCompleteCallback CompletionCallback);
-	void EOS_PlayerDataStorage_DeleteFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_DeleteFileOptions DeleteOptions, Pointer clientData, EOS_PlayerDataStorage_OnDeleteFileCompleteCallback CompletionCallback);
-	EOS_PlayerDataStorageFileTransferRequest EOS_PlayerDataStorage_ReadFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_ReadFileOptions ReadOptions, Pointer clientData, EOS_PlayerDataStorage_OnReadFileCompleteCallback CompletionCallback);
-	EOS_PlayerDataStorageFileTransferRequest EOS_PlayerDataStorage_WriteFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_WriteFileOptions WriteOptions, Pointer clientData, EOS_PlayerDataStorage_OnWriteFileCompleteCallback CompletionCallback);
-	EOS_EResult EOS_PlayerDataStorage_DeleteCache(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_DeleteCacheOptions options, Pointer clientData, EOS_PlayerDataStorage_OnDeleteCacheCompleteCallback CompletionCallback);
+	void EOS_PlayerDataStorage_QueryFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_QueryFileOptions QueryFileOptions, Pointer ClientData, EOS_PlayerDataStorage_OnQueryFileCompleteCallback completionCallback);
+	void EOS_PlayerDataStorage_QueryFileList(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_QueryFileListOptions queryFileListOptions, Pointer clientData, EOS_PlayerDataStorage_OnQueryFileListCompleteCallback completionCallback);
+	EOS_EResult EOS_PlayerDataStorage_CopyFileMetadataByFilename(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions copyFileMetadataOptions, EOS_PlayerDataStorage_FileMetadata.ByReference outMetadata);
+	EOS_EResult EOS_PlayerDataStorage_GetFileMetadataCount(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_GetFileMetadataCountOptions getFileMetadataCountOptions, IntByReference outFileMetadataCount);
+	EOS_EResult EOS_PlayerDataStorage_CopyFileMetadataAtIndex(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions copyFileMetadataOptions, EOS_PlayerDataStorage_FileMetadata.ByReference outMetadata);
+	void EOS_PlayerDataStorage_DuplicateFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_DuplicateFileOptions duplicateOptions, Pointer clientData, EOS_PlayerDataStorage_OnDuplicateFileCompleteCallback completionCallback);
+	void EOS_PlayerDataStorage_DeleteFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_DeleteFileOptions deleteOptions, Pointer clientData, EOS_PlayerDataStorage_OnDeleteFileCompleteCallback completionCallback);
+	EOS_PlayerDataStorageFileTransferRequest EOS_PlayerDataStorage_ReadFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_ReadFileOptions readOptions, Pointer clientData, EOS_PlayerDataStorage_OnReadFileCompleteCallback completionCallback);
+	EOS_PlayerDataStorageFileTransferRequest EOS_PlayerDataStorage_WriteFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_WriteFileOptions writeOptions, Pointer clientData, EOS_PlayerDataStorage_OnWriteFileCompleteCallback completionCallback);
+	EOS_EResult EOS_PlayerDataStorage_DeleteCache(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_DeleteCacheOptions options, Pointer clientData, EOS_PlayerDataStorage_OnDeleteCacheCompleteCallback completionCallback);
 	EOS_EResult EOS_PlayerDataStorageFileTransferRequest_GetFileRequestState(EOS_PlayerDataStorageFileTransferRequest handle);
-	EOS_EResult EOS_PlayerDataStorageFileTransferRequest_GetFilename(EOS_PlayerDataStorageFileTransferRequest handle, int FilenameStringBufferSizeBytes, ByteBuffer OutStringBuffer, IntBuffer OutStringLength);
+	EOS_EResult EOS_PlayerDataStorageFileTransferRequest_GetFilename(EOS_PlayerDataStorageFileTransferRequest handle, int filenameStringBufferSizeBytes, ByteBuffer outStringBuffer, IntBuffer outStringLength);
 	EOS_EResult EOS_PlayerDataStorageFileTransferRequest_CancelRequest(EOS_PlayerDataStorageFileTransferRequest handle);
 	void EOS_PlayerDataStorage_FileMetadata_Release(EOS_PlayerDataStorage_FileMetadata fileMetadata);
 	void EOS_PlayerDataStorageFileTransferRequest_Release(EOS_PlayerDataStorageFileTransferRequest playerDataStorageFileTransferHandle);
@@ -782,7 +782,7 @@ public interface EOSLibrary extends Library {
 	void EOS_PresenceModification_Release(EOS_PresenceModification presenceModificationHandle);
 	
 	// Progression shapshot
-	EOS_EResult EOS_ProgressionSnapshot_BeginSnapshot(EOS_ProgressionSnapshot_Interface handle, EOS_ProgressionSnapshot_BeginSnapshotOptions options, IntBuffer outSnapshotId);
+	EOS_EResult EOS_ProgressionSnapshot_BeginSnapshot(EOS_ProgressionSnapshot_Interface handle, EOS_ProgressionSnapshot_BeginSnapshotOptions options, IntByReference outSnapshotId);
 	EOS_EResult EOS_ProgressionSnapshot_AddProgression(EOS_ProgressionSnapshot_Interface handle, EOS_ProgressionSnapshot_AddProgressionOptions options);
 	void EOS_ProgressionSnapshot_SubmitSnapshot(EOS_ProgressionSnapshot_Interface handle, EOS_ProgressionSnapshot_SubmitSnapshotOptions options, Pointer clientData, EOS_ProgressionSnapshot_OnSubmitSnapshotCallback completionDelegate);
 	EOS_EResult EOS_ProgressionSnapshot_EndSnapshot(EOS_ProgressionSnapshot_Interface handle, EOS_ProgressionSnapshot_EndSnapshotOptions options);

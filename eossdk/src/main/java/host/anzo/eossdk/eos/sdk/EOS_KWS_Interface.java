@@ -2,6 +2,8 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.kws.EOS_KWS_PermissionStatus;
@@ -115,18 +117,22 @@ public class EOS_KWS_Interface extends PointerType {
 	 * Fetch a permission for a given by index for a given local user
 	 *
 	 * @param options Structure containing the input parameters
-	 * @param outPermission the permission for the given index, if it exists and is valid, use EOS_KWS_PermissionStatus_Release when finished
+	 * @return the permission for the given index, if it exists and is valid, use EOS_KWS_PermissionStatus_Release when finished
 	 *
 	 * @see EOS_KWS_Interface#createUser(EOS_KWS_CreateUserOptions, Pointer, EOS_KWS_OnCreateUserCallback)
 	 * @see EOS_KWS_Interface#queryPermissions(EOS_KWS_QueryPermissionsOptions, Pointer, EOS_KWS_OnQueryPermissionsCallback)
 	 * @see EOS_KWS_Interface#requestPermissions(EOS_KWS_RequestPermissionsOptions, Pointer, EOS_KWS_OnRequestPermissionsCallback)
 	 * @see EOS_KWS_PermissionStatus#release()
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the permission state is known for the given user and index
-	 *         {@link EOS_EResult#EOS_NotFound} if the user is not found or the index is invalid
+	 * @throws EOSNotFoundException if the user is not found or the index is invalid
 	 */
-	public EOS_EResult copyPermissionByIndex(EOS_KWS_CopyPermissionByIndexOptions options, EOS_KWS_PermissionStatus[] outPermission) {
-		return EOSLibrary.instance.EOS_KWS_CopyPermissionByIndex(this, options, outPermission);
+	public EOS_KWS_PermissionStatus copyPermissionByIndex(EOS_KWS_CopyPermissionByIndexOptions options) throws EOSException {
+		final EOS_KWS_PermissionStatus.ByReference outPermission = new EOS_KWS_PermissionStatus.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_KWS_CopyPermissionByIndex(this, options, outPermission);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outPermission;
 	}
 
 	/**
