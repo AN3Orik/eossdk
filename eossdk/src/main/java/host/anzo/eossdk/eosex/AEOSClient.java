@@ -12,8 +12,10 @@ import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_End
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+import host.anzo.eossdk.eos.sdk.connect.callbackresults.EOS_Connect_AuthExpirationCallbackInfo;
 import host.anzo.eossdk.eos.sdk.connect.callbackresults.EOS_Connect_CreateUserCallbackInfo;
 import host.anzo.eossdk.eos.sdk.connect.callbackresults.EOS_Connect_LoginCallbackInfo;
+import host.anzo.eossdk.eos.sdk.connect.options.EOS_Connect_AddNotifyAuthExpirationOptions;
 import host.anzo.eossdk.eos.sdk.connect.options.EOS_Connect_CreateUserOptions;
 import host.anzo.eossdk.eos.sdk.connect.options.EOS_Connect_LoginOptions;
 import lombok.Getter;
@@ -28,8 +30,10 @@ import org.jetbrains.annotations.NotNull;
 public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 	private EOS_AntiCheatClient_Interface antiCheatClient;
 
+	private EOS_NotificationId authExpirationNotificationId;
 	private EOS_NotificationId messageToServerNotificationId;
 	private EOS_NotificationId clientIntegrityViolatedNotificationId;
+
 	private EOS_ProductUserId productUserId;
 
 	@Override
@@ -88,6 +92,8 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 	protected void onConnectLoginComplete(EOS_EResult result, EOS_ProductUserId productUserId) {
 		this.productUserId = productUserId;
 
+		this.authExpirationNotificationId = platform.getConnectInterface().addNotifyAuthExpiration(new EOS_Connect_AddNotifyAuthExpirationOptions(), null, this::onAuthExpiration);
+
 		if (options.isAntiCheatEnabled()) {
 			antiCheatClient = platform.getAntiCheatClientInterface();
 			if (antiCheatClient == null) {
@@ -124,8 +130,15 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 		}
 	}
 
+	private void onAuthExpiration(@NotNull EOS_Connect_AuthExpirationCallbackInfo authExpirationCallbackInfo) {
+		platform.getConnectInterface().login(getConnectLoginOptions(), authExpirationCallbackInfo.ClientData, this::onConnectLogin);
+	}
+
 	@Override
 	public void shutdown() {
+		if (authExpirationNotificationId != null) {
+			platform.getConnectInterface().removeNotifyAuthExpiration(authExpirationNotificationId);
+		}
 		if (antiCheatClient != null) {
 			switch (options.getAntiCheatMode()) {
 				case EOS_ACCM_ClientServer:

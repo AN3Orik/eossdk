@@ -8,7 +8,7 @@ Java wrapper for Epic Online Services SDK
 Work in progress.
 
 ## Distribution
-Because library in dev state, currently only private snapshot repository is available for tests.
+Because the library is in active development state, currently only private snapshot repository is available for tests.
 
 Please note that the library version corresponds to the EOS SDK version.
 
@@ -26,3 +26,8 @@ dependencies {
     implementation "host.anzo:eossdk-native-ios:1.16.1-SNAPSHOT"
 }
 ```
+
+## Documentation
+During development, I try to preserve the original documentation as much as possible, with an eye to the specifics of javadoc generating.
+
+So use [Official EOS SDK documentation](https://dev.epicgames.com/docs/api-ref)
