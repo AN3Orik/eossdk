@@ -43,6 +43,8 @@ public @Getter class EOSException extends Exception {
 				return new EOSIncompatibleVersionException();
 			case EOS_ProgressionSnapshot_SnapshotIdUnavailable:
 				return new EOSProgressionSnapshotSnapshotIdUnavailableException();
+			case EOS_LimitExceeded:
+				return new EOSLimitExceededException();
 			default:
 				return new EOSException(result);
 		}

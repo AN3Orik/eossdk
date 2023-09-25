@@ -212,10 +212,10 @@ public interface EOSLibrary extends Library {
 	EOS_Platform_Interface EOS_Platform_Create(EOS_Platform_Options options);
 	void EOS_Platform_Release(EOS_Platform_Interface handle);
 	void EOS_Platform_Tick(EOS_Platform_Interface handle);
-	EOS_EResult EOS_Platform_GetActiveCountryCode(EOS_Platform_Interface handle, EOS_EpicAccountId localUserId, ByteBuffer outBuffer, IntBuffer inOutBufferLength);
-	EOS_EResult EOS_Platform_GetActiveLocaleCode(EOS_Platform_Interface handle, EOS_EpicAccountId localUserId, ByteBuffer outBuffer, IntBuffer inOutBufferLength);
-	EOS_EResult EOS_Platform_GetOverrideCountryCode(EOS_Platform_Interface handle, ByteBuffer outBuffer, IntBuffer inOutBufferLength);
-	EOS_EResult EOS_Platform_GetOverrideLocaleCode(EOS_Platform_Interface handle, ByteBuffer outBuffer, IntBuffer inOutBufferLength);
+	EOS_EResult EOS_Platform_GetActiveCountryCode(EOS_Platform_Interface handle, EOS_EpicAccountId localUserId, byte[] outBuffer, IntByReference inOutBufferLength);
+	EOS_EResult EOS_Platform_GetActiveLocaleCode(EOS_Platform_Interface handle, EOS_EpicAccountId localUserId, byte[] outBuffer, IntByReference inOutBufferLength);
+	EOS_EResult EOS_Platform_GetOverrideCountryCode(EOS_Platform_Interface handle, byte[] outBuffer, IntByReference inOutBufferLength);
+	EOS_EResult EOS_Platform_GetOverrideLocaleCode(EOS_Platform_Interface handle, byte[] outBuffer, IntByReference inOutBufferLength);
 	EOS_EResult EOS_Platform_SetOverrideCountryCode(EOS_Platform_Interface handle, String newCountryCode);
 	EOS_EResult EOS_Platform_SetOverrideLocaleCode(EOS_Platform_Interface handle, String newLocaleCode);
 	EOS_EResult EOS_Platform_CheckForLauncherAndRestart(EOS_Platform_Interface handle);

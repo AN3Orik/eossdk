@@ -2,6 +2,11 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSLimitExceededException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EApplicationStatus;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_ENetworkStatus;
@@ -9,9 +14,6 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.platform.EOS_Platform_DesktopCrossplayStatusInfo;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_GetDesktopCrossplayStatusOptions;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
-
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 /**
  * @author Anton Lasevich
@@ -253,21 +255,22 @@ public class EOS_Platform_Interface extends PointerType {
 	 * This is not currently used for anything internally.
 	 *
 	 * @param localUserId The account to use for lookup if no override exists.
-	 * @param outBuffer The buffer into which the character data should be written.  The buffer must be long enough to hold a string of EOS_COUNTRYCODE_MAX_LENGTH.
-	 * @param inOutBufferLength The size of the OutBuffer in characters.
-	 *                          The input buffer should include enough space to be null-terminated.
-	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
+	 * @return active country code string
 	 *
-	 * @return An EOS_EResult that indicates whether the active country code string was copied into the OutBuffer.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if there is not an override country code for the user.<br>
-	 *         {@link EOS_EResult#EOS_LimitExceeded} - The OutBuffer is not large enough to receive the country code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if there is not an override country code for the user
+	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the country code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
 	 * @see EOS_Platform_Options#EOS_COUNTRYCODE_MAX_LENGTH
 	 */
-	public EOS_EResult getActiveCountryCode(EOS_EpicAccountId localUserId, ByteBuffer outBuffer, IntBuffer inOutBufferLength) {
-		return EOSLibrary.instance.EOS_Platform_GetActiveCountryCode(this, localUserId, outBuffer, inOutBufferLength);
+	public String getActiveCountryCode(EOS_EpicAccountId localUserId) throws EOSException {
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Platform_Options.EOS_COUNTRYCODE_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Platform_Options.EOS_COUNTRYCODE_MAX_LENGTH];
+		final EOS_EResult result = EOSLibrary.instance.EOS_Platform_GetActiveCountryCode(this, localUserId, outBuffer, inOutBufferLength);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return new String(outBuffer, 0, inOutBufferLength.getValue());
 	}
 
 	/**
@@ -276,61 +279,64 @@ public class EOS_Platform_Interface extends PointerType {
 	 * This is used for localization. This follows ISO 639.
 	 *
 	 * @param localUserId The account to use for lookup if no override exists.
-	 * @param outBuffer The buffer into which the character data should be written.  The buffer must be long enough to hold a string of EOS_LOCALECODE_MAX_LENGTH.
-	 * @param inOutBufferLength The size of the OutBuffer in characters.
-	 *                          The input buffer should include enough space to be null-terminated.
-	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
+	 * @return active locale code string
 	 *
-	 * @return An EOS_EResult that indicates whether the active locale code string was copied into the OutBuffer.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if there is neither an override nor an available locale code for the user.<br>
-	 *         {@link EOS_EResult#EOS_LimitExceeded} - The OutBuffer is not large enough to receive the locale code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSNotFoundException if there is neither an override nor an available locale code for the user
+	 * @throws EOSLimitExceededException if there is neither an override nor an available locale code for the user
 	 *
 	 * @see EOS_Platform_Options#EOS_LOCALECODE_MAX_LENGTH
 	 */
-	public EOS_EResult getActiveLocaleCode(EOS_EpicAccountId localUserId, ByteBuffer outBuffer, IntBuffer inOutBufferLength) {
-		return EOSLibrary.instance.EOS_Platform_GetActiveLocaleCode(this, localUserId, outBuffer, inOutBufferLength);
+	public String getActiveLocaleCode(EOS_EpicAccountId localUserId) throws EOSException {
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Platform_Options.EOS_LOCALECODE_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Platform_Options.EOS_LOCALECODE_MAX_LENGTH];
+		final EOS_EResult result = EOSLibrary.instance.EOS_Platform_GetActiveLocaleCode(this, localUserId, outBuffer, inOutBufferLength);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return new String(outBuffer, 0, inOutBufferLength.getValue());
 	}
 
 	/**
 	 * Get the override country code that the SDK will send to services which require it.
 	 * This is not currently used for anything internally.
 	 *
-	 * @param outBuffer The buffer into which the character data should be written.  The buffer must be long enough to hold a string of EOS_COUNTRYCODE_MAX_LENGTH.
-	 * @param inOutBufferLength The size of the OutBuffer in characters.
-	 *                          The input buffer should include enough space to be null-terminated.
-	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
+	 * @return override country code
 	 *
-	 * @return An EOS_EResult that indicates whether the override country code string was copied into the OutBuffer.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_LimitExceeded} - The OutBuffer is not large enough to receive the country code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the country code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
 	 * @see EOS_Platform_Options#EOS_COUNTRYCODE_MAX_LENGTH
 	 */
-	public EOS_EResult getOverrideCountryCode(ByteBuffer outBuffer, IntBuffer inOutBufferLength) {
-		return EOSLibrary.instance.EOS_Platform_GetOverrideCountryCode(this, outBuffer, inOutBufferLength);
+	public String getOverrideCountryCode() throws EOSException {
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Platform_Options.EOS_COUNTRYCODE_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Platform_Options.EOS_COUNTRYCODE_MAX_LENGTH];
+		final EOS_EResult result = EOSLibrary.instance.EOS_Platform_GetOverrideCountryCode(this, outBuffer, inOutBufferLength);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return new String(outBuffer, 0, inOutBufferLength.getValue());
 	}
 
 	/**
 	 * Get the override locale code that the SDK will send to services which require it.
 	 * This is used for localization. This follows ISO 639.
 	 *
-	 * @param outBuffer The buffer into which the character data should be written.  The buffer must be long enough to hold a string of EOS_LOCALECODE_MAX_LENGTH.
-	 * @param inOutBufferLength The size of the OutBuffer in characters.
-	 *                          The input buffer should include enough space to be null-terminated.
-	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
+	 * @return override local code string
 	 *
-	 * @return An EOS_EResult that indicates whether the override locale code string was copied into the OutBuffer.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutBuffer<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_LimitExceeded} - The OutBuffer is not large enough to receive the locale code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 * @throws EOSInvalidParametersException override locale code string
+	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the locale code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
 	 * @see EOS_Platform_Options#EOS_LOCALECODE_MAX_LENGTH
 	 */
-	public EOS_EResult getOverrideLocaleCode(ByteBuffer outBuffer, IntBuffer inOutBufferLength) {
-		return EOSLibrary.instance.EOS_Platform_GetOverrideLocaleCode(this, outBuffer, inOutBufferLength);
+	public String getOverrideLocaleCode() throws EOSException {
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Platform_Options.EOS_LOCALECODE_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Platform_Options.EOS_LOCALECODE_MAX_LENGTH];
+		final EOS_EResult result = EOSLibrary.instance.EOS_Platform_GetOverrideLocaleCode(this, outBuffer, inOutBufferLength);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return new String(outBuffer, 0, inOutBufferLength.getValue());
 	}
 
 	/**
