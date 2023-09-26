@@ -533,15 +533,15 @@ public interface EOSLibrary extends Library {
 
 	// Lobby Details
 	EOS_ProductUserId EOS_LobbyDetails_GetLobbyOwner(EOS_LobbyDetails handle, EOS_LobbyDetails_GetLobbyOwnerOptions options);
-	EOS_EResult EOS_LobbyDetails_CopyInfo(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyInfoOptions options, EOS_LobbyDetails_Info[] OutLobbyDetailsInfo);
+	EOS_EResult EOS_LobbyDetails_CopyInfo(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyInfoOptions options, EOS_LobbyDetails_Info.ByReference outLobbyDetailsInfo);
 	int EOS_LobbyDetails_GetAttributeCount(EOS_LobbyDetails handle, EOS_LobbyDetails_GetAttributeCountOptions options);
-	EOS_EResult EOS_LobbyDetails_CopyAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByIndexOptions options, EOS_Lobby_Attribute[] OutAttribute);
-	EOS_EResult EOS_LobbyDetails_CopyAttributeByKey(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByKeyOptions options, EOS_Lobby_Attribute[] OutAttribute);
+	EOS_EResult EOS_LobbyDetails_CopyAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByIndexOptions options, EOS_Lobby_Attribute.ByReference outAttribute);
+	EOS_EResult EOS_LobbyDetails_CopyAttributeByKey(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByKeyOptions options, EOS_Lobby_Attribute.ByReference outAttribute);
 	int EOS_LobbyDetails_GetMemberCount(EOS_LobbyDetails handle, EOS_LobbyDetails_GetMemberCountOptions options);
 	EOS_ProductUserId EOS_LobbyDetails_GetMemberByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_GetMemberByIndexOptions options);
 	int EOS_LobbyDetails_GetMemberAttributeCount(EOS_LobbyDetails handle, EOS_LobbyDetails_GetMemberAttributeCountOptions options);
-	EOS_EResult EOS_LobbyDetails_CopyMemberAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberAttributeByIndexOptions options, EOS_Lobby_Attribute[] OutAttribute);
-	EOS_EResult EOS_LobbyDetails_CopyMemberAttributeByKey(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberAttributeByKeyOptions options, EOS_Lobby_Attribute[] OutAttribute);
+	EOS_EResult EOS_LobbyDetails_CopyMemberAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberAttributeByIndexOptions options, EOS_Lobby_Attribute.ByReference outAttribute);
+	EOS_EResult EOS_LobbyDetails_CopyMemberAttributeByKey(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberAttributeByKeyOptions options, EOS_Lobby_Attribute.ByReference outAttribute);
 	void EOS_LobbyDetails_Info_Release(EOS_LobbyDetails_Info lobbyDetailsInfo);
 	void EOS_Lobby_Attribute_Release(EOS_Lobby_Attribute lobbyAttribute);
 	void EOS_LobbyDetails_Release(EOS_LobbyDetails lobbyHandle);
@@ -883,11 +883,11 @@ public interface EOSLibrary extends Library {
 	EOS_EResult EOS_SessionSearch_SetMaxResults(EOS_SessionSearch handle, EOS_SessionSearch_SetMaxResultsOptions options);
 	void EOS_SessionSearch_Find(EOS_SessionSearch handle, EOS_SessionSearch_FindOptions options, Pointer clientData, EOS_SessionSearch_OnFindCallback completionDelegate);
 	int EOS_SessionSearch_GetSearchResultCount(EOS_SessionSearch handle, EOS_SessionSearch_GetSearchResultCountOptions options);
-	EOS_EResult EOS_SessionSearch_CopySearchResultByIndex(EOS_SessionSearch handle, EOS_SessionSearch_CopySearchResultByIndexOptions options, EOS_SessionDetails OutSessionHandle);
-	void EOS_SessionModification_Release(EOS_SessionModification SessionModificationHandle);
-	void EOS_ActiveSession_Release(EOS_ActiveSession ActiveSessionHandle);
-	void EOS_SessionDetails_Release(EOS_SessionDetails SessionHandle);
-	void EOS_SessionSearch_Release(EOS_SessionSearch SessionSearchHandle);
+	EOS_EResult EOS_SessionSearch_CopySearchResultByIndex(EOS_SessionSearch handle, EOS_SessionSearch_CopySearchResultByIndexOptions options, EOS_SessionDetails outSessionHandle);
+	void EOS_SessionModification_Release(EOS_SessionModification sessionModificationHandle);
+	void EOS_ActiveSession_Release(EOS_ActiveSession activeSessionHandle);
+	void EOS_SessionDetails_Release(EOS_SessionDetails sessionHandle);
+	void EOS_SessionSearch_Release(EOS_SessionSearch sessionSearchHandle);
 	void EOS_ActiveSession_Info_Release(EOS_ActiveSession_Info activeSessionInfo);
 	void EOS_SessionDetails_Info_Release(EOS_SessionDetails_Info sessionInfo);
 	void EOS_SessionDetails_Attribute_Release(EOS_SessionDetails_Attribute sessionAttribute);

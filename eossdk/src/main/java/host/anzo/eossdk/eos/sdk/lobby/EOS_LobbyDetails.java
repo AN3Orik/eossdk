@@ -2,6 +2,9 @@ package host.anzo.eossdk.eos.sdk.lobby;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSIncompatibleVersionException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
@@ -38,18 +41,22 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * If the call returns an EOS_Success result, the out parameter, OutLobbyDetailsInfo, must be passed to EOS_LobbyDetails_Info_Release to release the memory associated with it.
 	 *
 	 * @param options Structure containing the input parameters
-	 * @param outLobbyDetailsInfo Out parameter used to receive the EOS_LobbyDetails_Info structure.
+	 * @return Out parameter used to receive the EOS_LobbyDetails_Info structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutLobbyDetailsInfo<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
 	 *
 	 * @see EOS_LobbyDetails_Info
 	 * @see EOS_LobbyDetails_CopyInfoOptions
 	 * @see EOS_LobbyDetails#release()
 	 */
-	public EOS_EResult copyInfo(EOS_LobbyDetails_CopyInfoOptions options, EOS_LobbyDetails_Info[] outLobbyDetailsInfo) {
-		return EOSLibrary.instance.EOS_LobbyDetails_CopyInfo(this, options, outLobbyDetailsInfo);
+	public EOS_LobbyDetails_Info copyInfo(EOS_LobbyDetails_CopyInfoOptions options) throws EOSException {
+		final EOS_LobbyDetails_Info.ByReference outLobbyDetailsInfo = new EOS_LobbyDetails_Info.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyInfo(this, options, outLobbyDetailsInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outLobbyDetailsInfo;
 	}
 
 	/**
@@ -68,18 +75,22 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * If the call returns an EOS_Success result, the out parameter, OutAttribute, must be passed to EOS_Lobby_Attribute_Release to release the memory associated with it.
 	 *
 	 * @param options Structure containing the input parameters
-	 * @param outAttribute Out parameter used to receive the EOS_Lobby_Attribute structure.
+	 * @return Out parameter used to receive the EOS_Lobby_Attribute structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutAttribute<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
 	 *
 	 * @see EOS_Lobby_Attribute
 	 * @see EOS_LobbyDetails_CopyAttributeByIndexOptions
 	 * @see EOS_LobbyDetails#release()
 	 */
-	public EOS_EResult copyAttributeByIndex(EOS_LobbyDetails_CopyAttributeByIndexOptions options, EOS_Lobby_Attribute[] outAttribute) {
-		return EOSLibrary.instance.EOS_LobbyDetails_CopyAttributeByIndex(this, options, outAttribute);
+	public EOS_Lobby_Attribute copyAttributeByIndex(EOS_LobbyDetails_CopyAttributeByIndexOptions options) throws EOSException {
+		final EOS_Lobby_Attribute.ByReference outAttribute = new EOS_Lobby_Attribute.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyAttributeByIndex(this, options, outAttribute);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outAttribute;
 	}
 
 	/**
@@ -87,18 +98,22 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * If the call returns an EOS_Success result, the out parameter, OutAttribute, must be passed to EOS_Lobby_Attribute_Release to release the memory associated with it.
 	 *
 	 * @param options Structure containing the input parameters
-	 * @param outAttribute Out parameter used to receive the EOS_Lobby_Attribute structure.
+	 * @return Out parameter used to receive the EOS_Lobby_Attribute structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutAttribute<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
 	 *
 	 * @see EOS_Lobby_Attribute
 	 * @see EOS_LobbyDetails_CopyAttributeByKeyOptions
 	 * @see EOS_LobbyDetails#release()
 	 */
-	public EOS_EResult copyAttributeByKey(EOS_LobbyDetails_CopyAttributeByKeyOptions options, EOS_Lobby_Attribute[] outAttribute) {
-		return EOSLibrary.instance.EOS_LobbyDetails_CopyAttributeByKey(this, options, outAttribute);
+	public EOS_Lobby_Attribute copyAttributeByKey(EOS_LobbyDetails_CopyAttributeByKeyOptions options) throws EOSException {
+		final EOS_Lobby_Attribute.ByReference outAttribute = new EOS_Lobby_Attribute.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyAttributeByKey(this, options, outAttribute);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outAttribute;
 	}
 
 	/**
@@ -109,7 +124,7 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * @return number of members in the existing lobby or 0 if there is an error
 	 */
 	public int getMemberCount(EOS_LobbyDetails_GetMemberCountOptions options) {
-		return EOSLibrary.instance.EOS_LobbyDetails_GetMemberCount(this,  options);
+		return EOSLibrary.instance.EOS_LobbyDetails_GetMemberCount(this, options);
 	}
 
 	/**
@@ -145,18 +160,22 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * If the call returns an EOS_Success result, the out parameter, OutAttribute, must be passed to EOS_Lobby_Attribute_Release to release the memory associated with it.
 	 *
 	 * @param options Structure containing the input parameters
-	 * @param outAttribute Out parameter used to receive the EOS_Lobby_Attribute structure.
+	 * @return Out parameter used to receive the EOS_Lobby_Attribute structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutAttribute<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
 	 *
 	 * @see EOS_Lobby_Attribute
 	 * @see EOS_LobbyDetails_CopyMemberAttributeByIndexOptions
 	 * @see EOS_LobbyDetails#release()
 	 */
-	public EOS_EResult copyMemberAttributeByIndex(EOS_LobbyDetails_CopyMemberAttributeByIndexOptions options, EOS_Lobby_Attribute[] outAttribute) {
-		return EOSLibrary.instance.EOS_LobbyDetails_CopyMemberAttributeByIndex(this, options, outAttribute);
+	public EOS_Lobby_Attribute copyMemberAttributeByIndex(EOS_LobbyDetails_CopyMemberAttributeByIndexOptions options) throws EOSException {
+		final EOS_Lobby_Attribute.ByReference outAttribute = new EOS_Lobby_Attribute.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyMemberAttributeByIndex(this, options, outAttribute);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outAttribute;
 	}
 
 	/**
@@ -164,18 +183,22 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * If the call returns an EOS_Success result, the out parameter, OutAttribute, must be passed to EOS_Lobby_Attribute_Release to release the memory associated with it.
 	 *
 	 * @param options Structure containing the input parameters
-	 * @param outAttribute Out parameter used to receive the EOS_Lobby_Attribute structure.
+	 * @return Out parameter used to receive the EOS_Lobby_Attribute structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutAttribute<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
 	 *
 	 * @see EOS_Lobby_Attribute
 	 * @see EOS_LobbyDetails_CopyMemberAttributeByKeyOptions
 	 * @see EOS_LobbyDetails#release()
 	 */
-	public EOS_EResult copyMemberAttributeByKey(EOS_LobbyDetails_CopyMemberAttributeByKeyOptions options, EOS_Lobby_Attribute[] outAttribute) {
-		return EOSLibrary.instance.EOS_LobbyDetails_CopyMemberAttributeByKey(this, options, outAttribute);
+	public EOS_Lobby_Attribute copyMemberAttributeByKey(EOS_LobbyDetails_CopyMemberAttributeByKeyOptions options) throws EOSException {
+		final EOS_Lobby_Attribute.ByReference outAttribute = new EOS_Lobby_Attribute.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyMemberAttributeByKey(this, options, outAttribute);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outAttribute;
 	}
 
 	public void release() {
