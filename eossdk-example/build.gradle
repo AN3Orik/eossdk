@@ -15,8 +15,10 @@ bootStartScripts.enabled = false
 
 run.workingDir = new File("./")
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
 
 application {
 	mainClass = "host.anzo.eossdk.example.ExampleServer"
@@ -25,13 +27,13 @@ application {
 dependencies {
 	annotationProcessor('org.jetbrains:annotations:24.0.1')
 	compileOnly('org.jetbrains:annotations:24.0.1')
-	annotationProcessor('org.projectlombok:lombok:1.18.28')
-	compileOnly('org.projectlombok:lombok:1.18.28')
+	annotationProcessor('org.projectlombok:lombok:1.18.30')
+	compileOnly('org.projectlombok:lombok:1.18.30')
 	implementation('org.slf4j:slf4j-api:2.0.9')
 	implementation('org.slf4j:slf4j-ext:2.0.9')
 	implementation('org.slf4j:slf4j-simple:2.0.9')
-	implementation("org.apache.httpcomponents.client5:httpclient5-fluent:+")
-	implementation("org.json:json:+")
+	implementation("org.apache.httpcomponents.client5:httpclient5-fluent:5.2.1")
+	implementation("org.json:json:20230618")
 	implementation(project(':eossdk'))
 
 	def osName = System.getProperty("os.name").toLowerCase()

@@ -7,3 +7,5 @@
 /eossdk-native-ios/build
 /eossdk-native-linux/build
 /eossdk-native-windows/build
+/eossdk-native-android/build
+/local.properties

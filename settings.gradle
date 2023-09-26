@@ -1,5 +1,14 @@
+pluginManagement {
+	repositories {
+		google()
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
+
 include 'eossdk'
 include 'eossdk-native-windows'
 include 'eossdk-native-linux'
 include 'eossdk-native-ios'
+include 'eossdk-native-android'
 include 'eossdk-example'

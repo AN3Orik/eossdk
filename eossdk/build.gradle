@@ -6,10 +6,15 @@ plugins {
 dependencies {
 	annotationProcessor('org.jetbrains:annotations:24.0.1')
 	compileOnly('org.jetbrains:annotations:24.0.1')
-	annotationProcessor('org.projectlombok:lombok:1.18.28')
-	compileOnly('org.projectlombok:lombok:1.18.28')
+	annotationProcessor('org.projectlombok:lombok:1.18.30')
+	compileOnly('org.projectlombok:lombok:1.18.30')
 	api("net.java.dev.jna:jna:5.13.0")
 	compileOnly('org.slf4j:slf4j-api:2.0.9')
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 compileJava {
