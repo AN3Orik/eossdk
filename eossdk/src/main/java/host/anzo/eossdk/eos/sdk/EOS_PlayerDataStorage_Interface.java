@@ -17,6 +17,9 @@ import host.anzo.eossdk.eos.sdk.playerdatastorage.options.*;
  * @since 8/22/2023
  */
 public class EOS_PlayerDataStorage_Interface extends PointerType {
+	/** Maximum File Name Length in bytes */
+	public static final int EOS_PLAYERDATASTORAGE_FILENAME_MAX_LENGTH_BYTES = 64;
+
 	public EOS_PlayerDataStorage_Interface(Pointer address) {
 		super(address);
 	}
@@ -24,8 +27,6 @@ public class EOS_PlayerDataStorage_Interface extends PointerType {
 	public EOS_PlayerDataStorage_Interface() {
 		super();
 	}
-
-	public static final int EOS_PLAYERDATASTORAGE_FILENAME_MAX_LENGTH_BYTES = 64;
 
 	/**
 	 * Query a specific file's metadata, such as file names, size, and a MD5 hash of the data. This is not required before a file may be opened, saved, copied, or deleted. Once a file has

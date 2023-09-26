@@ -2,7 +2,11 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.ShortByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
@@ -10,6 +14,7 @@ import host.anzo.eossdk.eos.sdk.p2p.EOS_P2P_PacketQueueInfo;
 import host.anzo.eossdk.eos.sdk.p2p.EOS_P2P_SocketId;
 import host.anzo.eossdk.eos.sdk.p2p.callbackresults.EOS_P2P_AddNotifyIncomingPacketQueueFullOptions;
 import host.anzo.eossdk.eos.sdk.p2p.callbacks.*;
+import host.anzo.eossdk.eos.sdk.p2p.enums.EOS_ENATType;
 import host.anzo.eossdk.eos.sdk.p2p.enums.EOS_ERelayControl;
 import host.anzo.eossdk.eos.sdk.p2p.options.*;
 
@@ -269,12 +274,17 @@ public class EOS_P2P_Interface extends PointerType {
 	 * Get our last-queried NAT-type, if it has been successfully queried.
 	 *
 	 * @param options Information about what version of the EOS_P2P_GetNATType API is supported
-	 * @param outNATType The queried NAT Type, or unknown if unknown
-	 * @return {@link EOS_EResult#EOS_Success} - if we have cached data<br>
-	 *         {@link EOS_EResult#EOS_NotFound} - If we do not have queried data cached
+	 * @return The queried NAT Type, or unknown if unknown
+	 *
+	 * @throws EOSNotFoundException If we do not have queried data cached
 	 */
-	public EOS_EResult getNATType(EOS_P2P_GetNATTypeOptions options, IntBuffer outNATType) {
-		return EOSLibrary.instance.EOS_P2P_GetNATType(this, options, outNATType);
+	public EOS_ENATType getNATType(EOS_P2P_GetNATTypeOptions options) throws EOSException {
+		final IntByReference outNATType = new IntByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_P2P_GetNATType(this, options, outNATType);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return EOS_ENATType.fromId(outNATType.getValue());
 	}
 
 	/**
@@ -345,12 +355,17 @@ public class EOS_P2P_Interface extends PointerType {
 	 * Gets the current cached information related to the incoming and outgoing packet queues.
 	 *
 	 * @param options Information about what version of the EOS_P2P_GetPacketQueueInfo API is supported
-	 * @param outPacketQueueInfo The current information of the incoming and outgoing packet queues
-	 * @return {@link EOS_EResult#EOS_Success} - if the input options were valid
-	 *         {@link EOS_EResult#EOS_InvalidParameters} - if the input was invalid in some way
+	 * @return The current information of the incoming and outgoing packet queues
+	 *
+	 * @throws EOSInvalidParametersException if the input was invalid in some way
 	 */
-	public EOS_EResult getPacketQueueInfo(EOS_P2P_GetPacketQueueInfoOptions options, EOS_P2P_PacketQueueInfo outPacketQueueInfo) {
-		return EOSLibrary.instance.EOS_P2P_GetPacketQueueInfo(this, options, outPacketQueueInfo);
+	public EOS_P2P_PacketQueueInfo getPacketQueueInfo(EOS_P2P_GetPacketQueueInfoOptions options) throws EOSException {
+		final EOS_P2P_PacketQueueInfo.ByReference outPacketQueueInfo = new EOS_P2P_PacketQueueInfo.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_P2P_GetPacketQueueInfo(this, options, outPacketQueueInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outPacketQueueInfo;
 	}
 
 	/**

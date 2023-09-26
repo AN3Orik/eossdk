@@ -119,9 +119,9 @@ public class EOS_KWS_Interface extends PointerType {
 	 * @param options Structure containing the input parameters
 	 * @return the permission for the given index, if it exists and is valid, use EOS_KWS_PermissionStatus_Release when finished
 	 *
-	 * @see EOS_KWS_Interface#createUser(EOS_KWS_CreateUserOptions, Pointer, EOS_KWS_OnCreateUserCallback)
-	 * @see EOS_KWS_Interface#queryPermissions(EOS_KWS_QueryPermissionsOptions, Pointer, EOS_KWS_OnQueryPermissionsCallback)
-	 * @see EOS_KWS_Interface#requestPermissions(EOS_KWS_RequestPermissionsOptions, Pointer, EOS_KWS_OnRequestPermissionsCallback)
+	 * @see #createUser(EOS_KWS_CreateUserOptions, Pointer, EOS_KWS_OnCreateUserCallback)
+	 * @see #queryPermissions(EOS_KWS_QueryPermissionsOptions, Pointer, EOS_KWS_OnQueryPermissionsCallback)
+	 * @see #requestPermissions(EOS_KWS_RequestPermissionsOptions, Pointer, EOS_KWS_OnRequestPermissionsCallback)
 	 * @see EOS_KWS_PermissionStatus#release()
 	 *
 	 * @throws EOSNotFoundException if the user is not found or the index is invalid
@@ -143,9 +143,9 @@ public class EOS_KWS_Interface extends PointerType {
 	 * @param options Structure containing the input parameters
 	 * @param outPermission the permission for the given key, if it exists and is valid
 	 *
-	 * @see EOS_KWS_Interface#createUser(EOS_KWS_CreateUserOptions, Pointer, EOS_KWS_OnCreateUserCallback)
-	 * @see EOS_KWS_Interface#queryPermissions(EOS_KWS_QueryPermissionsOptions, Pointer, EOS_KWS_OnQueryPermissionsCallback)
-	 * @see EOS_KWS_Interface#requestPermissions(EOS_KWS_RequestPermissionsOptions, Pointer, EOS_KWS_OnRequestPermissionsCallback)
+	 * @see #createUser(EOS_KWS_CreateUserOptions, Pointer, EOS_KWS_OnCreateUserCallback)
+	 * @see #queryPermissions(EOS_KWS_QueryPermissionsOptions, Pointer, EOS_KWS_OnQueryPermissionsCallback)
+	 * @see #requestPermissions(EOS_KWS_RequestPermissionsOptions, Pointer, EOS_KWS_OnRequestPermissionsCallback)
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if the permission state is known for the given user and key
 	 *         {@link EOS_EResult#EOS_NotFound} if the user or the permission is not found

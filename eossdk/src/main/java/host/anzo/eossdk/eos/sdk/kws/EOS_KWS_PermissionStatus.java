@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Name", "Status"})
 public class EOS_KWS_PermissionStatus extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_KWS_PermissionStatus API. */
 	public static final int EOS_KWS_PERMISSIONSTATUS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_KWS_PERMISSIONSTATUS_API_LATEST. */

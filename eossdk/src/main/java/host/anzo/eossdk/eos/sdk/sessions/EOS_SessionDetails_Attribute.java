@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Data", "AdvertisementType"})
 public class EOS_SessionDetails_Attribute extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_SessionDetails_Attribute struct. */
 	public static final int EOS_SESSIONDETAILS_ATTRIBUTE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_SESSIONDETAILS_ATTRIBUTE_API_LATEST. */
@@ -35,7 +36,7 @@ public class EOS_SessionDetails_Attribute extends Structure implements AutoClose
 
 	/**
 	 * Release the memory associated with a session attribute. This must be called on data retrieved from EOS_SessionDetails_CopySessionAttributeByIndex.
-	 * @see EOS_SessionDetails#copySessionAttributeByIndex(EOS_SessionDetails_CopySessionAttributeByIndexOptions, EOS_SessionDetails_Attribute[])
+	 * @see EOS_SessionDetails#copySessionAttributeByIndex(EOS_SessionDetails_CopySessionAttributeByIndexOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_SessionDetails_Attribute_Release(this);

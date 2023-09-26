@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SessionName", "LocalUserId", "State", "SessionDetails"})
 public class EOS_ActiveSession_Info extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_ActiveSession_Info struct. */
 	public static final int EOS_ACTIVESESSION_INFO_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ACTIVESESSION_INFO_API_LATEST. */
@@ -39,7 +40,7 @@ public class EOS_ActiveSession_Info extends Structure implements AutoCloseable {
 
 	/**
 	 * Release the memory associated with an EOS_ActiveSession_Info structure. This must be called on data retrieved from EOS_ActiveSession_CopyInfo.
-	 * @see EOS_ActiveSession#copyInfo(EOS_ActiveSession_CopyInfoOptions, EOS_ActiveSession_Info[])
+	 * @see EOS_ActiveSession#copyInfo(EOS_ActiveSession_CopyInfoOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_ActiveSession_Info_Release(this);

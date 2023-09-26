@@ -2,9 +2,12 @@ package host.anzo.eossdk.eos.sdk.playerdatastorage;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_PlayerDataStorage_Interface;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
@@ -32,16 +35,23 @@ public class EOS_PlayerDataStorageFileTransferRequest extends PointerType implem
 
 	/**
 	 * Get the file name of the file this request is for. OutStringLength will always be set to the string length of the file name if it is not NULL.
+	 * @return NULL-terminated utf8 file name
 	 *
-	 * @param filenameStringBufferSizeBytes The maximum number of bytes that can be written to OutStringBuffer
-	 * @param outStringBuffer The buffer to write the NULL-terminated utf8 file name into, if successful
-	 * @param outStringLength How long the file name is (not including null terminator)
-	 * @return EOS_Success if the file name was successfully written to OutFilenameBuffer, a failure result otherwise
+	 * @throws EOSException if exception occurred
 	 *
 	 * @see EOS_PlayerDataStorage_Interface#EOS_PLAYERDATASTORAGE_FILENAME_MAX_LENGTH_BYTES
 	 */
-	public EOS_EResult getFilename(int filenameStringBufferSizeBytes, ByteBuffer outStringBuffer, IntBuffer outStringLength) {
-		return EOSLibrary.instance.EOS_PlayerDataStorageFileTransferRequest_GetFilename(this, filenameStringBufferSizeBytes, outStringBuffer, outStringLength);
+	public String getFilename() throws EOSException {
+		final IntByReference outStringLength = new IntByReference(EOS_PlayerDataStorage_Interface.EOS_PLAYERDATASTORAGE_FILENAME_MAX_LENGTH_BYTES);
+		final byte[] outStringBuffer = new byte[EOS_PlayerDataStorage_Interface.EOS_PLAYERDATASTORAGE_FILENAME_MAX_LENGTH_BYTES];
+		final EOS_EResult result = EOSLibrary.instance.EOS_PlayerDataStorageFileTransferRequest_GetFilename(this,
+				EOS_PlayerDataStorage_Interface.EOS_PLAYERDATASTORAGE_FILENAME_MAX_LENGTH_BYTES,
+				outStringBuffer,
+				outStringLength);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return new String(outStringBuffer, 0, outStringLength.getValue());
 	}
 
 	/**

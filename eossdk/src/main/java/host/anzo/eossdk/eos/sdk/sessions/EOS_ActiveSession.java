@@ -2,6 +2,9 @@ package host.anzo.eossdk.eos.sdk.sessions;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSIncompatibleVersionException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Sessions_Interface;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
@@ -30,18 +33,22 @@ public class EOS_ActiveSession extends PointerType implements AutoCloseable {
 	 * If the call returns an EOS_Success result, the out parameter, OutActiveSessionInfo, must be passed to EOS_ActiveSession_Info_Release to release the memory associated with it.
 	 *
 	 * @param options Structure containing the input parameters
-	 * @param outActiveSessionInfo Out parameter used to receive the EOS_ActiveSession_Info structure.
+	 * @return Out parameter used to receive the EOS_ActiveSession_Info structure.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutActiveSessionInfo<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
-	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
 	 *
 	 * @see EOS_ActiveSession_Info
 	 * @see EOS_ActiveSession_CopyInfoOptions
 	 * @see EOS_ActiveSession_Info#release()
 	 */
-	public EOS_EResult copyInfo(EOS_ActiveSession_CopyInfoOptions options, EOS_ActiveSession_Info[] outActiveSessionInfo) {
-		return EOSLibrary.instance.EOS_ActiveSession_CopyInfo(this, options, outActiveSessionInfo);
+	public EOS_ActiveSession_Info copyInfo(EOS_ActiveSession_CopyInfoOptions options) throws EOSException {
+		final EOS_ActiveSession_Info.ByReference outActiveSessionInfo = new EOS_ActiveSession_Info.ByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_ActiveSession_CopyInfo(this, options, outActiveSessionInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return outActiveSessionInfo;
 	}
 
 	/**

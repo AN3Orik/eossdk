@@ -2,8 +2,10 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSLimitExceededException;
 import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
@@ -13,9 +15,6 @@ import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_ExternalAccountInfo;
 import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_IdToken;
 import host.anzo.eossdk.eos.sdk.connect.callbacks.*;
 import host.anzo.eossdk.eos.sdk.connect.options.*;
-
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 /**
  * The Connect Interface is used to manage local user permissions and access to backend services through the verification of various forms of credentials.
@@ -29,9 +28,13 @@ import java.nio.IntBuffer;
  * @since 8/9/2023
  */
 public class EOS_Connect_Interface extends PointerType {
+	/** Max length of an external account ID in string form */
+	public static final int EOS_CONNECT_EXTERNAL_ACCOUNT_ID_MAX_LENGTH = 256;
+
 	public EOS_Connect_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Connect_Interface() {
 		super();
 	}
@@ -249,7 +252,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 *
 	 * @see EOS_Connect_ExternalAccountInfo
 	 * @see #getProductUserExternalAccountCount(EOS_Connect_GetProductUserExternalAccountCountOptions)
-	 * @see #getProductUserIdMapping(EOS_Connect_GetProductUserIdMappingOptions, ByteBuffer, IntBuffer)
+	 * @see #getProductUserIdMapping(EOS_Connect_GetProductUserIdMappingOptions)
 	 * @see #copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions)
 	 * @see #copyProductUserExternalAccountByAccountType(EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions)
 	 * @see #copyProductUserExternalAccountByAccountId(EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions)
@@ -280,19 +283,20 @@ public class EOS_Connect_Interface extends PointerType {
 	 * Fetch an external account ID, in string form, that maps to a given Product User ID.
 	 *
 	 * @param options structure containing the local user and target Product User ID.
-	 * @param outBuffer The buffer into which the external account ID data should be written. The buffer must be long enough to hold a string of EOS_CONNECT_EXTERNAL_ACCOUNT_ID_MAX_LENGTH.
-	 * @param inOutBufferLength The size of the OutBuffer in characters.
-	 *                          The input buffer should include enough space to be null-terminated.
-	 *                          When the function returns, this parameter will be filled with the length of the string copied into OutBuffer.
+	 * @return external account ID data
 	 *
-	 * @return An EOS_EResult that indicates the external account ID was copied into the OutBuffer.<br>
-	 *         {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutUserInfo.<br>
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter.<br>
-	 *         {@link EOS_EResult#EOS_NotFound} if the mapping doesn't exist or hasn't been queried yet.<br>
-	 *         {@link EOS_EResult#EOS_LimitExceeded} if the OutBuffer is not large enough to receive the external account ID. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter.
+	 * @throws EOSNotFoundException if the mapping doesn't exist or hasn't been queried yet.
+	 * @throws EOSLimitExceededException if the OutBuffer is not large enough to receive the external account ID. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 */
-	public EOS_EResult getProductUserIdMapping(EOS_Connect_GetProductUserIdMappingOptions options, ByteBuffer outBuffer, IntBuffer inOutBufferLength)  {
-		return EOSLibrary.instance.EOS_Connect_GetProductUserIdMapping(this, options, outBuffer, inOutBufferLength);
+	public String getProductUserIdMapping(EOS_Connect_GetProductUserIdMappingOptions options) throws EOSException {
+		final IntByReference inOutBufferLength = new IntByReference(EOS_CONNECT_EXTERNAL_ACCOUNT_ID_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_CONNECT_EXTERNAL_ACCOUNT_ID_MAX_LENGTH];
+		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_GetProductUserIdMapping(this, options, outBuffer, inOutBufferLength);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return new String(outBuffer, 0, inOutBufferLength.getValue());
 	}
 
 	/**
