@@ -6,6 +6,8 @@
 
 package host.anzo.eossdk.eos.sdk.anticheat.common.enums;
 
+import com.sun.jna.FromNativeContext;
+import com.sun.jna.NativeMapped;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -17,7 +19,7 @@ import java.util.Map;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-public @Getter enum EOS_EAntiCheatCommonClientAuthStatus {
+public @Getter enum EOS_EAntiCheatCommonClientAuthStatus implements NativeMapped {
 	/** Not used */
 	EOS_ACCCAS_Invalid(0),
 	/** The client/peer's anti-cheat functionality has been validated by this game server */
@@ -39,8 +41,18 @@ public @Getter enum EOS_EAntiCheatCommonClientAuthStatus {
 		this.id = id;
 	}
 
-	@SuppressWarnings("unused")
-	public static EOS_EAntiCheatCommonClientAuthStatus fromId(Integer id) {
-		return values.getOrDefault(id, EOS_ACCCAS_Invalid);
+	@Override
+	public Object fromNative(Object nativeValue, FromNativeContext context) {
+		return values.getOrDefault((int)nativeValue, EOS_ACCCAS_Invalid);
+	}
+
+	@Override
+	public Object toNative() {
+		return id;
+	}
+
+	@Override
+	public Class<?> nativeType() {
+		return Integer.class;
 	}
 }
