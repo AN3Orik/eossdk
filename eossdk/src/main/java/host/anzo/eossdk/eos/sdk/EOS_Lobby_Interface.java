@@ -326,7 +326,7 @@ public class EOS_Lobby_Interface extends PointerType {
 		final IntByReference inOutBufferLength = new IntByReference(outBuffer.capacity());
 		final EOS_EResult result = EOSLibrary.instance.EOS_Lobby_GetInviteIdByIndex(this, options, outBuffer, inOutBufferLength);
 		if (result.isSuccess()) {
-			return new String(outBuffer.array(), 0, inOutBufferLength.getValue());
+			return new String(outBuffer.array(), 0, inOutBufferLength.getValue()).trim();
 		}
 		throw EOSException.fromResult(result);
 	}

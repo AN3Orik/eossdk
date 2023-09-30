@@ -40,7 +40,7 @@ public class EOS_AntiCheatServer_RegisterClientOptions extends Structure {
 	 * have the same string) and consistent (if the same user connects to this game session
 	 * twice, the same string will be used) in the scope of a single protected game session.
 	 */
-	public Pointer AccountId_DEPRECATED;
+	public String AccountId_DEPRECATED;
 	/**
 	 * Optional IP address for the remote user. May be null if not available.
 	 * IPv4 format: "0.0.0.0"
