@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.*;
 
 /**
  * @author Anton Lasevich
@@ -20,10 +21,16 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 	protected T options;
 	protected EOS_Platform_Interface platform;
 	private final Timer platformTickTimer = new Timer();
+	private final static ScheduledExecutorService taskExecutor = Executors.newScheduledThreadPool(1);
 
 	public AEOSBase<T> start(T baseOptions) {
 		this.options = baseOptions;
-		initPlatform();
+		try {
+			taskExecutor.submit(this::initPlatform).get();
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 		return this;
 	}
 
@@ -54,17 +61,7 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 			throw new RuntimeException("Failed to EOS_Platform_Create: pointer is null");
 		}
 
-		try {
-			platformTickTimer.scheduleAtFixedRate(new TimerTask() {
-				@Override
-				public void run() {
-					platform.tick();
-				}
-			}, 0, options.getTickPeriod());
-		}
-		catch (Exception e) {
-			throw new RuntimeException("Failed to start platform tick timer: " + e.getMessage());
-		}
+		taskExecutor.scheduleAtFixedRate(() -> platform.tick(), 0, options.getTickPeriod(), TimeUnit.MILLISECONDS);
 	}
 
 	/**

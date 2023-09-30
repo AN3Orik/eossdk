@@ -21,7 +21,7 @@ public class EOS_AntiCheatClient_RegisterPeerOptions extends Structure {
 	 * used in OnPeerActionRequiredCallback to quickly signal to the user
 	 * that they will not be able to join online play.
 	 */
-	public static final EOS_AntiCheatCommon_ClientHandle EOS_ANTICHEATCLIENT_PEER_SELF = new EOS_AntiCheatCommon_ClientHandle(new Pointer(-1));
+	public static final EOS_AntiCheatCommon_ClientHandle EOS_ANTICHEATCLIENT_PEER_SELF = new EOS_AntiCheatCommon_ClientHandle(-1);
 	public static final int EOS_ANTICHEATCLIENT_REGISTERPEER_MIN_AUTHENTICATIONTIMEOUT = 40;
 	public static final int EOS_ANTICHEATCLIENT_REGISTERPEER_MAX_AUTHENTICATIONTIMEOUT = 120;
 	public static final int EOS_ANTICHEATCLIENT_REGISTERPEER_API_LATEST = 3;
