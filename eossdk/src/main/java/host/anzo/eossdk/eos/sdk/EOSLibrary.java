@@ -164,14 +164,14 @@ public interface EOSLibrary extends Library {
 	// Common
 	String EOS_EResult_ToString(EOS_EResult result);
 	EOS_Bool EOS_EResult_IsOperationComplete(EOS_EResult result);
-	EOS_EResult EOS_ByteArray_ToString(byte[] byteArray, int length, byte[] uutBuffer, IntBuffer inOutBufferLength);
+	EOS_EResult EOS_ByteArray_ToString(byte[] byteArray, int length, byte[] outBuffer, IntByReference inOutBufferLength);
 	EOS_Bool EOS_EpicAccountId_IsValid(EOS_EpicAccountId accountId);
-	EOS_EResult EOS_EpicAccountId_ToString(EOS_EpicAccountId accountId, String outBuffer, IntBuffer inOutBufferLength);
+	EOS_EResult EOS_EpicAccountId_ToString(EOS_EpicAccountId accountId, ByteBuffer outBuffer, IntByReference inOutBufferLength);
 	EOS_EpicAccountId EOS_EpicAccountId_FromString(String accountIdString);
 	EOS_Bool EOS_ProductUserId_IsValid(EOS_ProductUserId accountId);
-	EOS_EResult EOS_ProductUserId_ToString(EOS_ProductUserId accountId, String outBuffer, IntBuffer inOutBufferLength);
+	EOS_EResult EOS_ProductUserId_ToString(EOS_ProductUserId accountId, ByteBuffer outBuffer, IntByReference inOutBufferLength);
 	EOS_ProductUserId EOS_ProductUserId_FromString(String productUserIdString);
-	EOS_EResult EOS_ContinuanceToken_ToString(EOS_ContinuanceToken continuanceToken, String outBuffer, IntBuffer inOutBufferLength);
+	EOS_EResult EOS_ContinuanceToken_ToString(EOS_ContinuanceToken continuanceToken, ByteBuffer outBuffer, IntByReference inOutBufferLength);
 
 	// Interfaces
 	EOS_Connect_Interface EOS_Platform_GetConnectInterface(EOS_Platform_Interface handle);
@@ -500,8 +500,8 @@ public interface EOSLibrary extends Library {
 	void EOS_Lobby_RejectInvite(EOS_Lobby_Interface handle, EOS_Lobby_RejectInviteOptions options, Pointer clientData, EOS_Lobby_OnRejectInviteCallback completionDelegate);
 	void EOS_Lobby_QueryInvites(EOS_Lobby_Interface handle, EOS_Lobby_QueryInvitesOptions options, Pointer clientData, EOS_Lobby_OnQueryInvitesCallback completionDelegate);
 	int EOS_Lobby_GetInviteCount(EOS_Lobby_Interface handle, EOS_Lobby_GetInviteCountOptions options);
-	EOS_EResult EOS_Lobby_GetInviteIdByIndex(EOS_Lobby_Interface handle, EOS_Lobby_GetInviteIdByIndexOptions options, ByteBuffer OutBuffer, IntBuffer InOutBufferLength);
-	EOS_EResult EOS_Lobby_CreateLobbySearch(EOS_Lobby_Interface handle, EOS_Lobby_CreateLobbySearchOptions options, PointerByReference OutLobbySearchHandle);
+	EOS_EResult EOS_Lobby_GetInviteIdByIndex(EOS_Lobby_Interface handle, EOS_Lobby_GetInviteIdByIndexOptions options, ByteBuffer outBuffer, IntByReference inOutBufferLength);
+	EOS_EResult EOS_Lobby_CreateLobbySearch(EOS_Lobby_Interface handle, EOS_Lobby_CreateLobbySearchOptions options, PointerByReference outLobbySearchHandle);
 	EOS_NotificationId EOS_Lobby_AddNotifyLobbyInviteReceived(EOS_Lobby_Interface handle, EOS_Lobby_AddNotifyLobbyInviteReceivedOptions options, Pointer clientData, EOS_Lobby_OnLobbyInviteReceivedCallback notificationFn);
 	void EOS_Lobby_RemoveNotifyLobbyInviteReceived(EOS_Lobby_Interface handle, EOS_NotificationId InId);
 	EOS_NotificationId EOS_Lobby_AddNotifyLobbyInviteAccepted(EOS_Lobby_Interface handle, EOS_Lobby_AddNotifyLobbyInviteAcceptedOptions options, Pointer clientData, EOS_Lobby_OnLobbyInviteAcceptedCallback notificationFn);

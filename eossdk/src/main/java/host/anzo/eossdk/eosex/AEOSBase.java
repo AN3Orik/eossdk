@@ -20,7 +20,6 @@ import java.util.concurrent.*;
 public abstract class AEOSBase<T extends EOSBaseOptions> {
 	protected T options;
 	protected EOS_Platform_Interface platform;
-	private final Timer platformTickTimer = new Timer();
 	private final static ScheduledExecutorService taskExecutor = Executors.newScheduledThreadPool(1);
 
 	public AEOSBase<T> start(T baseOptions) {
@@ -35,7 +34,15 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 	}
 
 	public void shutdown() {
-		platformTickTimer.cancel();
+		try {
+			taskExecutor.shutdown();
+			if (!taskExecutor.awaitTermination(10, TimeUnit.SECONDS)) {
+				taskExecutor.shutdownNow();
+			}
+		}
+		catch (Exception e) {
+			throw new RuntimeException("Error while taskExecutor termination", e);
+		}
 		platform.release();
 		EOS.EOS_Shutdown();
 	}

@@ -8,10 +8,15 @@ package host.anzo.eossdk.eos.sdk.common;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidUserException;
+import host.anzo.eossdk.eos.exceptions.EOSLimitExceededException;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
-import java.nio.IntBuffer;
+import java.nio.ByteBuffer;
 
 /**
  * @author Anton Lasevich
@@ -26,14 +31,25 @@ public class EOS_ContinuanceToken extends PointerType {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		String outBuffer = "";
-		final IntBuffer inOutBufferLength = IntBuffer.allocate(64);
+	/**
+	 * Retrieve a null-terminated stringified continuance token from an EOS_ContinuanceToken.
+	 * <p>
+	 * To get the required buffer size, call once with OutBuffer set to NULL, InOutBufferLength will contain the buffer size needed.
+	 * Call again with valid params to get the stringified continuance token which will only contain UTF8-encoded printable characters as well as the null-terminator.
+	 *
+	 * @return The continuance token stringified version
+	 *
+	 * @throws EOSInvalidParametersException Either OutBuffer or InOutBufferLength were passed as NULL parameters.
+	 * @throws EOSInvalidUserException The AccountId is invalid and cannot be stringified.
+	 * @throws EOSLimitExceededException The OutBuffer is not large enough receive the continuance token string. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 */
+	public String getString() throws EOSException {
+		final ByteBuffer outBuffer = ByteBuffer.allocate(64);
+		final IntByReference inOutBufferLength = new IntByReference(outBuffer.capacity());
 		final EOS_EResult result = EOSLibrary.instance.EOS_ContinuanceToken_ToString(this, outBuffer, inOutBufferLength);
 		if (result.isSuccess()) {
-			return outBuffer;
+			return new String(outBuffer.array(), 0, inOutBufferLength.getValue());
 		}
-		throw new RuntimeException("Error while EOS_ContinuanceToken.toString(): " + result);
+		throw EOSException.fromResult(result);
 	}
 }

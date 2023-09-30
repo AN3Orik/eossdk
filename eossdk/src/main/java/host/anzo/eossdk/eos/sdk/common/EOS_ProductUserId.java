@@ -8,6 +8,11 @@ package host.anzo.eossdk.eos.sdk.common;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidUserException;
+import host.anzo.eossdk.eos.exceptions.EOSLimitExceededException;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Connect_Interface;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EExternalCredentialType;
@@ -15,7 +20,7 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.connect.callbacks.EOS_Connect_OnLoginCallback;
 import host.anzo.eossdk.eos.sdk.connect.options.EOS_Connect_LoginOptions;
 
-import java.nio.IntBuffer;
+import java.nio.ByteBuffer;
 
 /**
  * A handle to a user's Product User ID (game services related ecosystem)
@@ -59,14 +64,23 @@ public class EOS_ProductUserId extends PointerType {
 		return EOSLibrary.instance.EOS_ProductUserId_IsValid(this) == EOS_Bool.EOS_TRUE;
 	}
 
-	@Override
-	public String toString() {
-		String outBuffer = "";
-		final IntBuffer inOutBufferLength = IntBuffer.allocate(EOS_PRODUCTUSERID_MAX_LENGTH + 1);
+	/**
+	 * Retrieve a null-terminated stringified Product User ID from an EOS_ProductUserId. This is useful for replication of Product User IDs in multiplayer games.
+	 * This string will be no larger than EOS_PRODUCTUSERID_MAX_LENGTH + 1 and will only contain UTF8-encoded printable characters as well as the null-terminator.
+	 *
+	 * @return The Product User ID stringified version
+	 *
+	 * @throws EOSInvalidParametersException Either OutBuffer or InOutBufferLength were passed as NULL parameters.
+	 * @throws EOSInvalidUserException The AccountId is invalid and cannot be stringified.
+	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the Product User ID string. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 */
+	public String getString() throws EOSException {
+		final ByteBuffer outBuffer = ByteBuffer.allocate(EOS_PRODUCTUSERID_MAX_LENGTH + 1);
+		final IntByReference inOutBufferLength = new IntByReference(outBuffer.capacity());
 		final EOS_EResult result = EOSLibrary.instance.EOS_ProductUserId_ToString(this, outBuffer, inOutBufferLength);
 		if (result.isSuccess()) {
-			return outBuffer;
+			return new String(outBuffer.array(), 0, inOutBufferLength.getValue());
 		}
-		throw new RuntimeException("Error while EOS_ProductUserId.toString(): " + result);
+		throw EOSException.fromResult(result);
 	}
 }

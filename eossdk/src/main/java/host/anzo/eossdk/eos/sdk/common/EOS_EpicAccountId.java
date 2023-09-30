@@ -8,13 +8,18 @@ package host.anzo.eossdk.eos.sdk.common;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidUserException;
+import host.anzo.eossdk.eos.exceptions.EOSLimitExceededException;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Auth_Interface;
 import host.anzo.eossdk.eos.sdk.auth.callbacks.EOS_Auth_OnLoginCallback;
 import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_LoginOptions;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
-import java.nio.IntBuffer;
+import java.nio.ByteBuffer;
 
 /**
  * A handle to a user's Epic Account ID
@@ -60,14 +65,23 @@ public class EOS_EpicAccountId extends PointerType {
 		return EOSLibrary.instance.EOS_EpicAccountId_IsValid(this) == EOS_Bool.EOS_TRUE;
 	}
 
-	@Override
-	public String toString() {
-		String outBuffer = "";
-		final IntBuffer inOutBufferLength = IntBuffer.allocate(EOS_EPICACCOUNTID_MAX_LENGTH + 1);
+	/**
+	 * Retrieve a null-terminated stringified Epic Account ID from an EOS_EpicAccountId. This is useful for replication of Epic Account IDs in multiplayer games.
+	 * This string will be no larger than EOS_EPICACCOUNTID_MAX_LENGTH + 1 and will only contain UTF8-encoded printable characters as well as a null-terminator.
+	 *
+	 * @return Epic Account ID stringified version
+	 *
+	 * @throws EOSInvalidParametersException Either OutBuffer or InOutBufferLength were passed as NULL parameters.
+	 * @throws EOSInvalidUserException The AccountId is invalid and cannot be stringified.
+	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the Product User ID string. InOutBufferLength contains the required minimum length to perform the operation successfully.
+	 */
+	public String getString() throws EOSException {
+		final ByteBuffer outBuffer = ByteBuffer.allocate(EOS_EPICACCOUNTID_MAX_LENGTH + 1);
+		final IntByReference inOutBufferLength = new IntByReference(outBuffer.capacity());
 		final EOS_EResult result = EOSLibrary.instance.EOS_EpicAccountId_ToString(this, outBuffer, inOutBufferLength);
 		if (result.isSuccess()) {
-			return outBuffer;
+			return new String(outBuffer.array(), 0, inOutBufferLength.getValue());
 		}
-		throw new RuntimeException("Error while EOS_EpicAccountId.toString(): " + result);
+		throw EOSException.fromResult(result);
 	}
 }

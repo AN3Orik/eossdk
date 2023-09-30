@@ -1,5 +1,6 @@
 package host.anzo.eossdk.eos.sdk;
 
+import com.sun.jna.ptr.IntByReference;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.init.options.EOS_InitializeOptions;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
@@ -75,7 +76,7 @@ public class EOS {
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer on invalid length for any of the parameters<br>
 	 *         {@link EOS_EResult#EOS_LimitExceeded} - The outBuffer is not large enough to receive the encoding. inOutBufferLength contains the required minimum length to perform the operation successfully.
 	 */
-	public EOS_EResult EOS_ByteArray_ToString(byte[] byteArray, int length, byte[] outBuffer, IntBuffer inOutBufferLength) {
+	public EOS_EResult EOS_ByteArray_ToString(byte[] byteArray, int length, byte[] outBuffer, IntByReference inOutBufferLength) {
 		return EOSLibrary.instance.EOS_ByteArray_ToString(byteArray, length, outBuffer, inOutBufferLength);
 	}
 }

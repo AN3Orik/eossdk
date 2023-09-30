@@ -2,7 +2,11 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
+import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
+import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.integratedplatform.enums.EOS_EIntegratedPlatformManagementFlags;
@@ -26,6 +30,9 @@ import java.nio.IntBuffer;
  * @since 8/16/2023
  */
 public class EOS_Lobby_Interface extends PointerType {
+	/** Max length of an invite ID */
+	public static final int EOS_LOBBY_INVITEID_MAX_LENGTH = 64;
+
 	public EOS_Lobby_Interface(Pointer address) {
 		super(address);
 	}
@@ -306,15 +313,22 @@ public class EOS_Lobby_Interface extends PointerType {
 	 *
 	 * @param options Structure containing the input parameters
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} if the input is valid and an invite ID was returned
-	 *         {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect
-	 *         {@link EOS_EResult#EOS_NotFound} if the invite doesn't exist
+	 * @return invite ID stringified version
+	 *
+	 * @throws EOSInvalidParametersException if any of the options are incorrect
+	 * @throws EOSNotFoundException if the invite doesn't exist
 	 *
 	 * @see EOS_Lobby_Interface#getInviteCount(EOS_Lobby_GetInviteCountOptions)
 	 * @see EOS_Lobby_Interface#copyLobbyDetailsHandleByInviteId(EOS_Lobby_CopyLobbyDetailsHandleByInviteIdOptions, PointerByReference)
 	 */
-	public EOS_EResult getInviteIdByIndex(EOS_Lobby_GetInviteIdByIndexOptions options, ByteBuffer outBuffer, IntBuffer inOutBufferLength) {
-		return EOSLibrary.instance.EOS_Lobby_GetInviteIdByIndex(this, options, outBuffer, inOutBufferLength);
+	public String getInviteIdByIndex(EOS_Lobby_GetInviteIdByIndexOptions options) throws EOSException {
+		final ByteBuffer outBuffer = ByteBuffer.allocate(EOS_LOBBY_INVITEID_MAX_LENGTH + 1);
+		final IntByReference inOutBufferLength = new IntByReference(outBuffer.capacity());
+		final EOS_EResult result = EOSLibrary.instance.EOS_Lobby_GetInviteIdByIndex(this, options, outBuffer, inOutBufferLength);
+		if (result.isSuccess()) {
+			return new String(outBuffer.array(), 0, inOutBufferLength.getValue());
+		}
+		throw EOSException.fromResult(result);
 	}
 
 	/**
