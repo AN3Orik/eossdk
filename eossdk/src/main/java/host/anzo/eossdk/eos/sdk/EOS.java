@@ -5,8 +5,6 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.init.options.EOS_InitializeOptions;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
 
-import java.nio.IntBuffer;
-
 /**
  * The Platform Instance is used to gain access to all other Epic Online Service interfaces and to drive internal operations through the Tick.
  * All Platform Instance calls take a handle of type EOS_HPlatform as the first parameter.

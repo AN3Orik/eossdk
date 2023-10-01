@@ -8,6 +8,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.server.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eosex.EOSServerOptions;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +40,7 @@ public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
 	 * Gameplay data collection APIs such as LogPlayerTick will be enabled if set to true.
 	 * If you do not use these APIs, it is more efficient to set this value to false.
 	 */
-	public int bEnableGameplayData;
+	public EOS_Bool bEnableGameplayData;
 	/** The Product User ID of the local user who is associated with this session. Dedicated servers should set this to null. */
 	public EOS_ProductUserId LocalUserId;
 
@@ -50,9 +51,9 @@ public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
 
 	public EOS_AntiCheatServer_BeginSessionOptions(@NotNull EOSServerOptions options) {
 		this();
-		RegisterTimeoutSeconds = options.getAntiCheatRegisterTimeoutSeconds();
+		RegisterTimeoutSeconds = Math.min(Math.max(options.getAntiCheatRegisterTimeoutSeconds(), EOS_ANTICHEATSERVER_BEGINSESSION_MIN_REGISTERTIMEOUT), EOS_ANTICHEATSERVER_BEGINSESSION_MAX_REGISTERTIMEOUT);
 		ServerName = options.getAntiCheatServerName();
-		bEnableGameplayData = options.isAntiCheatEnableGamePlayData() ? 1 : 0;
+		bEnableGameplayData = EOS_Bool.of(options.isAntiCheatEnableGamePlayData());
 		LocalUserId = null;
 	}
 

@@ -1,6 +1,6 @@
 package host.anzo.eossdk.eosex;
 
-import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.EOS_AntiCheatServer_Interface;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import host.anzo.eossdk.eos.sdk.anticheat.common.callbackresults.EOS_AntiCheatCommon_OnClientActionRequiredCallbackInfo;
@@ -8,13 +8,15 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.callbackresults.EOS_AntiCheatCo
 import host.anzo.eossdk.eos.sdk.anticheat.common.callbackresults.EOS_AntiCheatCommon_OnMessageToClientCallbackInfo;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientAction;
 import host.anzo.eossdk.eos.sdk.anticheat.common.options.EOS_AntiCheatCommon_SetClientDetailsOptions;
-import host.anzo.eossdk.eos.sdk.anticheat.server.options.*;
+import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_BeginSessionOptions;
+import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_ProtectMessageOptions;
+import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_RegisterClientOptions;
+import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_UnregisterClientOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
-import java.nio.ByteBuffer;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -31,7 +33,7 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 	private final Map<EOS_AntiCheatCommon_ClientHandle, IEOSNetworkClient> networkClients = new ConcurrentHashMap<>();
 
 	@Override
-	public AEOSServer start(EOSServerOptions options) {
+	public AEOSServer start(EOSServerOptions options) throws EOSException {
 		super.start(options);
 
 		if (options.isAntiCheatEnabled()) {
@@ -40,23 +42,17 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 				throw new RuntimeException("Failed to getAntiCheatServerInterface");
 			}
 
-			messageToClientNotificationId = antiCheatServer.addNotifyMessageToClient(new EOS_AntiCheatServer_AddNotifyMessageToClientOptions(),
-					null,
-					this::onMessageToClient);
+			messageToClientNotificationId = antiCheatServer.addNotifyMessageToClient(null, this::onMessageToClient);
 			if (messageToClientNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
 				throw new RuntimeException("Failed to addNotifyMessageToClient");
 			}
 
-			clientActionRequiredNotificationId = antiCheatServer.addNotifyClientActionRequired(new EOS_AntiCheatServer_AddNotifyClientActionRequiredOptions(),
-					null,
-					this::onClientActionRequired);
+			clientActionRequiredNotificationId = antiCheatServer.addNotifyClientActionRequired(null, this::onClientActionRequired);
 			if (clientActionRequiredNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
 				throw new RuntimeException("Failed to addNotifyClientActionRequired");
 			}
 
-			clientAuthStatusChangedNotificationId = antiCheatServer.addNotifyClientAuthStatusChanged(new EOS_AntiCheatServer_AddNotifyClientAuthStatusChangedOptions(),
-					null,
-					this::onClientAuthStatusChanged);
+			clientAuthStatusChangedNotificationId = antiCheatServer.addNotifyClientAuthStatusChanged(null, this::onClientAuthStatusChanged);
 			if (clientAuthStatusChangedNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
 				throw new RuntimeException("Failed to addNotifyClientAuthStatusChanged");
 			}
@@ -128,25 +124,14 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 	 * Notify the Anti-Cheat client with message server want to send
 	 * @param callbackInfo info about a client and data to send
 	 */
-	protected void onMessageToClient(@NotNull EOS_AntiCheatCommon_OnMessageToClientCallbackInfo callbackInfo) {
+	protected void onMessageToClient(@NotNull EOS_AntiCheatCommon_OnMessageToClientCallbackInfo callbackInfo) throws EOSException {
 		final IEOSNetworkClient antiCheatClient = getNetworkClient(callbackInfo.ClientHandle);
 		if (antiCheatClient != null) {
-			final byte[] data = callbackInfo.MessageData.getByteArray(0, callbackInfo.MessageDataSizeBytes);
+			final byte[] data = callbackInfo.getMessageBytes();
 			if (options.isEnableNetworkProtection()) {
-				final IntByReference protectMessageOutputLength = new IntByReference();
-				EOS_EResult result = antiCheatServer.getProtectMessageOutputLength(new EOS_AntiCheatServer_GetProtectMessageOutputLengthOptions(data.length),
-						protectMessageOutputLength);
-				if (!result.isSuccess()) {
-					throw new RuntimeException("Failed to getProtectMessageOutputLength: " + result);
-				}
-
-				final ByteBuffer encryptedData = ByteBuffer.allocate(protectMessageOutputLength.getValue());
-				final EOS_AntiCheatServer_ProtectMessageOptions protectMessageOptions = new EOS_AntiCheatServer_ProtectMessageOptions(callbackInfo.ClientHandle, data, encryptedData.capacity());
-				result = antiCheatServer.protectMessage(protectMessageOptions, encryptedData, new IntByReference());
-				if (!result.isSuccess()) {
-					throw new RuntimeException("Failed to protectMessage: " + result);
-				}
-				antiCheatClient.onSendEacData(encryptedData.array());
+				final int protectMessageLength = antiCheatServer.getProtectMessageOutputLength(data.length);
+				final byte[] encryptedData = antiCheatServer.protectMessage(new EOS_AntiCheatServer_ProtectMessageOptions(callbackInfo.ClientHandle, data, protectMessageLength));
+				antiCheatClient.onSendEacData(encryptedData);
 			}
 			else {
 				antiCheatClient.onSendEacData(data);

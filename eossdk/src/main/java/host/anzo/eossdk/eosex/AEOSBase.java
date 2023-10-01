@@ -1,5 +1,6 @@
 package host.anzo.eossdk.eosex;
 
+import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.EOS;
 import host.anzo.eossdk.eos.sdk.EOS_Logging_Interface;
 import host.anzo.eossdk.eos.sdk.EOS_Platform_Interface;
@@ -9,9 +10,9 @@ import host.anzo.eossdk.eos.sdk.logging.EOS_LogMessage;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Anton Lasevich
@@ -22,7 +23,7 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 	protected EOS_Platform_Interface platform;
 	private final static ScheduledExecutorService taskExecutor = Executors.newScheduledThreadPool(1);
 
-	public AEOSBase<T> start(T baseOptions) {
+	public AEOSBase<T> start(T baseOptions) throws EOSException {
 		this.options = baseOptions;
 		try {
 			taskExecutor.submit(this::initPlatform).get();

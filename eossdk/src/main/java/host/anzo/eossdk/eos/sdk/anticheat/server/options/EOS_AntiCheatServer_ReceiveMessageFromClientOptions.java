@@ -27,7 +27,7 @@ public class EOS_AntiCheatServer_ReceiveMessageFromClientOptions extends Structu
 	/** The size of the data received */
 	public int DataLengthBytes;
 	/** The data received */
-	public Pointer Data;
+	public byte[] Data;
 
 	public EOS_AntiCheatServer_ReceiveMessageFromClientOptions() {
 		super();

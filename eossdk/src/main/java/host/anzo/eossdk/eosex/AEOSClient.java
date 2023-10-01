@@ -1,14 +1,11 @@
 package host.anzo.eossdk.eosex;
 
 import com.sun.jna.Pointer;
+import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.EOS_AntiCheatClient_Interface;
 import host.anzo.eossdk.eos.sdk.EOS_Auth_Interface;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults.EOS_AntiCheatClient_OnClientIntegrityViolatedCallbackInfo;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults.EOS_AntiCheatClient_OnMessageToServerCallbackInfo;
-import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_AddNotifyClientIntegrityViolatedOptions;
-import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_AddNotifyMessageToServerOptions;
-import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_BeginSessionOptions;
-import host.anzo.eossdk.eos.sdk.anticheat.client.options.EOS_AntiCheatClient_EndSessionOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
@@ -37,7 +34,7 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 	private EOS_ProductUserId productUserId;
 
 	@Override
-	public AEOSClient start(EOSClientOptions options) {
+	public AEOSClient start(EOSClientOptions options) throws EOSException {
 		super.start(options);
 
 		if (options.isUseEpicAuthentication()) {
@@ -102,16 +99,12 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 
 			switch (options.getAntiCheatMode()) {
 				case EOS_ACCM_ClientServer:
-					messageToServerNotificationId = antiCheatClient.addNotifyMessageToServer(new EOS_AntiCheatClient_AddNotifyMessageToServerOptions(),
-							null,
-							this::onMessageToServer);
+					messageToServerNotificationId = antiCheatClient.addNotifyMessageToServer(null, this::onMessageToServer);
 					if (messageToServerNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
 						throw new RuntimeException("Failed to addNotifyMessageToServer");
 					}
 
-					clientIntegrityViolatedNotificationId = antiCheatClient.addNotifyClientIntegrityViolated(new EOS_AntiCheatClient_AddNotifyClientIntegrityViolatedOptions(),
-							null,
-							this::onClientIntegrityViolated);
+					clientIntegrityViolatedNotificationId = antiCheatClient.addNotifyClientIntegrityViolated(null, this::onClientIntegrityViolated);
 					if (clientIntegrityViolatedNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
 						throw new RuntimeException("Failed to addNotifyClientIntegrityViolated");
 					}
@@ -120,10 +113,7 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 					throw new UnsupportedOperationException("Peer2Peer mode isn't implemented");
 			}
 
-			final EOS_AntiCheatClient_BeginSessionOptions beginSessionOptions = new EOS_AntiCheatClient_BeginSessionOptions();
-			beginSessionOptions.Mode = options.getAntiCheatMode();
-			beginSessionOptions.LocalUserId = this.productUserId;
-			final EOS_EResult beginSessionResult = antiCheatClient.beginSession(beginSessionOptions);
+			final EOS_EResult beginSessionResult = antiCheatClient.beginSession(productUserId, options.getAntiCheatMode());
 			if (!beginSessionResult.isSuccess()) {
 				throw new RuntimeException("Failed to anti-cheat beginSession: " + beginSessionResult);
 			}
@@ -152,7 +142,7 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 				case EOS_ACCM_PeerToPeer:
 					throw new UnsupportedOperationException("Peer2Peer mode isn't implemented");
 			}
-			final EOS_EResult endSessionResult = antiCheatClient.endSession(new EOS_AntiCheatClient_EndSessionOptions());
+			final EOS_EResult endSessionResult = antiCheatClient.endSession();
 			if (!endSessionResult.isSuccess()) {
 				throw new RuntimeException("Failed to anti-cheat endSession: " + endSessionResult);
 			}

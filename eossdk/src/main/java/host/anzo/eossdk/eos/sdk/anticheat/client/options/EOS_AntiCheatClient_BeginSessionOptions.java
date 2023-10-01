@@ -27,6 +27,12 @@ public class EOS_AntiCheatClient_BeginSessionOptions extends Structure {
 		ApiVersion = EOS_ANTICHEATCLIENT_BEGINSESSION_API_LATEST;
 	}
 
+	public EOS_AntiCheatClient_BeginSessionOptions(EOS_ProductUserId productUserId, EOS_EAntiCheatClientMode mode) {
+		this();
+		LocalUserId = productUserId;
+		Mode = mode;
+	}
+
 	public EOS_AntiCheatClient_BeginSessionOptions(Pointer peer) {
 		super(peer);
 	}

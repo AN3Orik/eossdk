@@ -23,6 +23,11 @@ public class EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions extends St
 		ApiVersion = EOS_ANTICHEATCLIENT_GETPROTECTMESSAGEOUTPUTLENGTH_API_LATEST;
 	}
 
+	public EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions(int dataLengthBytes) {
+		this();
+		this.DataLengthBytes = dataLengthBytes;
+	}
+
 	public EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions(Pointer peer) {
 		super(peer);
 	}

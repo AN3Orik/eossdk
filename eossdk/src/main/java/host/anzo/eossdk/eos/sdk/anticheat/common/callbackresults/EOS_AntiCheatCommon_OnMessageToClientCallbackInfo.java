@@ -37,6 +37,10 @@ public class EOS_AntiCheatCommon_OnMessageToClientCallbackInfo extends Structure
 		super(peer);
 	}
 
+	public byte[] getMessageBytes() {
+		return MessageData.getByteArray(0, MessageDataSizeBytes);
+	}
+
 	public static class ByReference extends EOS_AntiCheatCommon_OnMessageToClientCallbackInfo implements Structure.ByReference {
 	}
 

@@ -3,7 +3,6 @@ package host.anzo.eossdk.eos.sdk.sessions.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.sessions.EOS_SessionDetails;
-import host.anzo.eossdk.eos.sdk.sessions.EOS_SessionDetails_Attribute;
 import host.anzo.eossdk.eos.sdk.sessions.EOS_SessionModification;
 
 import static com.sun.jna.Structure.FieldOrder;

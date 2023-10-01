@@ -1,5 +1,6 @@
 package host.anzo.eossdk.example;
 
+import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eosex.AEOSClient;
 import host.anzo.eossdk.eosex.AEOSServer;
 import host.anzo.eossdk.eosex.EOSClientOptions;
@@ -22,12 +23,18 @@ public class ExampleServer {
 			throw new RuntimeException("Error while loading config", e);
 		}
 
-		if (DefaultConfig.IS_SERVER_MODE) {
-			startServer();
+		try {
+			if (DefaultConfig.IS_SERVER_MODE) {
+				startServer();
+			}
+			else {
+				startClient();
+			}
 		}
-		else {
-			startClient();
+		catch (EOSException e) {
+			throw new RuntimeException("Failed to start EOS SDK client/server", e);
 		}
+
 
 		while (true) {
 			try {
@@ -38,7 +45,7 @@ public class ExampleServer {
 		}
 	}
 
-	private static void startClient() {
+	private static void startClient() throws EOSException {
 		client = EOSClient.getInstance().start(EOSClientOptions.builder()
 						.productName(DefaultConfig.PRODUCT_NAME)
 						.productVersion(DefaultConfig.PRODUCT_VERSION)
@@ -56,7 +63,7 @@ public class ExampleServer {
 						.build());
 	}
 
-	private static void startServer() {
+	private static void startServer() throws EOSException {
 		server = EOSServer.getInstance().start(EOSServerOptions.builder()
 				.productName(DefaultConfig.PRODUCT_NAME)
 				.productVersion(DefaultConfig.PRODUCT_VERSION)

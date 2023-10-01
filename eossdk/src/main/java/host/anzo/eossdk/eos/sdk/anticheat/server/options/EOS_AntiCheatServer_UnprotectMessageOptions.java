@@ -27,13 +27,21 @@ public class EOS_AntiCheatServer_UnprotectMessageOptions extends Structure {
 	/** Length in bytes of input */
 	public int DataLengthBytes;
 	/** The data to decrypt */
-	public Pointer Data;
+	public byte[] Data;
 	/** The size in bytes of OutBuffer */
 	public int OutBufferSizeBytes;
 
 	public EOS_AntiCheatServer_UnprotectMessageOptions() {
 		super();
 		ApiVersion = EOS_ANTICHEATSERVER_UNPROTECTMESSAGE_API_LATEST;
+	}
+
+	public EOS_AntiCheatServer_UnprotectMessageOptions(EOS_AntiCheatCommon_ClientHandle clientHandle, byte[] data, int outBufferSizeBytes) {
+		this();
+		ClientHandle = clientHandle;
+		DataLengthBytes = data.length;
+		Data = data;
+		OutBufferSizeBytes = outBufferSizeBytes;
 	}
 
 	public EOS_AntiCheatServer_UnprotectMessageOptions(Pointer peer) {

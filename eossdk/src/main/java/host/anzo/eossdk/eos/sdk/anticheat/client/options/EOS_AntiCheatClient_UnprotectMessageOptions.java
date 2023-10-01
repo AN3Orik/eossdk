@@ -18,7 +18,7 @@ public class EOS_AntiCheatClient_UnprotectMessageOptions extends Structure {
 	/** Length in bytes of input */
 	public int DataLengthBytes;
 	/** The data to decrypt */
-	public Pointer Data;
+	public byte[] Data;
 	/** The size in bytes of OutBuffer */
 	public int OutBufferSizeBytes;
 

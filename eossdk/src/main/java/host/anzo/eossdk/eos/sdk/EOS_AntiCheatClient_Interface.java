@@ -10,7 +10,11 @@ import host.anzo.eossdk.eos.sdk.anticheat.client.callbacks.*;
 import host.anzo.eossdk.eos.sdk.anticheat.client.options.*;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatClientMode;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
+import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
 
 /**
  * @author Anton Lasevich
@@ -26,19 +30,16 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 
 	/**
 	 * Add a callback issued when a new message must be dispatched to the game server. The bound function will only be called
-	 * between a successful call to {@link #beginSession(EOS_AntiCheatClient_BeginSessionOptions)} and the matching {@link #endSession(EOS_AntiCheatClient_EndSessionOptions)} call in mode EOS_ACCM_ClientServer.
+	 * between a successful call to {@link #beginSession(EOS_ProductUserId, EOS_EAntiCheatClientMode)} and the matching {@link #endSession()} call in mode EOS_ACCM_ClientServer.
 	 * <p>
 	 * Mode: {@link EOS_EAntiCheatClientMode#EOS_ACCM_ClientServer}.
 	 *
-	 * @param options Structure containing input data
 	 * @param clientData This value is returned to the caller when NotificationFn is invoked
 	 * @param notificationFn The callback to be fired
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
-	public EOS_NotificationId addNotifyMessageToServer(EOS_AntiCheatClient_AddNotifyMessageToServerOptions options,
-	                                                   Pointer clientData,
-	                                                   EOS_AntiCheatClient_OnMessageToServerCallback notificationFn) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyMessageToServer(this, options, clientData, notificationFn);
+	public EOS_NotificationId addNotifyMessageToServer(Pointer clientData, EOS_AntiCheatClient_OnMessageToServerCallback notificationFn) {
+		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyMessageToServer(this, new EOS_AntiCheatClient_AddNotifyMessageToServerOptions(), clientData, notificationFn);
 	}
 
 	/**
@@ -56,15 +57,12 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * between a successful call to EOS_AntiCheatClient_BeginSession and the matching EOS_AntiCheatClient_EndSession call in mode EOS_ACCM_PeerToPeer.<br>
 	 * Mode: EOS_ACCM_PeerToPeer.
 	 *
-	 * @param options Structure containing input data
 	 * @param clientData This value is returned to the caller when NotificationFn is invoked
 	 * @param notificationFn The callback to be fired
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
-	public EOS_NotificationId addNotifyMessageToPeer(EOS_AntiCheatClient_AddNotifyMessageToPeerOptions options,
-	                                                 Pointer clientData,
-	                                                 EOS_AntiCheatClient_OnMessageToPeerCallback notificationFn) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyMessageToPeer(this, options, clientData, notificationFn);
+	public EOS_NotificationId addNotifyMessageToPeer(Pointer clientData, EOS_AntiCheatClient_OnMessageToPeerCallback notificationFn) {
+		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyMessageToPeer(this, new EOS_AntiCheatClient_AddNotifyMessageToPeerOptions(), clientData, notificationFn);
 	}
 
 	/**
@@ -82,15 +80,12 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * between a successful call to EOS_AntiCheatClient_BeginSession and the matching EOS_AntiCheatClient_EndSession call in mode EOS_ACCM_PeerToPeer.<br>
 	 * Mode: EOS_ACCM_PeerToPeer.
 	 *
-	 * @param options Structure containing input data
 	 * @param clientData This value is returned to the caller when NotificationFn is invoked
 	 * @param notificationFn The callback to be fired
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
-	public EOS_NotificationId addNotifyPeerActionRequired(EOS_AntiCheatClient_AddNotifyPeerActionRequiredOptions options,
-	                                                      Pointer clientData,
-	                                                      EOS_AntiCheatClient_OnPeerActionRequiredCallback notificationFn) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyPeerActionRequired(this, options, clientData, notificationFn);
+	public EOS_NotificationId addNotifyPeerActionRequired(Pointer clientData, EOS_AntiCheatClient_OnPeerActionRequiredCallback notificationFn) {
+		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyPeerActionRequired(this, new EOS_AntiCheatClient_AddNotifyPeerActionRequiredOptions(), clientData, notificationFn);
 	}
 
 	/**
@@ -108,15 +103,12 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * between a successful call to EOS_AntiCheatClient_BeginSession and the matching EOS_AntiCheatClient_EndSession call in mode EOS_ACCM_PeerToPeer.<br>
 	 * Mode: EOS_ACCM_PeerToPeer.
 	 *
-	 * @param options Structure containing input data
 	 * @param clientData This value is returned to the caller when NotificationFn is invoked
 	 * @param notificationFn The callback to be fired
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
-	public EOS_NotificationId addNotifyPeerAuthStatusChanged(EOS_AntiCheatClient_AddNotifyPeerAuthStatusChangedOptions options,
-	                                                                             Pointer clientData,
-	                                                                             EOS_AntiCheatClient_OnPeerAuthStatusChangedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyPeerAuthStatusChanged(this, options, clientData, notificationFn);
+	public EOS_NotificationId addNotifyPeerAuthStatusChanged(Pointer clientData, EOS_AntiCheatClient_OnPeerAuthStatusChangedCallback notificationFn) {
+		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyPeerAuthStatusChanged(this, new EOS_AntiCheatClient_AddNotifyPeerAuthStatusChangedOptions(), clientData, notificationFn);
 	}
 
 	/**
@@ -134,15 +126,12 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * which will prevent further online play.<br>
 	 * Mode: Any.
 	 *
-	 * @param options Structure containing input data
 	 * @param clientData This value is returned to the caller when NotificationFn is invoked
 	 * @param notificationFn The callback to be fired
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
-	public EOS_NotificationId addNotifyClientIntegrityViolated(EOS_AntiCheatClient_AddNotifyClientIntegrityViolatedOptions options,
-	                                                           Pointer clientData,
-	                                                           EOS_AntiCheatClient_OnClientIntegrityViolatedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyClientIntegrityViolated(this, options, clientData, notificationFn);
+	public EOS_NotificationId addNotifyClientIntegrityViolated(Pointer clientData, EOS_AntiCheatClient_OnClientIntegrityViolatedCallback notificationFn) {
+		return EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyClientIntegrityViolated(this, new EOS_AntiCheatClient_AddNotifyClientIntegrityViolatedOptions(), clientData, notificationFn);
 	}
 
 	/**
@@ -161,14 +150,15 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * different one, a new anti-cheat session must be created by calling EOS_AntiCheatClient_EndSession and EOS_AntiCheatClient_BeginSession again.<br>
 	 * Mode: All
 	 *
-	 * @param options Structure containing input data.
+	 * @param productUserId Logged in user identifier from earlier call to EOS_Connect_Login family of functions
+	 * @param mode Operating mode
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} - If the session was started successfully
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 *         {@link EOS_EResult#EOS_AntiCheat_InvalidMode} - If the current mode does not support this function
 	 */
-	public EOS_EResult beginSession(EOS_AntiCheatClient_BeginSessionOptions options) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_BeginSession(this, options);
+	public EOS_EResult beginSession(EOS_ProductUserId productUserId, EOS_EAntiCheatClientMode mode) {
+		return EOSLibrary.instance.EOS_AntiCheatClient_BeginSession(this, new EOS_AntiCheatClient_BeginSessionOptions(productUserId, mode));
 	}
 
 	/**
@@ -177,14 +167,12 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * <p>
 	 * Must be called when the multiplayer session ends, or when the local user leaves a session in progress.
 	 *
-	 * @param options Structure containing input data.
-	 *
 	 * @return {@link EOS_EResult#EOS_Success} - If the session was ended normally
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 *         {@link EOS_EResult#EOS_AntiCheat_InvalidMode} - If the current mode does not support this function
 	 */
-	public EOS_EResult endSession(EOS_AntiCheatClient_EndSessionOptions options) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_EndSession(this, options);
+	public EOS_EResult endSession() {
+		return EOSLibrary.instance.EOS_AntiCheatClient_EndSession(this, new EOS_AntiCheatClient_EndSessionOptions());
 	}
 
 	/**
@@ -222,15 +210,16 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * This will not change for a given SDK version, and allows one time allocation of reusable buffers.<br>
 	 * Mode: EOS_ACCM_ClientServer.
 	 *
-	 * @param options Structure containing input data.
+	 * @param dataSize input data size
+	 *
 	 * @return On success, the OutBuffer length in bytes that is required to call ProtectMessage on the given input size.
 	 *
 	 * @throws EOSInvalidParametersException If input data was invalid
 	 * @throws EOSAntiCheatInvalidModeException If the current mode does not support this function
 	 */
-	public int getProtectMessageOutputLength(EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions options) throws EOSException {
+	public int getProtectMessageOutputLength(int dataSize) throws EOSException {
 		final IntByReference sizeBytesReference = new IntByReference();
-		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_GetProtectMessageOutputLength(this, options, sizeBytesReference);
+		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_GetProtectMessageOutputLength(this, new EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions(dataSize), sizeBytesReference);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
@@ -245,15 +234,19 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * options.Data and OutBuffer may refer to the same buffer to encrypt in place.
 	 *
 	 * @param options Structure containing input data.
-	 * @param outBuffer On success, buffer where encrypted message data will be written.
-	 * @param outBytesWritten On success, the number of bytes that were written to OutBuffer.
+	 * @return buffer with an encrypted data message
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} - If the message was protected successfully
-	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
-	 *         {@link EOS_EResult#EOS_AntiCheat_InvalidMode} - If the current mode does not support this function
+	 * @throws EOSInvalidParametersException If input data was invalid
+	 * @throws EOSAntiCheatInvalidModeException If the current mode does not support this function
 	 */
-	public EOS_EResult protectMessage(EOS_AntiCheatClient_ProtectMessageOptions options, Pointer outBuffer, IntByReference outBytesWritten)  {
-		return EOSLibrary.instance.EOS_AntiCheatClient_ProtectMessage(this, options, outBuffer, outBytesWritten);
+	public byte[] protectMessage(@NotNull EOS_AntiCheatClient_ProtectMessageOptions options) throws EOSException {
+		final IntByReference outBytesWritten = new IntByReference();
+		final byte[] encryptedData = new byte[options.OutBufferSizeBytes];
+		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_ProtectMessage(this, options, encryptedData, outBytesWritten);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return encryptedData;
 	}
 
 	/**
@@ -264,15 +257,20 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * options.Data and OutBuffer may refer to the same buffer to decrypt in place.
 	 *
 	 * @param options Structure containing input data.
-	 * @param outBuffer On success, buffer where encrypted message data will be written.
-	 * @param outBytesWritten On success, the number of bytes that were written to OutBuffer.
 	 *
-	 * @return {@link EOS_EResult#EOS_Success} - If the message was unprotected successfully
-	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
-	 *         {@link EOS_EResult#EOS_AntiCheat_InvalidMode} - If the current mode does not support this function
+	 * @return buffer with a decrypted data message
+	 *
+	 * @throws EOSInvalidParametersException If input data was invalid
+	 * @throws EOSAntiCheatInvalidModeException If the current mode does not support this function
 	 */
-	public EOS_EResult unprotectMessage(EOS_AntiCheatClient_UnprotectMessageOptions options, Pointer outBuffer, IntByReference outBytesWritten) {
-		return EOSLibrary.instance.EOS_AntiCheatClient_UnprotectMessage(this, options, outBuffer, outBytesWritten);
+	public byte[] unprotectMessage(@NotNull EOS_AntiCheatClient_UnprotectMessageOptions options) throws EOSException {
+		final IntByReference outBytesWritten = new IntByReference();
+		final byte[] decryptedData = new byte[options.DataLengthBytes];
+		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_UnprotectMessage(this, options, decryptedData, outBytesWritten);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		return Arrays.copyOfRange(decryptedData, 0, outBytesWritten.getValue());
 	}
 
 	/**

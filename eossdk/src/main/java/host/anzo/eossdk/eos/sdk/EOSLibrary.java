@@ -271,12 +271,12 @@ public interface EOSLibrary extends Library {
 
 	EOS_EResult EOS_AntiCheatServer_ProtectMessage(EOS_AntiCheatServer_Interface handle,
 	                                               EOS_AntiCheatServer_ProtectMessageOptions options,
-	                                               ByteBuffer outBuffer,
+	                                               byte[] outBuffer,
 	                                               IntByReference outBytesWritten);
 
 	EOS_EResult EOS_AntiCheatServer_UnprotectMessage(EOS_AntiCheatServer_Interface handle,
 	                                                 EOS_AntiCheatServer_UnprotectMessageOptions options,
-	                                                 ByteBuffer outBuffer,
+	                                                 byte[] outBuffer,
 	                                                 IntByReference outBytesWritten);
 
 	EOS_EResult EOS_AntiCheatServer_RegisterEvent(EOS_AntiCheatServer_Interface handle, EOS_AntiCheatCommon_RegisterEventOptions options);
@@ -339,11 +339,11 @@ public interface EOSLibrary extends Library {
 	                                                              IntByReference outBufferSizeBytes);
 	EOS_EResult EOS_AntiCheatClient_ProtectMessage(EOS_AntiCheatClient_Interface handle,
 	                                               EOS_AntiCheatClient_ProtectMessageOptions options,
-	                                               Pointer outBuffer,
+	                                               byte[] outBuffer,
 	                                               IntByReference outBytesWritten);
 	EOS_EResult EOS_AntiCheatClient_UnprotectMessage(EOS_AntiCheatClient_Interface handle,
 	                                                 EOS_AntiCheatClient_UnprotectMessageOptions options,
-	                                                 Pointer outBuffer,
+	                                                 byte[] outBuffer,
 	                                                 IntByReference outBytesWritten);
 	EOS_EResult EOS_AntiCheatClient_RegisterPeer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_RegisterPeerOptions options);
 	EOS_EResult EOS_AntiCheatClient_UnregisterPeer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_UnregisterPeerOptions options);

@@ -7,10 +7,6 @@ import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_PlayerDataStorage_Interface;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
-import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
-
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
 
 /**
  * @author Anton Lasevich
