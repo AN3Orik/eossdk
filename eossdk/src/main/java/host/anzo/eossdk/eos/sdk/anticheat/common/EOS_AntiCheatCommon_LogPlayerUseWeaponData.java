@@ -16,7 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"PlayerHandle", "PlayerPosition", "PlayerViewRotation", "bIsPlayerViewZoomed", "bIsMeleeAttack", "WeaponName"})
+@FieldOrder({"PlayerHandle", "PlayerPosition", "PlayerViewRotation", "IsPlayerViewZoomed", "IsMeleeAttack", "WeaponName"})
 public class EOS_AntiCheatCommon_LogPlayerUseWeaponData extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_WEAPONNAME_MAX_LENGTH = 16;
 
@@ -27,9 +27,9 @@ public class EOS_AntiCheatCommon_LogPlayerUseWeaponData extends Structure {
 	/** Attack direction as a quaternion */
 	public EOS_AntiCheatCommon_Quat.ByReference PlayerViewRotation;
 	/** {@link EOS_Bool#EOS_TRUE} if the player's view is zoomed (e.g. using a sniper rifle), otherwise {@link EOS_Bool#EOS_FALSE} */
-	public EOS_Bool bIsPlayerViewZoomed;
+	public EOS_Bool IsPlayerViewZoomed;
 	/** Set to {@link EOS_Bool#EOS_TRUE} if the player is using a melee attack, otherwise {@link EOS_Bool#EOS_FALSE} */
-	public EOS_Bool bIsMeleeAttack;
+	public EOS_Bool IsMeleeAttack;
 	/** Name of the weapon used. Will be truncated to {@link #EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_WEAPONNAME_MAX_LENGTH} bytes if longer. */
 	public String WeaponName;
 

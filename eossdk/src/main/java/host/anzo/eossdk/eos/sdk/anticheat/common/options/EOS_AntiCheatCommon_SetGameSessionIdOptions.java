@@ -29,6 +29,11 @@ public class EOS_AntiCheatCommon_SetGameSessionIdOptions extends Structure {
 		ApiVersion = EOS_ANTICHEATCOMMON_SETGAMESESSIONID_API_LATEST;
 	}
 
+	public EOS_AntiCheatCommon_SetGameSessionIdOptions(String gameSessionId) {
+		this();
+		GameSessionId = gameSessionId;
+	}
+
 	public EOS_AntiCheatCommon_SetGameSessionIdOptions(Pointer peer) {
 		super(peer);
 	}

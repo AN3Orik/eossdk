@@ -7,6 +7,7 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.custominvites.callbacks.*;
 import host.anzo.eossdk.eos.sdk.custominvites.options.*;
 import host.anzo.eossdk.eos.sdk.integratedplatform.enums.EOS_EIntegratedPlatformManagementFlags;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * The Custom Invites Interface is designed to allow developers to have custom game Invite and Join operations driven by the Notification Service and supported by the Overlay (if desired).
@@ -64,7 +65,11 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_NotificationId addNotifyCustomInviteReceived(EOS_CustomInvites_AddNotifyCustomInviteReceivedOptions options,
 	                                                                          Pointer clientData,
 	                                                                          EOS_CustomInvites_OnCustomInviteReceivedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteReceived(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteReceived(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -74,6 +79,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 */
 	public void removeNotifyCustomInviteReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_CustomInvites_RemoveNotifyCustomInviteReceived(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -90,7 +96,11 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_NotificationId addNotifyCustomInviteAccepted(EOS_CustomInvites_AddNotifyCustomInviteAcceptedOptions options,
 	                                                                          Pointer clientData,
 	                                                                          EOS_CustomInvites_OnCustomInviteAcceptedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteAccepted(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteAccepted(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -100,6 +110,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 */
 	public void removeNotifyCustomInviteAccepted(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_CustomInvites_RemoveNotifyCustomInviteAccepted(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -116,7 +127,11 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_NotificationId addNotifyCustomInviteRejected(EOS_CustomInvites_AddNotifyCustomInviteRejectedOptions options,
 	                                                                          Pointer clientData,
 	                                                                          EOS_CustomInvites_OnCustomInviteRejectedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteRejected(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteRejected(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -126,6 +141,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 */
 	public void removeNotifyCustomInviteRejected(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_CustomInvites_RemoveNotifyCustomInviteRejected(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -167,7 +183,11 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_NotificationId addNotifyRequestToJoinResponseReceived(EOS_CustomInvites_AddNotifyRequestToJoinResponseReceivedOptions options,
 	                                                                                   Pointer clientData,
 	                                                                                   EOS_CustomInvites_OnRequestToJoinResponseReceivedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinResponseReceived(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinResponseReceived(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -177,6 +197,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 */
 	public void removeNotifyRequestToJoinResponseReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_CustomInvites_RemoveNotifyRequestToJoinResponseReceived(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -192,7 +213,11 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_NotificationId addNotifyRequestToJoinReceived(EOS_CustomInvites_AddNotifyRequestToJoinReceivedOptions options,
 	                                                                           Pointer clientData,
 	                                                                           EOS_CustomInvites_OnRequestToJoinReceivedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinReceived(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinReceived(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -202,6 +227,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 */
 	public void removeNotifyRequestToJoinReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_CustomInvites_RemoveNotifyRequestToJoinReceived(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -224,7 +250,11 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_NotificationId addNotifySendCustomNativeInviteRequested(EOS_CustomInvites_AddNotifySendCustomNativeInviteRequestedOptions options,
 	                                                                                     Pointer clientData,
 	                                                                                     EOS_CustomInvites_OnSendCustomNativeInviteRequestedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_CustomInvites_AddNotifySendCustomNativeInviteRequested(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifySendCustomNativeInviteRequested(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -234,6 +264,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 */
 	public void removeNotifySendCustomNativeInviteRequested(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_CustomInvites_RemoveNotifySendCustomNativeInviteRequested(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -249,7 +280,11 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_NotificationId addNotifyRequestToJoinAccepted(EOS_CustomInvites_AddNotifyRequestToJoinAcceptedOptions options,
 	                                                                           Pointer clientData,
 	                                                                           EOS_CustomInvites_OnRequestToJoinAcceptedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinAccepted(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinAccepted(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -259,6 +294,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 */
 	public void removeNotifyRequestToJoinAccepted(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_CustomInvites_RemoveNotifyRequestToJoinAccepted(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -274,7 +310,11 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_NotificationId addNotifyRequestToJoinRejected(EOS_CustomInvites_AddNotifyRequestToJoinRejectedOptions options,
 	                                                                           Pointer clientData,
 	                                                                           EOS_CustomInvites_OnRequestToJoinRejectedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinRejected(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinRejected(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -284,6 +324,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 */
 	public void removeNotifyRequestToJoinRejected(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_CustomInvites_RemoveNotifyRequestToJoinRejected(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**

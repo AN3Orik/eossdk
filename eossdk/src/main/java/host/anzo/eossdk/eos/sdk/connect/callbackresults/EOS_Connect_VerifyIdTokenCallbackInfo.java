@@ -18,7 +18,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ResultCode", "ClientData", "ProductUserId", "bIsAccountInfoPresent", "AccountIdType", "AccountId", "Platform", "DeviceType", "ClientId", "ProductId", "SandboxId", "DeploymentId"})
+@FieldOrder({"ResultCode", "ClientData", "ProductUserId", "IsAccountInfoPresent", "AccountIdType", "AccountId", "Platform", "DeviceType", "ClientId", "ProductId", "SandboxId", "DeploymentId"})
 public class EOS_Connect_VerifyIdTokenCallbackInfo extends Structure {
 	/** The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors. */
 	public EOS_EResult ResultCode;
@@ -33,11 +33,11 @@ public class EOS_Connect_VerifyIdTokenCallbackInfo extends Structure {
 	 * <p>
 	 * This flag is always false for users that authenticated using EOS Connect Device ID.
 	 */
-	public EOS_Bool bIsAccountInfoPresent;
+	public EOS_Bool IsAccountInfoPresent;
 	/**
 	 * The identity provider that the user authenticated with to EOS Connect.
 	 * <p>
-	 * If bIsAccountInfoPresent is set, this field describes the external account type.
+	 * If IsAccountInfoPresent is set, this field describes the external account type.
 	 */
 	public int AccountIdType;
 	/**

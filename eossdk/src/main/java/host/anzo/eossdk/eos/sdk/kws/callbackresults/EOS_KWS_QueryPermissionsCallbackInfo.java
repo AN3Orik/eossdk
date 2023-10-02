@@ -14,7 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/21/2023
  */
-@FieldOrder({"ResultCode", "ClientData", "LocalUserId", "KWSUserId", "DateOfBirth", "bIsMinor", "ParentEmail"})
+@FieldOrder({"ResultCode", "ClientData", "LocalUserId", "KWSUserId", "DateOfBirth", "IsMinor", "ParentEmail"})
 public class EOS_KWS_QueryPermissionsCallbackInfo extends Structure {
 	/**
 	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.<br>
@@ -32,7 +32,7 @@ public class EOS_KWS_QueryPermissionsCallbackInfo extends Structure {
 	/** Date of birth in ISO8601 form (YYYY-MM-DD) */
 	public String DateOfBirth;
 	/** Is this user a minor */
-	public EOS_Bool bIsMinor;
+	public EOS_Bool IsMinor;
 	/** Parent email. This value may be set to an empty string if the originally registered email recipient declined to be the right person to give consent. */
 	public String ParentEmail;
 

@@ -21,7 +21,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "ApiVersion", "Reserved", "ProductId", "SandboxId", "ClientCredentials", "bIsServer", "EncryptionKey", "OverrideCountryCode", "OverrideLocaleCode", "DeploymentId", "Flags", "CacheDirectory", "TickBudgetInMilliseconds", "RTCOptions", "IntegratedPlatformOptionsContainerHandle", "SystemSpecificOptions"})
+@FieldOrder({ "ApiVersion", "Reserved", "ProductId", "SandboxId", "ClientCredentials", "IsServer", "EncryptionKey", "OverrideCountryCode", "OverrideLocaleCode", "DeploymentId", "Flags", "CacheDirectory", "TickBudgetInMilliseconds", "RTCOptions", "IntegratedPlatformOptionsContainerHandle", "SystemSpecificOptions"})
 public class EOS_Platform_Options extends Structure {
 	public static int EOS_COUNTRYCODE_MAX_LENGTH = 4;
 	public static int EOS_COUNTRYCODE_MAX_BUFFER_LEN = EOS_COUNTRYCODE_MAX_LENGTH + 1;
@@ -53,7 +53,7 @@ public class EOS_Platform_Options extends Structure {
 	/** Set of service permissions associated with the running application */
 	public EOS_Platform_ClientCredentials ClientCredentials;
 	/** Set this to {@link EOS_Bool#EOS_FALSE} if the application is running as a client with a local user, otherwise set to {@link EOS_Bool#EOS_TRUE} (e.g. for a dedicated game server) */
-	public EOS_Bool bIsServer;
+	public EOS_Bool IsServer;
 	/** Used by Player Data Storage and Title Storage. Must be null initialized if unused. 256-bit Encryption Key for file encryption in hexadecimal format; EOS_PLATFORM_OPTIONS_ENCRYPTIONKEY_LENGTH hex chars. */
 	public String EncryptionKey;
 	/** The override country code to use for the logged in user. (EOS_COUNTRYCODE_MAX_LENGTH)*/
@@ -97,7 +97,7 @@ public class EOS_Platform_Options extends Structure {
 		SandboxId = options.getSandboxId();
 		DeploymentId = options.getDeploymentId();
 		ClientCredentials = new EOS_Platform_ClientCredentials(options.getClientId(), options.getClientSecret());
-		bIsServer = EOS_Bool.of(options.isServer());
+		IsServer = EOS_Bool.of(options.isServer());
 		EncryptionKey = options.getEncryptionKey();
 		Flags = options.getFlags();
 		CacheDirectory = options.getCacheDirectory();

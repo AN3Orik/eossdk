@@ -17,6 +17,7 @@ import host.anzo.eossdk.eos.sdk.p2p.callbacks.*;
 import host.anzo.eossdk.eos.sdk.p2p.enums.EOS_ENATType;
 import host.anzo.eossdk.eos.sdk.p2p.enums.EOS_ERelayControl;
 import host.anzo.eossdk.eos.sdk.p2p.options.*;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
@@ -80,7 +81,7 @@ public class EOS_P2P_Interface extends PointerType {
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input was invalid<br>
 	 *         {@link EOS_EResult#EOS_NotFound} - If there are no packets available for the requesting user
 	 *
-	 * @see EOS_P2P_Interface#getNextReceivedPacketSize(EOS_P2P_GetNextReceivedPacketSizeOptions, IntBuffer)
+	 * @see #getNextReceivedPacketSize(EOS_P2P_GetNextReceivedPacketSizeOptions, IntBuffer)
 	 */
 	public EOS_EResult receivePacket(EOS_P2P_ReceivePacketOptions options,
 	                                  EOS_ProductUserId outPeerId,
@@ -105,7 +106,11 @@ public class EOS_P2P_Interface extends PointerType {
 	public EOS_NotificationId addNotifyPeerConnectionRequest(EOS_P2P_AddNotifyPeerConnectionRequestOptions options,
 	                                                          Pointer clientData,
 	                                                          EOS_P2P_OnIncomingConnectionRequestCallback connectionRequestHandler) {
-		return EOSLibrary.instance.EOS_P2P_AddNotifyPeerConnectionRequest(this, options, clientData, connectionRequestHandler);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_P2P_AddNotifyPeerConnectionRequest(this, options, clientData, connectionRequestHandler);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, connectionRequestHandler);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -117,6 +122,7 @@ public class EOS_P2P_Interface extends PointerType {
 	 */
 	public void removeNotifyPeerConnectionRequest(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_P2P_RemoveNotifyPeerConnectionRequest(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -129,14 +135,18 @@ public class EOS_P2P_Interface extends PointerType {
 	 * @param connectionEstablishedHandler The callback to be fired when a connection has been established
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 *
-	 * @see EOS_P2P_Interface#addNotifyPeerConnectionInterrupted(EOS_P2P_AddNotifyPeerConnectionInterruptedOptions, Pointer, EOS_P2P_OnPeerConnectionInterruptedCallback)
-	 * @see EOS_P2P_Interface#addNotifyPeerConnectionClosed(EOS_P2P_AddNotifyPeerConnectionClosedOptions, Pointer, EOS_P2P_OnRemoteConnectionClosedCallback)
-	 * @see EOS_P2P_Interface#removeNotifyPeerConnectionEstablished(EOS_NotificationId)
+	 * @see #addNotifyPeerConnectionInterrupted(EOS_P2P_AddNotifyPeerConnectionInterruptedOptions, Pointer, EOS_P2P_OnPeerConnectionInterruptedCallback)
+	 * @see #addNotifyPeerConnectionClosed(EOS_P2P_AddNotifyPeerConnectionClosedOptions, Pointer, EOS_P2P_OnRemoteConnectionClosedCallback)
+	 * @see #removeNotifyPeerConnectionEstablished(EOS_NotificationId)
 	 */
 	public EOS_NotificationId addNotifyPeerConnectionEstablished(EOS_P2P_AddNotifyPeerConnectionEstablishedOptions options,
 	                                                              Pointer clientData,
 	                                                              EOS_P2P_OnPeerConnectionEstablishedCallback connectionEstablishedHandler) {
-		return EOSLibrary.instance.EOS_P2P_AddNotifyPeerConnectionEstablished(this, options, clientData, connectionEstablishedHandler);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_P2P_AddNotifyPeerConnectionEstablished(this, options, clientData, connectionEstablishedHandler);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, connectionEstablishedHandler);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -148,6 +158,7 @@ public class EOS_P2P_Interface extends PointerType {
 	 */
 	public void removeNotifyPeerConnectionEstablished(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_P2P_RemoveNotifyPeerConnectionEstablished(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -168,7 +179,11 @@ public class EOS_P2P_Interface extends PointerType {
 	public EOS_NotificationId addNotifyPeerConnectionInterrupted(EOS_P2P_AddNotifyPeerConnectionInterruptedOptions options,
 	                                                              Pointer clientData,
 	                                                              EOS_P2P_OnPeerConnectionInterruptedCallback connectionInterruptedHandler) {
-		return EOSLibrary.instance.EOS_P2P_AddNotifyPeerConnectionInterrupted(this, options, clientData, connectionInterruptedHandler);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_P2P_AddNotifyPeerConnectionInterrupted(this, options, clientData, connectionInterruptedHandler);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, connectionInterruptedHandler);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -180,6 +195,7 @@ public class EOS_P2P_Interface extends PointerType {
 	 */
 	public void removeNotifyPeerConnectionInterrupted(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_P2P_RemoveNotifyPeerConnectionInterrupted(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -197,7 +213,11 @@ public class EOS_P2P_Interface extends PointerType {
 	public EOS_NotificationId addNotifyPeerConnectionClosed(EOS_P2P_AddNotifyPeerConnectionClosedOptions options,
 	                                                         Pointer clientData,
 	                                                         EOS_P2P_OnRemoteConnectionClosedCallback connectionClosedHandler) {
-		return EOSLibrary.instance.EOS_P2P_AddNotifyPeerConnectionClosed(this, options, clientData, connectionClosedHandler);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_P2P_AddNotifyPeerConnectionClosed(this, options, clientData, connectionClosedHandler);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, connectionClosedHandler);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -209,6 +229,7 @@ public class EOS_P2P_Interface extends PointerType {
 	 */
 	public void removeNotifyPeerConnectionClosed(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_P2P_RemoveNotifyPeerConnectionClosed(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -382,7 +403,11 @@ public class EOS_P2P_Interface extends PointerType {
 	public EOS_NotificationId addNotifyIncomingPacketQueueFull(EOS_P2P_AddNotifyIncomingPacketQueueFullOptions options,
 	                                                                   Pointer clientData,
 	                                                                   EOS_P2P_OnIncomingPacketQueueFullCallback incomingPacketQueueFullHandler) {
-		return EOSLibrary.instance.EOS_P2P_AddNotifyIncomingPacketQueueFull(this, options, clientData, incomingPacketQueueFullHandler);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_P2P_AddNotifyIncomingPacketQueueFull(this, options, clientData, incomingPacketQueueFullHandler);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, incomingPacketQueueFullHandler);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -392,6 +417,7 @@ public class EOS_P2P_Interface extends PointerType {
 	 */
 	public void removeNotifyIncomingPacketQueueFull(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_P2P_RemoveNotifyIncomingPacketQueueFull(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**

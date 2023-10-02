@@ -8,6 +8,7 @@ import host.anzo.eossdk.eos.sdk.friends.callbacks.*;
 import host.anzo.eossdk.eos.sdk.friends.enums.EOS_EFriendsStatus;
 import host.anzo.eossdk.eos.sdk.friends.options.*;
 import host.anzo.eossdk.eos.sdk.platform.enums.EOS_Platform_Create_Flag;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * The Friends Interface is used to manage a user's friends list, by interacting with the backend services, and to retrieve the cached list of friends, blocked users and pending invitations.
@@ -127,7 +128,11 @@ public class EOS_Friends_Interface extends PointerType {
 	public EOS_NotificationId addNotifyFriendsUpdate(EOS_Friends_AddNotifyFriendsUpdateOptions options,
 	                                                             Pointer clientData,
 	                                                             EOS_Friends_OnFriendsUpdateCallback friendsUpdateHandler) {
-		return EOSLibrary.instance.EOS_Friends_AddNotifyFriendsUpdate(this, options, clientData, friendsUpdateHandler);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Friends_AddNotifyFriendsUpdate(this, options, clientData, friendsUpdateHandler);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, friendsUpdateHandler);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -137,6 +142,7 @@ public class EOS_Friends_Interface extends PointerType {
 	 */
 	public void removeNotifyFriendsUpdate(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_Friends_RemoveNotifyFriendsUpdate(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -175,7 +181,11 @@ public class EOS_Friends_Interface extends PointerType {
 	public EOS_NotificationId addNotifyBlockedUsersUpdate(EOS_Friends_AddNotifyBlockedUsersUpdateOptions options,
 	                                                                  Pointer clientData,
 	                                                                  EOS_Friends_OnBlockedUsersUpdateCallback blockedUsersUpdateHandler) {
-		return EOSLibrary.instance.EOS_Friends_AddNotifyBlockedUsersUpdate(this, options, clientData, blockedUsersUpdateHandler);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Friends_AddNotifyBlockedUsersUpdate(this, options, clientData, blockedUsersUpdateHandler);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, blockedUsersUpdateHandler);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -185,5 +195,6 @@ public class EOS_Friends_Interface extends PointerType {
 	 */
 	public void removeNotifyBlockedUsersUpdate(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_Friends_RemoveNotifyBlockedUsersUpdate(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 }

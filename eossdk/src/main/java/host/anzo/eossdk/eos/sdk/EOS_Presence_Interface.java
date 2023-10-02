@@ -17,6 +17,7 @@ import host.anzo.eossdk.eos.sdk.presence.callbacks.EOS_Presence_OnPresenceChange
 import host.anzo.eossdk.eos.sdk.presence.callbacks.EOS_Presence_OnQueryPresenceCompleteCallback;
 import host.anzo.eossdk.eos.sdk.presence.callbacks.EOS_Presence_SetPresenceCompleteCallback;
 import host.anzo.eossdk.eos.sdk.presence.options.*;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * The Presence methods enable you to query and read other player's presence information, or modify your own.
@@ -124,7 +125,11 @@ public class EOS_Presence_Interface extends PointerType {
 	public EOS_NotificationId addNotifyOnPresenceChanged(EOS_Presence_AddNotifyOnPresenceChangedOptions options,
 	                                                                  Pointer clientData,
 	                                                                  EOS_Presence_OnPresenceChangedCallback notificationHandler) {
-		return EOSLibrary.instance.EOS_Presence_AddNotifyOnPresenceChanged(this, options, clientData, notificationHandler);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Presence_AddNotifyOnPresenceChanged(this, options, clientData, notificationHandler);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationHandler);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -134,6 +139,7 @@ public class EOS_Presence_Interface extends PointerType {
 	 */
 	public void removeNotifyOnPresenceChanged(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_Presence_RemoveNotifyOnPresenceChanged(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -149,7 +155,11 @@ public class EOS_Presence_Interface extends PointerType {
 	public EOS_NotificationId addNotifyJoinGameAccepted(EOS_Presence_AddNotifyJoinGameAcceptedOptions options,
 	                                                                 Pointer clientData,
 	                                                                 EOS_Presence_OnJoinGameAcceptedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_Presence_AddNotifyJoinGameAccepted(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Presence_AddNotifyJoinGameAccepted(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -159,6 +169,7 @@ public class EOS_Presence_Interface extends PointerType {
 	 */
 	public void removeNotifyJoinGameAccepted(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Presence_RemoveNotifyJoinGameAccepted(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**

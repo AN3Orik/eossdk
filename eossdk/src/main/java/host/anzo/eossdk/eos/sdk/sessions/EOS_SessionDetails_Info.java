@@ -4,6 +4,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
+import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -29,7 +30,7 @@ public class EOS_SessionDetails_Info extends Structure implements AutoCloseable 
 	public EOS_SessionDetails_Settings.ByReference Settings;
 	/** The Product User ID of the session owner. Null if the session is not owned by a user. */
 	public EOS_ProductUserId OwnerUserId;
-	/** The client id of the session owner. Null if the session is not owned by a server. The session is owned by a server if EOS_Platform_Options::bIsServer is EOS_TRUE. */
+	/** The client id of the session owner. Null if the session is not owned by a server. The session is owned by a server if {@link EOS_Platform_Options#IsServer} is EOS_TRUE. */
 	public Pointer OwnerServerClientId;
 
 	public EOS_SessionDetails_Info() {

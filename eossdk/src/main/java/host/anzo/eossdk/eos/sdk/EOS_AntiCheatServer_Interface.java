@@ -6,6 +6,7 @@ import com.sun.jna.ptr.IntByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidUserException;
+import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import host.anzo.eossdk.eos.sdk.anticheat.common.options.*;
 import host.anzo.eossdk.eos.sdk.anticheat.server.callbacks.EOS_AntiCheatServer_OnClientActionRequiredCallback;
 import host.anzo.eossdk.eos.sdk.anticheat.server.callbacks.EOS_AntiCheatServer_OnClientAuthStatusChangedCallback;
@@ -13,6 +14,7 @@ import host.anzo.eossdk.eos.sdk.anticheat.server.callbacks.EOS_AntiCheatServer_O
 import host.anzo.eossdk.eos.sdk.anticheat.server.options.*;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -38,7 +40,11 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
 	public EOS_NotificationId addNotifyMessageToClient(Pointer clientData, EOS_AntiCheatServer_OnMessageToClientCallback notificationFn) {
-		return EOSLibrary.instance.EOS_AntiCheatServer_AddNotifyMessageToClient(this, new EOS_AntiCheatServer_AddNotifyMessageToClientOptions(), clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatServer_AddNotifyMessageToClient(this, new EOS_AntiCheatServer_AddNotifyMessageToClientOptions(), clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -48,6 +54,7 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 */
 	public void removeNotifyMessageToClient(EOS_NotificationId notificationId)  {
 		EOSLibrary.instance.EOS_AntiCheatServer_RemoveNotifyMessageToClient(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -59,7 +66,11 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
 	public EOS_NotificationId addNotifyClientActionRequired(Pointer clientData, EOS_AntiCheatServer_OnClientActionRequiredCallback notificationFn)  {
-		return EOSLibrary.instance.EOS_AntiCheatServer_AddNotifyClientActionRequired(this, new EOS_AntiCheatServer_AddNotifyClientActionRequiredOptions(), clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatServer_AddNotifyClientActionRequired(this, new EOS_AntiCheatServer_AddNotifyClientActionRequiredOptions(), clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -69,6 +80,7 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 */
 	public void removeNotifyClientActionRequired(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_AntiCheatServer_RemoveNotifyClientActionRequired(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -80,7 +92,11 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
 	public EOS_NotificationId addNotifyClientAuthStatusChanged(Pointer clientData, EOS_AntiCheatServer_OnClientAuthStatusChangedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_AntiCheatServer_AddNotifyClientAuthStatusChanged(this, new EOS_AntiCheatServer_AddNotifyClientAuthStatusChangedOptions(), clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatServer_AddNotifyClientAuthStatusChanged(this, new EOS_AntiCheatServer_AddNotifyClientAuthStatusChangedOptions(), clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -90,6 +106,7 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 */
 	public void removeNotifyClientAuthStatusChanged(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_AntiCheatServer_RemoveNotifyClientAuthStatusChanged(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**
@@ -108,13 +125,11 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	/**
 	 * End the gameplay session. Should be called when the server is shutting down or entering an idle state.
 	 *
-	 * @param options Structure containing input data.
-	 *
 	 * @return {@link EOS_EResult#EOS_Success} - If the initialization succeeded
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 */
-	public EOS_EResult endSession(EOS_AntiCheatServer_EndSessionOptions options) {
-		return EOSLibrary.instance.EOS_AntiCheatServer_EndSession(this, options);
+	public EOS_EResult endSession() {
+		return EOSLibrary.instance.EOS_AntiCheatServer_EndSession(this, new EOS_AntiCheatServer_EndSessionOptions());
 	}
 
 	/**
@@ -138,13 +153,13 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 * This function may only be called between a successful call to EOS_AntiCheatServer_BeginSession and
 	 * the matching EOS_AntiCheatServer_EndSession call.
 	 *
-	 * @param options Structure containing input data.
+	 * @param clientHandle Locally unique value describing the remote user, as previously passed to RegisterClient
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} - If the player was unregistered successfully
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 */
-	public EOS_EResult unregisterClient(EOS_AntiCheatServer_UnregisterClientOptions options) {
-		return EOSLibrary.instance.EOS_AntiCheatServer_UnregisterClient(this, options);
+	public EOS_EResult unregisterClient(@NotNull EOS_AntiCheatCommon_ClientHandle clientHandle) {
+		return EOSLibrary.instance.EOS_AntiCheatServer_UnregisterClient(this, new EOS_AntiCheatServer_UnregisterClientOptions(clientHandle));
 	}
 
 	/**
@@ -153,14 +168,15 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 * This function may only be called between a successful call to EOS_AntiCheatServer_BeginSession and
 	 * the matching EOS_AntiCheatServer_EndSession call.
 	 *
-	 * @param options Structure containing input data.
+	 * @param clientHandle Locally unique value describing the corresponding remote user, as previously passed to RegisterClient
+	 * @param data The data received
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} - If the message was processed successfully
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 *         {@link EOS_EResult#EOS_InvalidRequest} - If message contents were corrupt and could not be processed
 	 */
-	public EOS_EResult receiveMessageFromClient(EOS_AntiCheatServer_ReceiveMessageFromClientOptions options) {
-		return EOSLibrary.instance.EOS_AntiCheatServer_ReceiveMessageFromClient(this, options);
+	public EOS_EResult receiveMessageFromClient(@NotNull EOS_AntiCheatCommon_ClientHandle clientHandle, byte @NotNull [] data) {
+		return EOSLibrary.instance.EOS_AntiCheatServer_ReceiveMessageFromClient(this, new EOS_AntiCheatServer_ReceiveMessageFromClientOptions(clientHandle, data));
 	}
 
 	/**
@@ -185,32 +201,33 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 * This function may only be called between a successful call to EOS_AntiCheatServer_BeginSession and
 	 * the matching EOS_AntiCheatServer_EndSession call.
 	 *
-	 * @param options Structure containing input data.
+	 * @param gameSessionId Game session identifier
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} - If the game session identifier was set successfully
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 */
-	public EOS_EResult setGameSessionId(EOS_AntiCheatCommon_SetGameSessionIdOptions options) {
-		return EOSLibrary.instance.EOS_AntiCheatServer_SetGameSessionId(this, options);
+	public EOS_EResult setGameSessionId(String gameSessionId) {
+		return EOSLibrary.instance.EOS_AntiCheatServer_SetGameSessionId(this, new EOS_AntiCheatCommon_SetGameSessionIdOptions(gameSessionId));
 	}
 
 	/**
 	 * Optional. Can be used to indicate that a client is legitimately known to be
 	 * temporarily unable to communicate, for example as a result of loading a new level.
 	 * <p>
-	 * The bIsNetworkActive flag must be set back to true when users enter normal
+	 * The IsNetworkActive flag must be set back to true when users enter normal
 	 * gameplay, otherwise anti-cheat enforcement will not work correctly.
 	 * <p>
 	 * This function may only be called between a successful call to EOS_AntiCheatServer_BeginSession and
 	 * the matching EOS_AntiCheatServer_EndSession call.
 	 *
-	 * @param options Structure containing input data.
+	 * @param clientHandle Locally unique value describing the remote user (e.g. a player object pointer)
+	 * @param isNetworkActive true if the network is functioning normally, false if temporarily interrupted
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} - If the network state was updated successfully
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 */
-	public EOS_EResult setClientNetworkState(EOS_AntiCheatServer_SetClientNetworkStateOptions options) {
-		return EOSLibrary.instance.EOS_AntiCheatServer_SetClientNetworkState(this, options);
+	public EOS_EResult setClientNetworkState(EOS_AntiCheatCommon_ClientHandle clientHandle, boolean isNetworkActive) {
+		return EOSLibrary.instance.EOS_AntiCheatServer_SetClientNetworkState(this, new EOS_AntiCheatServer_SetClientNetworkStateOptions(clientHandle, isNetworkActive));
 	}
 
 	/**
@@ -335,14 +352,14 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 * This function may only be called between a successful call to EOS_AntiCheatServer_BeginSession and
 	 * the matching EOS_AntiCheatServer_EndSession call.
 	 *
-	 * @param options Structure containing input data.
+	 * @param winningTeamId Optional identifier for the winning team
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} - If the event was logged successfully
 	 *         {@link EOS_EResult#EOS_InvalidParameters} - If input data was invalid
 	 *         {@link EOS_EResult#EOS_NotConfigured} - If called outside of BeginSession/EndSession boundaries
 	 */
-	public EOS_EResult logGameRoundEnd(EOS_AntiCheatCommon_LogGameRoundEndOptions options) {
-		return EOSLibrary.instance.EOS_AntiCheatServer_LogGameRoundEnd(this, options);
+	public EOS_EResult logGameRoundEnd(int winningTeamId) {
+		return EOSLibrary.instance.EOS_AntiCheatServer_LogGameRoundEnd(this, new EOS_AntiCheatCommon_LogGameRoundEndOptions(winningTeamId));
 	}
 
 	/**

@@ -100,12 +100,12 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 			switch (options.getAntiCheatMode()) {
 				case EOS_ACCM_ClientServer:
 					messageToServerNotificationId = antiCheatClient.addNotifyMessageToServer(null, this::onMessageToServer);
-					if (messageToServerNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+					if (!messageToServerNotificationId.isValid()) {
 						throw new RuntimeException("Failed to addNotifyMessageToServer");
 					}
 
 					clientIntegrityViolatedNotificationId = antiCheatClient.addNotifyClientIntegrityViolated(null, this::onClientIntegrityViolated);
-					if (clientIntegrityViolatedNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+					if (!clientIntegrityViolatedNotificationId.isValid()) {
 						throw new RuntimeException("Failed to addNotifyClientIntegrityViolated");
 					}
 					break;
@@ -132,10 +132,10 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 		if (antiCheatClient != null) {
 			switch (options.getAntiCheatMode()) {
 				case EOS_ACCM_ClientServer:
-					if (messageToServerNotificationId != EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+					if (messageToServerNotificationId.isValid()) {
 						antiCheatClient.removeNotifyMessageToServer(messageToServerNotificationId);
 					}
-					if (clientIntegrityViolatedNotificationId != EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+					if (clientIntegrityViolatedNotificationId.isValid()) {
 						antiCheatClient.removeNotifyClientIntegrityViolated(clientIntegrityViolatedNotificationId);
 					}
 					break;

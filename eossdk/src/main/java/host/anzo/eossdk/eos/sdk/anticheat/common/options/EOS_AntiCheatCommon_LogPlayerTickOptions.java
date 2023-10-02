@@ -19,7 +19,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "PlayerHandle", "PlayerPosition", "PlayerViewRotation", "bIsPlayerViewZoomed", "PlayerHealth", "PlayerMovementState"})
+@FieldOrder({"ApiVersion", "PlayerHandle", "PlayerPosition", "PlayerViewRotation", "IsPlayerViewZoomed", "PlayerHealth", "PlayerMovementState"})
 public class EOS_AntiCheatCommon_LogPlayerTickOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERTICK_API_LATEST = 2;
 
@@ -32,7 +32,7 @@ public class EOS_AntiCheatCommon_LogPlayerTickOptions extends Structure {
 	/** Player's view rotation as a quaternion */
 	public EOS_AntiCheatCommon_Quat.ByReference PlayerViewRotation;
 	/** {@link EOS_Bool#EOS_TRUE} if the player's view is zoomed (e.g. using a sniper rifle), otherwise {@link EOS_Bool#EOS_FALSE} */
-	public EOS_Bool bIsPlayerViewZoomed;
+	public EOS_Bool IsPlayerViewZoomed;
 	/** Player's current health value */
 	public float PlayerHealth;
 	/** Any movement state applicable */

@@ -15,6 +15,7 @@ import host.anzo.eossdk.eos.sdk.sessions.EOS_SessionModification;
 import host.anzo.eossdk.eos.sdk.sessions.EOS_SessionSearch;
 import host.anzo.eossdk.eos.sdk.sessions.callbacks.*;
 import host.anzo.eossdk.eos.sdk.sessions.options.*;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * The Session Interface is used to manage sessions that can be advertised with the backend service
@@ -260,7 +261,11 @@ public class EOS_Sessions_Interface extends PointerType {
 	public EOS_NotificationId addNotifySessionInviteReceived(EOS_Sessions_AddNotifySessionInviteReceivedOptions options,
 	                                                                      Pointer clientData,
 	                                                                      EOS_Sessions_OnSessionInviteReceivedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_Sessions_AddNotifySessionInviteReceived(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifySessionInviteReceived(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -270,6 +275,7 @@ public class EOS_Sessions_Interface extends PointerType {
 	 */
 	public void removeNotifySessionInviteReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Sessions_RemoveNotifySessionInviteReceived(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -285,7 +291,11 @@ public class EOS_Sessions_Interface extends PointerType {
 	public EOS_NotificationId addNotifySessionInviteAccepted(EOS_Sessions_AddNotifySessionInviteAcceptedOptions options,
 	                                                                      Pointer clientData,
 	                                                                      EOS_Sessions_OnSessionInviteAcceptedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_Sessions_AddNotifySessionInviteAccepted(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifySessionInviteAccepted(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -295,6 +305,7 @@ public class EOS_Sessions_Interface extends PointerType {
 	 */
 	public void removeNotifySessionInviteAccepted(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Sessions_RemoveNotifySessionInviteAccepted(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -310,7 +321,11 @@ public class EOS_Sessions_Interface extends PointerType {
 	public EOS_NotificationId addNotifySessionInviteRejected(EOS_Sessions_AddNotifySessionInviteRejectedOptions options,
 	                                                         Pointer clientData,
 	                                                         EOS_Sessions_OnSessionInviteRejectedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_Sessions_AddNotifySessionInviteRejected(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifySessionInviteRejected(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -320,6 +335,7 @@ public class EOS_Sessions_Interface extends PointerType {
 	 */
 	public void removeNotifySessionInviteRejected(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Sessions_RemoveNotifySessionInviteRejected(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -335,7 +351,11 @@ public class EOS_Sessions_Interface extends PointerType {
 	public EOS_NotificationId addNotifyJoinSessionAccepted(EOS_Sessions_AddNotifyJoinSessionAcceptedOptions options,
 	                                                       Pointer clientData,
 	                                                       EOS_Sessions_OnJoinSessionAcceptedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_Sessions_AddNotifyJoinSessionAccepted(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifyJoinSessionAccepted(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -345,6 +365,7 @@ public class EOS_Sessions_Interface extends PointerType {
 	 */
 	public void removeNotifyJoinSessionAccepted(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Sessions_RemoveNotifyJoinSessionAccepted(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -447,7 +468,11 @@ public class EOS_Sessions_Interface extends PointerType {
 	public EOS_NotificationId addNotifyLeaveSessionRequested(EOS_Sessions_AddNotifyLeaveSessionRequestedOptions options,
 	                                                         Pointer clientData,
 	                                                         EOS_Sessions_OnLeaveSessionRequestedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_Sessions_AddNotifyLeaveSessionRequested(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifyLeaveSessionRequested(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -457,6 +482,7 @@ public class EOS_Sessions_Interface extends PointerType {
 	 */
 	public void removeNotifyLeaveSessionRequested(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Sessions_RemoveNotifyLeaveSessionRequested(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -480,7 +506,11 @@ public class EOS_Sessions_Interface extends PointerType {
 	public EOS_NotificationId addNotifySendSessionNativeInviteRequested(EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions options,
 	                                                                                 Pointer clientData,
 	                                                                                 EOS_Sessions_OnSendSessionNativeInviteRequestedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_Sessions_AddNotifySendSessionNativeInviteRequested(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifySendSessionNativeInviteRequested(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -490,5 +520,6 @@ public class EOS_Sessions_Interface extends PointerType {
 	 */
 	public void removeNotifySendSessionNativeInviteRequested(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Sessions_RemoveNotifySendSessionNativeInviteRequested(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 }

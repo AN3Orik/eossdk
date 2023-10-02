@@ -19,7 +19,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "RegisterTimeoutSeconds", "ServerName", "bEnableGameplayData", "LocalUserId"})
+@FieldOrder({"ApiVersion", "RegisterTimeoutSeconds", "ServerName", "EnableGameplayData", "LocalUserId"})
 public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
 	/** Limits on RegisterTimeoutSeconds parameter */
 	public static int EOS_ANTICHEATSERVER_BEGINSESSION_MIN_REGISTERTIMEOUT = 10;
@@ -40,7 +40,7 @@ public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
 	 * Gameplay data collection APIs such as LogPlayerTick will be enabled if set to true.
 	 * If you do not use these APIs, it is more efficient to set this value to false.
 	 */
-	public EOS_Bool bEnableGameplayData;
+	public EOS_Bool EnableGameplayData;
 	/** The Product User ID of the local user who is associated with this session. Dedicated servers should set this to null. */
 	public EOS_ProductUserId LocalUserId;
 
@@ -53,7 +53,7 @@ public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
 		this();
 		RegisterTimeoutSeconds = Math.min(Math.max(options.getAntiCheatRegisterTimeoutSeconds(), EOS_ANTICHEATSERVER_BEGINSESSION_MIN_REGISTERTIMEOUT), EOS_ANTICHEATSERVER_BEGINSESSION_MAX_REGISTERTIMEOUT);
 		ServerName = options.getAntiCheatServerName();
-		bEnableGameplayData = EOS_Bool.of(options.isAntiCheatEnableGamePlayData());
+		EnableGameplayData = EOS_Bool.of(options.isAntiCheatEnableGamePlayData());
 		LocalUserId = null;
 	}
 

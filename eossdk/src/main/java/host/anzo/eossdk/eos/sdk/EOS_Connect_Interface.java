@@ -15,6 +15,7 @@ import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_ExternalAccountInfo;
 import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_IdToken;
 import host.anzo.eossdk.eos.sdk.connect.callbacks.*;
 import host.anzo.eossdk.eos.sdk.connect.options.*;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * The Connect Interface is used to manage local user permissions and access to backend services through the verification of various forms of credentials.
@@ -443,7 +444,11 @@ public class EOS_Connect_Interface extends PointerType {
 	public EOS_NotificationId addNotifyAuthExpiration(EOS_Connect_AddNotifyAuthExpirationOptions options,
 	                                                  Pointer clientData,
 	                                                  EOS_Connect_OnAuthExpirationCallback notification) {
-		return EOSLibrary.instance.EOS_Connect_AddNotifyAuthExpiration(this, options, clientData, notification);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Connect_AddNotifyAuthExpiration(this, options, clientData, notification);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notification);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -453,6 +458,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 */
 	public void removeNotifyAuthExpiration(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Connect_RemoveNotifyAuthExpiration(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**
@@ -468,7 +474,11 @@ public class EOS_Connect_Interface extends PointerType {
 	public EOS_NotificationId addNotifyLoginStatusChanged(EOS_Connect_AddNotifyLoginStatusChangedOptions options,
 	                                                      Pointer clientData,
 	                                                      EOS_Connect_OnLoginStatusChangedCallback notification) {
-		return EOSLibrary.instance.EOS_Connect_AddNotifyLoginStatusChanged(this, options, clientData, notification);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Connect_AddNotifyLoginStatusChanged(this, options, clientData, notification);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notification);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -478,6 +488,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 */
 	public void removeNotifyLoginStatusChanged(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Connect_RemoveNotifyLoginStatusChanged(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 
 	/**

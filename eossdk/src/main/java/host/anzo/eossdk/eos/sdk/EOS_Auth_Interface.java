@@ -11,6 +11,7 @@ import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_ELoginStatus;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * The Auth Interface is used to manage local user permissions and access to backend services through the verification of various forms of credentials.
@@ -264,7 +265,11 @@ public class EOS_Auth_Interface extends PointerType {
 	public EOS_NotificationId addNotifyLoginStatusChanged(EOS_Auth_AddNotifyLoginStatusChangedOptions options,
 	                                                      Pointer clientData,
 	                                                      EOS_Auth_OnLoginStatusChangedCallback notification) {
-		return EOSLibrary.instance.EOS_Auth_AddNotifyLoginStatusChanged(this, options, clientData, notification);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Auth_AddNotifyLoginStatusChanged(this, options, clientData, notification);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notification);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -274,5 +279,6 @@ public class EOS_Auth_Interface extends PointerType {
 	 */
 	public void removeNotifyLoginStatusChanged(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Auth_RemoveNotifyLoginStatusChanged(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 }

@@ -29,6 +29,11 @@ public class EOS_AntiCheatCommon_LogGameRoundEndOptions extends Structure {
 		ApiVersion = EOS_ANTICHEATCOMMON_LOGGAMEROUNDEND_API_LATEST;
 	}
 
+	public EOS_AntiCheatCommon_LogGameRoundEndOptions(int winningTeamId) {
+		this();
+		WinningTeamId = winningTeamId;
+	}
+
 	public EOS_AntiCheatCommon_LogGameRoundEndOptions(Pointer peer) {
 		super(peer);
 	}

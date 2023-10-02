@@ -43,17 +43,17 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 			}
 
 			messageToClientNotificationId = antiCheatServer.addNotifyMessageToClient(null, this::onMessageToClient);
-			if (messageToClientNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+			if (!messageToClientNotificationId.isValid()) {
 				throw new RuntimeException("Failed to addNotifyMessageToClient");
 			}
 
 			clientActionRequiredNotificationId = antiCheatServer.addNotifyClientActionRequired(null, this::onClientActionRequired);
-			if (clientActionRequiredNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+			if (!clientActionRequiredNotificationId.isValid()) {
 				throw new RuntimeException("Failed to addNotifyClientActionRequired");
 			}
 
 			clientAuthStatusChangedNotificationId = antiCheatServer.addNotifyClientAuthStatusChanged(null, this::onClientAuthStatusChanged);
-			if (clientAuthStatusChangedNotificationId == EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+			if (!clientAuthStatusChangedNotificationId.isValid()) {
 				throw new RuntimeException("Failed to addNotifyClientAuthStatusChanged");
 			}
 
@@ -68,13 +68,13 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 	@Override
 	public void shutdown() {
 		if (antiCheatServer != null) {
-			if (messageToClientNotificationId != EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+			if (messageToClientNotificationId.isValid()) {
 				antiCheatServer.removeNotifyMessageToClient(messageToClientNotificationId);
 			}
-			if (clientActionRequiredNotificationId != EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+			if (clientActionRequiredNotificationId.isValid()) {
 				antiCheatServer.removeNotifyClientActionRequired(clientActionRequiredNotificationId);
 			}
-			if (clientAuthStatusChangedNotificationId != EOS_NotificationId.EOS_INVALID_NOTIFICATIONID) {
+			if (clientAuthStatusChangedNotificationId.isValid()) {
 				antiCheatServer.removeNotifyClientAuthStatusChanged(clientAuthStatusChangedNotificationId);
 			}
 		}
@@ -148,7 +148,7 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 		if (antiCheatClient != null) {
 			if (callbackInfo.ClientAction == EOS_EAntiCheatCommonClientAction.EOS_ACCCA_RemovePlayer) {
 				if (removeNetworkClient(callbackInfo.ClientHandle)) {
-					antiCheatServer.unregisterClient(new EOS_AntiCheatServer_UnregisterClientOptions(callbackInfo.ClientHandle));
+					antiCheatServer.unregisterClient(callbackInfo.ClientHandle);
 					antiCheatClient.onKickFromAntiCheat(callbackInfo.ActionReasonCode, callbackInfo.ActionReasonDetailsString);
 				}
 			}

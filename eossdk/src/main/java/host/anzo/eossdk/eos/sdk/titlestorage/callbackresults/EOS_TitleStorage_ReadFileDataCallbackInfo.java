@@ -13,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 9/3/2023
  */
-@FieldOrder({"ClientData", "LocalUserId", "Filename", "TotalFileSizeBytes", "bIsLastChunk", "DataChunkLengthBytes", "DataChunk"})
+@FieldOrder({"ClientData", "LocalUserId", "Filename", "TotalFileSizeBytes", "IsLastChunk", "DataChunkLengthBytes", "DataChunk"})
 public class EOS_TitleStorage_ReadFileDataCallbackInfo extends Structure {
 	/** Client-specified data passed into the file request */
 	public Pointer ClientData;
@@ -24,7 +24,7 @@ public class EOS_TitleStorage_ReadFileDataCallbackInfo extends Structure {
 	/** The total file size of the file being read */
 	public int TotalFileSizeBytes;
 	/** Is this chunk the last chunk of data? */
-	public EOS_Bool bIsLastChunk;
+	public EOS_Bool IsLastChunk;
 	/** The length of DataChunk in bytes that can be safely read */
 	public int DataChunkLengthBytes;
 	/** Pointer to the start of data to be read */

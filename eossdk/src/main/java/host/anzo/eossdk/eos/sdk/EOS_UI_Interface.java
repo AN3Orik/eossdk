@@ -11,6 +11,7 @@ import host.anzo.eossdk.eos.sdk.ui.enums.EOS_UI_EInputStateButtonFlags;
 import host.anzo.eossdk.eos.sdk.ui.enums.EOS_UI_EKeyCombination;
 import host.anzo.eossdk.eos.sdk.ui.enums.EOS_UI_ENotificationLocation;
 import host.anzo.eossdk.eos.sdk.ui.options.*;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * The UI Interface is used to access the Social Overlay UI.  Each UI component will have a function for
@@ -89,7 +90,11 @@ public class EOS_UI_Interface extends PointerType {
 	public EOS_NotificationId addNotifyDisplaySettingsUpdated(EOS_UI_AddNotifyDisplaySettingsUpdatedOptions options,
 	                                                                 Pointer clientData,
 	                                                                 EOS_UI_OnDisplaySettingsUpdatedCallback completionDelegate) {
-		return EOSLibrary.instance.EOS_UI_AddNotifyDisplaySettingsUpdated(this, options, clientData, completionDelegate);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_UI_AddNotifyDisplaySettingsUpdated(this, options, clientData, completionDelegate);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, completionDelegate);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -99,6 +104,7 @@ public class EOS_UI_Interface extends PointerType {
 	 */
 	public void removeNotifyDisplaySettingsUpdated(EOS_NotificationId id) {
 		EOSLibrary.instance.EOS_UI_RemoveNotifyDisplaySettingsUpdated(this, id);
+		CallbackUtils.unregisterCallback(id);
 	}
 
 	/**
@@ -280,8 +286,8 @@ public class EOS_UI_Interface extends PointerType {
 	}
 
 	/**
-	 * Sets the bIsPaused state of the overlay.
-	 * While true then all notifications will be delayed until after the bIsPaused is false again.
+	 * Sets the IsPaused state of the overlay.
+	 * While true then all notifications will be delayed until after the IsPaused is false again.
 	 * While true then the key and button events will not toggle the overlay.
 	 * If the Overlay was visible before being paused then it will be hidden.
 	 * If it is known that the Overlay should now be visible after being paused then it will be shown.
@@ -296,7 +302,7 @@ public class EOS_UI_Interface extends PointerType {
 	}
 
 	/**
-	 * Gets the bIsPaused state of the overlay as set by any previous calls to EOS_UI_PauseSocialOverlay().
+	 * Gets the IsPaused state of the overlay as set by any previous calls to EOS_UI_PauseSocialOverlay().
 	 *
 	 * @return {@code true} If the overlay is paused.
 	 *
@@ -318,7 +324,11 @@ public class EOS_UI_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyMemoryMonitor(EOS_UI_AddNotifyMemoryMonitorOptions options, Pointer clientData, EOS_UI_OnMemoryMonitorCallback completionDelegate) {
-		return EOSLibrary.instance.EOS_UI_AddNotifyMemoryMonitor(this, options, clientData, completionDelegate);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_UI_AddNotifyMemoryMonitor(this, options, clientData, completionDelegate);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, completionDelegate);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -328,6 +338,7 @@ public class EOS_UI_Interface extends PointerType {
 	 */
 	public void removeNotifyMemoryMonitor(EOS_NotificationId id) {
 		EOSLibrary.instance.EOS_UI_RemoveNotifyMemoryMonitor(this, id);
+		CallbackUtils.unregisterCallback(id);
 	}
 
 	/**

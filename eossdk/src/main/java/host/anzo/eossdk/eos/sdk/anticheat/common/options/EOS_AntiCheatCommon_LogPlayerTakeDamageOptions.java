@@ -23,7 +23,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "VictimPlayerHandle", "VictimPlayerPosition", "VictimPlayerViewRotation", "AttackerPlayerHandle", "AttackerPlayerPosition", "AttackerPlayerViewRotation", "bIsHitscanAttack", "bHasLineOfSight", "bIsCriticalHit", "HitBoneId_DEPRECATED", "DamageTaken", "HealthRemaining", "DamageSource", "DamageType", "DamageResult", "PlayerUseWeaponData", "TimeSincePlayerUseWeaponMs", "DamagePosition"})
+@FieldOrder({"ApiVersion", "VictimPlayerHandle", "VictimPlayerPosition", "VictimPlayerViewRotation", "AttackerPlayerHandle", "AttackerPlayerPosition", "AttackerPlayerViewRotation", "IsHitscanAttack", "HasLineOfSight", "IsCriticalHit", "HitBoneId_DEPRECATED", "DamageTaken", "HealthRemaining", "DamageSource", "DamageType", "DamageResult", "PlayerUseWeaponData", "TimeSincePlayerUseWeaponMs", "DamagePosition"})
 public class EOS_AntiCheatCommon_LogPlayerTakeDamageOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERTAKEDAMAGE_API_LATEST = 3;
 
@@ -45,7 +45,7 @@ public class EOS_AntiCheatCommon_LogPlayerTakeDamageOptions extends Structure {
 	 * {@link EOS_Bool#EOS_TRUE} if the damage was applied instantly at the time of attack from the game
 	 * simulation's perspective, otherwise {@link EOS_Bool#EOS_FALSE} (simulated ballistics, arrow, etc).
 	 */
-	public EOS_Bool bIsHitscanAttack;
+	public EOS_Bool IsHitscanAttack;
 	/**
 	 * True if there is a visible line of sight between the attacker and the victim at the time
 	 * that damage is being applied, false if there is an obstacle like a wall or terrain in
@@ -56,9 +56,9 @@ public class EOS_AntiCheatCommon_LogPlayerTakeDamageOptions extends Structure {
 	 * This can be an estimate, or can simply be always set to true if it is not feasible
 	 * to compute in your game.
 	 */
-	public int bHasLineOfSight;
+	public int HasLineOfSight;
 	/** {@link EOS_Bool#EOS_TRUE} if this was a critical hit that causes extra damage (e.g. headshot) */
-	public EOS_Bool bIsCriticalHit;
+	public EOS_Bool IsCriticalHit;
 	/** Deprecated - use DamagePosition instead */
 	public int HitBoneId_DEPRECATED;
 	/** Number of health points that the victim lost due to this damage event */

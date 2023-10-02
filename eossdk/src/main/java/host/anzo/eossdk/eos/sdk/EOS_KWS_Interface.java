@@ -9,6 +9,7 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.kws.EOS_KWS_PermissionStatus;
 import host.anzo.eossdk.eos.sdk.kws.callbacks.*;
 import host.anzo.eossdk.eos.sdk.kws.options.*;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 import java.nio.IntBuffer;
 
@@ -169,7 +170,11 @@ public class EOS_KWS_Interface extends PointerType {
 	public EOS_NotificationId addNotifyPermissionsUpdateReceived(EOS_KWS_AddNotifyPermissionsUpdateReceivedOptions options,
 	                                                                     Pointer clientData,
 	                                                                     EOS_KWS_OnPermissionsUpdateReceivedCallback notificationFn) {
-		return EOSLibrary.instance.EOS_KWS_AddNotifyPermissionsUpdateReceived(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_KWS_AddNotifyPermissionsUpdateReceived(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -181,5 +186,6 @@ public class EOS_KWS_Interface extends PointerType {
 	 */
 	public void removeNotifyPermissionsUpdateReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_KWS_RemoveNotifyPermissionsUpdateReceived(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 }

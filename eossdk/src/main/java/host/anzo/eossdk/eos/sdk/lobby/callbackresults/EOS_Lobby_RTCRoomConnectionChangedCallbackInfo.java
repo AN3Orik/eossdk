@@ -12,7 +12,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/19/2023
  */
-@FieldOrder({"ClientData", "LobbyId", "LocalUserId", "bIsConnected", "DisconnectReason"})
+@FieldOrder({"ClientData", "LobbyId", "LocalUserId", "IsConnected", "DisconnectReason"})
 public class EOS_Lobby_RTCRoomConnectionChangedCallbackInfo extends Structure {
 	/** Context that was passed into EOS_Lobby_AddNotifyRTCRoomConnectionChanged */
 	public Pointer ClientData;
@@ -21,9 +21,9 @@ public class EOS_Lobby_RTCRoomConnectionChangedCallbackInfo extends Structure {
 	/** The Product User ID of the local user who is in the lobby and registered for notifications */
 	public EOS_ProductUserId LocalUserId;
 	/** The new connection state of the room */
-	public EOS_Bool bIsConnected;
+	public EOS_Bool IsConnected;
 	/**
-	 * If bIsConnected is EOS_FALSE, this result will be the reason we were disconnected.
+	 * If IsConnected is EOS_FALSE, this result will be the reason we were disconnected.
 	 * {@link EOS_EResult#EOS_Success}: The room was left locally. This may be because: the associated lobby was Left or Destroyed, the connection to the lobby was interrupted, or because the SDK is being shutdown. If the lobby connection returns (lobby did not permanently go away), we will reconnect.<br>
 	 * {@link EOS_EResult#EOS_NoConnection}: There was a network issue connecting to the server. We will attempt to reconnect soon.<br>
 	 * {@link EOS_EResult#EOS_RTC_UserKicked}: The user has been kicked by the server. We will not reconnect.<br>

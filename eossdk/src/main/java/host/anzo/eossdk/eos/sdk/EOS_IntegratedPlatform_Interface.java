@@ -9,6 +9,7 @@ import host.anzo.eossdk.eos.sdk.integratedplatform.callbacks.EOS_IntegratedPlatf
 import host.anzo.eossdk.eos.sdk.integratedplatform.callbacks.EOS_IntegratedPlatform_OnUserPreLogoutCallback;
 import host.anzo.eossdk.eos.sdk.integratedplatform.options.*;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * To add integrated platforms, you must call EOS_IntegratedPlatform_CreateIntegratedPlatformOptionsContainer to create an integrated platform options container. To modify that handle, call
@@ -83,7 +84,11 @@ public class EOS_IntegratedPlatform_Interface extends PointerType {
 	public EOS_NotificationId addNotifyUserLoginStatusChanged(EOS_IntegratedPlatform_AddNotifyUserLoginStatusChangedOptions options,
 	                                                                                 Pointer clientData,
 	                                                                                 EOS_IntegratedPlatform_OnUserLoginStatusChangedCallback callbackFunction) {
-		return EOSLibrary.instance.EOS_IntegratedPlatform_AddNotifyUserLoginStatusChanged(this, options, clientData, callbackFunction);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_IntegratedPlatform_AddNotifyUserLoginStatusChanged(this, options, clientData, callbackFunction);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, callbackFunction);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -95,6 +100,7 @@ public class EOS_IntegratedPlatform_Interface extends PointerType {
 	 */
 	public void removeNotifyUserLoginStatusChanged(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_IntegratedPlatform_RemoveNotifyUserLoginStatusChanged(this, notificationId);
+		CallbackUtils.unregisterCallback(notificationId);
 	}
 
 	/**

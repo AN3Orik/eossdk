@@ -17,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "ClientHandle", "bIsNetworkActive"})
+@FieldOrder({"ApiVersion", "ClientHandle", "IsNetworkActive"})
 public class EOS_AntiCheatServer_SetClientNetworkStateOptions extends Structure {
 	public static int EOS_ANTICHEATSERVER_SETCLIENTNETWORKSTATE_API_LATEST = 1;
 
@@ -26,11 +26,17 @@ public class EOS_AntiCheatServer_SetClientNetworkStateOptions extends Structure 
 	/** Locally unique value describing the remote user (e.g. a player object pointer) */
 	public EOS_AntiCheatCommon_ClientHandle ClientHandle;
 	/** {@link EOS_Bool#EOS_TRUE} if the network is functioning normally, {@link EOS_Bool#EOS_FALSE} if temporarily interrupted */
-	public EOS_Bool bIsNetworkActive;
+	public EOS_Bool IsNetworkActive;
 
 	public EOS_AntiCheatServer_SetClientNetworkStateOptions() {
 		super();
 		ApiVersion = EOS_ANTICHEATSERVER_SETCLIENTNETWORKSTATE_API_LATEST;
+	}
+
+	public EOS_AntiCheatServer_SetClientNetworkStateOptions(EOS_AntiCheatCommon_ClientHandle clientHandle, boolean isNetworkActive) {
+		this();
+		ClientHandle = clientHandle;
+		IsNetworkActive = EOS_Bool.of(isNetworkActive);
 	}
 
 	public EOS_AntiCheatServer_SetClientNetworkStateOptions(Pointer peer) {

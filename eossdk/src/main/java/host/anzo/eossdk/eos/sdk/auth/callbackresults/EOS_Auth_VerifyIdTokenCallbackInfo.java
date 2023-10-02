@@ -9,6 +9,7 @@ package host.anzo.eossdk.eos.sdk.auth.callbackresults;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_EExternalAccountType;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -19,7 +20,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ResultCode", "ClientData", "ApplicationId", "ClientId", "ProductId", "SandboxId", "DeploymentId", "DisplayName", "bIsExternalAccountInfoPresent", "ExternalAccountIdType", "ExternalAccountId", "ExternalAccountDisplayName", "Platform"})
+@FieldOrder({"ResultCode", "ClientData", "ApplicationId", "ClientId", "ProductId", "SandboxId", "DeploymentId", "DisplayName", "IsExternalAccountInfoPresent", "ExternalAccountIdType", "ExternalAccountId", "ExternalAccountDisplayName", "Platform"})
 public class EOS_Auth_VerifyIdTokenCallbackInfo extends Structure {
 	/** The EOS_EResult code for the operation. {@link EOS_EResult#EOS_Success} indicates that the operation succeeded; other codes indicate errors. */
 	public EOS_EResult ResultCode;
@@ -58,13 +59,13 @@ public class EOS_Auth_VerifyIdTokenCallbackInfo extends Structure {
 	 * <p>
 	 * This flag is set when the user has logged in to their Epic Account using external account credentials, e.g. through local platform authentication.
 	 */
-	public EOS_Bool bIsExternalAccountInfoPresent;
+	public EOS_Bool IsExternalAccountInfoPresent;
 	/**
 	 * The identity provider that the user logged in with to their Epic Account.
 	 * <p>
-	 * If bIsExternalAccountInfoPresent is set, this field describes the external account type.
+	 * If IsExternalAccountInfoPresent is set, this field describes the external account type.
 	 */
-	public int ExternalAccountIdType;
+	public EOS_EExternalAccountType ExternalAccountIdType;
 	/**
 	 * The external account ID of the logged in user.
 	 * <p>

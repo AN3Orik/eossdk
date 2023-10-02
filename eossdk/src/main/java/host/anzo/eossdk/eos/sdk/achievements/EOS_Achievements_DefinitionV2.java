@@ -14,7 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/19/2023
  */
-@FieldOrder({"ApiVersion", "AchievementId", "UnlockedDisplayName", "UnlockedDescription", "LockedDisplayName", "LockedDescription", "FlavorText", "UnlockedIconURL", "LockedIconURL", "bIsHidden", "StatThresholdsCount", "StatThresholds"})
+@FieldOrder({"ApiVersion", "AchievementId", "UnlockedDisplayName", "UnlockedDescription", "LockedDisplayName", "LockedDescription", "FlavorText", "UnlockedIconURL", "LockedIconURL", "IsHidden", "StatThresholdsCount", "StatThresholds"})
 public class EOS_Achievements_DefinitionV2 extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_Achievements_DefinitionV2 struct. */
 	public static final int EOS_ACHIEVEMENTS_DEFINITIONV2_API_LATEST = 2;
@@ -38,7 +38,7 @@ public class EOS_Achievements_DefinitionV2 extends Structure implements AutoClos
 	/** URL of an icon to display for the achievement when it is locked or hidden. This may be null if there is no data configured in the dev portal. */
 	public String LockedIconURL;
 	/** {@link EOS_Bool#EOS_TRUE} if the achievement is hidden; {@link EOS_Bool#EOS_FALSE} otherwise. */
-	public EOS_Bool bIsHidden;
+	public EOS_Bool IsHidden;
 	/** The number of stat thresholds used to monitor progress towards this achievement. */
 	public int StatThresholdsCount;
 	/** Array of `EOS_Achievements_StatThresholds` that need to be satisfied to unlock this achievement. Consists of Name and Threshold Value. */

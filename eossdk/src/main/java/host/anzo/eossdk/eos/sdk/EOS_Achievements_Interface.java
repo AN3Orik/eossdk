@@ -16,6 +16,7 @@ import host.anzo.eossdk.eos.sdk.achievements.options.*;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.platform.enums.EOS_Platform_Create_Flag;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * The following EOS_Achievements_* functions allow you to query existing achievement definitions that have been defined for your application.
@@ -200,7 +201,11 @@ public class EOS_Achievements_Interface extends PointerType {
 	public EOS_NotificationId addNotifyAchievementsUnlockedV2(EOS_Achievements_AddNotifyAchievementsUnlockedV2Options options,
 	                                                                           Pointer clientData,
 	                                                                           EOS_Achievements_OnAchievementsUnlockedCallbackV2 notificationFn) {
-		return EOSLibrary.instance.EOS_Achievements_AddNotifyAchievementsUnlockedV2(this, options, clientData, notificationFn);
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Achievements_AddNotifyAchievementsUnlockedV2(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerCallback(notificationId, notificationFn);
+		}
+		return notificationId;
 	}
 
 	/**
@@ -212,5 +217,6 @@ public class EOS_Achievements_Interface extends PointerType {
 	 */
 	public void removeNotifyAchievementsUnlocked(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Achievements_RemoveNotifyAchievementsUnlocked(this, inId);
+		CallbackUtils.unregisterCallback(inId);
 	}
 }
