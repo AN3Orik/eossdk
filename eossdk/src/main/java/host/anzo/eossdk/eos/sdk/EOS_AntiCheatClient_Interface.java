@@ -15,7 +15,7 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.utils.CallbackUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
+import java.nio.ByteBuffer;
 
 /**
  * @author Anton Lasevich
@@ -259,20 +259,23 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * <p>
 	 * options.Data and OutBuffer may refer to the same buffer to encrypt in place.
 	 *
-	 * @param options Structure containing input data.
+	 * @param data The data to encrypt
+	 * @param outBufferSizeBytes The size in bytes of OutBuffer
+	 *
 	 * @return buffer with an encrypted data message
 	 *
 	 * @throws EOSInvalidParametersException If input data was invalid
 	 * @throws EOSAntiCheatInvalidModeException If the current mode does not support this function
 	 */
-	public byte[] protectMessage(@NotNull EOS_AntiCheatClient_ProtectMessageOptions options) throws EOSException {
+	public ByteBuffer protectMessage(byte @NotNull [] data, int outBufferSizeBytes) throws EOSException {
+		final EOS_AntiCheatClient_ProtectMessageOptions.ByReference options = new EOS_AntiCheatClient_ProtectMessageOptions.ByReference(data, outBufferSizeBytes);
+		final ByteBuffer outBuffer = ByteBuffer.allocate(outBufferSizeBytes);
 		final IntByReference outBytesWritten = new IntByReference();
-		final byte[] encryptedData = new byte[options.OutBufferSizeBytes];
-		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_ProtectMessage(this, options, encryptedData, outBytesWritten);
+		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_ProtectMessage(this, options, outBuffer, outBytesWritten);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return encryptedData;
+		return outBuffer;
 	}
 
 	/**
@@ -282,21 +285,23 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 * <p>
 	 * options.Data and OutBuffer may refer to the same buffer to decrypt in place.
 	 *
-	 * @param options Structure containing input data.
+	 * @param data The data to decrypt
 	 *
 	 * @return buffer with a decrypted data message
 	 *
 	 * @throws EOSInvalidParametersException If input data was invalid
 	 * @throws EOSAntiCheatInvalidModeException If the current mode does not support this function
 	 */
-	public byte[] unprotectMessage(@NotNull EOS_AntiCheatClient_UnprotectMessageOptions options) throws EOSException {
+	public ByteBuffer unprotectMessage(byte[] data) throws EOSException {
+		final EOS_AntiCheatClient_UnprotectMessageOptions.ByReference options = new EOS_AntiCheatClient_UnprotectMessageOptions.ByReference(data);
 		final IntByReference outBytesWritten = new IntByReference();
-		final byte[] decryptedData = new byte[options.DataLengthBytes];
-		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_UnprotectMessage(this, options, decryptedData, outBytesWritten);
+		final ByteBuffer outBuffer = ByteBuffer.allocate(data.length);
+		final EOS_EResult result = EOSLibrary.instance.EOS_AntiCheatClient_UnprotectMessage(this, options, outBuffer, outBytesWritten);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return Arrays.copyOfRange(decryptedData, 0, outBytesWritten.getValue());
+		outBuffer.limit(outBytesWritten.getValue());
+		return outBuffer;
 	}
 
 	/**

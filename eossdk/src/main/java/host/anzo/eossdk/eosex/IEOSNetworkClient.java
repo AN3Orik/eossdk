@@ -4,6 +4,8 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandl
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.*;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
+import java.nio.ByteBuffer;
+
 /**
  * @author Anton Lasevich
  * @since 8/9/2023
@@ -18,6 +20,6 @@ public interface IEOSNetworkClient {
 	EOS_ProductUserId getProductUserId();
 
 	void close(String reason);
-	void onSendEacData(byte[] data);
+	void onSendEacData(ByteBuffer data);
 	void onKickFromAntiCheat(EOS_EAntiCheatCommonClientActionReason actionReasonCode, String actionReasonDetails);
 }

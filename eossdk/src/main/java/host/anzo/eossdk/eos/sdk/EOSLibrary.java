@@ -133,7 +133,6 @@ import java.nio.IntBuffer;
  */
 public interface EOSLibrary extends Library {
 	EOSLibrary instance = getLibraryInstance();
-
 	static EOSLibrary getLibraryInstance() {
 		String libName;
 		switch (Platform.getOSType()) {
@@ -270,13 +269,13 @@ public interface EOSLibrary extends Library {
 	                                                              IntByReference outBufferSizeBytes);
 
 	EOS_EResult EOS_AntiCheatServer_ProtectMessage(EOS_AntiCheatServer_Interface handle,
-	                                               EOS_AntiCheatServer_ProtectMessageOptions options,
-	                                               byte[] outBuffer,
+	                                               EOS_AntiCheatServer_ProtectMessageOptions.ByReference options,
+	                                               ByteBuffer outBuffer,
 	                                               IntByReference outBytesWritten);
 
 	EOS_EResult EOS_AntiCheatServer_UnprotectMessage(EOS_AntiCheatServer_Interface handle,
 	                                                 EOS_AntiCheatServer_UnprotectMessageOptions options,
-	                                                 byte[] outBuffer,
+	                                                 ByteBuffer outBuffer,
 	                                                 IntByReference outBytesWritten);
 
 	EOS_EResult EOS_AntiCheatServer_RegisterEvent(EOS_AntiCheatServer_Interface handle, EOS_AntiCheatCommon_RegisterEventOptions options);
@@ -338,12 +337,12 @@ public interface EOSLibrary extends Library {
 	                                                              EOS_AntiCheatClient_GetProtectMessageOutputLengthOptions options,
 	                                                              IntByReference outBufferSizeBytes);
 	EOS_EResult EOS_AntiCheatClient_ProtectMessage(EOS_AntiCheatClient_Interface handle,
-	                                               EOS_AntiCheatClient_ProtectMessageOptions options,
-	                                               byte[] outBuffer,
+	                                               EOS_AntiCheatClient_ProtectMessageOptions.ByReference options,
+	                                               ByteBuffer outBuffer,
 	                                               IntByReference outBytesWritten);
 	EOS_EResult EOS_AntiCheatClient_UnprotectMessage(EOS_AntiCheatClient_Interface handle,
 	                                                 EOS_AntiCheatClient_UnprotectMessageOptions options,
-	                                                 byte[] outBuffer,
+	                                                 ByteBuffer outBuffer,
 	                                                 IntByReference outBytesWritten);
 	EOS_EResult EOS_AntiCheatClient_RegisterPeer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_RegisterPeerOptions options);
 	EOS_EResult EOS_AntiCheatClient_UnregisterPeer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_UnregisterPeerOptions options);

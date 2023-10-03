@@ -10,10 +10,10 @@ import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
  * All Platform Instance calls take a handle of type EOS_HPlatform as the first parameter.
  * EOS_HPlatform handles are created by calling EOS_Platform_Create and subsequently released by calling EOS_Platform_Release.
  *
- * @see EOS#EOS_Initialize(EOS_InitializeOptions)
- * @see EOS#EOS_Platform_Create(EOS_Platform_Options)
+ * @see #EOS_Initialize(EOS_InitializeOptions)
+ * @see #EOS_Platform_Create(EOS_Platform_Options)
  * @see EOS_Platform_Interface#release()
- * @see EOS#EOS_Shutdown()
+ * @see #EOS_Shutdown()
  *
  * @author Anton Lasevich
  * @since 8/6/2023

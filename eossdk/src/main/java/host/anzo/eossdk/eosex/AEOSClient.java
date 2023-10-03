@@ -51,9 +51,9 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 		return null;
 	}
 
-	private void onConnectLogin(@NotNull EOS_Connect_LoginCallbackInfo data) {
+	private void onConnectLogin(@NotNull EOS_Connect_LoginCallbackInfo data) throws EOSException {
 		if (data.ResultCode.isSuccess()) {
-			log.info("EOS_Connect_Login completed with ProductUserId: {}", data.LocalUserId.toString());
+			log.info("EOS_Connect_Login completed with ProductUserId: {}", data.LocalUserId.getString());
 			onConnectLoginComplete(data.ResultCode, data.LocalUserId);
 		}
 		else if (data.ResultCode == EOS_EResult.EOS_InvalidUser) {
@@ -72,9 +72,9 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 		}
 	}
 
-	private void onCreateUser(@NotNull EOS_Connect_CreateUserCallbackInfo data) {
+	private void onCreateUser(@NotNull EOS_Connect_CreateUserCallbackInfo data) throws EOSException {
 		if (data.ResultCode.isSuccess()) {
-			log.info("EOS_Connect_CreateUser completed with ProductUserId: {}, Result: {}", data.LocalUserId.toString(), data.ResultCode);
+			log.info("EOS_Connect_CreateUser completed with ProductUserId: {}, Result: {}", data.LocalUserId.getString(), data.ResultCode);
 			onConnectLoginComplete(data.ResultCode, data.LocalUserId);
 		}
 		else {

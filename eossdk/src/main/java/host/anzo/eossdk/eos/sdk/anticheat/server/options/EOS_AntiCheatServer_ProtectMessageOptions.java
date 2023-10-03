@@ -6,9 +6,11 @@
 
 package host.anzo.eossdk.eos.sdk.anticheat.server.options;
 
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
+import org.jetbrains.annotations.NotNull;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -27,7 +29,7 @@ public class EOS_AntiCheatServer_ProtectMessageOptions extends Structure {
 	/** Length in bytes of input */
 	public int DataLengthBytes;
 	/** The data to encrypt */
-	public byte[] Data;
+	public Pointer Data;
 	/** The size in bytes of OutBuffer */
 	public int OutBufferSizeBytes;
 
@@ -36,25 +38,19 @@ public class EOS_AntiCheatServer_ProtectMessageOptions extends Structure {
 		ApiVersion = EOS_ANTICHEATSERVER_PROTECTMESSAGE_API_LATEST;
 	}
 
-	/**
-	 * @param clientHandle Locally unique value describing the remote user to whom the message will be sent
-	 * @param data The data to encrypt
-	 * @param outBufferSizeBytes The size in bytes of OutBuffer
-	 */
-	public EOS_AntiCheatServer_ProtectMessageOptions(EOS_AntiCheatCommon_ClientHandle clientHandle, byte[] data, int outBufferSizeBytes) {
-		this();
-		ClientHandle = clientHandle;
-		DataLengthBytes = data.length;
-		Data = data;
-		OutBufferSizeBytes = outBufferSizeBytes;
-		allocateMemory();
-	}
-
 	public EOS_AntiCheatServer_ProtectMessageOptions(Pointer peer) {
 		super(peer);
 	}
 
 	public static class ByReference extends EOS_AntiCheatServer_ProtectMessageOptions implements Structure.ByReference {
+		public ByReference(EOS_AntiCheatCommon_ClientHandle clientHandle, byte @NotNull [] data, int outBufferSizeBytes) {
+			super();
+			ClientHandle = clientHandle;
+			Data = new Memory(data.length);
+			Data.write(0, data, 0, data.length);
+			DataLengthBytes = data.length;
+			OutBufferSizeBytes = outBufferSizeBytes;
+		}
 	}
 
 	public static class ByValue extends EOS_AntiCheatServer_ProtectMessageOptions implements Structure.ByValue {

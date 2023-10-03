@@ -45,9 +45,13 @@ public @Getter enum EOS_EPlayerReportsCategory implements NativeMapped {
 		this.id = id;
 	}
 
+	public EOS_EPlayerReportsCategory valueOf(int id) {
+		return values.getOrDefault(id, EOS_PRC_Invalid);
+	}
+
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_PRC_Invalid);
+		return valueOf((int)nativeValue);
 	}
 
 	@Override

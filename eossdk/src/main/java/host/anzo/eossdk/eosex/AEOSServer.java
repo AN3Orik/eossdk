@@ -9,14 +9,13 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.callbackresults.EOS_AntiCheatCo
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientAction;
 import host.anzo.eossdk.eos.sdk.anticheat.common.options.EOS_AntiCheatCommon_SetClientDetailsOptions;
 import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_BeginSessionOptions;
-import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_ProtectMessageOptions;
 import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_RegisterClientOptions;
-import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_UnregisterClientOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
+import java.nio.ByteBuffer;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -127,10 +126,10 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 	protected void onMessageToClient(@NotNull EOS_AntiCheatCommon_OnMessageToClientCallbackInfo callbackInfo) throws EOSException {
 		final IEOSNetworkClient antiCheatClient = getNetworkClient(callbackInfo.ClientHandle);
 		if (antiCheatClient != null) {
-			final byte[] data = callbackInfo.getMessageBytes();
+			final ByteBuffer data = callbackInfo.getByteBuffer();
 			if (options.isEnableNetworkProtection()) {
-				final int protectMessageLength = antiCheatServer.getProtectMessageOutputLength(data.length);
-				final byte[] encryptedData = antiCheatServer.protectMessage(new EOS_AntiCheatServer_ProtectMessageOptions(callbackInfo.ClientHandle, data, protectMessageLength));
+				final int protectMessageLength = antiCheatServer.getProtectMessageOutputLength(data.capacity());
+				final ByteBuffer encryptedData = antiCheatServer.protectMessage(callbackInfo.ClientHandle, data.array(), protectMessageLength);
 				antiCheatClient.onSendEacData(encryptedData);
 			}
 			else {

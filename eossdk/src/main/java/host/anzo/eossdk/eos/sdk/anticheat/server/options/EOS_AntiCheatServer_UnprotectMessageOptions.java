@@ -6,9 +6,11 @@
 
 package host.anzo.eossdk.eos.sdk.anticheat.server.options;
 
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
+import org.jetbrains.annotations.NotNull;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -27,7 +29,7 @@ public class EOS_AntiCheatServer_UnprotectMessageOptions extends Structure {
 	/** Length in bytes of input */
 	public int DataLengthBytes;
 	/** The data to decrypt */
-	public byte[] Data;
+	public Pointer Data;
 	/** The size in bytes of OutBuffer */
 	public int OutBufferSizeBytes;
 
@@ -36,19 +38,19 @@ public class EOS_AntiCheatServer_UnprotectMessageOptions extends Structure {
 		ApiVersion = EOS_ANTICHEATSERVER_UNPROTECTMESSAGE_API_LATEST;
 	}
 
-	public EOS_AntiCheatServer_UnprotectMessageOptions(EOS_AntiCheatCommon_ClientHandle clientHandle, byte[] data, int outBufferSizeBytes) {
-		this();
-		ClientHandle = clientHandle;
-		DataLengthBytes = data.length;
-		Data = data;
-		OutBufferSizeBytes = outBufferSizeBytes;
-	}
-
 	public EOS_AntiCheatServer_UnprotectMessageOptions(Pointer peer) {
 		super(peer);
 	}
 
 	public static class ByReference extends EOS_AntiCheatServer_UnprotectMessageOptions implements Structure.ByReference {
+		public ByReference(EOS_AntiCheatCommon_ClientHandle clientHandle, byte @NotNull [] data) {
+			super();
+			ClientHandle = clientHandle;
+			Data = new Memory(data.length);
+			Data.write(0, data, 0, data.length);
+			DataLengthBytes = data.length;
+			OutBufferSizeBytes = data.length;
+		}
 	}
 
 	public static class ByValue extends EOS_AntiCheatServer_UnprotectMessageOptions implements Structure.ByValue {

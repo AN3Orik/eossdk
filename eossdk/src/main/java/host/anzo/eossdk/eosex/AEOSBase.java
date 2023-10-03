@@ -8,6 +8,7 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.init.options.EOS_InitializeOptions;
 import host.anzo.eossdk.eos.sdk.logging.EOS_LogMessage;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.Executors;
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeUnit;
  * @author Anton Lasevich
  * @since 8/16/2023
  */
+@Slf4j
 public abstract class AEOSBase<T extends EOSBaseOptions> {
 	protected T options;
 	protected EOS_Platform_Interface platform;
@@ -76,5 +78,22 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 	 * Event happens when EOS logging engine sends the message
 	 * @param logMessage object with message data
 	 */
-	protected abstract void onLogMessage(@NotNull EOS_LogMessage logMessage);
+	protected void onLogMessage(@NotNull EOS_LogMessage logMessage) {
+		switch (logMessage.Level) {
+			case EOS_LOG_Fatal:
+			case EOS_LOG_Error:
+				log.error(logMessage.Message);
+				break;
+			case EOS_LOG_Warning:
+				log.warn(logMessage.Message);
+				break;
+			case EOS_LOG_Info:
+				log.info(logMessage.Message);
+				break;
+			case EOS_LOG_Verbose:
+			case EOS_LOG_VeryVerbose:
+				log.debug(logMessage.Message);
+				break;
+		}
+	}
 }

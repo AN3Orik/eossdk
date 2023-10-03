@@ -56,14 +56,4 @@ public class EOSClient extends AEOSClient {
 		credentials.Token = token;
 		return new EOS_Connect_LoginOptions(credentials);
 	}
-
-	@Override
-	protected void onLogMessage(@NotNull EOS_LogMessage logMessage) {
-		switch (logMessage.Level) {
-			case EOS_LOG_Fatal, EOS_LOG_Error -> log.error(logMessage.Message);
-			case EOS_LOG_Warning -> log.warn(logMessage.Message);
-			case EOS_LOG_Info -> log.info(logMessage.Message);
-			case EOS_LOG_Verbose, EOS_LOG_VeryVerbose -> log.debug(logMessage.Message);
-		}
-	}
 }

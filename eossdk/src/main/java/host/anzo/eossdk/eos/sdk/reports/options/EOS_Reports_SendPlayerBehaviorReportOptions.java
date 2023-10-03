@@ -34,7 +34,7 @@ public class EOS_Reports_SendPlayerBehaviorReportOptions extends Structure {
 	/**
 	 * Optional plain text string associated with the report as UTF-8 encoded null-terminated string.
 	 * <p>
-	 * The length of the message can be at maximum up to {@link EOS_Reports_SendPlayerBehaviorReportOptions#EOS_REPORTS_REPORTMESSAGE_MAX_LENGTH} bytes
+	 * The length of the message can be at maximum up to {@link #EOS_REPORTS_REPORTMESSAGE_MAX_LENGTH} bytes
 	 * and any excess characters will be truncated upon sending the report.
 	 */
 	public String Message;
@@ -43,7 +43,7 @@ public class EOS_Reports_SendPlayerBehaviorReportOptions extends Structure {
 	 * This is intended as a way to associate arbitrary structured context information with a report.
 	 * <p>
 	 * This string needs to be valid JSON, report will fail otherwise.
-	 * The length of the context can be at maximum up to {@link EOS_Reports_SendPlayerBehaviorReportOptions#EOS_REPORTS_REPORTCONTEXT_MAX_LENGTH} bytes,
+	 * The length of the context can be at maximum up to {@link #EOS_REPORTS_REPORTCONTEXT_MAX_LENGTH} bytes,
 	 * not including the null terminator, report will fail otherwise.
 	 */
 	public String Context;
