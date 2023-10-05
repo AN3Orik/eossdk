@@ -41,7 +41,7 @@ public class CallbackUtils {
 		final Callback callback = registeredCallbacks.remove(notificationId);
 		if (callback != null) {
 			if (VMUtils.DEBUG) {
-				log.debug("Registered callback [{}] with id=[{}]", callback.getClass().getInterfaces()[0].getSimpleName(), notificationId);
+				log.debug("Unregistered callback [{}] with id=[{}]", callback.getClass().getInterfaces()[0].getSimpleName(), notificationId);
 			}
 		}
 	}
