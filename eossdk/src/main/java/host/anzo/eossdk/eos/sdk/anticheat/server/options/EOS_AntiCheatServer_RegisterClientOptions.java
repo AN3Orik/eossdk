@@ -12,7 +12,7 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandl
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientPlatform;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientType;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
-import host.anzo.eossdk.eosex.IEOSNetworkClient;
+import host.anzo.eossdk.eosex.AEOSNetworkClient;
 import org.jetbrains.annotations.NotNull;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -55,9 +55,9 @@ public class EOS_AntiCheatServer_RegisterClientOptions extends Structure {
 		ApiVersion = EOS_ANTICHEATSERVER_REGISTERCLIENT_API_LATEST;
 	}
 
-	public EOS_AntiCheatServer_RegisterClientOptions(@NotNull IEOSNetworkClient client) {
+	public EOS_AntiCheatServer_RegisterClientOptions(@NotNull AEOSNetworkClient client) {
 		this();
-		ClientHandle = client.getHandle();
+		ClientHandle = client;
 		ClientType = client.getProtectedType();
 		ClientPlatform = client.getPlatformType();
 		IpAddress = client.getIpAddress();

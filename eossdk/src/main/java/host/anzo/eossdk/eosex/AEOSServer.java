@@ -16,8 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.ByteBuffer;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Anton Lasevich
@@ -29,7 +27,6 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 	private EOS_NotificationId messageToClientNotificationId;
 	private EOS_NotificationId clientActionRequiredNotificationId;
 	private EOS_NotificationId clientAuthStatusChangedNotificationId;
-	private final Map<EOS_AntiCheatCommon_ClientHandle, IEOSNetworkClient> networkClients = new ConcurrentHashMap<>();
 
 	@Override
 	public AEOSServer start(EOSServerOptions options) throws EOSException {
@@ -80,60 +77,65 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 		super.shutdown();
 	}
 
-	public void addNetworkClient(@NotNull IEOSNetworkClient antiCheatClient) {
-		if (networkClients.containsKey(antiCheatClient.getHandle())) {
-			log.error("Client [{}] already registered.", antiCheatClient);
-			return;
-		}
+	public EOS_EResult onNetworkClientConnected(@NotNull AEOSNetworkClient antiCheatClient) {
+		return registerClient(antiCheatClient);
+	}
 
-		final EOS_AntiCheatServer_RegisterClientOptions registerClientOptions = new EOS_AntiCheatServer_RegisterClientOptions(antiCheatClient);
-		EOS_EResult result = antiCheatServer.registerClient(registerClientOptions);
+	private EOS_EResult registerClient(@NotNull AEOSNetworkClient antiCheatClient) {
+		EOS_EResult result = antiCheatServer.registerClient(new EOS_AntiCheatServer_RegisterClientOptions(antiCheatClient));
 		if (!result.isSuccess()) {
 			log.error("RegisterClient failed for client=[{}] with error=[{}]", antiCheatClient, result);
-			antiCheatClient.close("RegisterClient failed");
-			return;
+			return result;
 		}
 
-		final EOS_AntiCheatCommon_SetClientDetailsOptions setClientDetailsOptions = new EOS_AntiCheatCommon_SetClientDetailsOptions(antiCheatClient);
-		result = antiCheatServer.setClientDetails(setClientDetailsOptions);
+		result = antiCheatServer.setClientDetails(new EOS_AntiCheatCommon_SetClientDetailsOptions(antiCheatClient));
 		if (!result.isSuccess()) {
 			log.error("SetClientDetails failed for client=[{}] with error=[{}]", antiCheatClient, result);
-			antiCheatClient.close("SetClientDetails failed");
-			return;
+			return result;
 		}
-		networkClients.put(antiCheatClient.getHandle(), antiCheatClient);
-		onNetworkClientAdded(antiCheatClient);
+		return EOS_EResult.EOS_Success;
 	}
 
-	private IEOSNetworkClient getNetworkClient(@NotNull EOS_AntiCheatCommon_ClientHandle clientHandle) {
-		return networkClients.getOrDefault(clientHandle, null);
-	}
-
-	private boolean removeNetworkClient(@NotNull EOS_AntiCheatCommon_ClientHandle clientHandle) {
-		return networkClients.remove(clientHandle) != null;
+	public EOS_EResult onNetworkClientDisconnected(@NotNull AEOSNetworkClient networkClient) {
+		final EOS_EResult result = antiCheatServer.unregisterClient(networkClient);
+		if (!result.isSuccess()) {
+			log.error("RegisterClient failed for client=[{}] with error=[{}]", networkClient, result);
+			return result;
+		}
+		return EOS_EResult.EOS_Success;
 	}
 
 	/**
-	 * Event called when a client successfully registered at Anti-Cheat backend
-	 * @param antiCheatClient added anti-cheat client
+	 * @param connectionId connection ID
+	 * @return network client by unique connection ID
 	 */
-	protected abstract void onNetworkClientAdded(@NotNull IEOSNetworkClient antiCheatClient);
+	public abstract AEOSNetworkClient getNetworkClient(long connectionId);
+
+	/**
+	 * @param handle network client handle
+	 * @return registered network client by handle
+	 */
+	private AEOSNetworkClient getNetworkClient(@NotNull EOS_AntiCheatCommon_ClientHandle handle) {
+		return getNetworkClient(handle.getValue());
+	}
 
 	/**
 	 * Notify the Anti-Cheat client with message server want to send
 	 * @param callbackInfo info about a client and data to send
 	 */
 	protected void onMessageToClient(@NotNull EOS_AntiCheatCommon_OnMessageToClientCallbackInfo callbackInfo) throws EOSException {
-		final IEOSNetworkClient antiCheatClient = getNetworkClient(callbackInfo.ClientHandle);
+		final AEOSNetworkClient antiCheatClient = getNetworkClient(callbackInfo.ClientHandle);
 		if (antiCheatClient != null) {
 			final ByteBuffer data = callbackInfo.getByteBuffer();
 			if (options.isEnableNetworkProtection()) {
 				final int protectMessageLength = antiCheatServer.getProtectMessageOutputLength(data.capacity());
-				final ByteBuffer encryptedData = antiCheatServer.protectMessage(callbackInfo.ClientHandle, data.array(), protectMessageLength);
-				antiCheatClient.onSendEacData(encryptedData);
+				if (protectMessageLength > 0) {
+					final ByteBuffer encryptedData = antiCheatServer.protectMessage(callbackInfo.ClientHandle, data.array(), protectMessageLength);
+					antiCheatClient.sendEacData(encryptedData);
+				}
 			}
 			else {
-				antiCheatClient.onSendEacData(data);
+				antiCheatClient.sendEacData(data);
 			}
 		}
 	}
@@ -143,13 +145,10 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 	 * @param callbackInfo info about a client and action to apply
 	 */
 	protected void onClientActionRequired(@NotNull EOS_AntiCheatCommon_OnClientActionRequiredCallbackInfo callbackInfo) {
-		final IEOSNetworkClient antiCheatClient = getNetworkClient(callbackInfo.ClientHandle);
-		if (antiCheatClient != null) {
+		final AEOSNetworkClient networkClient = getNetworkClient(callbackInfo.ClientHandle);
+		if (networkClient != null) {
 			if (callbackInfo.ClientAction == EOS_EAntiCheatCommonClientAction.EOS_ACCCA_RemovePlayer) {
-				if (removeNetworkClient(callbackInfo.ClientHandle)) {
-					antiCheatServer.unregisterClient(callbackInfo.ClientHandle);
-					antiCheatClient.onKickFromAntiCheat(callbackInfo.ActionReasonCode, callbackInfo.ActionReasonDetailsString);
-				}
+				networkClient.close(callbackInfo.ActionReasonCode, callbackInfo.ActionReasonDetailsString);
 			}
 		}
 	}

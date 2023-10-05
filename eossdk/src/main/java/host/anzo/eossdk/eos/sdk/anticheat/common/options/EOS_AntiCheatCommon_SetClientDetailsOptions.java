@@ -11,7 +11,7 @@ import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientFlags;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientInput;
-import host.anzo.eossdk.eosex.IEOSNetworkClient;
+import host.anzo.eossdk.eosex.AEOSNetworkClient;
 import org.jetbrains.annotations.NotNull;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -40,9 +40,9 @@ public class EOS_AntiCheatCommon_SetClientDetailsOptions extends Structure {
 		ApiVersion = EOS_ANTICHEATCOMMON_SETCLIENTDETAILS_API_LATEST;
 	}
 
-	public EOS_AntiCheatCommon_SetClientDetailsOptions(@NotNull IEOSNetworkClient client) {
+	public EOS_AntiCheatCommon_SetClientDetailsOptions(@NotNull AEOSNetworkClient client) {
 		this();
-		ClientHandle = client.getHandle();
+		ClientHandle = client;
 		ClientFlags = client.getFlags();
 		ClientInputMethod = client.getInputMethod();
 	}

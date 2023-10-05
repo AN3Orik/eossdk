@@ -27,12 +27,7 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 
 	public AEOSBase<T> start(T baseOptions) throws EOSException {
 		this.options = baseOptions;
-		try {
-			taskExecutor.submit(this::initPlatform).get();
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+		callApiSync(this::initPlatform);
 		return this;
 	}
 
@@ -72,6 +67,18 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 		}
 
 		taskExecutor.scheduleAtFixedRate(() -> platform.tick(), 0, options.getTickPeriod(), TimeUnit.MILLISECONDS);
+	}
+
+	protected void callApi(Runnable runnable) {
+		taskExecutor.execute(runnable);
+	}
+
+	protected void callApiSync(Runnable runnable) {
+		try {
+			taskExecutor.submit(runnable).get();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
