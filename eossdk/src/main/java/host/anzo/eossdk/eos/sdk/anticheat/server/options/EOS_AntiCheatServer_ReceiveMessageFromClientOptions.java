@@ -6,10 +6,13 @@
 
 package host.anzo.eossdk.eos.sdk.anticheat.server.options;
 
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import org.jetbrains.annotations.NotNull;
+
+import java.nio.ByteBuffer;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -28,7 +31,7 @@ public class EOS_AntiCheatServer_ReceiveMessageFromClientOptions extends Structu
 	/** The size of the data received */
 	public int DataLengthBytes;
 	/** The data received */
-	public byte[] Data;
+	public Pointer Data;
 
 	public EOS_AntiCheatServer_ReceiveMessageFromClientOptions() {
 		super();
@@ -38,7 +41,8 @@ public class EOS_AntiCheatServer_ReceiveMessageFromClientOptions extends Structu
 	public EOS_AntiCheatServer_ReceiveMessageFromClientOptions(@NotNull EOS_AntiCheatCommon_ClientHandle clientHandle, byte @NotNull [] data) {
 		this();
 		ClientHandle = clientHandle;
-		Data = data;
+		Data = new Memory(data.length);
+		Data.write(0, data, 0, data.length);
 		DataLengthBytes = data.length;
 	}
 
