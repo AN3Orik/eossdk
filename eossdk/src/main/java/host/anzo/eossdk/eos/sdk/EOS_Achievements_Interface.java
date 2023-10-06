@@ -203,7 +203,7 @@ public class EOS_Achievements_Interface extends PointerType {
 	                                                                           EOS_Achievements_OnAchievementsUnlockedCallbackV2 notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Achievements_AddNotifyAchievementsUnlockedV2(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -217,6 +217,6 @@ public class EOS_Achievements_Interface extends PointerType {
 	 */
 	public void removeNotifyAchievementsUnlocked(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Achievements_RemoveNotifyAchievementsUnlocked(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 }

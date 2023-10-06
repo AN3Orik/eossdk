@@ -205,7 +205,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	                                                       EOS_Lobby_OnLobbyUpdateReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyUpdateReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -217,7 +217,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyLobbyUpdateReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyLobbyUpdateReceived(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -235,7 +235,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	                                                                       EOS_Lobby_OnLobbyMemberUpdateReceivedCallback notificationFn)  {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyMemberUpdateReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -247,7 +247,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyLobbyMemberUpdateReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyLobbyMemberUpdateReceived(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -265,7 +265,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	                                                                       EOS_Lobby_OnLobbyMemberStatusReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyMemberStatusReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -277,7 +277,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyLobbyMemberStatusReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyLobbyMemberStatusReceived(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -380,7 +380,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	                                                       EOS_Lobby_OnLobbyInviteReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyInviteReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -392,7 +392,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyLobbyInviteReceived(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyLobbyInviteReceived(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -410,7 +410,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	                                                                 EOS_Lobby_OnLobbyInviteAcceptedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyInviteAccepted(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -422,7 +422,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyLobbyInviteAccepted(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyLobbyInviteAccepted(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -438,7 +438,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	public EOS_NotificationId addNotifyLobbyInviteRejected(EOS_Lobby_AddNotifyLobbyInviteRejectedOptions options, Pointer clientData, EOS_Lobby_OnLobbyInviteRejectedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyInviteRejected(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -450,7 +450,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyLobbyInviteRejected(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyLobbyInviteRejected(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -468,7 +468,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	                                                               EOS_Lobby_OnJoinLobbyAcceptedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyJoinLobbyAccepted(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -480,7 +480,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyJoinLobbyAccepted(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyJoinLobbyAccepted(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -505,7 +505,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	                                                                            EOS_Lobby_OnSendLobbyNativeInviteRequestedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifySendLobbyNativeInviteRequested(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -517,7 +517,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifySendLobbyNativeInviteRequested(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifySendLobbyNativeInviteRequested(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -648,7 +648,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	                                                                      EOS_Lobby_OnRTCRoomConnectionChangedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyRTCRoomConnectionChanged(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -664,6 +664,6 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyRTCRoomConnectionChanged(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyRTCRoomConnectionChanged(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 }

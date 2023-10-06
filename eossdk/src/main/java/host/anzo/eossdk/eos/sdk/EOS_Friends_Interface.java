@@ -130,7 +130,7 @@ public class EOS_Friends_Interface extends PointerType {
 	                                                             EOS_Friends_OnFriendsUpdateCallback friendsUpdateHandler) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Friends_AddNotifyFriendsUpdate(this, options, clientData, friendsUpdateHandler);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, friendsUpdateHandler);
+			CallbackUtils.registerNotificationCallback(notificationId, friendsUpdateHandler);
 		}
 		return notificationId;
 	}
@@ -142,7 +142,7 @@ public class EOS_Friends_Interface extends PointerType {
 	 */
 	public void removeNotifyFriendsUpdate(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_Friends_RemoveNotifyFriendsUpdate(this, notificationId);
-		CallbackUtils.unregisterCallback(notificationId);
+		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class EOS_Friends_Interface extends PointerType {
 	                                                                  EOS_Friends_OnBlockedUsersUpdateCallback blockedUsersUpdateHandler) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Friends_AddNotifyBlockedUsersUpdate(this, options, clientData, blockedUsersUpdateHandler);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, blockedUsersUpdateHandler);
+			CallbackUtils.registerNotificationCallback(notificationId, blockedUsersUpdateHandler);
 		}
 		return notificationId;
 	}
@@ -195,6 +195,6 @@ public class EOS_Friends_Interface extends PointerType {
 	 */
 	public void removeNotifyBlockedUsersUpdate(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_Friends_RemoveNotifyBlockedUsersUpdate(this, notificationId);
-		CallbackUtils.unregisterCallback(notificationId);
+		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
 }

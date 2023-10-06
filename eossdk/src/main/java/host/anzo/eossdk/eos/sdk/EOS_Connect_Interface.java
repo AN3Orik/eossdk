@@ -446,7 +446,7 @@ public class EOS_Connect_Interface extends PointerType {
 	                                                  EOS_Connect_OnAuthExpirationCallback notification) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Connect_AddNotifyAuthExpiration(this, options, clientData, notification);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notification);
+			CallbackUtils.registerNotificationCallback(notificationId, notification);
 		}
 		return notificationId;
 	}
@@ -458,7 +458,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 */
 	public void removeNotifyAuthExpiration(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Connect_RemoveNotifyAuthExpiration(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**
@@ -476,7 +476,7 @@ public class EOS_Connect_Interface extends PointerType {
 	                                                      EOS_Connect_OnLoginStatusChangedCallback notification) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Connect_AddNotifyLoginStatusChanged(this, options, clientData, notification);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notification);
+			CallbackUtils.registerNotificationCallback(notificationId, notification);
 		}
 		return notificationId;
 	}
@@ -488,7 +488,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 */
 	public void removeNotifyLoginStatusChanged(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Connect_RemoveNotifyLoginStatusChanged(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 
 	/**

@@ -5,6 +5,7 @@ import host.anzo.eossdk.eos.sdk.init.options.EOS_InitializeOptions;
 import host.anzo.eossdk.eos.sdk.logging.callbacks.EOS_LogMessageFunc;
 import host.anzo.eossdk.eos.sdk.logging.enums.EOS_ELogCategory;
 import host.anzo.eossdk.eos.sdk.logging.enums.EOS_ELogLevel;
+import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
  * @author Anton Lasevich
@@ -34,6 +35,7 @@ public class EOS_Logging_Interface {
 	 * @see EOSLibrary#EOS_Initialize(EOS_InitializeOptions)
 	 */
 	public static EOS_EResult setCallback(EOS_LogMessageFunc callback) {
+		CallbackUtils.registerLoggingCallback(callback);
 		return EOSLibrary.instance.EOS_Logging_SetCallback(callback);
 	}
 }

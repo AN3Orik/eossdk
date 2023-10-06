@@ -92,7 +92,7 @@ public class EOS_UI_Interface extends PointerType {
 	                                                                 EOS_UI_OnDisplaySettingsUpdatedCallback completionDelegate) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_UI_AddNotifyDisplaySettingsUpdated(this, options, clientData, completionDelegate);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, completionDelegate);
+			CallbackUtils.registerNotificationCallback(notificationId, completionDelegate);
 		}
 		return notificationId;
 	}
@@ -104,7 +104,7 @@ public class EOS_UI_Interface extends PointerType {
 	 */
 	public void removeNotifyDisplaySettingsUpdated(EOS_NotificationId id) {
 		EOSLibrary.instance.EOS_UI_RemoveNotifyDisplaySettingsUpdated(this, id);
-		CallbackUtils.unregisterCallback(id);
+		CallbackUtils.unregisterNotificationCallback(id);
 	}
 
 	/**
@@ -326,7 +326,7 @@ public class EOS_UI_Interface extends PointerType {
 	public EOS_NotificationId addNotifyMemoryMonitor(EOS_UI_AddNotifyMemoryMonitorOptions options, Pointer clientData, EOS_UI_OnMemoryMonitorCallback completionDelegate) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_UI_AddNotifyMemoryMonitor(this, options, clientData, completionDelegate);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, completionDelegate);
+			CallbackUtils.registerNotificationCallback(notificationId, completionDelegate);
 		}
 		return notificationId;
 	}
@@ -338,7 +338,7 @@ public class EOS_UI_Interface extends PointerType {
 	 */
 	public void removeNotifyMemoryMonitor(EOS_NotificationId id) {
 		EOSLibrary.instance.EOS_UI_RemoveNotifyMemoryMonitor(this, id);
-		CallbackUtils.unregisterCallback(id);
+		CallbackUtils.unregisterNotificationCallback(id);
 	}
 
 	/**

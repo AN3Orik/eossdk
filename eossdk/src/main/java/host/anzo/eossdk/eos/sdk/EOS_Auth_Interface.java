@@ -267,7 +267,7 @@ public class EOS_Auth_Interface extends PointerType {
 	                                                      EOS_Auth_OnLoginStatusChangedCallback notification) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Auth_AddNotifyLoginStatusChanged(this, options, clientData, notification);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notification);
+			CallbackUtils.registerNotificationCallback(notificationId, notification);
 		}
 		return notificationId;
 	}
@@ -279,6 +279,6 @@ public class EOS_Auth_Interface extends PointerType {
 	 */
 	public void removeNotifyLoginStatusChanged(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Auth_RemoveNotifyLoginStatusChanged(this, inId);
-		CallbackUtils.unregisterCallback(inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 }

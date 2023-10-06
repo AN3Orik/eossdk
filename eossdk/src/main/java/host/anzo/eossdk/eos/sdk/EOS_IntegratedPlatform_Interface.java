@@ -86,7 +86,7 @@ public class EOS_IntegratedPlatform_Interface extends PointerType {
 	                                                                                 EOS_IntegratedPlatform_OnUserLoginStatusChangedCallback callbackFunction) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_IntegratedPlatform_AddNotifyUserLoginStatusChanged(this, options, clientData, callbackFunction);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, callbackFunction);
+			CallbackUtils.registerNotificationCallback(notificationId, callbackFunction);
 		}
 		return notificationId;
 	}
@@ -100,7 +100,7 @@ public class EOS_IntegratedPlatform_Interface extends PointerType {
 	 */
 	public void removeNotifyUserLoginStatusChanged(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_IntegratedPlatform_RemoveNotifyUserLoginStatusChanged(this, notificationId);
-		CallbackUtils.unregisterCallback(notificationId);
+		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
 
 	/**

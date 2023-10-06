@@ -42,7 +42,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	public EOS_NotificationId addNotifyMessageToServer(Pointer clientData, EOS_AntiCheatClient_OnMessageToServerCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyMessageToServer(this, new EOS_AntiCheatClient_AddNotifyMessageToServerOptions(), clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -55,7 +55,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 */
 	public void removeNotifyMessageToServer(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_AntiCheatClient_RemoveNotifyMessageToServer(this, notificationId);
-		CallbackUtils.unregisterCallback(notificationId);
+		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	public EOS_NotificationId addNotifyMessageToPeer(Pointer clientData, EOS_AntiCheatClient_OnMessageToPeerCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyMessageToPeer(this, new EOS_AntiCheatClient_AddNotifyMessageToPeerOptions(), clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -83,7 +83,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 */
 	public void removeNotifyMessageToPeer(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_AntiCheatClient_RemoveNotifyMessageToPeer(this, notificationId);
-		CallbackUtils.unregisterCallback(notificationId);
+		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	public EOS_NotificationId addNotifyPeerActionRequired(Pointer clientData, EOS_AntiCheatClient_OnPeerActionRequiredCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyPeerActionRequired(this, new EOS_AntiCheatClient_AddNotifyPeerActionRequiredOptions(), clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -111,7 +111,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 */
 	public void removeNotifyPeerActionRequired(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_AntiCheatClient_RemoveNotifyPeerActionRequired(this, notificationId);
-		CallbackUtils.unregisterCallback(notificationId);
+		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	public EOS_NotificationId addNotifyPeerAuthStatusChanged(Pointer clientData, EOS_AntiCheatClient_OnPeerAuthStatusChangedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyPeerAuthStatusChanged(this, new EOS_AntiCheatClient_AddNotifyPeerAuthStatusChangedOptions(), clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -139,7 +139,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 */
 	public void removeNotifyPeerAuthStatusChanged(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_AntiCheatClient_RemoveNotifyPeerAuthStatusChanged(this, notificationId);
-		CallbackUtils.unregisterCallback(notificationId);
+		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	public EOS_NotificationId addNotifyClientIntegrityViolated(Pointer clientData, EOS_AntiCheatClient_OnClientIntegrityViolatedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatClient_AddNotifyClientIntegrityViolated(this, new EOS_AntiCheatClient_AddNotifyClientIntegrityViolatedOptions(), clientData, notificationFn);
 		if (notificationId.isValid()) {
-			CallbackUtils.registerCallback(notificationId, notificationFn);
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
 		}
 		return notificationId;
 	}
@@ -167,7 +167,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 */
 	public void removeNotifyClientIntegrityViolated(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_AntiCheatClient_RemoveNotifyClientIntegrityViolated(this, notificationId);
-		CallbackUtils.unregisterCallback(notificationId);
+		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
 
 	/**
