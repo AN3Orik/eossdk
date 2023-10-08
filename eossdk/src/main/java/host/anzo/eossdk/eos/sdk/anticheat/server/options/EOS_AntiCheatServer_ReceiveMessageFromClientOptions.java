@@ -12,8 +12,6 @@ import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import org.jetbrains.annotations.NotNull;
 
-import java.nio.ByteBuffer;
-
 import static com.sun.jna.Structure.FieldOrder;
 
 /**

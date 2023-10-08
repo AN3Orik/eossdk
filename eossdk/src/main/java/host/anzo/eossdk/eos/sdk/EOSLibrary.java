@@ -146,13 +146,13 @@ public interface EOSLibrary extends Library {
 				}
 				break;
 			case Platform.LINUX:
-				libName = "libEOSSDK-Linux-Shipping";
+				libName = "EOSSDK-Linux-Shipping";
 				break;
 			case Platform.MAC:
-				libName = "libEOSSDK-Mac-Shipping";
+				libName = "EOSSDK-Mac-Shipping";
 				break;
 			case Platform.ANDROID:
-				libName = "libEOSSDK-Android-Shipping";
+				libName = "EOSSDK-Android-Shipping";
 				break;
 			default:
 				throw new RuntimeException("Unsupported platform: " + Platform.getOSType());
