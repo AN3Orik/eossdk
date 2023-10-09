@@ -334,8 +334,8 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @throws EOSInvalidParametersException if any of the options are incorrect
 	 * @throws EOSNotFoundException if the invite doesn't exist
 	 *
-	 * @see EOS_Lobby_Interface#getInviteCount(EOS_Lobby_GetInviteCountOptions)
-	 * @see EOS_Lobby_Interface#copyLobbyDetailsHandleByInviteId(EOS_Lobby_CopyLobbyDetailsHandleByInviteIdOptions, PointerByReference)
+	 * @see #getInviteCount(EOS_Lobby_GetInviteCountOptions)
+	 * @see #copyLobbyDetailsHandleByInviteId(EOS_Lobby_CopyLobbyDetailsHandleByInviteIdOptions, PointerByReference)
 	 */
 	public String getInviteIdByIndex(EOS_Lobby_GetInviteIdByIndexOptions options) throws EOSException {
 		final ByteBuffer outBuffer = ByteBuffer.allocate(EOS_LOBBY_INVITEID_MAX_LENGTH + 1);
@@ -614,7 +614,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 *         {@link EOS_EResult#EOS_Disabled} if the lobby exists, but did not have the RTC Room feature enabled when created<br>
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if bOutIsConnected is NULL, or any other parameters are NULL or invalid
 	 *
-	 * @see EOS_Lobby_Interface#addNotifyRTCRoomConnectionChanged(EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions, Pointer, EOS_Lobby_OnRTCRoomConnectionChangedCallback)
+	 * @see #addNotifyRTCRoomConnectionChanged(EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions, Pointer, EOS_Lobby_OnRTCRoomConnectionChangedCallback)
 	 */
 	public EOS_EResult isRTCRoomConnected(EOS_Lobby_IsRTCRoomConnectedOptions options, IntBuffer bOutIsConnected) {
 		return EOSLibrary.instance.EOS_Lobby_IsRTCRoomConnected(this, options, bOutIsConnected);
@@ -641,7 +641,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 *
 	 * @return A valid notification ID if the NotificationFn was successfully registered, or EOS_INVALID_NOTIFICATIONID if the input was invalid, the lobby did not exist, or the lobby did not have an RTC room.
 	 *
-	 * @see EOS_Lobby_Interface#removeNotifyRTCRoomConnectionChanged(EOS_NotificationId)
+	 * @see #removeNotifyRTCRoomConnectionChanged(EOS_NotificationId)
 	 */
 	public EOS_NotificationId addNotifyRTCRoomConnectionChanged(EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions options,
 	                                                                      Pointer clientData,
@@ -660,7 +660,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 *
 	 * @param inId Handle representing the registered callback
 	 *
-	 * @see EOS_Lobby_Interface#addNotifyRTCRoomConnectionChanged(EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions, Pointer, EOS_Lobby_OnRTCRoomConnectionChangedCallback)
+	 * @see #addNotifyRTCRoomConnectionChanged(EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions, Pointer, EOS_Lobby_OnRTCRoomConnectionChangedCallback)
 	 */
 	public void removeNotifyRTCRoomConnectionChanged(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyRTCRoomConnectionChanged(this, inId);

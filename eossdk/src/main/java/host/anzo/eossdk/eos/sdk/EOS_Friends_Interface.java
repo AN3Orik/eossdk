@@ -80,7 +80,7 @@ public class EOS_Friends_Interface extends PointerType {
 	 * @param options structure containing the Epic Account ID of user who owns the friends list
 	 * @return the number of friends on the list
 	 *
-	 * @see EOS_Friends_Interface#getFriendAtIndex(EOS_Friends_GetFriendAtIndexOptions)
+	 * @see #getFriendAtIndex(EOS_Friends_GetFriendAtIndexOptions)
 	 */
 	public int getFriendsCount(EOS_Friends_GetFriendsCountOptions options) {
 		return EOSLibrary.instance.EOS_Friends_GetFriendsCount(this, options);
@@ -94,8 +94,8 @@ public class EOS_Friends_Interface extends PointerType {
 	 * @param options structure containing the Epic Account ID of the owner of the friends list and the index into the list
 	 * @return the Epic Account ID of the friend. Note that if the index provided is out of bounds, the returned Epic Account ID will be a "null" account ID.
 	 *
-	 * @see EOS_Friends_Interface#getFriendsCount(EOS_Friends_GetFriendsCountOptions)
-	 * @see EOS_Friends_Interface#getStatus(EOS_Friends_GetStatusOptions)
+	 * @see #getFriendsCount(EOS_Friends_GetFriendsCountOptions)
+	 * @see #getStatus(EOS_Friends_GetStatusOptions)
 	 */
 	public EOS_EpicAccountId getFriendAtIndex(EOS_Friends_GetFriendAtIndexOptions options) {
 		return EOSLibrary.instance.EOS_Friends_GetFriendAtIndex(this, options);
@@ -151,7 +151,7 @@ public class EOS_Friends_Interface extends PointerType {
 	 * @param options structure containing the Epic Account ID of user who owns the blocklist.
 	 * @return the number of users on the blocklist.
 	 *
-	 * @see EOS_Friends_Interface#queryFriends(EOS_Friends_QueryFriendsOptions, Pointer, EOS_Friends_OnQueryFriendsCallback)
+	 * @see #queryFriends(EOS_Friends_QueryFriendsOptions, Pointer, EOS_Friends_OnQueryFriendsCallback)
 	 */
 	public int getBlockedUsersCount(EOS_Friends_GetBlockedUsersCountOptions options) {
 		return EOSLibrary.instance.EOS_Friends_GetBlockedUsersCount(this, options);
@@ -163,8 +163,8 @@ public class EOS_Friends_Interface extends PointerType {
 	 * @param options structure containing the Epic Account ID of the owner of the blocklist and the index into the list.
 	 * @return the Epic Account ID of the blocked user. Note that if the index provided is out of bounds, the returned Epic Account ID will be a "null" account ID.
 	 *
-	 * @see EOS_Friends_Interface#queryFriends(EOS_Friends_QueryFriendsOptions, Pointer, EOS_Friends_OnQueryFriendsCallback)
-	 * @see EOS_Friends_Interface#getBlockedUsersCount(EOS_Friends_GetBlockedUsersCountOptions)
+	 * @see #queryFriends(EOS_Friends_QueryFriendsOptions, Pointer, EOS_Friends_OnQueryFriendsCallback)
+	 * @see #getBlockedUsersCount(EOS_Friends_GetBlockedUsersCountOptions)
 	 */
 	public EOS_EpicAccountId getBlockedUserAtIndex(EOS_Friends_GetBlockedUserAtIndexOptions options) {
 		return EOSLibrary.instance.EOS_Friends_GetBlockedUserAtIndex(this, options);

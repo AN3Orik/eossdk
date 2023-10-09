@@ -7,7 +7,7 @@ import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import java.nio.ByteBuffer;
 
 /**
- * @author ANZO
+ * @author Anton Lasevich
  * @since 10/5/2023
  */
 public abstract class AEOSNetworkClient extends EOS_AntiCheatCommon_ClientHandle {

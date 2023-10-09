@@ -16,10 +16,10 @@ sandbox_id = sandbox_id
 # EOS deployment ID
 deployment_id = deployment_id
 
-# EOS client credentials (Format: client_id:client_secret)
+# EOS client credentials (Format: client_id;client_secret)
 client_credentials = client_id;client_secret
 
-# EOS server credentials (Format: client_id:client_secret)
+# EOS server credentials (Format: client_id;client_secret)
 server_credentials = client_id;client_secret
 
 # Tick frequency to Platform_Tick method (in milliseconds)

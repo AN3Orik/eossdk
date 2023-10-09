@@ -3,6 +3,8 @@ package host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
+import java.nio.ByteBuffer;
+
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
@@ -28,8 +30,11 @@ public class EOS_AntiCheatClient_OnMessageToServerCallbackInfo extends Structure
 		super(peer);
 	}
 
-	public static class ByReference extends EOS_AntiCheatClient_OnMessageToServerCallbackInfo implements Structure.ByReference {
+	public ByteBuffer getByteBuffer() {
+		return MessageData.getByteBuffer(0, MessageDataSizeBytes);
+	}
 
+	public static class ByReference extends EOS_AntiCheatClient_OnMessageToServerCallbackInfo implements Structure.ByReference {
 	}
 
 	public static class ByValue extends EOS_AntiCheatClient_OnMessageToServerCallbackInfo implements Structure.ByValue {

@@ -95,7 +95,7 @@ public class EOS_Auth_Interface extends PointerType {
 	 * @param clientData arbitrary data that is passed back to you in the CompletionDelegate
 	 * @param completionDelegate a callback that is fired when the logout operation completes, either successfully or in error
 	 *
-	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId)
+	 * @see #copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId)
 	 */
 	public void verifyUserAuth(EOS_Auth_VerifyUserAuthOptions options, Pointer clientData, EOS_Auth_OnVerifyUserAuthCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Auth_VerifyUserAuth(this, options, clientData, completionDelegate);

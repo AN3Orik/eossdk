@@ -237,9 +237,9 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
 	 * @throws EOSNotFoundException if the user info is not locally cached
 	 *
-	 * @see EOS_UserInfo_Interface#queryUserInfo(EOS_UserInfo_QueryUserInfoOptions, Pointer, EOS_UserInfo_OnQueryUserInfoCallback)
-	 * @see EOS_UserInfo_Interface#queryUserInfoByDisplayName(EOS_UserInfo_QueryUserInfoByDisplayNameOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByDisplayNameCallback)
-	 * @see EOS_UserInfo_Interface#queryUserInfoByExternalAccount(EOS_UserInfo_QueryUserInfoByExternalAccountOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByExternalAccountCallback)
+	 * @see #queryUserInfo(EOS_UserInfo_QueryUserInfoOptions, Pointer, EOS_UserInfo_OnQueryUserInfoCallback)
+	 * @see #queryUserInfoByDisplayName(EOS_UserInfo_QueryUserInfoByDisplayNameOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByDisplayNameCallback)
+	 * @see #queryUserInfoByExternalAccount(EOS_UserInfo_QueryUserInfoByExternalAccountOptions, Pointer, EOS_UserInfo_OnQueryUserInfoByExternalAccountCallback)
 	 * @see EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions
 	 * @see EOS_UserInfo_BestDisplayName
 	 * @see EOS_UserInfo_BestDisplayName#release()

@@ -11,5 +11,5 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.callbackresults.EOS_AntiCheatCo
  * @since 8/15/2023
  */
 public interface EOS_AntiCheatClient_OnPeerAuthStatusChangedCallback extends Callback {
-	void apply(EOS_AntiCheatCommon_OnClientAuthStatusChangedCallbackInfo Data);
+	void apply(EOS_AntiCheatCommon_OnClientAuthStatusChangedCallbackInfo data);
 }

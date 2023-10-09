@@ -305,7 +305,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 *
 	 * @param options The Options associated with retrieving the external account info count.
 	 *
-	 * @see EOS_Connect_Interface#copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions)
+	 * @see #copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions)
 	 *
 	 * @return Number of external accounts or 0 otherwise.
 	 */

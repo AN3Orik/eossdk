@@ -159,7 +159,7 @@ public class EOS_KWS_Interface extends PointerType {
 	 * This interface is not available for general access at this time.
 	 * <p>
 	 * Register to receive notifications about KWS permissions changes for any logged in local users<br>
-	 * <b>Must call {@link EOS_KWS_Interface#removeNotifyPermissionsUpdateReceived(EOS_NotificationId)} to remove the notification</b>
+	 * <b>Must call {@link #removeNotifyPermissionsUpdateReceived(EOS_NotificationId)} to remove the notification</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the completionDelegate.

@@ -16,5 +16,5 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.callbackresults.EOS_AntiCheatCo
  * @since 8/15/2023
  */
 public interface EOS_AntiCheatClient_OnMessageToPeerCallback extends Callback {
-	void apply(EOS_AntiCheatCommon_OnMessageToClientCallbackInfo Data);
+	void apply(EOS_AntiCheatCommon_OnMessageToClientCallbackInfo data);
 }
