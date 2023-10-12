@@ -126,6 +126,7 @@ import host.anzo.eossdk.eos.sdk.userinfo.options.*;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
+import java.util.Collections;
 
 /**
  * @author Anton Lasevich
@@ -157,7 +158,7 @@ public interface EOSLibrary extends Library {
 			default:
 				throw new RuntimeException("Unsupported platform: " + Platform.getOSType());
 		}
-		return Native.load(libName, EOSLibrary.class);
+		return Native.load(libName, EOSLibrary.class, Collections.singletonMap(Library.OPTION_STRING_ENCODING, "UTF-8"));
 	}
 
 	// Common
