@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "ReporterUserId", "ReportedUserId", "Category", "Message", "Context"})
 public class EOS_Reports_SendPlayerBehaviorReportOptions extends Structure {
+	/** The most recent version of the EOS_Reports_SendPlayerBehaviorReport API. */
 	public static final int EOS_REPORTS_SENDPLAYERBEHAVIORREPORT_API_LATEST = 2;
 
 	/** Max length of a report message text, not including the null terminator. */
@@ -51,6 +52,31 @@ public class EOS_Reports_SendPlayerBehaviorReportOptions extends Structure {
 	public EOS_Reports_SendPlayerBehaviorReportOptions() {
 		super();
 		ApiVersion = EOS_REPORTS_SENDPLAYERBEHAVIORREPORT_API_LATEST;
+	}
+
+	public EOS_Reports_SendPlayerBehaviorReportOptions(EOS_ProductUserId reporterUserId,
+	                                                   EOS_ProductUserId reportedUserId,
+	                                                   EOS_EPlayerReportsCategory category,
+	                                                   String message,
+	                                                   String context) {
+		this();
+		ReporterUserId = reporterUserId;
+		ReportedUserId = reportedUserId;
+		Category = category;
+		Message = message;
+		Context = context;
+	}
+
+	public EOS_Reports_SendPlayerBehaviorReportOptions(String reporterUserId,
+	                                                   String reportedUserId,
+	                                                   EOS_EPlayerReportsCategory category,
+	                                                   String message,
+	                                                   String context) {
+		this(EOS_ProductUserId.fromString(reporterUserId),
+				EOS_ProductUserId.fromString(reportedUserId),
+				category,
+				message,
+				context);
 	}
 
 	public EOS_Reports_SendPlayerBehaviorReportOptions(Pointer peer) {

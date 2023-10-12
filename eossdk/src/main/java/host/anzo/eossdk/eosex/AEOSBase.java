@@ -8,6 +8,8 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.init.options.EOS_InitializeOptions;
 import host.anzo.eossdk.eos.sdk.logging.EOS_LogMessage;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
+import host.anzo.eossdk.eos.sdk.reports.enums.EOS_EPlayerReportsCategory;
+import host.anzo.eossdk.eos.sdk.reports.options.EOS_Reports_SendPlayerBehaviorReportOptions;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
@@ -79,6 +81,39 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	/**
+	 * Report player to EOS reports
+	 * @param reporterUserId reporter EOS_ProductUserId string
+	 * @param reportedUserId reported EOS_ProductUserId string
+	 * @param category report category
+	 * @param message report message
+	 * @param context report context
+	 */
+	public void reportPlayer(String reporterUserId,
+	                         String reportedUserId,
+	                         EOS_EPlayerReportsCategory category,
+	                         String message,
+	                         String context) {
+		callApi(() -> {
+			final EOS_Reports_SendPlayerBehaviorReportOptions reportOptions = new EOS_Reports_SendPlayerBehaviorReportOptions(reporterUserId,
+					reportedUserId,
+					category,
+					message,
+					context);
+			platform.getReportsInterface().sendPlayerBehaviorReport(reportOptions, null, callbackInfo -> {
+				if (callbackInfo.ResultCode.isSuccess()) {
+					log.info("Sent report from productUserId=[{}] to productUserId=[{}]", reporterUserId, reportedUserId);
+				}
+				else {
+					log.error("Failed to send report from productUserId=[{}] to productUserId=[{}] resultCode=[{}]",
+							reporterUserId,
+							reportedUserId,
+							callbackInfo.ResultCode);
+				}
+			});
+		});
 	}
 
 	/**
