@@ -3,9 +3,48 @@
 ![](https://img.shields.io/nexus/s/host.anzo/eossdk?server=https%3A%2F%2Fnexus.anzo.host%2F)
 ![](https://img.shields.io/github/license/AN3Orik/eossdk)
 
-Java wrapper for Epic Online Services SDK
+Java JNA wrapper for Epic Online Services SDK
 
-Work in progress.
+## Current status
+All possible EOS SDK interfaces/models and callbacks are described, but some JNA-specific errors can happen for untested (gray) interfaces.\
+So, let me know via issues if you encounter any problems
+
+```diff
++green completed
+#gray  completed, but not tested
+-red   completed, but known issues exists
+
++ Achivements
++ AntiCheatClient
++ AntiCheatServer
+# Auth
+# Connect
+# CustomInvites
+# Ecom
+# Friends
+# IntegratedPlatform
+# KWS
+# Leaderboards
+# Lobby
++ Logging
++ Metrics
++ Mods
+# P2P
++ Platform
+# PlayerDataStorage
+# Presence
+# ProgressionSnapshot
++ Reports
++ Sanctions
+# Sessions
++ Stats
++ TitleStorage
+# UI
+# UserInfo
+```
+
+## Platform support
+Because project using JNA library, all available platforms are supported (for which Epic released a library, of course).
 
 ## Distribution
 Because the library is in active development state, currently only private snapshot repository is available for tests.
@@ -27,7 +66,9 @@ dependencies {
 }
 ```
 
-## Documentation
+## Using & Documentation
 During development, I try to preserve the original documentation as much as possible, with an eye to the specifics of javadoc generating.
 
 So use [Official EOS SDK documentation](https://dev.epicgames.com/docs/api-ref)
+
+Also a basic project is available [here](https://github.com/AN3Orik/eossdk/tree/main/eossdk-example) (more just "how-to-use" than ready-to-go example)
