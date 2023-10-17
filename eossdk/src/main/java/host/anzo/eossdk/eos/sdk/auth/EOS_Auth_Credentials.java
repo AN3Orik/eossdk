@@ -35,7 +35,7 @@ public class EOS_Auth_Credentials extends Structure {
 	 * If provided, the structure will be located in (System)/eos_(system).h.
 	 * The structure will be named EOS_(System)_Auth_CredentialsOptions.
 	 */
-	public long SystemAuthCredentialsOptions;
+	public Pointer SystemAuthCredentialsOptions;
 	/**
 	 * Type of external login. Needed to identify the external auth method to use.
 	 * Used when login type is set to EOS_LCT_ExternalAuth, ignored for other EOS_ELoginCredentialType methods.

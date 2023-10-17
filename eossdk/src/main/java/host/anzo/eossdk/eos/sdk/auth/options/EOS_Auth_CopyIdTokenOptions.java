@@ -32,6 +32,11 @@ public class EOS_Auth_CopyIdTokenOptions extends Structure {
 		ApiVersion = EOS_AUTH_COPYIDTOKEN_API_LATEST;
 	}
 
+	public EOS_Auth_CopyIdTokenOptions(EOS_EpicAccountId accountId) {
+		this();
+		this.AccountId = accountId;
+	}
+
 	public EOS_Auth_CopyIdTokenOptions(Pointer peer) {
 		super(peer);
 	}

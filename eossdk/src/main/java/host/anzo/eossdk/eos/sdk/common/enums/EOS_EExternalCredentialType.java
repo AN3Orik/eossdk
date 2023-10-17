@@ -48,7 +48,7 @@ public @Getter enum EOS_EExternalCredentialType implements NativeMapped {
 	 * <p>
 	 * Supported with EOS_Connect_Login.
 	 *
-	 * @see EOS_Auth_Interface#copyIdToken(EOS_Auth_CopyIdTokenOptions)
+	 * @see EOS_Auth_Interface#copyIdToken(EOS_EpicAccountId)
 	 * @see EOS_Auth_Interface#copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions, EOS_EpicAccountId)
 	 */
 	EOS_ECT_EPIC(0),

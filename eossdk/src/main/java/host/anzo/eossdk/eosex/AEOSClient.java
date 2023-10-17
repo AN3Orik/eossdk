@@ -1,11 +1,12 @@
 package host.anzo.eossdk.eosex;
 
-import com.sun.jna.Pointer;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.EOS_AntiCheatClient_Interface;
-import host.anzo.eossdk.eos.sdk.EOS_Auth_Interface;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults.EOS_AntiCheatClient_OnClientIntegrityViolatedCallbackInfo;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults.EOS_AntiCheatClient_OnMessageToServerCallbackInfo;
+import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_IdToken;
+import host.anzo.eossdk.eos.sdk.auth.callbackresults.EOS_Auth_LoginCallbackInfo;
+import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_LoginOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
@@ -33,22 +34,35 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 
 	private EOS_ProductUserId productUserId;
 
+	protected EOS_Auth_IdToken authIdToken;
+
 	@Override
 	public AEOSClient start(EOSClientOptions options) throws EOSException {
 		super.start(options);
-
-		if (options.isUseEpicAuthentication()) {
-			// TODO: Implement Auth* logic
-			final EOS_Auth_Interface authInterface = platform.getAuthInterface();
-		}
-		else {
-			platform.getConnectInterface().login(getConnectLoginOptions(), Pointer.NULL, this::onConnectLogin);
-		}
+		doAuthenticate();
 		return this;
 	}
 
-	protected EOS_Connect_LoginOptions getConnectLoginOptions() {
-		return null;
+	private void doAuthenticate() {
+		if (options.isUseEpicAuthentication()) {
+			platform.getAuthInterface().login(getAuthLoginOptions(), null, this::onAuthLogin);
+		}
+		else {
+			platform.getConnectInterface().login(getConnectLoginOptions(), null, this::onConnectLogin);
+		}
+	}
+
+	protected abstract EOS_Auth_LoginOptions getAuthLoginOptions();
+
+	protected abstract EOS_Connect_LoginOptions getConnectLoginOptions();
+
+	private void onAuthLogin(@NotNull EOS_Auth_LoginCallbackInfo data) {
+		try {
+			authIdToken = platform.getAuthInterface().copyIdToken(data.SelectedAccountId);
+		}
+		catch (EOSException e) {
+			log.error("Failed to copyIdToken", e);
+		}
 	}
 
 	private void onConnectLogin(@NotNull EOS_Connect_LoginCallbackInfo data) throws EOSException {
@@ -121,7 +135,7 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 	}
 
 	private void onAuthExpiration(@NotNull EOS_Connect_AuthExpirationCallbackInfo authExpirationCallbackInfo) {
-		platform.getConnectInterface().login(getConnectLoginOptions(), authExpirationCallbackInfo.ClientData, this::onConnectLogin);
+		doAuthenticate();
 	}
 
 	@Override

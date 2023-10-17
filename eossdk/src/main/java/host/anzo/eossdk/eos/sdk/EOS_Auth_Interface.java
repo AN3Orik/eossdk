@@ -165,7 +165,7 @@ public class EOS_Auth_Interface extends PointerType {
 	 * An ID token for the selected account ID of a locally authenticated user will always be readily available.
 	 * To retrieve it for the selected account ID, you can use EOS_Auth_CopyIdToken directly after a successful user login.
 	 *
-	 * @param options Structure containing the account ID for which to copy an ID token.
+	 * @param accountId the account ID for which to copy an ID token.
 	 * @return An ID token for the given user, if it exists and is valid; use EOS_Auth_IdToken_Release when finished.
 	 *
 	 * @see EOS_Auth_IdToken#release()
@@ -174,9 +174,9 @@ public class EOS_Auth_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the Id token is not found or expired.
 	 *
 	 */
-	public EOS_Auth_IdToken copyIdToken(EOS_Auth_CopyIdTokenOptions options) throws EOSException {
+	public EOS_Auth_IdToken copyIdToken(EOS_EpicAccountId accountId) throws EOSException {
 		final EOS_Auth_IdToken.ByReference authIdTokenReference = new EOS_Auth_IdToken.ByReference();
-		final EOS_EResult result = EOSLibrary.instance.EOS_Auth_CopyIdToken(this, options, authIdTokenReference);
+		final EOS_EResult result = EOSLibrary.instance.EOS_Auth_CopyIdToken(this, new EOS_Auth_CopyIdTokenOptions(accountId), authIdTokenReference);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}

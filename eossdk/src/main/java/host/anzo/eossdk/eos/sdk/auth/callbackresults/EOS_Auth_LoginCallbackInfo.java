@@ -43,7 +43,7 @@ public class EOS_Auth_LoginCallbackInfo extends Structure {
 	 * Note: This ID may be different from LocalUserId if the user has previously merged Epic accounts into the account
 	 * represented by LocalUserId, and one of the accounts that got merged had game data associated with it for the application.
 	 */
-	private EOS_EpicAccountId SelectedAccountId;
+	public EOS_EpicAccountId SelectedAccountId;
 
 	public EOS_Auth_LoginCallbackInfo() {
 		super();

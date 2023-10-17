@@ -10,7 +10,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Auth_Interface;
-import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_CopyIdTokenOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -49,7 +48,7 @@ public class EOS_Auth_IdToken extends Structure implements AutoCloseable {
 	 * Release the memory associated with an EOS_Auth_IdToken structure. This must be called on data retrieved from EOS_Auth_CopyIdToken.
 	 *
 	 * @see EOS_Auth_IdToken
-	 * @see EOS_Auth_Interface#copyIdToken(EOS_Auth_CopyIdTokenOptions)
+	 * @see EOS_Auth_Interface#copyIdToken(EOS_EpicAccountId)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Auth_IdToken_Release(this);

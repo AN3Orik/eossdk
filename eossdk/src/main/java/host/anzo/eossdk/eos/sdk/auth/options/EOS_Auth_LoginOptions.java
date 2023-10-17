@@ -6,6 +6,7 @@
 
 package host.anzo.eossdk.eos.sdk.auth.options;
 
+import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_Credentials;
@@ -29,6 +30,7 @@ public class EOS_Auth_LoginOptions extends Structure {
 	 */
 	public static long EOS_LF_NO_USER_INTERFACE = 0x00001;
 
+	/** The most recent version of the EOS_Auth_Login API. */
 	public static int EOS_AUTH_LOGIN_API_LATEST = 3;
 
 	/** API Version: Set this to EOS_AUTH_LOGIN_API_LATEST. */
@@ -37,11 +39,10 @@ public class EOS_Auth_LoginOptions extends Structure {
 	public EOS_Auth_Credentials.ByReference Credentials;
 	/**
 	 * Auth scope flags are permissions to request from the user while they are logging in. This is a bitwise-or union of EOS_EAuthScopeFlags flags defined above
-	 * @see EOS_EAuthScopeFlags
 	 */
-	public int ScopeFlags;
-	/** Optional flags for the desired login behavior, e.g. {@link EOS_Auth_LoginOptions#EOS_LF_NO_USER_INTERFACE}. This is a bitwise-or union of the defined flags. */
-	public long LoginFlags;
+	public EOS_EAuthScopeFlags ScopeFlags;
+	/** Optional flags for the desired login behavior, e.g. {@link #EOS_LF_NO_USER_INTERFACE}. This is a bitwise-or union of the defined flags. */
+	public NativeLong LoginFlags;
 
 	public EOS_Auth_LoginOptions() {
 		super();
