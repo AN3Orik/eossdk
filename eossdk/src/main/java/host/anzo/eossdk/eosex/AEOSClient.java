@@ -5,7 +5,6 @@ import host.anzo.eossdk.eos.sdk.EOS_AntiCheatClient_Interface;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults.EOS_AntiCheatClient_OnClientIntegrityViolatedCallbackInfo;
 import host.anzo.eossdk.eos.sdk.anticheat.client.callbackresults.EOS_AntiCheatClient_OnMessageToServerCallbackInfo;
 import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_IdToken;
-import host.anzo.eossdk.eos.sdk.auth.callbackresults.EOS_Auth_LoginCallbackInfo;
 import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_LoginOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
@@ -45,25 +44,23 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 
 	private void doAuthenticate() {
 		if (options.isUseEpicAuthentication()) {
-			platform.getAuthInterface().login(getAuthLoginOptions(), null, this::onAuthLogin);
+			platform.getAuthInterface().login(getAuthLoginOptions(), null, loginCallbackInfo -> {
+				try(EOS_Auth_IdToken authIdToken = platform.getAuthInterface().copyIdToken(loginCallbackInfo.SelectedAccountId)) {
+					platform.getConnectInterface().login(getConnectLoginOptions(authIdToken), null, this::onConnectLogin);
+				}
+				catch (Exception e) {
+					log.error("Failed to copyIdToken", e);
+				}
+			});
 		}
 		else {
-			platform.getConnectInterface().login(getConnectLoginOptions(), null, this::onConnectLogin);
+			platform.getConnectInterface().login(getConnectLoginOptions(null), null, this::onConnectLogin);
 		}
 	}
 
 	protected abstract EOS_Auth_LoginOptions getAuthLoginOptions();
 
-	protected abstract EOS_Connect_LoginOptions getConnectLoginOptions();
-
-	private void onAuthLogin(@NotNull EOS_Auth_LoginCallbackInfo data) {
-		try {
-			authIdToken = platform.getAuthInterface().copyIdToken(data.SelectedAccountId);
-		}
-		catch (EOSException e) {
-			log.error("Failed to copyIdToken", e);
-		}
-	}
+	protected abstract EOS_Connect_LoginOptions getConnectLoginOptions(EOS_Auth_IdToken authIdToken);
 
 	private void onConnectLogin(@NotNull EOS_Connect_LoginCallbackInfo data) throws EOSException {
 		if (data.ResultCode.isSuccess()) {

@@ -1,6 +1,7 @@
 package host.anzo.eossdk.example;
 
 import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_Credentials;
+import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_IdToken;
 import host.anzo.eossdk.eos.sdk.auth.enums.EOS_ELoginCredentialType;
 import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_LoginOptions;
 import host.anzo.eossdk.eos.sdk.connect.EOS_Connect_Credentials;
@@ -34,7 +35,7 @@ public class EOSClient extends AEOSClient {
 	}
 
 	@Override
-	protected EOS_Connect_LoginOptions getConnectLoginOptions() {
+	protected EOS_Connect_LoginOptions getConnectLoginOptions(EOS_Auth_IdToken authIdToken) {
 		String token;
 		switch (options.getAuthExternalCredentialType()) {
 			case EOS_ECT_OPENID_ACCESS_TOKEN:

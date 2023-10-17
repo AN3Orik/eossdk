@@ -9,7 +9,7 @@ package host.anzo.eossdk.eos.sdk.common;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-import static com.sun.jna.Structure.*;
+import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * A page query is part of query options. It is used to allow pagination of query results.

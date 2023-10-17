@@ -9,7 +9,7 @@ package host.anzo.eossdk.eos.sdk.common;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-import static com.sun.jna.Structure.*;
+import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * A page result is part of query callback info. It is used to provide pagination details of query results.

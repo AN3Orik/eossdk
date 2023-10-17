@@ -1,6 +1,5 @@
 package host.anzo.eossdk.example;
 
-import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientActionReason;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eosex.AEOSNetworkClient;
 import host.anzo.eossdk.eosex.AEOSServer;

@@ -12,7 +12,6 @@ import com.sun.jna.Pointer;
 import host.anzo.eossdk.eos.sdk.EOS_Auth_Interface;
 import host.anzo.eossdk.eos.sdk.EOS_Connect_Interface;
 import host.anzo.eossdk.eos.sdk.auth.callbacks.EOS_Auth_OnLoginCallback;
-import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_CopyIdTokenOptions;
 import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_CopyUserAuthTokenOptions;
 import host.anzo.eossdk.eos.sdk.auth.options.EOS_Auth_LoginOptions;
 import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
