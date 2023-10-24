@@ -1,13 +1,13 @@
 # EOS SDK for Java
 
-![](https://img.shields.io/nexus/s/host.anzo/eossdk?server=https%3A%2F%2Fnexus.anzo.host%2F)
+![](https://img.shields.io/maven-central/v/host.anzo/eossdk)
 ![](https://img.shields.io/github/license/AN3Orik/eossdk)
 
 Java JNA wrapper for Epic Online Services SDK
 
 ## Current status
 All possible EOS SDK interfaces/models and callbacks are described, but some JNA-specific errors can happen for untested (gray) interfaces.\
-So, let me know via issues if you encounter any problems
+So, let me know via issues if you encounter any problems.
 
 ```diff
 +green completed
@@ -47,22 +47,21 @@ So, let me know via issues if you encounter any problems
 Because project using JNA library, all available platforms are supported (for which Epic released a library, of course).
 
 ## Distribution
-Because the library is in active development state, currently only private snapshot repository is available for tests.
+New releases are made available on Maven Central, enabling you to employ your preferred dependency management tool for retrieval.
 
-Please note that the library version corresponds to the EOS SDK version.
+Please note that the library version corresponds to the compatible EOS SDK version (with an added wrapper version after dot)
 
 ```groovy
 // Gradle
-maven { url "https://nexus.anzo.host/repository/maven-snapshots/" }
 dependencies {
     // EOS SDK wrapper library
-    implementation "host.anzo:eossdk:1.16.1-SNAPSHOT"
+    implementation "host.anzo:eossdk:1.16.1.0"
     // Windows native library
-    implementation "host.anzo:eossdk-native-windows:1.16.1-SNAPSHOT"
+    implementation "host.anzo:eossdk-native-windows:1.16.1.0"
     // Linux native library
-    implementation "host.anzo:eossdk-native-linux:1.16.1-SNAPSHOT"
+    implementation "host.anzo:eossdk-native-linux:1.16.1.0"
     // iOS native library
-    implementation "host.anzo:eossdk-native-ios:1.16.1-SNAPSHOT"
+    implementation "host.anzo:eossdk-native-ios:1.16.1.0"
 }
 ```
 

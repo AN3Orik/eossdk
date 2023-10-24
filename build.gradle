@@ -12,6 +12,17 @@ plugins {
 
 System.setProperty("file.encoding", "UTF-8")
 
+ext {
+	isPrivateBuild = false
+}
+
+subprojects {
+	repositories {
+		mavenCentral()
+	}
+	version = "1.16.1.0"
+}
+
 allprojects {
 	repositories {
 		google()
@@ -20,15 +31,31 @@ allprojects {
 		maven { url "https://repo.spring.io/milestone" }
 		gradlePluginPortal()
 	}
+
 	apply plugin: 'idea'
 	apply plugin: 'eclipse'
-}
 
-subprojects {
-	repositories {
-		mavenCentral()
+	ext.getMavenPublishUrl = {
+		def releasesRepoUrl = ""
+		def snapshotsRepoUrl = ""
+		if (rootProject.isPrivateBuild) {
+			releasesRepoUrl = "https://nexus.anzo.host/repository/maven-releases/"
+			snapshotsRepoUrl = "https://nexus.anzo.host/repository/maven-snapshots/"
+		}
+		else {
+			releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+			snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
+		}
+		return version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
 	}
-	version = "1.16.1-SNAPSHOT"
+
+	ext.getMavenPublishUser = {
+		return rootProject.isPrivateBuild ? "$nexusUsername" : "$mavenCentralUsername"
+	}
+
+	ext.getMavenPublishPassword = {
+		return rootProject.isPrivateBuild ? "$nexusPassword" : "$mavenCentralPassword"
+	}
 }
 
 idea {

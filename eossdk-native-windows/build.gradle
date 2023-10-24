@@ -1,6 +1,7 @@
 plugins {
 	id 'java-library'
 	id 'maven-publish'
+	id 'signing'
 }
 
 java {
@@ -37,18 +38,24 @@ publishing {
 				description = "Java wrapper Windows library for Epic Online Services SDK"
 				url = "https://github.com/AN3Orik/eossdk"
 
+				licenses {
+					license {
+						name = 'Apache-2.0 license'
+						url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+					}
+				}
+
+				scm {
+					connection = 'scm:git:https://github.com/AN3Orik/eossdk.git'
+					developerConnection = 'scm:git:https://github.com/AN3Orik/eossdk.git'
+					url = 'https://github.com/AN3Orik/eossdk'
+				}
+
 				developers {
 					developer {
 						id = 'ANZO'
 						name = 'Anton Lasevich'
 						email = 'mostproduct@gmail.com'
-					}
-				}
-
-				licenses {
-					license {
-						name = 'Apache-2.0 license'
-						url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
 					}
 				}
 			}
@@ -57,15 +64,18 @@ publishing {
 
 	repositories {
 		maven {
-			def releasesRepoUrl = "https://nexus.anzo.host/repository/maven-releases/"
-			def snapshotsRepoUrl = "https://nexus.anzo.host/repository/maven-snapshots/"
-
-			name 'nexus'
-			url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+			url = project.getMavenPublishUrl()
 			credentials {
-				username "$nexusUsername"
-				password "$nexusPassword"
+				username project.getMavenPublishUser()
+				password project.getMavenPublishPassword()
 			}
 		}
 	}
+}
+
+signing {
+	def signingKey = "$mavenCentralSigningKey"
+	def signingPassword = "$mavenCentralSigningKeyPassword"
+	useInMemoryPgpKeys(signingKey, signingPassword)
+	sign publishing.publications.maven
 }
