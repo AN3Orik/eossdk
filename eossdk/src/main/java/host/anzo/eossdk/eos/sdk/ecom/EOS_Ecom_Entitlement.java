@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.ecom;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -14,7 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/20/2023
  */
-@FieldOrder({"ApiVersion", "EntitlementName", "EntitlementId", "CatalogItemId", "ServerIndex", "bRedeemed", "EndTimestamp"})
+@FieldOrder({"ApiVersion", "EntitlementName", "EntitlementId", "CatalogItemId", "ServerIndex", "IsRedeemed", "EndTimestamp"})
 public class EOS_Ecom_Entitlement extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_Ecom_Entitlement struct. */
 	public static final int EOS_ECOM_ENTITLEMENT_API_LATEST = 2;
@@ -36,7 +37,7 @@ public class EOS_Ecom_Entitlement extends Structure implements AutoCloseable {
 	 */
 	public int ServerIndex;
 	/** If true then the catalog has this entitlement marked as redeemed */
-	public int bRedeemed;
+	public EOS_Bool IsRedeemed;
 	/** If not -1 then this is a POSIX timestamp that this entitlement will end */
 	public long EndTimestamp;
 

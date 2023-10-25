@@ -4,6 +4,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.IntByReference;
 import host.anzo.eossdk.eos.sdk.EOS_Lobby_Interface;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.lobby.callbacks.EOS_Lobby_OnRTCRoomConnectionChangedCallback;
 import host.anzo.eossdk.eos.sdk.lobby.enums.EOS_ELobbyPermissionLevel;
@@ -22,7 +23,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/17/2023
  */
-@FieldOrder({"ApiVersion", "LocalUserId", "MaxLobbyMembers", "PermissionLevel", "bPresenceEnabled", "bAllowInvites", "BucketId", "bDisableHostMigration", "bEnableRTCRoom", "LocalRTCOptions", "LobbyId", "bEnableJoinById", "bRejoinAfterKickRequiresInvite", "AllowedPlatformIds", "AllowedPlatformIdsCount", "bCrossplayOptOut"})
+@FieldOrder({"ApiVersion", "LocalUserId", "MaxLobbyMembers", "PermissionLevel", "IsPresenceEnabled", "IsAllowInvites", "BucketId", "IsDisableHostMigration", "IsEnableRTCRoom", "LocalRTCOptions", "LobbyId", "IsEnableJoinById", "IsRejoinAfterKickRequiresInvite", "AllowedPlatformIds", "AllowedPlatformIdsCount", "IsCrossplayOptOut"})
 public class EOS_Lobby_CreateLobbyOptions extends Structure {
 	public static final int EOS_LOBBY_CREATELOBBY_API_LATEST = 9;
 
@@ -51,16 +52,16 @@ public class EOS_Lobby_CreateLobbyOptions extends Structure {
 	 * @see EOS_Sessions_CreateSessionModificationOptions
 	 * @see EOS_Sessions_JoinSessionOptions
 	 */
-	public int bPresenceEnabled;
+	public EOS_Bool IsPresenceEnabled;
 	/** Are members of the lobby allowed to invite others */
-	public int bAllowInvites;
+	public EOS_Bool IsAllowInvites;
 	/** Bucket ID associated with the lobby */
 	public String BucketId;
 	/**
 	 * Is host migration allowed (will the lobby stay open if the original host leaves?)
 	 * NOTE: EOS_Lobby_PromoteMember is still allowed regardless of this setting
 	 */
-	public int bDisableHostMigration;
+	public EOS_Bool IsDisableHostMigration;
 	/**
 	 * Creates a real-time communication (RTC) room for all members of this lobby. All members of the lobby will automatically join the RTC
 	 * room when they connect to the lobby and they will automatically leave the RTC room when they leave or are removed from the lobby.
@@ -70,7 +71,7 @@ public class EOS_Lobby_CreateLobbyOptions extends Structure {
 	 * @see EOS_Lobby_Interface#getRTCRoomName(EOS_Lobby_GetRTCRoomNameOptions, ByteBuffer, IntBuffer)
 	 * @see EOS_Lobby_Interface#addNotifyRTCRoomConnectionChanged(EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions, Pointer, EOS_Lobby_OnRTCRoomConnectionChangedCallback)
 	 */
-	public int bEnableRTCRoom;
+	public EOS_Bool IsEnableRTCRoom;
 	/**
 	 * (Optional) Allows the local application to set local audio options for the RTC Room if it is enabled. Set this to NULL if the RTC
 	 * RTC room is disabled or you would like to use the defaults.
@@ -88,14 +89,14 @@ public class EOS_Lobby_CreateLobbyOptions extends Structure {
 	 * In these cases the game should provide the lobby ID securely to the invited player.  Such as by attaching the
 	 * lobby ID to the integrated platform's session data or sending the lobby ID within the invite data.
 	 */
-	public int bEnableJoinById;
+	public EOS_Bool IsEnableJoinById;
 	/**
 	 * Does rejoining after being kicked require an invite?
 	 * When this is set, a kicked player cannot return to the session even if the session was set with
 	 * EOS_LPL_PUBLICADVERTISED.  When this is set, a player with invite privileges must use EOS_Lobby_SendInvite to
 	 * allow the kicked player to return to the session.
 	 */
-	public int bRejoinAfterKickRequiresInvite;
+	public EOS_Bool IsRejoinAfterKickRequiresInvite;
 	/**
 	 * Array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are
 	 * found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific
@@ -109,7 +110,7 @@ public class EOS_Lobby_CreateLobbyOptions extends Structure {
 	 * will be treated as allowing crossplay. If it is set to true, AllowedPlatformIds must have a single entry that matches
 	 * the platform of the lobby owner.
 	 */
-	public int bCrossplayOptOut;
+	public EOS_Bool IsCrossplayOptOut;
 
 	public EOS_Lobby_CreateLobbyOptions() {
 		super();

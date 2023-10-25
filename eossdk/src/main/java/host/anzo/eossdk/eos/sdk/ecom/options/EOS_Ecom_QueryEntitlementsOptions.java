@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.ecom.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.StringArray;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -13,7 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/20/2023
  */
-@FieldOrder({"ApiVersion", "LocalUserId", "EntitlementNames", "EntitlementNameCount", "bIncludeRedeemed"})
+@FieldOrder({"ApiVersion", "LocalUserId", "EntitlementNames", "EntitlementNameCount", "IsIncludeRedeemed"})
 public class EOS_Ecom_QueryEntitlementsOptions extends Structure {
 	public static final int EOS_ECOM_QUERYENTITLEMENTS_API_LATEST = 2;
 
@@ -31,7 +32,7 @@ public class EOS_Ecom_QueryEntitlementsOptions extends Structure {
 	/** The number of Entitlement Names included in the array, up to EOS_ECOM_QUERYENTITLEMENTS_MAX_ENTITLEMENT_IDS; use zero to request all Entitlements associated with the user's Epic Online Services account. */
 	public int EntitlementNameCount;
 	/** If true, Entitlements that have been redeemed will be included in the results. */
-	public int bIncludeRedeemed;
+	public EOS_Bool IsIncludeRedeemed;
 
 	public EOS_Ecom_QueryEntitlementsOptions() {
 		super();

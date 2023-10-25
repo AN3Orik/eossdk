@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.sessions.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.lobby.options.EOS_Lobby_CreateLobbyOptions;
 import host.anzo.eossdk.eos.sdk.lobby.options.EOS_Lobby_JoinLobbyOptions;
@@ -16,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 9/7/2023
  */
-@FieldOrder({"ApiVersion", "SessionName", "SessionHandle", "LocalUserId", "bPresenceEnabled"})
+@FieldOrder({"ApiVersion", "SessionName", "SessionHandle", "LocalUserId", "IsPresenceEnabled"})
 public class EOS_Sessions_JoinSessionOptions extends Structure {
 	public static final int EOS_SESSIONS_JOINSESSION_API_LATEST = 2;
 
@@ -43,7 +44,7 @@ public class EOS_Sessions_JoinSessionOptions extends Structure {
 	 * @see EOS_Lobby_JoinLobbyOptions
 	 * @see EOS_Sessions_CreateSessionModificationOptions
 	 */
-	public int bPresenceEnabled;
+	public EOS_Bool IsPresenceEnabled;
 
 	public EOS_Sessions_JoinSessionOptions() {
 		super();

@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.sessions.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.lobby.options.EOS_Lobby_CreateLobbyOptions;
 import host.anzo.eossdk.eos.sdk.lobby.options.EOS_Lobby_JoinLobbyOptions;
@@ -16,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 9/5/2023
  */
-@FieldOrder({"ApiVersion", "SessionName", "BucketId", "MaxPlayers", "LocalUserId", "bPresenceEnabled", "SessionId", "bSanctionsEnabled", "AllowedPlatformIds", "AllowedPlatformIdsCount"})
+@FieldOrder({"ApiVersion", "SessionName", "BucketId", "MaxPlayers", "LocalUserId", "IsPresenceEnabled", "SessionId", "IsSanctionsEnabled", "AllowedPlatformIds", "AllowedPlatformIdsCount"})
 public class EOS_Sessions_CreateSessionModificationOptions extends Structure {
 	/** Maximum number of attributes allowed on the session */
 	public static int EOS_SESSIONMODIFICATION_MAX_SESSION_ATTRIBUTES = 64;
@@ -55,7 +56,7 @@ public class EOS_Sessions_CreateSessionModificationOptions extends Structure {
 	 * @see EOS_Lobby_JoinLobbyOptions
 	 * @see EOS_Sessions_JoinSessionOptions
 	 */
-	public int bPresenceEnabled;
+	public EOS_Bool IsPresenceEnabled;
 	/**
 	 * Optional session id - set to a globally unique value to override the backend assignment
 	 * If not specified the backend service will assign one to the session.  Do not mix and match.
@@ -66,7 +67,7 @@ public class EOS_Sessions_CreateSessionModificationOptions extends Structure {
 	 * If true, sanctioned players can neither join nor register with this session and, in the case of join,
 	 * will return EOS_EResult code EOS_Sessions_PlayerSanctioned
 	 */
-	public int bSanctionsEnabled;
+	public EOS_Bool IsSanctionsEnabled;
 	/**
 	 * Array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are
 	 * found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific

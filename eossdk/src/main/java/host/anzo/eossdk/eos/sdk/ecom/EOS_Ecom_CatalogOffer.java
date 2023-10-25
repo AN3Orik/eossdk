@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.ecom;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -16,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/20/2023
  */
-@FieldOrder({"ApiVersion", "ServerIndex", "CatalogNamespace", "Id", "TitleText", "DescriptionText", "LongDescriptionText", "TechnicalDetailsText_DEPRECATED", "CurrencyCode", "PriceResult", "OriginalPrice_DEPRECATED", "CurrentPrice_DEPRECATED", "DiscountPercentage", "ExpirationTimestamp", "PurchasedCount_DEPRECATED", "PurchaseLimit", "bAvailableForPurchase", "OriginalPrice64", "CurrentPrice64", "DecimalPoint", "ReleaseDateTimestamp", "EffectiveDateTimestamp"})
+@FieldOrder({"ApiVersion", "ServerIndex", "CatalogNamespace", "Id", "TitleText", "DescriptionText", "LongDescriptionText", "TechnicalDetailsText_DEPRECATED", "CurrencyCode", "PriceResult", "OriginalPrice_DEPRECATED", "CurrentPrice_DEPRECATED", "DiscountPercentage", "ExpirationTimestamp", "PurchasedCount_DEPRECATED", "PurchaseLimit", "IsAvailableForPurchase", "OriginalPrice64", "CurrentPrice64", "DecimalPoint", "ReleaseDateTimestamp", "EffectiveDateTimestamp"})
 public class EOS_Ecom_CatalogOffer extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_Ecom_CatalogOffer struct. */
 	public static final int EOS_ECOM_CATALOGOFFER_API_LATEST = 5;
@@ -76,7 +77,7 @@ public class EOS_Ecom_CatalogOffer extends Structure implements AutoCloseable {
 	 */
 	public int PurchaseLimit;
 	/** True if the user can purchase this offer. */
-	public int bAvailableForPurchase;
+	public EOS_Bool IsAvailableForPurchase;
 	/** The original price of this offer as a 64-bit number. */
 	public long OriginalPrice64;
 	/** The current price including discounts of this offer as a 64-bit number. */

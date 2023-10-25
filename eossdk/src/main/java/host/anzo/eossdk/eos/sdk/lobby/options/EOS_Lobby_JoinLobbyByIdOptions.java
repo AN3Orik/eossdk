@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.lobby.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.presence.options.EOS_PresenceModification_SetJoinInfoOptions;
 import host.anzo.eossdk.eos.sdk.sessions.options.EOS_Sessions_CreateSessionModificationOptions;
@@ -13,7 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/17/2023
  */
-@FieldOrder({"ApiVersion", "LobbyId", "LocalUserId", "bPresenceEnabled", "LocalRTCOptions", "bCrossplayOptOut"})
+@FieldOrder({"ApiVersion", "LobbyId", "LocalUserId", "IsPresenceEnabled", "LocalRTCOptions", "IsCrossplayOptOut"})
 public class EOS_Lobby_JoinLobbyByIdOptions extends Structure {
 	public static final int EOS_LOBBY_JOINLOBBYBYID_API_LATEST = 2;
 
@@ -38,7 +39,7 @@ public class EOS_Lobby_JoinLobbyByIdOptions extends Structure {
 	 * @see EOS_Sessions_CreateSessionModificationOptions
 	 * @see EOS_Sessions_JoinSessionOptions
 	 */
-	public int bPresenceEnabled;
+	public EOS_Bool IsPresenceEnabled;
 	/**
 	 * (Optional) Set this value to override the default local options for the RTC Room, if it is enabled for this lobby. Set this to NULL if
 	 * your application does not use the Lobby RTC Rooms feature, or if you would like to use the default settings. This option is ignored if
@@ -49,7 +50,7 @@ public class EOS_Lobby_JoinLobbyByIdOptions extends Structure {
 	 * This value indicates whether or not the local user allows crossplay interactions. If it is false, the local user
 	 * will be treated as allowing crossplay.
 	 */
-	public int bCrossplayOptOut;
+	public EOS_Bool IsCrossplayOptOut;
 
 	public EOS_Lobby_JoinLobbyByIdOptions() {
 		super();

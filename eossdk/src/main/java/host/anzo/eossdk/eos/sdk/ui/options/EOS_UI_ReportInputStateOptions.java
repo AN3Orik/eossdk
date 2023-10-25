@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.ui.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.ui.enums.EOS_UI_EInputStateButtonFlags;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -12,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 9/9/2023
  */
-@FieldOrder({"ApiVersion", "ButtonDownFlags", "bAcceptIsFaceButtonRight", "bMouseButtonDown", "MousePosX", "MousePosY", "GamepadIndex", "LeftStickX", "LeftStickY", "RightStickX", "RightStickY", "LeftTrigger", "RightTrigger"})
+@FieldOrder({"ApiVersion", "ButtonDownFlags", "IsAcceptIsFaceButtonRight", "IsMouseButtonDown", "MousePosX", "MousePosY", "GamepadIndex", "LeftStickX", "LeftStickY", "RightStickX", "RightStickY", "LeftTrigger", "RightTrigger"})
 public class EOS_UI_ReportInputStateOptions extends Structure {
 	/** The most recent version of the EOS_UI_ReportInputState API. */
 	public static final int EOS_UI_REPORTINPUTSTATE_API_LATEST = 2;
@@ -29,9 +30,9 @@ public class EOS_UI_ReportInputStateOptions extends Structure {
 	 * When this flag is true, the right face button is the accept action, and the down face button is the cancel action.
 	 * When this flag is false, the right face button is the cancel action, and the down face button is the accept action.
 	 */
-	public int bAcceptIsFaceButtonRight;
+	public EOS_Bool IsAcceptIsFaceButtonRight;
 	/** The current state of the mouse button. */
-	public int bMouseButtonDown;
+	public EOS_Bool IsMouseButtonDown;
 	/** The current x-position of the mouse. */
 	public int MousePosX;
 	/** The current y-position of the mouse. */

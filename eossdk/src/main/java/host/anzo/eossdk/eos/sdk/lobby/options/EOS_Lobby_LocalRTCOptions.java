@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.lobby.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -11,7 +12,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/17/2023
  */
-@FieldOrder({"ApiVersion", "Flags", "bUseManualAudioInput", "bUseManualAudioOutput", "bLocalAudioDeviceInputStartsMuted"})
+@FieldOrder({"ApiVersion", "Flags", "IsUseManualAudioInput", "IsUseManualAudioOutput", "IsLocalAudioDeviceInputStartsMuted"})
 public class EOS_Lobby_LocalRTCOptions extends Structure {
 	public static final int EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST = 1;
 
@@ -23,20 +24,20 @@ public class EOS_Lobby_LocalRTCOptions extends Structure {
 	 * Set to EOS_TRUE to enable Manual Audio Input. If manual audio input is enabled, audio recording is not started and the audio buffers
 	 * must be passed manually using EOS_RTCAudio_SendAudio. The default is EOS_FALSE if this struct is not specified.
 	 */
-	public int bUseManualAudioInput;
+	public EOS_Bool IsUseManualAudioInput;
 	/**
 	 * Set to EOS_TRUE to enable Manual Audio Output. If manual audio output is enabled, audio rendering is not started and the audio buffers
 	 * must be received with EOS_RTCAudio_AddNotifyAudioBeforeRender and rendered manually. The default is EOS_FALSE if this struct is not
 	 * specified.
 	 */
-	public int bUseManualAudioOutput;
+	public EOS_Bool IsUseManualAudioOutput;
 	/**
 	 * Set to EOS_TRUE to start the audio input device's stream as muted when first connecting to the RTC room.
 	 * <p>
 	 * It must be manually unmuted with a call to EOS_RTCAudio_UpdateSending. If manual audio output is enabled, this value is ignored.
 	 * The default value is EOS_FALSE if this struct is not specified.
 	 */
-	public int bLocalAudioDeviceInputStartsMuted;
+	public EOS_Bool IsLocalAudioDeviceInputStartsMuted;
 
 	public EOS_Lobby_LocalRTCOptions() {
 		super();

@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.lobby;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -11,7 +12,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/16/2023
  */
-@FieldOrder({"ApiVersion", "LobbyId", "LobbyOwnerUserId", "PermissionLevel", "AvailableSlots", "MaxMembers", "bAllowInvites", "BucketId", "bAllowHostMigration", "bRTCRoomEnabled", "bAllowJoinById", "bRejoinAfterKickRequiresInvite"})
+@FieldOrder({"ApiVersion", "LobbyId", "LobbyOwnerUserId", "PermissionLevel", "AvailableSlots", "MaxMembers", "IsAllowInvites", "BucketId", "IsAllowHostMigration", "IsRTCRoomEnabled", "IsAllowJoinById", "IsRejoinAfterKickRequiresInvite"})
 public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
 	public static final int EOS_LOBBYDETAILS_INFO_API_LATEST = 2;
 
@@ -28,17 +29,17 @@ public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
 	/** Max allowed members in the lobby */
 	public int MaxMembers;
 	/** If true, users can invite others to this lobby */
-	public int bAllowInvites;
+	public EOS_Bool IsAllowInvites;
 	/** The main indexed parameter for this lobby, can be any string (i.e. "Region:GameMode") */
 	public String BucketId;
 	/** Is host migration allowed */
-	public int bAllowHostMigration;
+	public EOS_Bool IsAllowHostMigration;
 	/** Was a Real-Time Communication (RTC) room enabled at lobby creation? */
-	public int bRTCRoomEnabled;
+	public EOS_Bool IsRTCRoomEnabled;
 	/** Is EOS_Lobby_JoinLobbyById allowed */
-	public int bAllowJoinById;
+	public EOS_Bool IsAllowJoinById;
 	/** Does rejoining after being kicked require an invite */
-	public int bRejoinAfterKickRequiresInvite;
+	public EOS_Bool IsRejoinAfterKickRequiresInvite;
 
 	public EOS_LobbyDetails_Info() {
 		super();

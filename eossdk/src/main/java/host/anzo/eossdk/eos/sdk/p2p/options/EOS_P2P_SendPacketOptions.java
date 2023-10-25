@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.p2p.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.p2p.EOS_P2P_SocketId;
 import host.anzo.eossdk.eos.sdk.p2p.enums.EOS_EPacketReliability;
@@ -14,7 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/21/2023
  */
-@FieldOrder({"ApiVersion", "LocalUserId", "RemoteUserId", "SocketId", "Channel", "DataLengthBytes", "Data", "bAllowDelayedDelivery", "Reliability", "bDisableAutoAcceptConnection"})
+@FieldOrder({"ApiVersion", "LocalUserId", "RemoteUserId", "SocketId", "Channel", "DataLengthBytes", "Data", "IsAllowDelayedDelivery", "Reliability", "IsDisableAutoAcceptConnection"})
 public class EOS_P2P_SendPacketOptions extends Structure {
 	public static final int EOS_P2P_SENDPACKET_API_LATEST = 3;
 
@@ -33,7 +34,7 @@ public class EOS_P2P_SendPacketOptions extends Structure {
 	/** The data to be sent to the RemoteUser */
 	public Pointer Data;
 	/** If false and we do not already have an established connection to the peer, this data will be dropped */
-	public int bAllowDelayedDelivery;
+	public EOS_Bool IsAllowDelayedDelivery;
 	/**
 	 * Setting to control the delivery reliability of this packet
 	 */
@@ -43,7 +44,7 @@ public class EOS_P2P_SendPacketOptions extends Structure {
 	 * EOS_P2P_AcceptConnection first whenever the connection is closed. If set to EOS_FALSE, EOS_P2P_SendPacket will automatically accept and start
 	 * the connection any time it is called and the connection is not already open.
 	 */
-	public int bDisableAutoAcceptConnection;
+	public EOS_Bool IsDisableAutoAcceptConnection;
 
 	public EOS_P2P_SendPacketOptions() {
 		super();

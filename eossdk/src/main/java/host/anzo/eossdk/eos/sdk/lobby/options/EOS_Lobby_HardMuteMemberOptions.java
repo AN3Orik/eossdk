@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.lobby.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -12,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/18/2023
  */
-@FieldOrder({"ApiVersion", "LobbyId", "LocalUserId", "TargetUserId", "bHardMute"})
+@FieldOrder({"ApiVersion", "LobbyId", "LocalUserId", "TargetUserId", "IsHardMute"})
 public class EOS_Lobby_HardMuteMemberOptions extends Structure {
 	public static final int EOS_LOBBY_HARDMUTEMEMBER_API_LATEST = 1;
 
@@ -25,7 +26,7 @@ public class EOS_Lobby_HardMuteMemberOptions extends Structure {
 	/** The Product User ID of the lobby member to hard mute */
 	public EOS_ProductUserId TargetUserId;
 	/** TargetUserId hard mute status (mute on or off) */
-	public int bHardMute;
+	public EOS_Bool IsHardMute;
 
 	public EOS_Lobby_HardMuteMemberOptions() {
 		super();
