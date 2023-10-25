@@ -55,13 +55,13 @@ Please note that the library version corresponds to the compatible EOS SDK versi
 // Gradle
 dependencies {
     // EOS SDK wrapper library
-    implementation "host.anzo:eossdk:1.16.1.0"
+    implementation "host.anzo:eossdk:1.16.1.+"
     // Windows native library
-    implementation "host.anzo:eossdk-native-windows:1.16.1.0"
+    implementation "host.anzo:eossdk-native-windows:1.16.1.+"
     // Linux native library
-    implementation "host.anzo:eossdk-native-linux:1.16.1.0"
+    implementation "host.anzo:eossdk-native-linux:1.16.1.+"
     // iOS native library
-    implementation "host.anzo:eossdk-native-ios:1.16.1.0"
+    implementation "host.anzo:eossdk-native-ios:1.16.1.+"
 }
 ```
 
