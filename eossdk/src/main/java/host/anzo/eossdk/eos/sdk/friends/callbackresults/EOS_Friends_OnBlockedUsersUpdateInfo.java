@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.friends.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -12,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/20/2023
  */
-@FieldOrder({"ClientData", "LocalUserId", "TargetUserId", "bBlocked"})
+@FieldOrder({"ClientData", "LocalUserId", "TargetUserId", "IsBlocked"})
 public class EOS_Friends_OnBlockedUsersUpdateInfo extends Structure {
 	/** Client-specified data passed into EOS_Friends_AddNotifyBlockedUsersUpdate */
 	public Pointer ClientData;
@@ -21,7 +22,7 @@ public class EOS_Friends_OnBlockedUsersUpdateInfo extends Structure {
 	/** The Epic Account ID of the user whose blocked status is being updated. */
 	public EOS_EpicAccountId TargetUserId;
 	/** TargetUserId block status (blocked or not). */
-	public int bBlocked;
+	public EOS_Bool IsBlocked;
 
 	public EOS_Friends_OnBlockedUsersUpdateInfo() {
 		super();

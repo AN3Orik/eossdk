@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Friends_AddNotifyBlockedUsersUpdateOptions extends Structure {
+	/** The most recent version of the EOS_Friends_AddNotifyBlockedUsersUpdate API. */
 	public static final int EOS_FRIENDS_ADDNOTIFYBLOCKEDUSERSUPDATE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_FRIENDS_ADDNOTIFYBLOCKEDUSERSUPDATE_API_LATEST. */

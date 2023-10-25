@@ -17,11 +17,11 @@ So, let me know via issues if you encounter any problems.
 + Achivements
 + AntiCheatClient
 + AntiCheatServer
-# Auth
-# Connect
++ Auth
++ Connect
 # CustomInvites
 # Ecom
-# Friends
++ Friends
 # IntegratedPlatform
 # KWS
 # Leaderboards
@@ -33,7 +33,7 @@ So, let me know via issues if you encounter any problems.
 + Platform
 # PlayerDataStorage
 # Presence
-# ProgressionSnapshot
++ ProgressionSnapshot
 + Reports
 + Sanctions
 # Sessions

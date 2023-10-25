@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "TargetUserId"})
 public class EOS_Friends_GetStatusOptions extends Structure {
+	/** The most recent version of the EOS_Friends_GetStatus API. */
 	public static final int EOS_FRIENDS_GETSTATUS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_FRIENDS_GETSTATUS_API_LATEST. */

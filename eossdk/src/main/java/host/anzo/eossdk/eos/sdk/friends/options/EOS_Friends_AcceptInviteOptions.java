@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "TargetUserId"})
 public class EOS_Friends_AcceptInviteOptions extends Structure {
+	/** The most recent version of the EOS_Friends_AcceptInvite API. */
 	public static final int EOS_FRIENDS_ACCEPTINVITE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_FRIENDS_ACCEPTINVITE_API_LATEST. */

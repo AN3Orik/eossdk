@@ -123,7 +123,7 @@ public class EOS_Friends_Interface extends PointerType {
 	 * @param options Information about who would like notifications.
 	 * @param clientData This value is returned to the caller when FriendsUpdateHandler is invoked.
 	 * @param friendsUpdateHandler The callback to be invoked when a change to any friend status changes.
-	 * @return A valid notification ID if successfully bound, or EOS_INVALID_NOTIFICATIONID otherwise
+	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
 	public EOS_NotificationId addNotifyFriendsUpdate(EOS_Friends_AddNotifyFriendsUpdateOptions options,
 	                                                             Pointer clientData,

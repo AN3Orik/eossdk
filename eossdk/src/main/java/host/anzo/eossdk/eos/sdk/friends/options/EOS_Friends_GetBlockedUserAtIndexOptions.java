@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "Index"})
 public class EOS_Friends_GetBlockedUserAtIndexOptions extends Structure {
+	/** The most recent version of the EOS_Friends_GetBlockedUserAtIndex API. */
 	public static final int EOS_FRIENDS_GETBLOCKEDUSERATINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_FRIENDS_GETBLOCKEDUSERATINDEX_API_LATEST. */

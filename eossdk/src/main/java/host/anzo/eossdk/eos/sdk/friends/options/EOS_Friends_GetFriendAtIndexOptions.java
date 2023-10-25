@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "Index"})
 public class EOS_Friends_GetFriendAtIndexOptions extends Structure {
+	/** The most recent version of the EOS_Friends_GetFriendAtIndex API. */
 	public static final int EOS_FRIENDS_GETFRIENDATINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_FRIENDS_GETFRIENDATINDEX_API_LATEST. */
