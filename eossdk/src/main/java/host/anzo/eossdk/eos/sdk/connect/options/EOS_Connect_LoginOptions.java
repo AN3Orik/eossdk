@@ -21,6 +21,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Credentials", "UserLoginInfo"})
 public class EOS_Connect_LoginOptions extends Structure {
+	/** The most recent version of the EOS_Connect_Login API. */
 	public static int EOS_CONNECT_LOGIN_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_CONNECT_LOGIN_API_LATEST. */

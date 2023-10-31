@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "NamespaceId", "ItemId", "ArtifactId", "Title", "Version"})
 public class EOS_Mod_Identifier extends Structure {
+	/** The most recent version of the EOS_Mod_Identifier struct. */
 	public static int EOS_MOD_IDENTIFIER_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_MOD_IDENTIFIER_API_LATEST. */
@@ -27,6 +28,7 @@ public class EOS_Mod_Identifier extends Structure {
 	public String Title;
 	/** Represent mod item version. */
 	public String Version;
+
 	public EOS_Mod_Identifier() {
 		super();
 		ApiVersion = EOS_MOD_IDENTIFIER_API_LATEST;

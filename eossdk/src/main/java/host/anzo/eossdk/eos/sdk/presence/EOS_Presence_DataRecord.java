@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Key", "Value"})
 public class EOS_Presence_DataRecord extends Structure {
+	/** The most recent version of the EOS_Presence_DataRecord API. */
 	public static final int EOS_PRESENCE_DATARECORD_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PRESENCE_DATARECORD_API_LATEST. */

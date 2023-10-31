@@ -15,11 +15,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "CatalogItemIds", "CatalogItemIdCount", "CatalogNamespace"})
 public class EOS_Ecom_QueryOwnershipTokenOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_QueryOwnershipToken API. */
 	public static final int EOS_ECOM_QUERYOWNERSHIPTOKEN_API_LATEST = 2;
 
-	/**
-	 * The maximum number of catalog items that may be queried in a single pass
-	 */
+	/** The maximum number of catalog items that may be queried in a single pass */
 	public static final int EOS_ECOM_QUERYOWNERSHIPTOKEN_MAX_CATALOGITEM_IDS = 32;
 
 	/** API Version: Set this to EOS_ECOM_QUERYOWNERSHIPTOKEN_API_LATEST. */

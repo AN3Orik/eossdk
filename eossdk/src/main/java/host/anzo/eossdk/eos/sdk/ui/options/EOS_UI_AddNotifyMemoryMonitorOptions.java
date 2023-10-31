@@ -6,6 +6,8 @@ import com.sun.jna.Structure;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_UI_AddNotifyMemoryMonitor function.
+ *
  * @author Anton Lasevich
  * @since 9/9/2023
  */

@@ -27,6 +27,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "ProductUserId", "DisplayName", "AccountId", "AccountIdType", "LastLoginTime"})
 public class EOS_Connect_ExternalAccountInfo extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Connect_CopyProductUserExternalAccountByAccountId API. */
 	public static int EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST. */

@@ -40,7 +40,7 @@ public class EOS_AntiCheatClient_RegisterPeerOptions extends Structure {
 	 */
 	public int AuthenticationTimeout;
 	/** Deprecated - use PeerProductUserId instead */
-	public Pointer AccountId_DEPRECATED;
+	public String AccountId_DEPRECATED;
 	/**
 	 * Optional IP address for the remote user. May be null if not available.
 	 * IPv4 format: "0.0.0.0"

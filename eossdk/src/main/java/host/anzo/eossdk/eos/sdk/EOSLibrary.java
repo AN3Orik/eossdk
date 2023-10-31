@@ -70,7 +70,7 @@ import host.anzo.eossdk.eos.sdk.mods.callbacks.EOS_Mods_OnUpdateModCallback;
 import host.anzo.eossdk.eos.sdk.mods.options.*;
 import host.anzo.eossdk.eos.sdk.p2p.EOS_P2P_PacketQueueInfo;
 import host.anzo.eossdk.eos.sdk.p2p.EOS_P2P_SocketId;
-import host.anzo.eossdk.eos.sdk.p2p.callbackresults.EOS_P2P_AddNotifyIncomingPacketQueueFullOptions;
+import host.anzo.eossdk.eos.sdk.p2p.options.EOS_P2P_AddNotifyIncomingPacketQueueFullOptions;
 import host.anzo.eossdk.eos.sdk.p2p.callbacks.*;
 import host.anzo.eossdk.eos.sdk.p2p.options.*;
 import host.anzo.eossdk.eos.sdk.platform.EOS_Platform_DesktopCrossplayStatusInfo;
@@ -342,7 +342,7 @@ public interface EOSLibrary extends Library {
 	                                               ByteBuffer outBuffer,
 	                                               IntByReference outBytesWritten);
 	EOS_EResult EOS_AntiCheatClient_UnprotectMessage(EOS_AntiCheatClient_Interface handle,
-	                                                 EOS_AntiCheatClient_UnprotectMessageOptions options,
+	                                                 EOS_AntiCheatClient_UnprotectMessageOptions.ByReference options,
 	                                                 ByteBuffer outBuffer,
 	                                                 IntByReference outBytesWritten);
 	EOS_EResult EOS_AntiCheatClient_RegisterPeer(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_RegisterPeerOptions options);

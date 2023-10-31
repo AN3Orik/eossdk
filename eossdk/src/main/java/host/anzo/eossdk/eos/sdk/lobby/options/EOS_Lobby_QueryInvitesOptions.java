@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId"})
 public class EOS_Lobby_QueryInvitesOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_QueryInvites API. */
 	public static final int EOS_LOBBY_QUERYINVITES_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_QUERYINVITES_API_LATEST. */

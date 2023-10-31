@@ -19,6 +19,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LeaderboardId", "StatName", "Aggregation", "StartTime", "EndTime"})
 public class EOS_Leaderboards_Definition extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Leaderboards_Definition struct. */
 	public static final int EOS_LEADERBOARDS_DEFINITION_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_DEFINITION_API_LATEST. */

@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId"})
 public class EOS_PlayerDataStorage_GetFileMetadataCountOptions extends Structure {
+	/** The most recent version of the EOS_PlayerDataStorage_GetFileMetadataCount API. */
 	public static final int EOS_PLAYERDATASTORAGE_GETFILEMETADATACOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PLAYERDATASTORAGE_GETFILEMETADATACOUNT_API_LATEST. */

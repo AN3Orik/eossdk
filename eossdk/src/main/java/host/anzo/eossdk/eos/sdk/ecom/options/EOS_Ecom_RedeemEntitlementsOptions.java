@@ -15,16 +15,13 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "EntitlementIdCount", "EntitlementIds"})
 public class EOS_Ecom_RedeemEntitlementsOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_RedeemEntitlements API. */
 	public static final int EOS_ECOM_REDEEMENTITLEMENTS_API_LATEST = 2;
 
-	/**
-	 * The maximum number of entitlement IDs that may be redeemed in a single pass
-	 */
+	/** The maximum number of entitlement IDs that may be redeemed in a single pass */
 	public static final int EOS_ECOM_REDEEMENTITLEMENTS_MAX_IDS = 32;
 
-	/**
-	 * The maximum length of an entitlement ID
-	 */
+	/** The maximum length of an entitlement ID */
 	public static final int EOS_ECOM_ENTITLEMENTID_MAX_LENGTH = 32;
 
 	/** API Version: Set this to EOS_ECOM_REDEEMENTITLEMENTS_API_LATEST. */

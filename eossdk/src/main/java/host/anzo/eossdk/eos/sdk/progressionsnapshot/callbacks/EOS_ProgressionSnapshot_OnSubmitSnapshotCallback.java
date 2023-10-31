@@ -8,5 +8,5 @@ import host.anzo.eossdk.eos.sdk.progressionsnapshot.callbackresults.EOS_Progress
  * @since 8/22/2023
  */
 public interface EOS_ProgressionSnapshot_OnSubmitSnapshotCallback extends Callback {
-	void apply(EOS_ProgressionSnapshot_SubmitSnapshotCallbackInfo Data);
+	void apply(EOS_ProgressionSnapshot_SubmitSnapshotCallbackInfo data);
 }

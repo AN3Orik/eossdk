@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LobbyId_DEPRECATED", "LocalUserId_DEPRECATED"})
 public class EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_AddNotifyRTCRoomConnectionChanged API. */
 	public static final int EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST. */

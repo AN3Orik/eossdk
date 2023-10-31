@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Port", "MaxAdditionalPortsToTry"})
 public class EOS_P2P_SetPortRangeOptions extends Structure {
+	/** The most recent version of the EOS_P2P_SetPortRange API. */
 	public static final int EOS_P2P_SETPORTRANGE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_P2P_SETPORTRANGE_API_LATEST. */

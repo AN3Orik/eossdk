@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Presence_AddNotifyOnPresenceChangedOptions extends Structure {
+	/** The most recent version of the EOS_Presence_AddNotifyOnPresenceChanged API. */
 	public static final int EOS_PRESENCE_ADDNOTIFYONPRESENCECHANGED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PRESENCE_ADDNOTIFYONPRESENCECHANGED_API_LATEST. */

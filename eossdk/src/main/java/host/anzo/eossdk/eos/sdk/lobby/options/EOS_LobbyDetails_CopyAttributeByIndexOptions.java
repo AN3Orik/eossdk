@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "AttrIndex"})
 public class EOS_LobbyDetails_CopyAttributeByIndexOptions extends Structure {
+	/** The most recent version of the EOS_LobbyDetails_CopyAttributeByIndex API. */
 	public static final int EOS_LOBBYDETAILS_COPYATTRIBUTEBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBYDETAILS_COPYATTRIBUTEBYINDEX_API_LATEST. */

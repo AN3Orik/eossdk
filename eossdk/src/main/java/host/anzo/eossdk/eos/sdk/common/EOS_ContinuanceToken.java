@@ -19,6 +19,8 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import java.nio.ByteBuffer;
 
 /**
+ * A handle to a continuance token
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */

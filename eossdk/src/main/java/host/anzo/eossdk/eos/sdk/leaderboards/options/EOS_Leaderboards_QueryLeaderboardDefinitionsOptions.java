@@ -24,9 +24,9 @@ public class EOS_Leaderboards_QueryLeaderboardDefinitionsOptions extends Structu
 
 	/** API Version: Set this to EOS_LEADERBOARDS_QUERYLEADERBOARDDEFINITIONS_API_LATEST. */
 	public int ApiVersion;
-	/** An optional POSIX timestamp for the leaderboard's start time, or {@link EOS_Leaderboards_QueryLeaderboardDefinitionsOptions#EOS_LEADERBOARDS_TIME_UNDEFINED} */
+	/** An optional POSIX timestamp for the leaderboard's start time, or {@link #EOS_LEADERBOARDS_TIME_UNDEFINED} */
 	public long StartTime;
-	/** An optional POSIX timestamp for the leaderboard's end time, or {@link EOS_Leaderboards_QueryLeaderboardDefinitionsOptions#EOS_LEADERBOARDS_TIME_UNDEFINED} */
+	/** An optional POSIX timestamp for the leaderboard's end time, or {@link #EOS_LEADERBOARDS_TIME_UNDEFINED} */
 	public long EndTime;
 	/**
 	 * Product User ID for user who is querying definitions.

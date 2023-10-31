@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "SocketId"})
 public class EOS_P2P_AddNotifyPeerConnectionInterruptedOptions extends Structure {
+	/** The most recent version of the EOS_P2P_AddNotifyPeerConnectionInterrupted API. */
 	public static final int EOS_P2P_ADDNOTIFYPEERCONNECTIONINTERRUPTED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_P2P_ADDNOTIFYPEERCONNECTIONINTERRUPTED_API_LATEST. */

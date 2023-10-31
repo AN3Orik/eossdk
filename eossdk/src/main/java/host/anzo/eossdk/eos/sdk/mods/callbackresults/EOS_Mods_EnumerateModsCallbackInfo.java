@@ -8,6 +8,8 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the EOS_Mods_EnumerateMods Function. These parameters are received through the callback provided to EOS_Mods_EnumerateMods
+ *
  * @author Anton Lasevich
  * @since 8/15/2023
  */

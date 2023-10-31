@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "RedeemedEntitlementIndex"})
 public class EOS_Ecom_CopyLastRedeemedEntitlementByIndexOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_CopyLastRedeemedEntitlementByIndex API. */
 	public static final int EOS_ECOM_COPYLASTREDEEMEDENTITLEMENTBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_COPYLASTREDEEMEDENTITLEMENTBYINDEX_API_LATEST. */

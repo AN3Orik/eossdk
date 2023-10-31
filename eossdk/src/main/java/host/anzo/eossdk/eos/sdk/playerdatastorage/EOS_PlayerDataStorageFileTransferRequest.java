@@ -9,6 +9,8 @@ import host.anzo.eossdk.eos.sdk.EOS_PlayerDataStorage_Interface;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
 /**
+ * Handle type to a File Request
+ *
  * @author Anton Lasevich
  * @since 8/22/2023
  */

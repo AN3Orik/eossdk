@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "RichText"})
 public class EOS_PresenceModification_SetRawRichTextOptions extends Structure {
+	/** The most recent version of the EOS_PresenceModification_SetRawRichText function. */
 	public static final int EOS_PRESENCEMODIFICATION_SETRAWRICHTEXT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PRESENCEMODIFICATION_SETRAWRICHTEXT_API_LATEST. */

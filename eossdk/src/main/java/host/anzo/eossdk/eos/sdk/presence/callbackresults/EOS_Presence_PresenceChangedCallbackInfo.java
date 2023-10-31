@@ -7,16 +7,18 @@ import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Data containing which users presence has changed
+ *
  * @author Anton Lasevich
  * @since 8/22/2023
  */
 @FieldOrder({"ClientData", "LocalUserId", "PresenceUserId"})
 public class EOS_Presence_PresenceChangedCallbackInfo extends Structure {
-	/** C type : void* */
+	/** Client-specified data passed into EOS_Presence_AddNotifyOnPresenceChanged */
 	public Pointer ClientData;
-	/** C type : EOS_EpicAccountId */
+	/** The Epic Account ID of the local user who is being informed for PresenceUserId's presence change */
 	public EOS_EpicAccountId LocalUserId;
-	/** C type : EOS_EpicAccountId */
+	/** The Epic Account ID of the user who had their presence changed */
 	public EOS_EpicAccountId PresenceUserId;
 
 	public EOS_Presence_PresenceChangedCallbackInfo() {

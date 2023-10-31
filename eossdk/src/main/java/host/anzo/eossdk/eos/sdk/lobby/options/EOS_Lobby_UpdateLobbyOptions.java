@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LobbyModificationHandle"})
 public class EOS_Lobby_UpdateLobbyOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_UpdateLobby API. */
 	public static final int EOS_LOBBY_UPDATELOBBY_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_UPDATELOBBY_API_LATEST. */

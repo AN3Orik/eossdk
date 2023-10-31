@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "UserIds", "UserIdsCount", "StatInfo", "StatInfoCount", "StartTime", "EndTime", "LocalUserId"})
 public class EOS_Leaderboards_QueryLeaderboardUserScoresOptions extends Structure {
+	/** The most recent version of the EOS_Leaderboards_QueryLeaderboardUserScores struct. */
 	public static final int EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST. */

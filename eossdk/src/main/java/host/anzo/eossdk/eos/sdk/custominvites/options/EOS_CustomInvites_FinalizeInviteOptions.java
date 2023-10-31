@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "TargetUserId", "LocalUserId", "CustomInviteId", "ProcessingResult"})
 public class EOS_CustomInvites_FinalizeInviteOptions extends Structure {
+	/** The most recent version of the EOS_CustomInvites_FinalizeInvite API. */
 	public final static int EOS_CUSTOMINVITES_FINALIZEINVITE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CUSTOMINVITES_FINALIZEINVITE_API_LATEST. */
@@ -22,7 +23,7 @@ public class EOS_CustomInvites_FinalizeInviteOptions extends Structure {
 	/** Recipient Local user id */
 	public EOS_ProductUserId LocalUserId;
 	/** Id of the Custom Invite accepted */
-	public Pointer CustomInviteId;
+	public String CustomInviteId;
 	/** Result of the Processing operation, transmitted to Social Overlay if applicable */
 	public EOS_EResult ProcessingResult;
 

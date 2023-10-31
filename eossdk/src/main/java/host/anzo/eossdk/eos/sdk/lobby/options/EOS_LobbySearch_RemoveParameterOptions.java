@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.lobby.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_EComparisonOp;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -13,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Key", "ComparisonOp"})
 public class EOS_LobbySearch_RemoveParameterOptions extends Structure {
+	/** The most recent version of the EOS_LobbySearch_RemoveParameter API. */
 	public static final int EOS_LOBBYSEARCH_REMOVEPARAMETER_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBYSEARCH_REMOVEPARAMETER_API_LATEST. */
@@ -20,7 +22,7 @@ public class EOS_LobbySearch_RemoveParameterOptions extends Structure {
 	/** Search parameter key to remove from the search */
 	public String Key;
 	/** Search comparison operation associated with the key to remove */
-	public int ComparisonOp;
+	public EOS_EComparisonOp ComparisonOp;
 
 	public EOS_LobbySearch_RemoveParameterOptions() {
 		super();

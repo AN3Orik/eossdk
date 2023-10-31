@@ -16,6 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_PlayerDataStorage_FileMetadata extends Structure implements AutoCloseable {
 	/** Timestamp value representing an undefined time for Player Data Storage. */
 	public static final int EOS_PLAYERDATASTORAGE_TIME_UNDEFINED = -1;
+	/** The most recent version of the EOS_PlayerDataStorage_FileMetadata API. */
 	public static final int EOS_PLAYERDATASTORAGE_FILEMETADATA_API_LATEST = 3;
 
 	/** API Version: Set this to EOS_PLAYERDATASTORAGE_FILEMETADATA_API_LATEST. */

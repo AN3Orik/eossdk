@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Type", "Flags", "InitOptions"})
 public class EOS_IntegratedPlatform_Options extends Structure {
+	/** The most recent version of the EOS_IntegratedPlatform_Options API. */
 	public static final int EOS_INTEGRATEDPLATFORM_OPTIONS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_OPTIONS_API_LATEST. */

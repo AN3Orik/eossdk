@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "Type"})
 public class EOS_Mods_CopyModInfoOptions extends Structure {
+	/** The most recent version of the EOS_Mods_CopyModInfoOptions API. */
 	public static final int EOS_MODS_COPYMODINFO_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_MODS_COPYMODINFO_API_LATEST. */

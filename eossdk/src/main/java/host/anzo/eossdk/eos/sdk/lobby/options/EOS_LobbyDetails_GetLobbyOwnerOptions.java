@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_LobbyDetails_GetLobbyOwnerOptions extends Structure {
+	/** The most recent version of the EOS_LobbyDetails_GetLobbyOwner API. */
 	public static final int EOS_LOBBYDETAILS_GETLOBBYOWNER_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBYDETAILS_GETLOBBYOWNER_API_LATEST. */

@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "TargetUserId"})
 public class EOS_Presence_GetJoinInfoOptions extends Structure {
+	/** The most recent version of the EOS_Presence_GetJoinInfo API. */
 	public static int EOS_PRESENCE_GETJOININFO_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PRESENCE_GETJOININFO_API_LATEST. */

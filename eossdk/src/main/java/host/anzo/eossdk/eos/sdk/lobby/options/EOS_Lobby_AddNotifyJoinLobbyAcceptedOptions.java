@@ -11,6 +11,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Lobby_AddNotifyJoinLobbyAcceptedOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_AddNotifyJoinLobbyAccepted API. */
 	public static final int EOS_LOBBY_ADDNOTIFYJOINLOBBYACCEPTED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_ADDNOTIFYJOINLOBBYACCEPTED_API_LATEST. */

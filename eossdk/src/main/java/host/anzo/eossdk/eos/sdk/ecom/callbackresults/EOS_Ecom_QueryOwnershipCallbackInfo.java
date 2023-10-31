@@ -9,19 +9,22 @@ import host.anzo.eossdk.eos.sdk.ecom.EOS_Ecom_ItemOwnership;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the EOS_Ecom_QueryOwnership Function.
+ *
  * @author Anton Lasevich
  * @since 8/20/2023
  */
 @FieldOrder({"ResultCode", "ClientData", "LocalUserId", "ItemOwnership", "ItemOwnershipCount"})
 public class EOS_Ecom_QueryOwnershipCallbackInfo extends Structure {
-	/** C type : EOS_EResult */
+	/** The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors. */
 	public EOS_EResult ResultCode;
-	/** C type : void* */
+	/** Context that was passed into EOS_Ecom_QueryOwnership */
 	public Pointer ClientData;
-	/** C type : EOS_EpicAccountId */
+	/** The Epic Account ID of the local user whose ownership was queried */
 	public EOS_EpicAccountId LocalUserId;
-	/** C type : const EOS_Ecom_ItemOwnership* */
-	public EOS_Ecom_ItemOwnership.ByReference ItemOwnership;
+	/** List of catalog items and their ownership status */
+	public EOS_Ecom_ItemOwnership[] ItemOwnership;
+	/** Number of ownership results are included in this callback */
 	public int ItemOwnershipCount;
 
 	public EOS_Ecom_QueryOwnershipCallbackInfo() {

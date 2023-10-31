@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "ItemId"})
 public class EOS_Ecom_GetItemReleaseCountOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_GetItemReleaseCount API. */
 	public static final int EOS_ECOM_GETITEMRELEASECOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_GETITEMRELEASECOUNT_API_LATEST. */
@@ -21,7 +22,7 @@ public class EOS_Ecom_GetItemReleaseCountOptions extends Structure {
 	/** The Epic Account ID of the local user whose item release is being accessed */
 	public EOS_EpicAccountId LocalUserId;
 	/** The ID of the item to get the releases for. */
-	public Pointer ItemId;
+	public String ItemId;
 
 	public EOS_Ecom_GetItemReleaseCountOptions() {
 		super();

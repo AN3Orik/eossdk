@@ -8,5 +8,9 @@ import host.anzo.eossdk.eos.sdk.mods.callbackresults.EOS_Mods_InstallModCallback
  * @since 8/15/2023
  */
 public interface EOS_Mods_OnInstallModCallback extends Callback {
-	void apply(EOS_Mods_InstallModCallbackInfo Data);
+	/**
+	 * Function prototype definition for callbacks passed to EOS_Mods_InstallMod
+	 * @param data A EOS_Mods_InstallModCallbackInfo containing the output information and result
+	 */
+	void apply(EOS_Mods_InstallModCallbackInfo data);
 }

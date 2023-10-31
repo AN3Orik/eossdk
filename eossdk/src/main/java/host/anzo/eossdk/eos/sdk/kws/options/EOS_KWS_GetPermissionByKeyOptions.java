@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "Key"})
 public class EOS_KWS_GetPermissionByKeyOptions extends Structure {
+	/** The most recent version of the EOS_KWS_CreateUser API. */
 	public static final int EOS_KWS_GETPERMISSIONBYKEY_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_KWS_GETPERMISSIONBYKEY_API_LATEST. */

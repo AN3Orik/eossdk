@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "EntitlementName"})
 public class EOS_Ecom_GetEntitlementsByNameCountOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_GetEntitlementsByNameCount API. */
 	public static final int EOS_ECOM_GETENTITLEMENTSBYNAMECOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_GETENTITLEMENTSBYNAMECOUNT_API_LATEST. */

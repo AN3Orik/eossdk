@@ -17,6 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LeaderboardId", "LocalUserId"})
 public class EOS_Leaderboards_QueryLeaderboardRanksOptions extends Structure {
+	/** The most recent version of the EOS_Leaderboards_QueryLeaderboardRanks struct. */
 	public static final int EOS_LEADERBOARDS_QUERYLEADERBOARDRANKS_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_QUERYLEADERBOARDRANKS_API_LATEST. */

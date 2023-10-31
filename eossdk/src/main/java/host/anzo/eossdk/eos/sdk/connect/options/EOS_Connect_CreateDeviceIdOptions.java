@@ -22,6 +22,7 @@ public class EOS_Connect_CreateDeviceIdOptions extends Structure {
 	/** Max length of a device model name, not including the terminating null */
 	public static int EOS_CONNECT_CREATEDEVICEID_DEVICEMODEL_MAX_LENGTH = 64;
 
+	/** The most recent version of the EOS_Connect_CreateDeviceId API. */
 	public static int EOS_CONNECT_CREATEDEVICEID_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_CREATEDEVICEID_API_LATEST. */

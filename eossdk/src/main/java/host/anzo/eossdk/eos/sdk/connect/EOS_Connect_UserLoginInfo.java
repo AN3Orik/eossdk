@@ -22,6 +22,7 @@ public class EOS_Connect_UserLoginInfo extends Structure {
 	/** Max length of a display name, not including the terminating null. */
 	public static int EOS_CONNECT_USERLOGININFO_DISPLAYNAME_MAX_LENGTH = 32;
 
+	/** The most recent version of the EOS_Connect_UserLoginInfo struct. */
 	public static int EOS_CONNECT_USERLOGININFO_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_CONNECT_USERLOGININFO_API_LATEST. */

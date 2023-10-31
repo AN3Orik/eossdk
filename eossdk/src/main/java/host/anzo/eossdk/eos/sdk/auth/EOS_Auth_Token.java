@@ -26,6 +26,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "App", "ClientId", "AccountId", "AccessToken", "ExpiresIn", "ExpiresAt", "AuthType", "RefreshToken", "RefreshExpiresIn", "RefreshExpiresAt"})
 public class EOS_Auth_Token extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Auth_Token struct. */
 	public static int EOS_AUTH_TOKEN_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_ANTICHEATCOMMON_LOGPLAYERTICK_API_LATEST. */

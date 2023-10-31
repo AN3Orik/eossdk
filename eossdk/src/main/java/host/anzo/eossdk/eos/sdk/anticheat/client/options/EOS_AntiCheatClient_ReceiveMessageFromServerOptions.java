@@ -1,7 +1,10 @@
 package host.anzo.eossdk.eos.sdk.anticheat.client.options;
 
+import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
+import org.jetbrains.annotations.NotNull;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -23,6 +26,16 @@ public class EOS_AntiCheatClient_ReceiveMessageFromServerOptions extends Structu
 	public EOS_AntiCheatClient_ReceiveMessageFromServerOptions() {
 		super();
 		ApiVersion = EOS_ANTICHEATCLIENT_RECEIVEMESSAGEFROMSERVER_API_LATEST;
+	}
+
+	/**
+	 * @param data The data received
+	 */
+	public EOS_AntiCheatClient_ReceiveMessageFromServerOptions(byte @NotNull [] data) {
+		this();
+		Data = new Memory(data.length);
+		Data.write(0, data, 0, data.length);
+		DataLengthBytes = data.length;
 	}
 
 	public EOS_AntiCheatClient_ReceiveMessageFromServerOptions(Pointer peer) {

@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_IntegratedPlatform_AddNotifyUserLoginStatusChangedOptions extends Structure {
+	/** The most recent version of the EOS_IntegratedPlatform_AddNotifyUserLoginStatusChanged API. */
 	public static final int EOS_INTEGRATEDPLATFORM_ADDNOTIFYUSERLOGINSTATUSCHANGED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_ADDNOTIFYUSERLOGINSTATUSCHANGED_API_LATEST. */

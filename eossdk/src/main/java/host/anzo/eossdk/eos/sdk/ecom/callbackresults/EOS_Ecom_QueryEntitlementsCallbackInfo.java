@@ -9,6 +9,7 @@ import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * Output parameters for the EOS_Ecom_QueryEntitlements Function.
+ *
  * @author Anton Lasevich
  * @since 8/20/2023
  */

@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "TargetUserId"})
 public class EOS_Presence_HasPresenceOptions extends Structure {
+	/** The most recent version of the EOS_Presence_HasPresence API. */
 	public static final int EOS_PRESENCE_HASPRESENCE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PRESENCE_HASPRESENCE_API_LATEST. */

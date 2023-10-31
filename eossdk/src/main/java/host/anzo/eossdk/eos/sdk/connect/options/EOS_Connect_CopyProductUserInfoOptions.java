@@ -20,6 +20,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "TargetUserId"})
 public class EOS_Connect_CopyProductUserInfoOptions extends Structure {
+	/** The most recent version of the EOS_Connect_CopyProductUserExternalAccountByAccountId API. */
 	public static int EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST. */

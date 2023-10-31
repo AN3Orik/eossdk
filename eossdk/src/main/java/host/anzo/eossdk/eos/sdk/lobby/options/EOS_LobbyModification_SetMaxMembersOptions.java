@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "MaxMembers"})
 public class EOS_LobbyModification_SetMaxMembersOptions extends Structure {
+	/** The most recent version of the EOS_LobbyModification_SetMaxMembers API. */
 	public static final int EOS_LOBBYMODIFICATION_SETMAXMEMBERS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBYMODIFICATION_SETMAXMEMBERS_API_LATEST. */

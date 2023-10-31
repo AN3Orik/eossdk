@@ -11,6 +11,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_CustomInvites_AddNotifyRequestToJoinReceivedOptions extends Structure {
+	/** The most recent version of the AddNotifyRequestToJoinReceived API. */
 	public static final int EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINRECEIVED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINRECEIVED_API_LATEST. */

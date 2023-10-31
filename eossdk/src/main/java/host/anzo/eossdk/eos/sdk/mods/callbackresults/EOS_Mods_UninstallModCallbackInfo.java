@@ -9,6 +9,8 @@ import host.anzo.eossdk.eos.sdk.mods.EOS_Mod_Identifier;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the EOS_Mods_UninstallMod Function. These parameters are received through the callback provided to EOS_Mods_UninstallMod
+ *
  * @author Anton Lasevich
  * @since 8/15/2023
  */

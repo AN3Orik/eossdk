@@ -11,6 +11,8 @@ import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Contains information about a single achievement definition with localized text.
+ *
  * @author Anton Lasevich
  * @since 8/19/2023
  */

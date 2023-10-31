@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "IncomingPacketQueueMaxSizeBytes", "OutgoingPacketQueueMaxSizeBytes"})
 public class EOS_P2P_SetPacketQueueSizeOptions extends Structure {
+	/** The most recent version of the EOS_P2P_SetPacketQueueSize API. */
 	public static final int EOS_P2P_SETPACKETQUEUESIZE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_P2P_SETPACKETQUEUESIZE_API_LATEST. */
@@ -24,6 +25,7 @@ public class EOS_P2P_SetPacketQueueSizeOptions extends Structure {
 
 	public EOS_P2P_SetPacketQueueSizeOptions() {
 		super();
+		ApiVersion = EOS_P2P_SETPACKETQUEUESIZE_API_LATEST;
 	}
 
 	public EOS_P2P_SetPacketQueueSizeOptions(Pointer peer) {

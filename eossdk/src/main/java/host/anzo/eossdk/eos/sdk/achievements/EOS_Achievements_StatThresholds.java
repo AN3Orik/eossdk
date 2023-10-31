@@ -8,11 +8,11 @@ import static com.sun.jna.Structure.FieldOrder;
 /**
  * Contains information about a collection of stat threshold data.
  * <p>
- * The threshold will depend on the stat aggregate type:
- *   LATEST (Tracks the latest value)
- *   MAX (Tracks the maximum value)
- *   MIN (Tracks the minimum value)
- *   SUM (Generates a rolling sum of the value)
+ * The threshold will depend on the stat aggregate type:<br>
+ *  LATEST (Tracks the latest value)<br>
+ *  MAX (Tracks the maximum value)<br>
+ *  MIN (Tracks the minimum value)<br>
+ *  SUM (Generates a rolling sum of the value)
  *
  * @see EOS_Achievements_DefinitionV2
  *

@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_KWS_QueryAgeGateOptions extends Structure {
+	/** The most recent version of the EOS_KWS_QueryAgeGate API. */
 	public static final int EOS_KWS_QUERYAGEGATE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_KWS_QUERYAGEGATE_API_LATEST. */

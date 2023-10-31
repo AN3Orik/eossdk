@@ -5,6 +5,8 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * Exception wrapper for the Epic Online Service operation results
+ *
  * @author Anton Lasevich
  * @since 9/21/2023
  */

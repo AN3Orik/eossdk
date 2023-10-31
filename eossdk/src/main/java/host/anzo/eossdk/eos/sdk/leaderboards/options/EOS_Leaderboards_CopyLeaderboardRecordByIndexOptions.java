@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LeaderboardRecordIndex"})
 public class EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions extends Structure {
+	/** The most recent version of the EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions struct. */
 	public final static int EOS_LEADERBOARDS_COPYLEADERBOARDRECORDBYINDEX_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_COPYLEADERBOARDRECORDBYINDEX_API_LATEST. */

@@ -5,6 +5,8 @@ import com.sun.jna.NativeMapped;
 import lombok.Getter;
 
 /**
+ * Epic Online Services boolean wrapper
+ *
  * @author Anton Lasevich
  * @since 9/20/2023
  */
@@ -18,9 +20,17 @@ public @Getter class EOS_Bool implements NativeMapped {
 		value = null;
 	}
 
+	/**
+	 * @param value boolean value
+	 */
 	private EOS_Bool(boolean value) {
 		this.value = value;
 	}
+
+	/**
+	 * @param value boolean value
+	 * @return wrapped boolean value
+	 */
 
 	public static EOS_Bool of(boolean value) {
 		return value ? EOS_TRUE : EOS_FALSE;

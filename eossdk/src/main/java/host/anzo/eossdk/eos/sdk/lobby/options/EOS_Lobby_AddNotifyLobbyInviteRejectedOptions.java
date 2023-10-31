@@ -11,6 +11,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Lobby_AddNotifyLobbyInviteRejectedOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_AddNotifyLobbyInviteRejected API. */
 	public static final int EOS_LOBBY_ADDNOTIFYLOBBYINVITEREJECTED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_ADDNOTIFYLOBBYINVITEREJECTED_API_LATEST. */

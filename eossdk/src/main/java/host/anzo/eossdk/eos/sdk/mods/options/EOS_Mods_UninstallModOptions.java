@@ -8,11 +8,14 @@ import host.anzo.eossdk.eos.sdk.mods.EOS_Mod_Identifier;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_Mods_UninstallMod Function.
+ *
  * @author Anton Lasevich
  * @since 8/15/2023
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "Mod"})
 public class EOS_Mods_UninstallModOptions extends Structure {
+	/** The most recent version of the EOS_Mods_UninstallModOptions API. */
 	public static final int EOS_MODS_UNINSTALLMOD_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_MODS_UNINSTALLMOD_API_LATEST. */

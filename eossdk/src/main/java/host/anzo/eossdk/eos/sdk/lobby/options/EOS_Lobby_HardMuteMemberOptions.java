@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LobbyId", "LocalUserId", "TargetUserId", "IsHardMute"})
 public class EOS_Lobby_HardMuteMemberOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_HardMuteMember API. */
 	public static final int EOS_LOBBY_HARDMUTEMEMBER_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_HARDMUTEMEMBER_API_LATEST. */

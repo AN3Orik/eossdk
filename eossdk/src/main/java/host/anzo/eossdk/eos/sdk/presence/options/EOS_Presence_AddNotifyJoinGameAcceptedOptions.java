@@ -11,6 +11,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Presence_AddNotifyJoinGameAcceptedOptions extends Structure {
+	/** The most recent version of the EOS_Presence_AddNotifyJoinGameAccepted API. */
 	public static final int EOS_PRESENCE_ADDNOTIFYJOINGAMEACCEPTED_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_PRESENCE_ADDNOTIFYJOINGAMEACCEPTED_API_LATEST. */

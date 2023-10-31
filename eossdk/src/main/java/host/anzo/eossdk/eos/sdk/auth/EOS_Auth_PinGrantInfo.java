@@ -21,6 +21,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "UserCode", "VerificationURI", "ExpiresIn", "VerificationURIComplete"})
 public class EOS_Auth_PinGrantInfo extends Structure {
+	/** The most recent version of the EOS_Auth_PinGrantInfo struct. */
 	public static int EOS_AUTH_PINGRANTINFO_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_AUTH_PINGRANTINFO_API_LATEST. */

@@ -17,6 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "RemoteUserId", "SocketId", "Channel", "DataLengthBytes", "Data", "IsAllowDelayedDelivery", "Reliability", "IsDisableAutoAcceptConnection"})
 public class EOS_P2P_SendPacketOptions extends Structure {
+	/** The most recent version of the EOS_P2P_SendPacket API. */
 	public static final int EOS_P2P_SENDPACKET_API_LATEST = 3;
 
 	/** API Version: Set this to EOS_P2P_SENDPACKET_API_LATEST. */

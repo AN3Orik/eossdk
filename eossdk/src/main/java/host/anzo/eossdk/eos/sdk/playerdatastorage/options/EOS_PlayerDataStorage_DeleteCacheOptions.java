@@ -11,6 +11,7 @@ import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
  * @since 8/22/2023
  */
 public class EOS_PlayerDataStorage_DeleteCacheOptions extends Structure {
+	/** The most recent version of the EOS_PlayerDataStorage_DeleteCache API. */
 	public static final int EOS_PLAYERDATASTORAGE_DELETECACHE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PLAYERDATASTORAGE_DELETECACHE_API_LATEST. */

@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "RelayControl"})
 public class EOS_P2P_SetRelayControlOptions extends Structure {
+	/** The most recent version of the EOS_P2P_SetRelayControl API. */
 	public static final int EOS_P2P_SETRELAYCONTROL_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_P2P_SETRELAYCONTROL_API_LATEST. */

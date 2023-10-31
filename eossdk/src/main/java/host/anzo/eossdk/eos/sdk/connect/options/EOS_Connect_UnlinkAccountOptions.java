@@ -20,6 +20,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId"})
 public class EOS_Connect_UnlinkAccountOptions extends Structure {
+	/** The most recent version of the EOS_Connect_UnlinkAccount API. */
 	public static int EOS_CONNECT_UNLINKACCOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_UNLINKACCOUNT_API_LATEST. */

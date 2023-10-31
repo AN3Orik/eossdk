@@ -34,6 +34,9 @@ public class EOS_AntiCheatClient_UnprotectMessageOptions extends Structure {
 	}
 
 	public static class ByReference extends EOS_AntiCheatClient_UnprotectMessageOptions implements Structure.ByReference {
+		/**
+		 * @param data The data to decrypt
+		 */
 		public ByReference(byte @NotNull [] data) {
 			super();
 			Data = new Memory(data.length);

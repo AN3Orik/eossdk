@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "Mod"})
 public class EOS_Mods_UpdateModOptions extends Structure {
+	/** The most recent version of the EOS_Mods_UpdateModOptions API. */
 	public static final int EOS_MODS_UPDATEMOD_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_MODS_UPDATEMOD_API_LATEST. */
@@ -23,6 +24,7 @@ public class EOS_Mods_UpdateModOptions extends Structure {
 	public EOS_EpicAccountId LocalUserId;
 	/** The mod to update */
 	public EOS_Mod_Identifier.ByReference Mod;
+
 	public EOS_Mods_UpdateModOptions() {
 		super();
 		ApiVersion = EOS_MODS_UPDATEMOD_API_LATEST;

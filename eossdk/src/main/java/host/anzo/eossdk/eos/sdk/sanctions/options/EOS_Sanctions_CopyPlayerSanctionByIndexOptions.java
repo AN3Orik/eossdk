@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "TargetUserId", "SanctionIndex"})
 public class EOS_Sanctions_CopyPlayerSanctionByIndexOptions extends Structure {
+	/** The most recent version of the EOS_Sanctions_CopyPlayerSanctionByIndex API. */
 	public static final int EOS_SANCTIONS_COPYPLAYERSANCTIONBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_SANCTIONS_COPYPLAYERSANCTIONBYINDEX_API_LATEST. */

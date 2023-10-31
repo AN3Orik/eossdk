@@ -11,6 +11,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LobbyId"})
 public class EOS_LobbySearch_SetLobbyIdOptions extends Structure {
+	/** The most recent version of the EOS_LobbySearch_SetLobbyId API. */
 	public static final int EOS_LOBBYSEARCH_SETLOBBYID_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBYSEARCH_SETLOBBYID_API_LATEST. */

@@ -7,11 +7,14 @@ import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_LobbyDetails_GetMemberAttributeCount function.
+ *
  * @author Anton Lasevich
  * @since 8/17/2023
  */
 @FieldOrder({"ApiVersion", "TargetUserId"})
 public class EOS_LobbyDetails_GetMemberAttributeCountOptions extends Structure {
+	/** The most recent version of the EOS_LobbyDetails_GetMemberAttributeCount API. */
 	public static final int EOS_LOBBYDETAILS_GETMEMBERATTRIBUTECOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBYDETAILS_GETMEMBERATTRIBUTECOUNT_API_LATEST. */

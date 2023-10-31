@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "ItemId", "ImageInfoIndex"})
 public class EOS_Ecom_CopyItemImageInfoByIndexOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_CopyItemImageInfoByIndex API. */
 	public static final int EOS_ECOM_COPYITEMIMAGEINFOBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_COPYITEMIMAGEINFOBYINDEX_API_LATEST. */

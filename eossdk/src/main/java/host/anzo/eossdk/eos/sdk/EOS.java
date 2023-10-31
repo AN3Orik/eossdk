@@ -24,6 +24,17 @@ public class EOS {
 	public static final int EOS_PATCH_VERSION = 1;
 
 	/**
+	 * The name of the env var used to determine if the game was launched by the Epic Games Launcher.
+	 * <p>
+	 * During the call to EOS_Platform_Create, the command line that was used to launch the app is inspected, and if it is
+	 * recognized as coming from the Epic Games Launcher, this environment variable is set to 1.
+	 * <p>
+	 * NOTE: You can force the EOS_Platform_CheckForLauncherAndRestart API to relaunch the title by
+	 * explicitly unsetting this environment variable before calling EOS_Platform_CheckForLauncherAndRestart.
+	 */
+	public static final String EOS_PLATFORM_CHECKFORLAUNCHERANDRESTART_ENV_VAR = "EOS_LAUNCHED_BY_EPIC";
+
+	/**
 	 * Initialize the Epic Online Services SDK.
 	 * <p>
 	 * Before calling any other function in the SDK, clients must call this function.

@@ -16,6 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LobbyId", "LocalUserId", "IsPresenceEnabled", "LocalRTCOptions", "IsCrossplayOptOut"})
 public class EOS_Lobby_JoinLobbyByIdOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_JoinLobbyById API. */
 	public static final int EOS_LOBBY_JOINLOBBYBYID_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_LOBBY_JOINLOBBYBYID_API_LATEST. */

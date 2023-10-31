@@ -12,15 +12,17 @@ import java.util.Map;
  * <p>
  * Please see the following EOS_ERelayControl value compatibility-chart to better understand how changing this value
  * can affect compatibility between clients with different settings.
- * <p>
+ * <pre>
+ * <code>
  * +------------------------------+---------------------+-------------------------------+---------------------+
  * |                              |   EOS_RC_NoRelays   |  EOS_RC_AllowRelays (Default) |  EOS_RC_ForceRelays |
- * +------------------------------+---------------------+-------------------------------+---------------------+
+ * +------------------------------+---------------------+-------------------------------+---------------------
  * | EOS_RC_NoRelays              |  Compatible         |  Compatible                   |  Connection Failure |
  * | EOS_RC_AllowRelays (Default) |  Compatible         |  Compatible                   |  Compatible         |
  * | EOS_RC_ForceRelays           |  Connection Failure |  Compatible                   |  Compatible         |
  * +------------------------------+---------------------+-------------------------------+---------------------+
- *
+ * </code>
+ * </pre>
  * @author Anton Lasevich
  * @since 8/21/2023
  */

@@ -16,6 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "EntitlementNames", "EntitlementNameCount", "IsIncludeRedeemed"})
 public class EOS_Ecom_QueryEntitlementsOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_QueryEntitlements API. */
 	public static final int EOS_ECOM_QUERYENTITLEMENTS_API_LATEST = 2;
 
 	/**
@@ -29,7 +30,7 @@ public class EOS_Ecom_QueryEntitlementsOptions extends Structure {
 	public EOS_EpicAccountId LocalUserId;
 	/** An array of Entitlement Names that you want to check */
 	public StringArray EntitlementNames;
-	/** The number of Entitlement Names included in the array, up to EOS_ECOM_QUERYENTITLEMENTS_MAX_ENTITLEMENT_IDS; use zero to request all Entitlements associated with the user's Epic Online Services account. */
+	/** The number of Entitlement Names included in the array, up to {@link #EOS_ECOM_QUERYENTITLEMENTS_MAX_ENTITLEMENT_IDS}; use zero to request all Entitlements associated with the user's Epic Online Services account. */
 	public int EntitlementNameCount;
 	/** If true, Entitlements that have been redeemed will be included in the results. */
 	public EOS_Bool IsIncludeRedeemed;

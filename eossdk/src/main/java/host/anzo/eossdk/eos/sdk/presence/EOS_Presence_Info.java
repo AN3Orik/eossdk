@@ -21,6 +21,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Status", "UserId", "ProductId", "ProductVersion", "Platform", "RichText", "RecordsCount", "Records", "ProductName", "IntegratedPlatform"})
 public class EOS_Presence_Info extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Presence_Info API. */
 	public static final int EOS_PRESENCE_INFO_API_LATEST = 3;
 
 	/** API Version: Set this to EOS_PRESENCE_INFO_API_LATEST. */

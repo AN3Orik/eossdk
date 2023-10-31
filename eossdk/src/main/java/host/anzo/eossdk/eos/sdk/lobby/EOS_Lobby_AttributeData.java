@@ -13,13 +13,14 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Key", "Value", "ValueType"})
 public class EOS_Lobby_AttributeData extends Structure {
+	/** The most recent version of the EOS_Lobby_AttributeData struct. */
 	public static final int EOS_LOBBY_ATTRIBUTEDATA_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_ATTRIBUTEDATA_API_LATEST. */
 	public int ApiVersion;
 	/** Name of the lobby attribute */
 	public String Key;
-	/** C type : Value_union */
+	/** Union depend on value type */
 	public Value_union Value;
 	/** Type of value stored in the union */
 	public EOS_EAttributeType ValueType;

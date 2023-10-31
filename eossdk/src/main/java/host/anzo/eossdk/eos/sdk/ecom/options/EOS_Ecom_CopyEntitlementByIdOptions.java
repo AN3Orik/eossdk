@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "EntitlementId"})
 public class EOS_Ecom_CopyEntitlementByIdOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_CopyEntitlementById API. */
 	public static final int EOS_ECOM_COPYENTITLEMENTBYID_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_ECOM_COPYENTITLEMENTBYID_API_LATEST. */

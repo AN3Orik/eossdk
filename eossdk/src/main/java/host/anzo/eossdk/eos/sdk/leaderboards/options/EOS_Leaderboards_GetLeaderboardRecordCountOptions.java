@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Leaderboards_GetLeaderboardRecordCountOptions extends Structure {
+	/** The most recent version of the EOS_Leaderboards_GetLeaderboardRecordCount API. */
 	public static final int EOS_LEADERBOARDS_GETLEADERBOARDRECORDCOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_GETLEADERBOARDRECORDCOUNT_API_LATEST. */

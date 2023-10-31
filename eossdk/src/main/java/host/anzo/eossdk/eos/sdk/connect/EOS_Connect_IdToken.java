@@ -24,6 +24,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "ProductUserId", "JsonWebToken"})
 public class EOS_Connect_IdToken extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Connect_IdToken struct. */
 	public static int EOS_CONNECT_IDTOKEN_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_IDTOKEN_API_LATEST. */

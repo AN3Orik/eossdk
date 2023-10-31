@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "InviteId", "LocalUserId"})
 public class EOS_Lobby_RejectInviteOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_RejectInvite API. */
 	public static final int EOS_LOBBY_REJECTINVITE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_REJECTINVITE_API_LATEST. */

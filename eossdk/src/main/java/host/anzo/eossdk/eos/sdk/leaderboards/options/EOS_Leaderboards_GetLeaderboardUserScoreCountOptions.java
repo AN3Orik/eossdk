@@ -13,12 +13,13 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "StatName"})
 public class EOS_Leaderboards_GetLeaderboardUserScoreCountOptions extends Structure {
+	/** The most recent version of the EOS_Leaderboards_GetLeaderboardUserScoreCount API. */
 	public static final int EOS_LEADERBOARDS_GETLEADERBOARDUSERSCORECOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_GETLEADERBOARDUSERSCORECOUNT_API_LATEST. */
 	public int ApiVersion;
 	/** Name of stat used to rank leaderboard. */
-	public Pointer StatName;
+	public String StatName;
 
 	public EOS_Leaderboards_GetLeaderboardUserScoreCountOptions() {
 		super();

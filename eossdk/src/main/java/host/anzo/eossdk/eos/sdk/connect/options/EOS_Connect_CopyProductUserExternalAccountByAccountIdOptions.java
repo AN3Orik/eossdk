@@ -20,10 +20,11 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "TargetUserId", "AccountId"})
 public class EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions extends Structure {
+	/** The most recent version of the EOS_Connect_CopyProductUserExternalAccountByAccountId API. */
 	public static int EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST. */
-	public int ApiVersion = EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST;
+	public int ApiVersion;
 	/** The Product User ID to look for when copying external account info from the cache. */
 	public EOS_ProductUserId TargetUserId;
 	/** External auth service account ID to look for when copying external account info from the cache. */

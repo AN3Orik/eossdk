@@ -9,6 +9,8 @@ import host.anzo.eossdk.eos.sdk.mods.EOS_Mod_Identifier;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_Mods_InstallMod Function.
+ *
  * @author Anton Lasevich
  * @since 8/15/2023
  */

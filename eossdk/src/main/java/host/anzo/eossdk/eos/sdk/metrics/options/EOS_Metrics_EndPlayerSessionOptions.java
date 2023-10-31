@@ -9,11 +9,14 @@ import host.anzo.eossdk.eos.sdk.metrics.enums.EOS_EMetricsAccountIdType;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * EndPlayerSession
+ *
  * @author Anton Lasevich
  * @since 8/21/2023
  */
 @FieldOrder({"ApiVersion", "AccountIdType", "AccountId"})
 public class EOS_Metrics_EndPlayerSessionOptions extends Structure {
+	/** The most recent version of the EOS_Metrics_EndPlayerSessionOptions struct. */
 	public static final int EOS_METRICS_ENDPLAYERSESSION_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_METRICS_ENDPLAYERSESSION_API_LATEST. */

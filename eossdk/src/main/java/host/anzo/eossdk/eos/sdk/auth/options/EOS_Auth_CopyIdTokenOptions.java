@@ -20,6 +20,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "AccountId"})
 public class EOS_Auth_CopyIdTokenOptions extends Structure {
+	/** The most recent version of the EOS_Auth_CopyIdToken API. */
 	public static int EOS_AUTH_COPYIDTOKEN_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_AUTH_COPYIDTOKEN_API_LATEST. */
@@ -32,6 +33,9 @@ public class EOS_Auth_CopyIdTokenOptions extends Structure {
 		ApiVersion = EOS_AUTH_COPYIDTOKEN_API_LATEST;
 	}
 
+	/**
+	 * @param accountId The Epic Account ID of the user being queried.
+	 */
 	public EOS_Auth_CopyIdTokenOptions(EOS_EpicAccountId accountId) {
 		this();
 		this.AccountId = accountId;

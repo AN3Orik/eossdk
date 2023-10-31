@@ -12,6 +12,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LobbyId", "LocalUserId"})
 public class EOS_Lobby_IsRTCRoomConnectedOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_IsRTCRoomConnected API. */
 	public static final int EOS_LOBBY_ISRTCROOMCONNECTED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_ISRTCROOMCONNECTED_API_LATEST. */

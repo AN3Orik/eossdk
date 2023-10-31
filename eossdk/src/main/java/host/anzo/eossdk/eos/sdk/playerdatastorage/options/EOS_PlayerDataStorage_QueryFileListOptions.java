@@ -14,7 +14,8 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId"})
 public class EOS_PlayerDataStorage_QueryFileListOptions extends Structure {
-	public static final int EOS_PLAYERDATASTORAGE_QUERYFILELIST_API_LATEST = 1;
+	/** The most recent version of the EOS_PlayerDataStorage_QueryFileList API. */
+	public static final int EOS_PLAYERDATASTORAGE_QUERYFILELIST_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_PLAYERDATASTORAGE_QUERYFILELIST_API_LATEST. */
 	public int ApiVersion;

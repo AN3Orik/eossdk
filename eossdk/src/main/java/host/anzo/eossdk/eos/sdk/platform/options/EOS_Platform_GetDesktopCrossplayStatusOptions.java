@@ -12,11 +12,14 @@ import com.sun.jna.Structure;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_Platform_GetDesktopCrossplayStatus function.
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Platform_GetDesktopCrossplayStatusOptions extends Structure {
+	/** The most recent version of the EOS_Platform_GetDesktopCrossplayStatus API. */
 	public static int EOS_PLATFORM_GETDESKTOPCROSSPLAYSTATUS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PLATFORM_GETDESKTOPCROSSPLAYSTATUS_API_LATEST. */

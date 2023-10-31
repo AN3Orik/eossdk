@@ -9,6 +9,7 @@ import com.sun.jna.NativeLong;
  * @since 8/9/2023
  */
 public class EOS_NotificationId extends NativeLong {
+	/** An invalid notification ID */
 	public final static EOS_NotificationId EOS_INVALID_NOTIFICATIONID = new EOS_NotificationId();
 
 	public EOS_NotificationId() {

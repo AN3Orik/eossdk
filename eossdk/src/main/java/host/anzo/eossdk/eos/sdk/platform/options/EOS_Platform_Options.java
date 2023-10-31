@@ -18,6 +18,8 @@ import org.jetbrains.annotations.NotNull;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Platform options for EOS_Platform_Create
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */
@@ -40,7 +42,8 @@ public class EOS_Platform_Options extends Structure {
 	/** Max length of a deployment id, not including the terminating null. */
 	public static int EOS_PLATFORM_OPTIONS_DEPLOYMENTID_MAX_LENGTH = 64;
 
-	public static int EOS_PLATFORM_OPTIONS_API_LATEST = 12;
+	/** The most recent version of the EOS_Platform_Create API. */
+	public static int EOS_PLATFORM_OPTIONS_API_LATEST = 13;
 
 	/** API Version: Set this to EOS_PLATFORM_OPTIONS_API_LATEST. */
 	public int ApiVersion;

@@ -17,6 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "JoinInfo"})
 public class EOS_PresenceModification_SetJoinInfoOptions extends Structure {
+	/** The most recent version of the EOS_PresenceModification_SetJoinInfo API. */
 	public static final int EOS_PRESENCEMODIFICATION_SETJOININFO_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PRESENCEMODIFICATION_SETJOININFO_API_LATEST. */

@@ -33,7 +33,7 @@ public class EOS_Ecom_CheckoutOptions extends Structure {
 	/** The number of EOS_Ecom_CheckoutEntry elements contained in Entries */
 	public int EntryCount;
 	/** An array of EOS_Ecom_CheckoutEntry elements, each containing the details of a single offer */
-	public EOS_Ecom_CheckoutEntry.ByReference Entries;
+	public EOS_Ecom_CheckoutEntry[] Entries;
 
 	public EOS_Ecom_CheckoutOptions() {
 		super();

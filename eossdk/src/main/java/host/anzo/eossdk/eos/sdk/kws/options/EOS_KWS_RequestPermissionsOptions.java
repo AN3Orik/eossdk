@@ -21,13 +21,14 @@ public class EOS_KWS_RequestPermissionsOptions extends Structure {
 	/** Maximum size of the name for the permission */
 	public static final int EOS_KWS_MAX_PERMISSION_LENGTH = 32;
 
+	/** The most recent version of the EOS_KWS_RequestPermissions API. */
 	public static final int EOS_KWS_REQUESTPERMISSIONS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_KWS_REQUESTPERMISSIONS_API_LATEST. */
 	public int ApiVersion;
 	/** Local user requesting new permissions */
 	public EOS_ProductUserId LocalUserId;
-	/** The number of permissions to request, may not exceed {@link EOS_KWS_RequestPermissionsOptions#EOS_KWS_MAX_PERMISSIONS}. Only new permissions need be included. */
+	/** The number of permissions to request, may not exceed {@link #EOS_KWS_MAX_PERMISSIONS}. Only new permissions need be included. */
 	public int PermissionKeyCount;
 	/** Names of the permissions to request (Setup with KWS) */
 	public StringArray PermissionKeys;

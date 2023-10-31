@@ -15,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "SocketId"})
 public class EOS_P2P_AddNotifyPeerConnectionClosedOptions extends Structure {
+	/** The most recent version of the EOS_P2P_AddNotifyPeerConnectionClosed API. */
 	public static final int EOS_P2P_ADDNOTIFYPEERCONNECTIONCLOSED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_P2P_ADDNOTIFYPEERCONNECTIONCLOSED_API_LATEST. */

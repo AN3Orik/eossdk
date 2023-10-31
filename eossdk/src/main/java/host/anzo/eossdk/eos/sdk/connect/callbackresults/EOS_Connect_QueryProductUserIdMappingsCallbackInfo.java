@@ -14,6 +14,8 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the EOS_Connect_QueryProductUserIdMappings function.
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */

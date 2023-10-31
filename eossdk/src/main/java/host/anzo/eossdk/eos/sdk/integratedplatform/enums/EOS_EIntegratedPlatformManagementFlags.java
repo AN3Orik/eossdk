@@ -29,12 +29,13 @@ public @Getter class EOS_EIntegratedPlatformManagementFlags extends NativeMapped
 	public static final int EOS_IPMF_DisablePresenceMirroring = 0x0008;
 	/**
 	 * EOS SDK should not perform any sessions management through the Integrated Platform.
-	 * The default behavior is for EOS SDK to perform sessions management through the Integrated Platform.
+	 * The default behavior is for EOS SDK to perform sessions management through the Integrated Platform.<br>
 	 * Sessions management includes:
-	 *    - sharing the lobby and session presence enabled games with the Integrated Platform.
-	 *    - handling Social Overlay join button events which cannot be handled by normal processing of Epic Services.
-	 *    - handling Social Overlay invite button events which cannot be handled by normal processing of Epic Services.
-	 *    - handling startup requests from the Integrated Platform to immediately join a game due to in invite while offline.
+	 * <ul>
+	 *     <li>sharing the lobby and session presence enabled games with the Integrated Platform.
+	 *     <li>handling Social Overlay invite button events which cannot be handled by normal processing of Epic Services.
+	 *     <li>handling startup requests from the Integrated Platform to immediately join a game due to in invite while offline.
+	 * </ul>
 	 *
 	 * @see EOS_Lobby_Interface#addNotifySendLobbyNativeInviteRequested(EOS_Lobby_AddNotifySendLobbyNativeInviteRequestedOptions, Pointer, EOS_Lobby_OnSendLobbyNativeInviteRequestedCallback)
 	 */
@@ -47,14 +48,18 @@ public @Getter class EOS_EIntegratedPlatformManagementFlags extends NativeMapped
 	 * The primary usage of the EOS_IPMF_PreferEOSIdentity and EOS_IPMF_PreferIntegratedIdentity flags is with game invites
 	 * from the Social Overlay.
 	 * <p>
-	 * For game invites from the Social Overlay the EOS SDK will follow these rules:
-	 *     - If the only account ID we can determine for the target player is an EAS ID then the EOS system will be used.
-	 *     - If the only account ID we can determine for the target player is an integrated platform ID then the integrated platform system will be used.
-	 *     - If both are available then the EOS SDK will operate in 1 of 3 modes:
-	 *         - no preference identified: use both the EOS and integrated platform systems.
-	 *         - PreferEOS: Use EOS if the target is an EAS friend and is either online in EAS or not online for the integrated platform.
-	 *         - PreferIntegrated: Use integrated platform if the target is an integrated platform friend and is either online in the integrated platform or not online for EAS.
-	 *     - If the integrated platform fails to send then try EAS if was not already used.
+	 * For game invites from the Social Overlay the EOS SDK will follow these rules:<br>
+	 * <ul>
+	 *     <li>If the only account ID we can determine for the target player is an EAS ID then the EOS system will be used.
+	 *     <li>If the only account ID we can determine for the target player is an integrated platform ID then the integrated platform system will be used.
+	 *     <li>If both are available then the EOS SDK will operate in 1 of 3 modes:
+	 *     <ul>
+	 *         <li>no preference identified: use both the EOS and integrated platform systems.
+	 *         <li>PreferEOS: Use EOS if the target is an EAS friend and is either online in EAS or not online for the integrated platform.
+	 *         <li>PreferIntegrated: Use integrated platform if the target is an integrated platform friend and is either online in the integrated platform or not online for EAS.
+	 *     </ul>
+	 *     <li>If the integrated platform fails to send then try EAS if was not already used.
+	 * </ul>
 	 */
 	public static final int EOS_IPMF_PreferEOSIdentity = 0x0020;
 	/**

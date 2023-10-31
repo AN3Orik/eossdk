@@ -12,11 +12,14 @@ import com.sun.jna.Structure;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_Auth_DeletePersistentAuth function.
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "RefreshToken"})
 public class EOS_Auth_DeletePersistentAuthOptions extends Structure {
+	/** The most recent version of the EOS_Auth_DeletePersistentAuth API. */
 	public static int EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST. */
@@ -30,6 +33,14 @@ public class EOS_Auth_DeletePersistentAuthOptions extends Structure {
 	public EOS_Auth_DeletePersistentAuthOptions() {
 		super();
 		ApiVersion = EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST;
+	}
+
+	/**
+	 * @param refreshToken A long-lived refresh token
+	 */
+	public EOS_Auth_DeletePersistentAuthOptions(String refreshToken) {
+		this();
+		RefreshToken = refreshToken;
 	}
 
 	public EOS_Auth_DeletePersistentAuthOptions(Pointer peer) {

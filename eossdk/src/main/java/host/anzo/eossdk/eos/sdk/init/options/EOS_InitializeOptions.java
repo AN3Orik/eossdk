@@ -13,17 +13,18 @@ import host.anzo.eossdk.eos.sdk.init.callbacks.EOS_AllocateMemoryFunc;
 import host.anzo.eossdk.eos.sdk.init.callbacks.EOS_ReallocateMemoryFunc;
 import host.anzo.eossdk.eos.sdk.init.callbacks.EOS_ReleaseMemoryFunc;
 import host.anzo.eossdk.eosex.EOSBaseOptions;
-import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * Options for initializing the Epic Online Services SDK.
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@AllArgsConstructor
 @FieldOrder({ "ApiVersion", "AllocateMemoryFunction", "ReallocateMemoryFunction", "ReleaseMemoryFunction", "ProductName",
 		"ProductVersion", "Reserved", "SystemInitializeOptions", "OverrideThreadAffinity" })
 public class EOS_InitializeOptions extends Structure {
+	/** The most recent version of the EOS_Initialize API. */
 	public static int EOS_INITIALIZE_API_LATEST = 4;
 
 	/** Max length of a product name, not including the terminating null. */

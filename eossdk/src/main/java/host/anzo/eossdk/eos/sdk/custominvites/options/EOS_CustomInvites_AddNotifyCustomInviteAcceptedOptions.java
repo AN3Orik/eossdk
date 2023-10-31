@@ -11,6 +11,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_CustomInvites_AddNotifyCustomInviteAcceptedOptions extends Structure {
+	/** The most recent version of the EOS_CustomInvites_AddNotifyCustomInviteAccepted API. */
 	public static final int EOS_CUSTOMINVITES_ADDNOTIFYCUSTOMINVITEACCEPTED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CUSTOMINVITES_ADDNOTIFYCUSTOMINVITEACCEPTED_API_LATEST. */

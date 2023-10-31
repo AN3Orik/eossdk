@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.p2p.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import com.sun.jna.ptr.ByteByReference;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
 import static com.sun.jna.Structure.FieldOrder;
@@ -14,6 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "RequestedChannel"})
 public class EOS_P2P_GetNextReceivedPacketSizeOptions extends Structure {
+	/** The most recent version of the EOS_P2P_GetNextReceivedPacketSize API. */
 	public static final int EOS_P2P_GETNEXTRECEIVEDPACKETSIZE_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_P2P_GETNEXTRECEIVEDPACKETSIZE_API_LATEST. */
@@ -21,7 +23,7 @@ public class EOS_P2P_GetNextReceivedPacketSizeOptions extends Structure {
 	/** The Product User ID of the local user who is receiving the packet */
 	public EOS_ProductUserId LocalUserId;
 	/** An optional channel to request the data for. If NULL, we're retrieving the size of the next packet on any channel. */
-	public Pointer RequestedChannel;
+	public ByteByReference RequestedChannel;
 
 	public EOS_P2P_GetNextReceivedPacketSizeOptions() {
 		super();

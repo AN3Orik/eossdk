@@ -17,6 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "OverrideLibraryPath", "SteamMajorVersion", "SteamMinorVersion"})
 public class EOS_IntegratedPlatform_Steam_Options extends Structure {
+	/** The most recent version of the EOS_IntegratedPlatform_Steam_Options API. */
 	public static final int EOS_INTEGRATEDPLATFORM_STEAM_OPTIONS_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_STEAM_OPTIONS_API_LATEST. */
@@ -27,9 +28,9 @@ public class EOS_IntegratedPlatform_Steam_Options extends Structure {
 	 * Optional with EOS_IPMF_LibraryManagedByApplication.
 	 * Set to override the loaded library basename, or use NULL to assume the default basename by platform:
 	 * <p>
-	 * - Linux: libsteam_api.so,
-	 * - macOS: libsteam_api.dylib,
-	 * - Windows 32-bit: steam_api.dll,
+	 * - Linux: libsteam_api.so,<br>
+	 * - macOS: libsteam_api.dylib,<br>
+	 * - Windows 32-bit: steam_api.dll,<br>
 	 * - Windows 64-bit: steam_api64.dll.
 	 * <p>
 	 * Required with EOS_IPMF_LibraryManagedBySDK.

@@ -6,6 +6,8 @@ import com.sun.jna.Structure;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_Achievements_AddNotifyAchievementsUnlocked function.
+ *
  * @author Anton Lasevich
  * @since 8/19/2023
  */

@@ -7,6 +7,8 @@ import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_Achievements_GetPlayerAchievementCount function.
+ *
  * @author Anton Lasevich
  * @since 8/19/2023
  */

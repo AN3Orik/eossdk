@@ -7,6 +7,8 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatClientViola
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Structure containing details about integrity violation related to the local client
+ *
  * @author Anton Lasevich
  * @since 8/15/2023
  */

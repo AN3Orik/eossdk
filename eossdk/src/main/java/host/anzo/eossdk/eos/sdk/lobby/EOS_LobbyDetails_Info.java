@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.lobby;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import com.sun.jna.ptr.IntByReference;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
@@ -12,9 +13,9 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/16/2023
  */
-@FieldOrder({"ApiVersion", "LobbyId", "LobbyOwnerUserId", "PermissionLevel", "AvailableSlots", "MaxMembers", "IsAllowInvites", "BucketId", "IsAllowHostMigration", "IsRTCRoomEnabled", "IsAllowJoinById", "IsRejoinAfterKickRequiresInvite"})
+@FieldOrder({"ApiVersion", "LobbyId", "LobbyOwnerUserId", "PermissionLevel", "AvailableSlots", "MaxMembers", "IsAllowInvites", "BucketId", "IsAllowHostMigration", "IsRTCRoomEnabled", "IsAllowJoinById", "IsRejoinAfterKickRequiresInvite", "IsPresenceEnabled", "AllowedPlatformIds", "AllowedPlatformIdsCount"})
 public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
-	public static final int EOS_LOBBYDETAILS_INFO_API_LATEST = 2;
+	public static final int EOS_LOBBYDETAILS_INFO_API_LATEST = 3;
 
 	/** API Version: Set this to EOS_LOBBYDETAILS_INFO_API_LATEST. */
 	public int ApiVersion;
@@ -40,6 +41,16 @@ public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
 	public EOS_Bool IsAllowJoinById;
 	/** Does rejoining after being kicked require an invite */
 	public EOS_Bool IsRejoinAfterKickRequiresInvite;
+	/** If true, this lobby will be associated with the local user's presence information. */
+	public EOS_Bool IsPresenceEnabled;
+	/**
+	 * Array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are
+	 * found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific
+	 * header file. If null, the lobby will be unrestricted.
+	 */
+	public IntByReference AllowedPlatformIds;
+	/** Number of platform IDs in the array */
+	public int AllowedPlatformIdsCount;
 
 	public EOS_LobbyDetails_Info() {
 		super();

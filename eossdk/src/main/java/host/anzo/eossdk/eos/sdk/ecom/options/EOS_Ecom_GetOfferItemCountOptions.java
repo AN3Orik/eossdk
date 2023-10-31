@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "OfferId"})
 public class EOS_Ecom_GetOfferItemCountOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_GetOfferItemCount API. */
 	public static final int EOS_ECOM_GETOFFERITEMCOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_GETOFFERITEMCOUNT_API_LATEST. */

@@ -14,11 +14,13 @@ import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * Input parameters for the EOS_Connect_VerifyIdToken function.
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "IdToken"})
 public class EOS_Connect_VerifyIdTokenOptions extends Structure {
+	/** The most recent version of the EOS_Connect_VerifyIdToken API. */
 	public static int EOS_CONNECT_VERIFYIDTOKEN_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_VERIFYIDTOKEN_API_LATEST. */

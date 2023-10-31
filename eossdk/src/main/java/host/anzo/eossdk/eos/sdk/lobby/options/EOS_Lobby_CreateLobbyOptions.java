@@ -25,6 +25,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "MaxLobbyMembers", "PermissionLevel", "IsPresenceEnabled", "IsAllowInvites", "BucketId", "IsDisableHostMigration", "IsEnableRTCRoom", "LocalRTCOptions", "LobbyId", "IsEnableJoinById", "IsRejoinAfterKickRequiresInvite", "AllowedPlatformIds", "AllowedPlatformIdsCount", "IsCrossplayOptOut"})
 public class EOS_Lobby_CreateLobbyOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_CreateLobby API. */
 	public static final int EOS_LOBBY_CREATELOBBY_API_LATEST = 9;
 
 	/** API Version: Set this to EOS_LOBBY_CREATELOBBY_API_LATEST. */

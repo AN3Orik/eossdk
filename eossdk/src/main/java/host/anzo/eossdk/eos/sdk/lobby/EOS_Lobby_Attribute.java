@@ -8,14 +8,15 @@ import host.anzo.eossdk.eos.sdk.lobby.enums.EOS_ELobbyAttributeVisibility;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
- *  An attribute and its visibility setting stored with a lobby.
- *  Used to store both lobby and lobby member data
+ * An attribute and its visibility setting stored with a lobby.
+ * Used to store both lobby and lobby member data
  *
  * @author Anton Lasevich
  * @since 8/16/2023
  */
 @FieldOrder({"ApiVersion", "Data", "Visibility"})
 public class EOS_Lobby_Attribute extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Lobby_Attribute struct. */
 	public static final int EOS_LOBBY_ATTRIBUTE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_ATTRIBUTE_API_LATEST. */

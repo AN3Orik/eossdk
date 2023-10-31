@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "ItemId", "ReleaseIndex"})
 public class EOS_Ecom_CopyItemReleaseByIndexOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_CopyItemReleaseByIndex API. */
 	public static final int EOS_ECOM_COPYITEMRELEASEBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_COPYITEMRELEASEBYINDEX_API_LATEST. */

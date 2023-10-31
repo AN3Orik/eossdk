@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId"})
 public class EOS_KWS_QueryPermissionsOptions extends Structure {
+	/** The most recent version of the EOS_KWS_QueryPermissions API. */
 	public static final int EOS_KWS_QUERYPERMISSIONS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_KWS_QUERYPERMISSIONS_API_LATEST. */

@@ -20,6 +20,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "TargetUserId", "ExternalAccountInfoIndex"})
 public class EOS_Connect_CopyProductUserExternalAccountByIndexOptions extends Structure {
+	/** The most recent version of the EOS_Connect_CopyProductUserExternalAccountByIndex API. */
 	public static int EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYINDEX_API_LATEST. */

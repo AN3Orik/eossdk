@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId"})
 public class EOS_Ecom_GetLastRedeemedEntitlementsCountOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_GetLastRedeemedEntitlementsCount API. */
 	public static final int EOS_ECOM_GETLASTREDEEMEDENTITLEMENTSCOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_GETLASTREDEEMEDENTITLEMENTSCOUNT_API_LATEST. */

@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatClient_AddNotifyMessageToServerOptions extends Structure {
 	public int EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOSERVER_API_LATEST = 1;
 
+	/** API Version: Set this to EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOSERVER_API_LATEST. */
 	public int ApiVersion;
 
 	public EOS_AntiCheatClient_AddNotifyMessageToServerOptions() {

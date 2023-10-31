@@ -12,11 +12,14 @@ import com.sun.jna.Structure;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_Auth_AddNotifyLoginStatusChanged Function.
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_Auth_AddNotifyLoginStatusChangedOptions extends Structure {
+	/** The most recent version of the EOS_Auth_AddNotifyLoginStatusChanged API. */
 	public static int EOS_AUTH_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_AUTH_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST. */

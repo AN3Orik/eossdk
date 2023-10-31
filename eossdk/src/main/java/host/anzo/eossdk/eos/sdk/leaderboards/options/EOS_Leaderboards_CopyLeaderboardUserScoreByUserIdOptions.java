@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "UserId", "StatName"})
 public class EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions extends Structure {
+	/** The most recent version of the EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions struct. */
 	public static final int EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYUSERID_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYUSERID_API_LATEST. */

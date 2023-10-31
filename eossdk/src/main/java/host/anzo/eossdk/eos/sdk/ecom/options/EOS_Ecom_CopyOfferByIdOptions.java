@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "OfferId"})
 public class EOS_Ecom_CopyOfferByIdOptions extends Structure {
+	/** The most recent version of the EOS_Ecom_CopyOfferById API. */
 	public static final int EOS_ECOM_COPYOFFERBYID_API_LATEST = 3;
 
 	/** API Version: Set this to EOS_ECOM_COPYOFFERBYID_API_LATEST. */

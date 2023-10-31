@@ -10,18 +10,19 @@ import host.anzo.eossdk.eos.sdk.metrics.enums.EOS_EUserControllerType;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * BeginPlayerSession
+ *
  * @author Anton Lasevich
  * @since 8/21/2023
  */
 @FieldOrder({"ApiVersion", "AccountIdType", "AccountId", "DisplayName", "ControllerType", "ServerIp", "GameSessionId"})
 public class EOS_Metrics_BeginPlayerSessionOptions extends Structure {
+	/** The most recent version of the EOS_Metrics_BeginPlayerSessionOptions struct. */
 	public static final int EOS_METRICS_BEGINPLAYERSESSION_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_METRICS_BEGINPLAYERSESSION_API_LATEST. */
 	public int ApiVersion;
-	/**
-	 * The Account ID type that is set in the union.
-	 */
+	/** The Account ID type that is set in the union. */
 	public EOS_EMetricsAccountIdType AccountIdType;
 	/** The Account ID for the player whose session is beginning. */
 	public AccountId_union AccountId;
@@ -34,8 +35,10 @@ public class EOS_Metrics_BeginPlayerSessionOptions extends Structure {
 	/**
 	 * IP address of the game server hosting the game session. For a localhost session, set to NULL.<br>
 	 * <b>Must be in either one of the following IPv4 or IPv6 string formats:</b>
-	 * * "127.0.0.1".
-	 * * "1200:0000:AB00:1234:0000:2552:7777:1313".
+	 * <ul>
+	 *     <li>"127.0.0.1".
+	 *     <li>"1200:0000:AB00:1234:0000:2552:7777:1313".
+	 * </ul>
 	 * If both IPv4 and IPv6 addresses are available, use the IPv6 address.
 	 */
 	public String ServerIp;

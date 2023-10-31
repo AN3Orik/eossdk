@@ -19,7 +19,8 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Id", "Token", "Type", "SystemAuthCredentialsOptions", "ExternalType"})
 public class EOS_Auth_Credentials extends Structure {
-	public static int EOS_AUTH_CREDENTIALS_API_LATEST = 3;
+	/** The most recent version of the EOS_Auth_Credentials struct. */
+	public static int EOS_AUTH_CREDENTIALS_API_LATEST = 4;
 
 	/** API Version: Set this to EOS_AUTH_CREDENTIALS_API_LATEST. */
 	public int ApiVersion;

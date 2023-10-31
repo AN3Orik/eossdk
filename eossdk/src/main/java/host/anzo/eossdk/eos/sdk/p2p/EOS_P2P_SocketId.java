@@ -20,6 +20,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SocketName"})
 public class EOS_P2P_SocketId extends Structure {
+	/** The most recent version of the EOS_P2P_SocketId structure. */
 	public static final int EOS_P2P_SOCKETID_API_LATEST = 1;
 
 	/** The total buffer size of a EOS_P2P_SocketId SocketName, including space for the null-terminator */

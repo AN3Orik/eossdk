@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "BucketId"})
 public class EOS_LobbyModification_SetBucketIdOptions extends Structure {
+	/** The most recent version of the EOS_LobbyModification_SetBucketId API. */
 	public static final int EOS_LOBBYMODIFICATION_SETBUCKETID_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBYMODIFICATION_SETBUCKETID_API_LATEST. */

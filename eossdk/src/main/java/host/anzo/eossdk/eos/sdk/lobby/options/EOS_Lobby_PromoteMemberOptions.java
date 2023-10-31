@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LobbyId", "LocalUserId", "TargetUserId"})
 public class EOS_Lobby_PromoteMemberOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_PromoteMember API. */
 	public static final int EOS_LOBBY_PROMOTEMEMBER_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_PROMOTEMEMBER_API_LATEST. */

@@ -3,15 +3,21 @@ package host.anzo.eossdk.eos.sdk.mods;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
+import host.anzo.eossdk.eos.sdk.EOS_Mods_Interface;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Data for the EOS_Mods_CopyModInfo function.
+ * @see EOS_Mods_Interface#copyModInfo
+ * @see #release()
+ *
  * @author Anton Lasevich
  * @since 8/15/2023
  */
 @FieldOrder({"ApiVersion", "ModsCount", "Mods", "Type"})
 public class EOS_Mods_ModInfo extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_Mods_ModInfo struct. */
 	public static int EOS_MODS_MODINFO_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_MODS_MODINFO_API_LATEST. */
@@ -22,6 +28,7 @@ public class EOS_Mods_ModInfo extends Structure implements AutoCloseable {
 	public EOS_Mod_Identifier.ByReference Mods;
 	/** Type of the mods */
 	public int Type;
+
 	public EOS_Mods_ModInfo() {
 		super();
 		ApiVersion = EOS_MODS_MODINFO_API_LATEST;

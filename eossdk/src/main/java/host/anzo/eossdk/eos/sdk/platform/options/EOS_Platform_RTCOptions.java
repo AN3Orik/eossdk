@@ -9,14 +9,18 @@ package host.anzo.eossdk.eos.sdk.platform.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.Structure.FieldOrder;
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_ERTCBackgroundMode;
 
 /**
+ * Platform RTC options.
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "ApiVersion", "PlatformSpecificOptions" })
+@FieldOrder({ "ApiVersion", "PlatformSpecificOptions", "BackgroundMode" })
 public class EOS_Platform_RTCOptions extends Structure {
-	public static int EOS_PLATFORM_RTCOPTIONS_API_LATEST = 1;
+	/** The most recent version of the EOS_Platform_RTCOptions API. */
+	public static int EOS_PLATFORM_RTCOPTIONS_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_PLATFORM_RTCOPTIONS_API_LATEST. */
 	public int ApiVersion;
@@ -27,6 +31,8 @@ public class EOS_Platform_RTCOptions extends Structure {
 	 * The structure will be named EOS_(System)_RTCOptions.
 	 */
 	public Pointer PlatformSpecificOptions;
+	/** Configures RTC behavior upon entering to any background application statuses */
+	public EOS_ERTCBackgroundMode BackgroundMode;
 
 	public EOS_Platform_RTCOptions() {
 		super();

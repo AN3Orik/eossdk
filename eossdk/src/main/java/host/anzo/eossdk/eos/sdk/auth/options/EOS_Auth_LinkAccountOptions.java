@@ -22,6 +22,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LinkAccountFlags", "ContinuanceToken", "LocalUserId"})
 public class EOS_Auth_LinkAccountOptions extends Structure {
+	/** The most recent version of the EOS_Auth_LinkAccount API. */
 	public static int EOS_AUTH_LINKACCOUNT_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_AUTH_LINKACCOUNT_API_LATEST. */

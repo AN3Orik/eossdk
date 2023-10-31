@@ -14,6 +14,7 @@ import host.anzo.eossdk.eos.sdk.presence.EOS_PresenceModification;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "PresenceModificationHandle"})
 public class EOS_Presence_SetPresenceOptions extends Structure {
+	/** The most recent version of the EOS_Presence_SetPresence API. */
 	public static final int EOS_PRESENCE_SETPRESENCE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_PRESENCE_SETPRESENCE_API_LATEST. */

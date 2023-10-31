@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_IntegratedPlatform_SetUserPreLogoutCallbackOptions extends Structure {
+	/** The most recent version of the EOS_IntegratedPlatform_SetUserPreLogoutCallback API. */
 	public static final int EOS_INTEGRATEDPLATFORM_SETUSERPRELOGOUTCALLBACK_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_SETUSERPRELOGOUTCALLBACK_API_LATEST. */

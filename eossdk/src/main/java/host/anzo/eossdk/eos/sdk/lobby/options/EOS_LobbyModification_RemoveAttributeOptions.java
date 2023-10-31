@@ -12,6 +12,7 @@ import com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Key"})
 public class EOS_LobbyModification_RemoveAttributeOptions extends Structure {
+	/** The most recent version of the EOS_LobbyModification_RemoveAttribute API. */
 	public static final int EOS_LOBBYMODIFICATION_REMOVEATTRIBUTE_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBYMODIFICATION_REMOVEATTRIBUTE_API_LATEST. */

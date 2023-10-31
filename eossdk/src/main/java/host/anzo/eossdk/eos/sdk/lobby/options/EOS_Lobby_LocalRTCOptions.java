@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Flags", "IsUseManualAudioInput", "IsUseManualAudioOutput", "IsLocalAudioDeviceInputStartsMuted"})
 public class EOS_Lobby_LocalRTCOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_LocalRTCOptions structure. */
 	public static final int EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST. */

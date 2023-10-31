@@ -12,7 +12,7 @@ import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.p2p.EOS_P2P_PacketQueueInfo;
 import host.anzo.eossdk.eos.sdk.p2p.EOS_P2P_SocketId;
-import host.anzo.eossdk.eos.sdk.p2p.callbackresults.EOS_P2P_AddNotifyIncomingPacketQueueFullOptions;
+import host.anzo.eossdk.eos.sdk.p2p.options.EOS_P2P_AddNotifyIncomingPacketQueueFullOptions;
 import host.anzo.eossdk.eos.sdk.p2p.callbacks.*;
 import host.anzo.eossdk.eos.sdk.p2p.enums.EOS_ENATType;
 import host.anzo.eossdk.eos.sdk.p2p.enums.EOS_ERelayControl;

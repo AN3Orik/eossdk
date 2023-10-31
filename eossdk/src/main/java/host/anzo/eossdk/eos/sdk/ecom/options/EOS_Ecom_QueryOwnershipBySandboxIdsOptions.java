@@ -15,8 +15,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "SandboxIds", "SandboxIdsCount"})
 public class EOS_Ecom_QueryOwnershipBySandboxIdsOptions extends Structure {
+	/** The maximum number of Sandbox Ids that may be queried in a single pass. */
 	public static final int EOS_ECOM_QUERYOWNERSHIP_MAX_SANDBOX_IDS = 10;
 
+	/** The most recent version of the EOS_Ecom_QueryOwnershipBySandboxIds API. */
 	public static final int EOS_ECOM_QUERYOWNERSHIPBYSANDBOXIDSOPTIONS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_ECOM_QUERYOWNERSHIPBYSANDBOXIDSOPTIONS_API_LATEST. */

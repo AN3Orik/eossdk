@@ -34,6 +34,10 @@ public class EOS_AntiCheatClient_ProtectMessageOptions extends Structure {
 	}
 
 	public static class ByReference extends EOS_AntiCheatClient_ProtectMessageOptions implements Structure.ByReference {
+		/**
+		 * @param data The data to encrypt
+		 * @param outBufferSizeBytes The size in bytes of OutBuffer
+		 */
 		public ByReference(byte @NotNull [] data, int outBufferSizeBytes) {
 			super();
 			Data = new Memory(data.length);

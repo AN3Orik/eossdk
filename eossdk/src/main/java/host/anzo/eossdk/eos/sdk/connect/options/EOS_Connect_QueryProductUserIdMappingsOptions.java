@@ -9,15 +9,19 @@ package host.anzo.eossdk.eos.sdk.connect.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_EExternalAccountType;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_Connect_QueryProductUserIdMappings function.
+ *
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "AccountIdType_DEPRECATED", "ProductUserIds", "ProductUserIdCount"})
 public class EOS_Connect_QueryProductUserIdMappingsOptions extends Structure {
+	/** The most recent version of the EOS_Connect_QueryProductUserIdMappings API. */
 	public static int EOS_CONNECT_QUERYPRODUCTUSERIDMAPPINGS_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_QUERYPRODUCTUSERIDMAPPINGS_API_LATEST. */
@@ -28,9 +32,9 @@ public class EOS_Connect_QueryProductUserIdMappingsOptions extends Structure {
 	 */
 	public EOS_ProductUserId LocalUserId;
 	/** Deprecated - all external mappings are included in this call, it is no longer necessary to specify this value. */
-	public int AccountIdType_DEPRECATED;
+	public EOS_EExternalAccountType AccountIdType_DEPRECATED;
 	/** An array of Product User IDs to query for the given external account representation. */
-	public EOS_ProductUserId ProductUserIds;
+	public EOS_ProductUserId[] ProductUserIds;
 	/** Number of Product User IDs to query. */
 	public int ProductUserIdCount;
 

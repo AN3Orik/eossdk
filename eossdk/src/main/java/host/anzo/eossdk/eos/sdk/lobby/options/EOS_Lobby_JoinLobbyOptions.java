@@ -19,6 +19,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LobbyDetailsHandle", "LocalUserId", "IsPresenceEnabled", "LocalRTCOptions", "IsCrossplayOptOut"})
 public class EOS_Lobby_JoinLobbyOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_JoinLobby API. */
 	public static final int EOS_LOBBY_JOINLOBBY_API_LATEST = 4;
 
 	/** API Version: Set this to EOS_LOBBY_JOINLOBBY_API_LATEST. */
@@ -57,6 +58,7 @@ public class EOS_Lobby_JoinLobbyOptions extends Structure {
 
 	public EOS_Lobby_JoinLobbyOptions() {
 		super();
+		ApiVersion = EOS_LOBBY_JOINLOBBY_API_LATEST;
 	}
 
 	public EOS_Lobby_JoinLobbyOptions(Pointer peer) {

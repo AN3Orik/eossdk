@@ -20,10 +20,11 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "PrimaryLocalUserId", "LocalDeviceUserId", "ProductUserIdToPreserve"})
 public class EOS_Connect_TransferDeviceIdAccountOptions extends Structure {
+	/** The most recent version of the EOS_Connect_TransferDeviceIdAccount API. */
 	public static int EOS_CONNECT_TRANSFERDEVICEIDACCOUNT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CONNECT_TRANSFERDEVICEIDACCOUNT_API_LATEST. */
-	public int ApiVersion = EOS_CONNECT_TRANSFERDEVICEIDACCOUNT_API_LATEST;
+	public int ApiVersion;
 	/**
 	 * The primary product user id, currently logged in, that is already associated with a real external user account (such as Epic Games, PlayStation(TM)Network, Xbox Live and other).
 	 * <p>

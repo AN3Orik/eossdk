@@ -28,7 +28,7 @@ public class EOS_Ecom_QueryEntitlementTokenOptions extends Structure {
 	/** An array of Entitlement Names that you want to check */
 	public StringArray EntitlementNames;
 	/**
-	 * The number of Entitlement Names included in the array, up to {@link EOS_Ecom_QueryEntitlementTokenOptions#EOS_ECOM_QUERYENTITLEMENTTOKEN_MAX_ENTITLEMENT_IDS};<br>
+	 * The number of Entitlement Names included in the array, up to {@link #EOS_ECOM_QUERYENTITLEMENTTOKEN_MAX_ENTITLEMENT_IDS};<br>
 	 * use zero to request all Entitlements associated with the user's Epic Online Services account.
 	 */
 	public int EntitlementNameCount;

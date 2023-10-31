@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "PlatformType", "LocalPlatformUserId", "ExpectedLoginStatus"})
 public class EOS_IntegratedPlatform_FinalizeDeferredUserLogoutOptions extends Structure {
+	/** The most recent version of the EOS_IntegratedPlatform_FinalizeDeferredUserLogout API. */
 	public static final int EOS_INTEGRATEDPLATFORM_FINALIZEDEFERREDUSERLOGOUT_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_FINALIZEDEFERREDUSERLOGOUT_API_LATEST. */

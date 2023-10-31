@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "Index"})
 public class EOS_KWS_CopyPermissionByIndexOptions extends Structure {
+	/** The most recent version of the EOS_KWS_CopyPermissionByIndex API. */
 	public static final int EOS_KWS_COPYPERMISSIONBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_KWS_COPYPERMISSIONBYINDEX_API_LATEST. */

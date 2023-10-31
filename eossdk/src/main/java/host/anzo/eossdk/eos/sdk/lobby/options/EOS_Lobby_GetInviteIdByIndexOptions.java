@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "Index"})
 public class EOS_Lobby_GetInviteIdByIndexOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_GetInviteIdByIndex API. */
 	public static final int EOS_LOBBY_GETINVITEIDBYINDEX_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_GETINVITEIDBYINDEX_API_LATEST. */

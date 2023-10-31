@@ -13,6 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "InviteId"})
 public class EOS_Lobby_CopyLobbyDetailsHandleByInviteIdOptions extends Structure {
+	/** The most recent version of the EOS_Lobby_CopyLobbyDetailsHandleByInviteId API. */
 	public static final int EOS_LOBBY_COPYLOBBYDETAILSHANDLEBYINVITEID_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_LOBBY_COPYLOBBYDETAILSHANDLEBYINVITEID_API_LATEST. */
