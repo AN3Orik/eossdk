@@ -1,6 +1,6 @@
 # EOS SDK for Java
 
-![](https://img.shields.io/maven-central/v/host.anzo/eossdk)
+[![mavencentral](https://img.shields.io/maven-central/v/host.anzo/eossdk)](https://central.sonatype.com/artifact/host.anzo/eossdk)
 [![javadoc](https://javadoc.io/badge2/host.anzo/eossdk/javadoc.svg)](https://javadoc.io/doc/host.anzo/eossdk)
 ![](https://img.shields.io/github/license/AN3Orik/eossdk)
 
