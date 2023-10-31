@@ -1,6 +1,7 @@
 # EOS SDK for Java
 
-![](https://img.shields.io/maven-central/v/host.anzo/eossdk)
+[![mavencentral](https://img.shields.io/maven-central/v/host.anzo/eossdk)](https://central.sonatype.com/artifact/host.anzo/eossdk)
+[![javadoc](https://javadoc.io/badge2/host.anzo/eossdk/javadoc.svg)](https://javadoc.io/doc/host.anzo/eossdk)
 ![](https://img.shields.io/github/license/AN3Orik/eossdk)
 
 Java JNA wrapper for Epic Online Services SDK
@@ -55,13 +56,13 @@ Please note that the library version corresponds to the compatible EOS SDK versi
 // Gradle
 dependencies {
     // EOS SDK wrapper library
-    implementation "host.anzo:eossdk:1.16.1.0"
+    implementation "host.anzo:eossdk:1.16.1.+"
     // Windows native library
-    implementation "host.anzo:eossdk-native-windows:1.16.1.0"
+    implementation "host.anzo:eossdk-native-windows:1.16.1.+"
     // Linux native library
-    implementation "host.anzo:eossdk-native-linux:1.16.1.0"
+    implementation "host.anzo:eossdk-native-linux:1.16.1.+"
     // iOS native library
-    implementation "host.anzo:eossdk-native-ios:1.16.1.0"
+    implementation "host.anzo:eossdk-native-ios:1.16.1.+"
 }
 ```
 
