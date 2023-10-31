@@ -13,7 +13,7 @@ So, let me know via issues if you encounter any problems.
 ```diff
 +green completed
 #gray  completed, but not tested
--red   completed, but known issues exists
+-red   unimplemented
 
 + Achivements
 + AntiCheatClient
@@ -36,6 +36,7 @@ So, let me know via issues if you encounter any problems.
 # Presence
 + ProgressionSnapshot
 + Reports
+- RTC
 + Sanctions
 # Sessions
 + Stats
