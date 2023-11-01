@@ -251,6 +251,22 @@ public class EOS_Platform_Interface extends PointerType {
 	}
 
 	/**
+	 * Get a handle to the RTC Interface.
+	 * @return EOS_RTC_Interface handle
+	 */
+	public EOS_RTC_Interface getRTCInterface() {
+		return EOSLibrary.instance.EOS_Platform_GetRTCInterface(this);
+	}
+
+	/**
+	 * Get a handle to the RTC Admin Interface.
+	 * @return EOS_RTC_Admin_Interface handle
+	 */
+	public EOS_RTC_Admin_Interface getRTCAdminInterface() {
+		return EOSLibrary.instance.EOS_Platform_GetRTCAdminInterface(this);
+	}
+
+	/**
 	 * This only will return the value set as the override otherwise EOS_NotFound is returned.
 	 * This is not currently used for anything internally.
 	 *

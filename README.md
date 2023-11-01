@@ -36,7 +36,9 @@ So, let me know via issues if you encounter any problems.
 # Presence
 + ProgressionSnapshot
 + Reports
-- RTC
+# RTC
+- RTC Audio
+- RTC Admin
 + Sanctions
 # Sessions
 + Stats

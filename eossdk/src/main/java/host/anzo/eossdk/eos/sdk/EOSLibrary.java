@@ -92,6 +92,8 @@ import host.anzo.eossdk.eos.sdk.progressionsnapshot.callbacks.EOS_ProgressionSna
 import host.anzo.eossdk.eos.sdk.progressionsnapshot.options.*;
 import host.anzo.eossdk.eos.sdk.reports.callbacks.EOS_Reports_OnSendPlayerBehaviorReportCompleteCallback;
 import host.anzo.eossdk.eos.sdk.reports.options.EOS_Reports_SendPlayerBehaviorReportOptions;
+import host.anzo.eossdk.eos.sdk.rtc.callbacks.*;
+import host.anzo.eossdk.eos.sdk.rtc.options.*;
 import host.anzo.eossdk.eos.sdk.sanctions.EOS_Sanctions_PlayerSanction;
 import host.anzo.eossdk.eos.sdk.sanctions.callbacks.EOS_Sanctions_OnQueryActivePlayerSanctionsCallback;
 import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_CopyPlayerSanctionByIndexOptions;
@@ -199,6 +201,8 @@ public interface EOSLibrary extends Library {
 	EOS_TitleStorage_Interface EOS_Platform_GetTitleStorageInterface(EOS_Platform_Interface handle);
 	EOS_UserInfo_Interface EOS_Platform_GetUserInfoInterface(EOS_Platform_Interface handle);
 	EOS_UI_Interface EOS_Platform_GetUIInterface(EOS_Platform_Interface handle);
+	EOS_RTC_Interface EOS_Platform_GetRTCInterface(EOS_Platform_Interface handle);
+	EOS_RTC_Admin_Interface EOS_Platform_GetRTCAdminInterface(EOS_Platform_Interface handle);
 
 	// Initialize
 	EOS_EResult EOS_Initialize(EOS_InitializeOptions options);
@@ -917,4 +921,18 @@ public interface EOSLibrary extends Library {
 	EOS_NotificationId EOS_UI_AddNotifyMemoryMonitor(EOS_UI_Interface handle, EOS_UI_AddNotifyMemoryMonitorOptions options, Pointer clientData, EOS_UI_OnMemoryMonitorCallback notificationFn);
 	void EOS_UI_RemoveNotifyMemoryMonitor(EOS_UI_Interface handle, EOS_NotificationId Id);
 	void EOS_UI_ShowNativeProfile(EOS_UI_Interface handle, EOS_UI_ShowNativeProfileOptions options, Pointer clientData, EOS_UI_OnShowNativeProfileCallback completionDelegate);
+	
+	// RTC
+	EOS_RTC_Audio_Interface EOS_RTC_GetAudioInterface(EOS_RTC_Interface handle);
+	void EOS_RTC_JoinRoom(EOS_RTC_Interface handle, EOS_RTC_JoinRoomOptions options, Pointer clientData, EOS_RTC_OnJoinRoomCallback completionDelegate);
+	void EOS_RTC_LeaveRoom(EOS_RTC_Interface handle, EOS_RTC_LeaveRoomOptions options, Pointer clientData, EOS_RTC_OnLeaveRoomCallback completionDelegate);
+	void EOS_RTC_BlockParticipant(EOS_RTC_Interface handle, EOS_RTC_BlockParticipantOptions options, Pointer clientData, EOS_RTC_OnBlockParticipantCallback completionDelegate);
+	EOS_NotificationId EOS_RTC_AddNotifyDisconnected(EOS_RTC_Interface handle, EOS_RTC_AddNotifyDisconnectedOptions options, Pointer clientData, EOS_RTC_OnDisconnectedCallback completionDelegate);
+	void EOS_RTC_RemoveNotifyDisconnected(EOS_RTC_Interface handle, EOS_NotificationId notificationId);
+	EOS_NotificationId EOS_RTC_AddNotifyParticipantStatusChanged(EOS_RTC_Interface handle, EOS_RTC_AddNotifyParticipantStatusChangedOptions options, Pointer clientData, EOS_RTC_OnParticipantStatusChangedCallback completionDelegate);
+	void EOS_RTC_RemoveNotifyParticipantStatusChanged(EOS_RTC_Interface handle, EOS_NotificationId notificationId);
+	EOS_EResult EOS_RTC_SetSetting(EOS_RTC_Interface handle, EOS_RTC_SetSettingOptions options);
+	EOS_EResult EOS_RTC_SetRoomSetting(EOS_RTC_Interface handle, EOS_RTC_SetRoomSettingOptions options);
+	EOS_NotificationId EOS_RTC_AddNotifyRoomStatisticsUpdated(EOS_RTC_Interface handle, EOS_RTC_AddNotifyRoomStatisticsUpdatedOptions options, Pointer clientData, EOS_RTC_OnRoomStatisticsUpdatedCallback statisticsUpdateHandler);
+	void EOS_RTC_RemoveNotifyRoomStatisticsUpdated(EOS_RTC_Interface handle, EOS_NotificationId notificationId);
 }
