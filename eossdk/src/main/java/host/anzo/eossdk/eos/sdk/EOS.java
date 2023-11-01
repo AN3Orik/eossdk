@@ -46,7 +46,7 @@ public class EOS {
 	 *         {@link EOS_EResult#EOS_AlreadyConfigured} is returned if the function has already been called.<br>
 	 *         {@link EOS_EResult#EOS_InvalidParameters} is returned if the provided options are invalid.
 	 */
-	public static EOS_EResult EOS_Initialize(EOS_InitializeOptions options)  {
+	public static EOS_EResult EOS_Initialize(EOS_InitializeOptions options) {
 		return EOSLibrary.instance.EOS_Initialize(options);
 	}
 

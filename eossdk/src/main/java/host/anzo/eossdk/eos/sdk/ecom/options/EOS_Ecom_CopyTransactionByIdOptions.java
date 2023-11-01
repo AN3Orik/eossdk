@@ -28,6 +28,7 @@ public class EOS_Ecom_CopyTransactionByIdOptions extends Structure {
 		super();
 		ApiVersion = EOS_ECOM_COPYTRANSACTIONBYID_API_LATEST;
 	}
+
 	public EOS_Ecom_CopyTransactionByIdOptions(Pointer peer) {
 		super(peer);
 	}

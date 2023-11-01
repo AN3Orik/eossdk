@@ -37,7 +37,7 @@ public @Getter enum EOS_EKWSPermissionStatus implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_KPS_GRANTED);
+		return values.getOrDefault((int) nativeValue, EOS_KPS_GRANTED);
 	}
 
 	@Override

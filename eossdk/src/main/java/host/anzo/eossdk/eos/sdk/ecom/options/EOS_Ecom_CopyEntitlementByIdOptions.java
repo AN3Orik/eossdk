@@ -28,6 +28,7 @@ public class EOS_Ecom_CopyEntitlementByIdOptions extends Structure {
 		super();
 		ApiVersion = EOS_ECOM_COPYENTITLEMENTBYID_API_LATEST;
 	}
+
 	public EOS_Ecom_CopyEntitlementByIdOptions(Pointer peer) {
 		super(peer);
 	}

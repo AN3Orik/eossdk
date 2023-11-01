@@ -38,10 +38,9 @@ public @Getter class EOS_Bool implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		if(nativeValue == null) {
+		if (nativeValue == null) {
 			return EOS_Bool.EOS_FALSE;
-		}
-		else {
+		} else {
 			final int value = (int) nativeValue;
 			return value == 1 ? EOS_Bool.EOS_TRUE : EOS_Bool.EOS_FALSE;
 		}

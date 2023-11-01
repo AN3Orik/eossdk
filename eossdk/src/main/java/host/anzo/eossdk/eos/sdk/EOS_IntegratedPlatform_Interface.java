@@ -23,6 +23,7 @@ public class EOS_IntegratedPlatform_Interface extends PointerType {
 	public EOS_IntegratedPlatform_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_IntegratedPlatform_Interface() {
 		super();
 	}
@@ -82,8 +83,8 @@ public class EOS_IntegratedPlatform_Interface extends PointerType {
 	 * @see #removeNotifyUserLoginStatusChanged(EOS_NotificationId)
 	 */
 	public EOS_NotificationId addNotifyUserLoginStatusChanged(EOS_IntegratedPlatform_AddNotifyUserLoginStatusChangedOptions options,
-	                                                                                 Pointer clientData,
-	                                                                                 EOS_IntegratedPlatform_OnUserLoginStatusChangedCallback callbackFunction) {
+	                                                          Pointer clientData,
+	                                                          EOS_IntegratedPlatform_OnUserLoginStatusChangedCallback callbackFunction) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_IntegratedPlatform_AddNotifyUserLoginStatusChanged(this, options, clientData, callbackFunction);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, callbackFunction);
@@ -120,14 +121,14 @@ public class EOS_IntegratedPlatform_Interface extends PointerType {
 	 * @param clientData An optional context pointer that is returned in the callback data.
 	 * @param callbackFunction The function that will handle the callback.
 	 * @return {@link EOS_EResult#EOS_Success} if the platform user logout handler was bound successfully.<br>
-	 *		   {@link EOS_EResult#EOS_AlreadyConfigured} if there is already a platform user logout handler bound.
+	 *           {@link EOS_EResult#EOS_AlreadyConfigured} if there is already a platform user logout handler bound.
 	 *
 	 * @see #clearUserPreLogoutCallback(EOS_IntegratedPlatform_ClearUserPreLogoutCallbackOptions)
 	 * @see #finalizeDeferredUserLogout(EOS_IntegratedPlatform_FinalizeDeferredUserLogoutOptions)
 	 */
 	public EOS_EResult setUserPreLogoutCallback(EOS_IntegratedPlatform_SetUserPreLogoutCallbackOptions options,
-	                                                                   Pointer clientData,
-	                                                                   EOS_IntegratedPlatform_OnUserPreLogoutCallback callbackFunction) {
+	                                            Pointer clientData,
+	                                            EOS_IntegratedPlatform_OnUserPreLogoutCallback callbackFunction) {
 		return EOSLibrary.instance.EOS_IntegratedPlatform_SetUserPreLogoutCallback(this, options, clientData, callbackFunction);
 	}
 

@@ -40,6 +40,7 @@ public class EOS_Auth_QueryIdTokenOptions extends Structure {
 		super();
 		ApiVersion = EOS_AUTH_QUERYIDTOKEN_API_LATEST;
 	}
+
 	public EOS_Auth_QueryIdTokenOptions(Pointer peer) {
 		super(peer);
 	}

@@ -90,7 +90,7 @@ public @Getter class EOS_UI_EInputStateButtonFlags extends NativeMappedBitMask {
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
 		final EOS_UI_EInputStateButtonFlags value = new EOS_UI_EInputStateButtonFlags();
-		value.bitMask = (int)nativeValue;
+		value.bitMask = (int) nativeValue;
 		return value;
 	}
 }

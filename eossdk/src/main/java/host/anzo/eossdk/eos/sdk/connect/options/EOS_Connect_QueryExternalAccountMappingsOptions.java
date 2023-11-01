@@ -40,6 +40,7 @@ public class EOS_Connect_QueryExternalAccountMappingsOptions extends Structure {
 		super();
 		ApiVersion = EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST;
 	}
+
 	public EOS_Connect_QueryExternalAccountMappingsOptions(Pointer peer) {
 		super(peer);
 	}

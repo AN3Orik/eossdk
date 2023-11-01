@@ -25,6 +25,7 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	public EOS_AntiCheatClient_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_AntiCheatClient_Interface() {
 		super();
 	}

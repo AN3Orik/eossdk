@@ -27,6 +27,7 @@ public class EOS_Sanctions_QueryActivePlayerSanctionsCallbackInfo extends Struct
 	public EOS_Sanctions_QueryActivePlayerSanctionsCallbackInfo() {
 		super();
 	}
+
 	public EOS_Sanctions_QueryActivePlayerSanctionsCallbackInfo(Pointer peer) {
 		super(peer);
 	}

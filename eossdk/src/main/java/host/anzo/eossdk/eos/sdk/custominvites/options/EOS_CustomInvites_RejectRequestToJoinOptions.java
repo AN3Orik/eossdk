@@ -13,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
 @FieldOrder({"ApiVersion", "LocalUserId", "TargetUserId"})
 public class EOS_CustomInvites_RejectRequestToJoinOptions extends Structure {
 	/** The most recent version of the EOS_CustomInvites_RejectRequestToJoin API. */
-	public static final int  EOS_CUSTOMINVITES_REJECTREQUESTTOJOIN_API_LATEST = 1;
+	public static final int EOS_CUSTOMINVITES_REJECTREQUESTTOJOIN_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_CUSTOMINVITES_REJECTREQUESTTOJOIN_API_LATEST. */
 	public int ApiVersion;

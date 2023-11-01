@@ -41,7 +41,7 @@ public @Getter enum EOS_ERTCBackgroundMode implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_RTCBM_LeaveRooms);
+		return values.getOrDefault((int) nativeValue, EOS_RTCBM_LeaveRooms);
 	}
 
 	@Override

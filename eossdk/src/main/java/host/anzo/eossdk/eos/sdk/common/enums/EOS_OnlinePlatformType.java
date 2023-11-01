@@ -32,7 +32,7 @@ public @Getter enum EOS_OnlinePlatformType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_OPT_Unknown);
+		return values.getOrDefault((int) nativeValue, EOS_OPT_Unknown);
 	}
 
 	@Override

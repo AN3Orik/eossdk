@@ -33,6 +33,7 @@ public class EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo extend
 
 	public static class ByReference extends EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo implements Structure.ByValue {
 	}
 }

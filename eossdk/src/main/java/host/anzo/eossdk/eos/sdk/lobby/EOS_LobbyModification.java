@@ -18,6 +18,7 @@ public class EOS_LobbyModification extends PointerType implements AutoCloseable 
 	public EOS_LobbyModification(Pointer address) {
 		super(address);
 	}
+
 	public EOS_LobbyModification() {
 		super();
 	}
@@ -84,7 +85,7 @@ public class EOS_LobbyModification extends PointerType implements AutoCloseable 
 	 * @param options Options to set the attribute and its visibility state
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if setting this parameter was successful<br>
-	 *		   {@link EOS_EResult#EOS_InvalidParameters} if the attribute is missing information or otherwise invalid<br>
+	 *           {@link EOS_EResult#EOS_InvalidParameters} if the attribute is missing information or otherwise invalid<br>
 	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
 	 */
 	public EOS_EResult addAttribute(EOS_LobbyModification_AddAttributeOptions options) {
@@ -97,7 +98,7 @@ public class EOS_LobbyModification extends PointerType implements AutoCloseable 
 	 * @param options Specify the key of the attribute to remove
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if removing this parameter was successful<br>
-	 *		   {@link EOS_EResult#EOS_InvalidParameters} if the key is null or empty<br>
+	 *           {@link EOS_EResult#EOS_InvalidParameters} if the key is null or empty<br>
 	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
 	 */
 	public EOS_EResult removeAttribute(EOS_LobbyModification_RemoveAttributeOptions options) {
@@ -111,7 +112,7 @@ public class EOS_LobbyModification extends PointerType implements AutoCloseable 
 	 * @param options Options to set the attribute and its visibility state
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if setting this parameter was successful<br>
-	 *		   {@link EOS_EResult#EOS_InvalidParameters} if the attribute is missing information or otherwise invalid<br>
+	 *           {@link EOS_EResult#EOS_InvalidParameters} if the attribute is missing information or otherwise invalid<br>
 	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
 	 */
 	public EOS_EResult addMemberAttribute(EOS_LobbyModification_AddMemberAttributeOptions options) {
@@ -124,7 +125,7 @@ public class EOS_LobbyModification extends PointerType implements AutoCloseable 
 	 * @param options Specify the key of the member attribute to remove
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if removing this parameter was successful<br>
-	 *		   {@link EOS_EResult#EOS_InvalidParameters} if the key is null or empty<br>
+	 *           {@link EOS_EResult#EOS_InvalidParameters} if the key is null or empty<br>
 	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
 	 */
 	public EOS_EResult removeMemberAttribute(EOS_LobbyModification_RemoveMemberAttributeOptions options) {

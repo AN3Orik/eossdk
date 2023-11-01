@@ -20,6 +20,7 @@ public class EOS_AntiCheatClient_OnClientIntegrityViolatedCallbackInfo extends S
 	public EOS_EAntiCheatClientViolationType ViolationType;
 	/** String describing the violation which should be displayed to the user */
 	public String ViolationMessage;
+
 	public EOS_AntiCheatClient_OnClientIntegrityViolatedCallbackInfo() {
 		super();
 	}

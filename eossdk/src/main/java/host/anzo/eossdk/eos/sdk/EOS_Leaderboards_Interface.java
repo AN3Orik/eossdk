@@ -26,7 +26,7 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	public EOS_Leaderboards_Interface(Pointer address) {
 		super(address);
 	}
-	
+
 	public EOS_Leaderboards_Interface() {
 		super();
 	}
@@ -39,8 +39,8 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 * @param completionDelegate This function is called when the query operation completes.
 	 */
 	public void queryLeaderboardDefinitions(EOS_Leaderboards_QueryLeaderboardDefinitionsOptions options,
-	                                                         Pointer clientData,
-	                                                         EOS_Leaderboards_OnQueryLeaderboardDefinitionsCompleteCallback completionDelegate) {
+	                                        Pointer clientData,
+	                                        EOS_Leaderboards_OnQueryLeaderboardDefinitionsCompleteCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Leaderboards_QueryLeaderboardDefinitions(this, options, clientData, completionDelegate);
 	}
 
@@ -105,8 +105,8 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 * @param completionDelegate This function is called when the query operation completes.
 	 */
 	public void queryLeaderboardRanks(EOS_Leaderboards_QueryLeaderboardRanksOptions options,
-	                                                   Pointer clientData,
-	                                                   EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallback completionDelegate) {
+	                                  Pointer clientData,
+	                                  EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Leaderboards_QueryLeaderboardRanks(this, options, clientData, completionDelegate);
 	}
 
@@ -172,8 +172,8 @@ public class EOS_Leaderboards_Interface extends PointerType {
 	 * @param completionDelegate This function is called when the query operation completes.
 	 */
 	public void queryLeaderboardUserScores(EOS_Leaderboards_QueryLeaderboardUserScoresOptions options,
-	                                                        Pointer clientData,
-	                                                        EOS_Leaderboards_OnQueryLeaderboardUserScoresCompleteCallback completionDelegate) {
+	                                       Pointer clientData,
+	                                       EOS_Leaderboards_OnQueryLeaderboardUserScoresCompleteCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Leaderboards_QueryLeaderboardUserScores(this, options, clientData, completionDelegate);
 	}
 

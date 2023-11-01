@@ -51,7 +51,7 @@ public class EOS_Platform_Interface extends PointerType {
 	 * Get a handle to the Connect Interface.
 	 * @return EOS_Connect_Interface handle
 	 */
-	public EOS_Connect_Interface getConnectInterface()  {
+	public EOS_Connect_Interface getConnectInterface() {
 		return EOSLibrary.instance.EOS_Platform_GetConnectInterface(this);
 	}
 
@@ -91,7 +91,7 @@ public class EOS_Platform_Interface extends PointerType {
 	 * Get a handle to the Lobby Interface.
 	 * @return EOS_Lobby_Interface handle
 	 */
-	public EOS_Lobby_Interface getLobbyInterface()  {
+	public EOS_Lobby_Interface getLobbyInterface() {
 		return EOSLibrary.instance.EOS_Platform_GetLobbyInterface(this);
 	}
 
@@ -155,7 +155,7 @@ public class EOS_Platform_Interface extends PointerType {
 	 * Get a handle to the Kids Web Service Interface.
 	 * @return EOS_KWS_Interface handle
 	 */
-	public EOS_KWS_Interface getKWSInterface()  {
+	public EOS_KWS_Interface getKWSInterface() {
 		return EOSLibrary.instance.EOS_Platform_GetKWSInterface(this);
 	}
 
@@ -418,7 +418,7 @@ public class EOS_Platform_Interface extends PointerType {
 	 * @param outDesktopCrossplayStatusInfo output structure to receive the desktop crossplay status information.
 	 *
 	 * @return An EOS_EResult is returned to indicate success or an error.<br>
-	 *		   {@link EOS_EResult#EOS_NotImplemented} is returned on non-Windows platforms.
+	 *           {@link EOS_EResult#EOS_NotImplemented} is returned on non-Windows platforms.
 	 */
 	public EOS_EResult getDesktopCrossplayStatus(EOS_Platform_GetDesktopCrossplayStatusOptions options, EOS_Platform_DesktopCrossplayStatusInfo outDesktopCrossplayStatusInfo) {
 		return EOSLibrary.instance.EOS_Platform_GetDesktopCrossplayStatus(this, options, outDesktopCrossplayStatusInfo);

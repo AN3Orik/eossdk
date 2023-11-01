@@ -18,6 +18,7 @@ public class EOS_LobbySearch extends PointerType {
 	public EOS_LobbySearch(Pointer address) {
 		super(address);
 	}
+
 	public EOS_LobbySearch() {
 		super();
 	}
@@ -84,7 +85,7 @@ public class EOS_LobbySearch extends PointerType {
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if removing this search parameter was successful
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if the search key is invalid or null
-	 *		   {@link EOS_EResult#EOS_NotFound} if the parameter was not a part of the search criteria
+	 *           {@link EOS_EResult#EOS_NotFound} if the parameter was not a part of the search criteria
 	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
 	 */
 	public EOS_EResult removeParameter(EOS_LobbySearch_RemoveParameterOptions options) {

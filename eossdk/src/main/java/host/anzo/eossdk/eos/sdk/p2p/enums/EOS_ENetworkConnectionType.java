@@ -37,7 +37,7 @@ public @Getter enum EOS_ENetworkConnectionType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_NCT_NoConnection);
+		return values.getOrDefault((int) nativeValue, EOS_NCT_NoConnection);
 	}
 
 	@Override

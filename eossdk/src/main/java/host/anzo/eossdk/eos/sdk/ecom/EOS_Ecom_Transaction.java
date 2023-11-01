@@ -33,6 +33,7 @@ public class EOS_Ecom_Transaction extends PointerType implements AutoCloseable {
 	public EOS_Ecom_Transaction(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Ecom_Transaction() {
 		super();
 	}

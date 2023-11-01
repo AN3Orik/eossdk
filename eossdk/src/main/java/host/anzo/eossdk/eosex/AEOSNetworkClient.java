@@ -22,11 +22,16 @@ public abstract class AEOSNetworkClient extends EOS_AntiCheatCommon_ClientHandle
 	public abstract String getIpAddress();
 
 	public abstract EOS_EAntiCheatCommonClientType getProtectedType();
+
 	public abstract EOS_EAntiCheatCommonClientPlatform getPlatformType();
+
 	public abstract EOS_EAntiCheatCommonClientFlags getFlags();
+
 	public abstract EOS_EAntiCheatCommonClientInput getInputMethod();
+
 	public abstract EOS_ProductUserId getProductUserId();
 
 	public abstract void close(EOS_EAntiCheatCommonClientActionReason reason, String reasonMessage);
+
 	public abstract void sendEacData(ByteBuffer data);
 }

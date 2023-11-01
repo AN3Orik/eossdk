@@ -17,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "ApiVersion", "ClientHandle", "EventId", "ParamsCount", "Params"})
+@FieldOrder({"ApiVersion", "ClientHandle", "EventId", "ParamsCount", "Params"})
 public class EOS_AntiCheatCommon_LogEventOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGEVENT_API_LATEST = 1;
 

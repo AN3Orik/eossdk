@@ -14,6 +14,7 @@ public class EOS_RTC_Audio_Interface extends PointerType {
 	public EOS_RTC_Audio_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_RTC_Audio_Interface() {
 		super();
 	}

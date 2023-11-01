@@ -48,8 +48,13 @@ public class EOS_Connect_Credentials extends Structure {
 	}
 
 	public static class ByReference extends EOS_Connect_Credentials implements Structure.ByReference {
-		public ByReference() { }
-		public ByReference(Pointer p) { super(p); read(); }
+		public ByReference() {
+		}
+
+		public ByReference(Pointer p) {
+			super(p);
+			read();
+		}
 	}
 
 	public static class ByValue extends EOS_Connect_Credentials implements Structure.ByValue {

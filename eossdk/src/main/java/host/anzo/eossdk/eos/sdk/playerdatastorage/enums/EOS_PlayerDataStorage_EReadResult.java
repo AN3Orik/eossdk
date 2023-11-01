@@ -37,7 +37,7 @@ public @Getter enum EOS_PlayerDataStorage_EReadResult implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_RR_ContinueReading);
+		return values.getOrDefault((int) nativeValue, EOS_RR_ContinueReading);
 	}
 
 	@Override

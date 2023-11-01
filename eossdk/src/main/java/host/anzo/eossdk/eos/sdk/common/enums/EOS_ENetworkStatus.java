@@ -50,7 +50,7 @@ public @Getter enum EOS_ENetworkStatus implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_NS_Disabled);
+		return values.getOrDefault((int) nativeValue, EOS_NS_Disabled);
 	}
 
 	@Override

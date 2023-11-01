@@ -16,6 +16,7 @@ public class EOS_Reports_Interface extends PointerType {
 	public EOS_Reports_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Reports_Interface() {
 		super();
 	}
@@ -28,8 +29,8 @@ public class EOS_Reports_Interface extends PointerType {
 	 * @param completionDelegate This function is called when the send operation completes.
 	 */
 	public void sendPlayerBehaviorReport(EOS_Reports_SendPlayerBehaviorReportOptions options,
-	                                                 Pointer clientData,
-	                                                 EOS_Reports_OnSendPlayerBehaviorReportCompleteCallback completionDelegate) {
+	                                     Pointer clientData,
+	                                     EOS_Reports_OnSendPlayerBehaviorReportCompleteCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Reports_SendPlayerBehaviorReport(this, options, clientData, completionDelegate);
 	}
 }

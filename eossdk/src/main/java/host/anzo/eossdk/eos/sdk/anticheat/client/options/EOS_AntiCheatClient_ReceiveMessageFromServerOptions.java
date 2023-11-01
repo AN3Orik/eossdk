@@ -3,7 +3,6 @@ package host.anzo.eossdk.eos.sdk.anticheat.client.options;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
-import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import org.jetbrains.annotations.NotNull;
 
 import static com.sun.jna.Structure.FieldOrder;

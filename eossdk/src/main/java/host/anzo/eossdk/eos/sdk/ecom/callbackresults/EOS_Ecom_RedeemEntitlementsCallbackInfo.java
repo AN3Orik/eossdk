@@ -27,6 +27,7 @@ public class EOS_Ecom_RedeemEntitlementsCallbackInfo extends Structure {
 	public EOS_Ecom_RedeemEntitlementsCallbackInfo() {
 		super();
 	}
+
 	public EOS_Ecom_RedeemEntitlementsCallbackInfo(Pointer peer) {
 		super(peer);
 	}

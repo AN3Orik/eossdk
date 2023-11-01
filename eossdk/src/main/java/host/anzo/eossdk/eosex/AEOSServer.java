@@ -133,8 +133,7 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 					final ByteBuffer encryptedData = antiCheatServer.protectMessage(callbackInfo.ClientHandle, data.array(), protectMessageLength);
 					antiCheatClient.sendEacData(encryptedData);
 				}
-			}
-			else {
+			} else {
 				antiCheatClient.sendEacData(data);
 			}
 		}

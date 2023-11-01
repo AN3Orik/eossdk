@@ -31,6 +31,7 @@ public class EOS_CustomInvites_RejectRequestToJoinCallbackInfo extends Structure
 	public EOS_CustomInvites_RejectRequestToJoinCallbackInfo() {
 		super();
 	}
+
 	public EOS_CustomInvites_RejectRequestToJoinCallbackInfo(Pointer peer) {
 		super(peer);
 	}

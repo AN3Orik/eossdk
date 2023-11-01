@@ -23,7 +23,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "ApiVersion", "Reserved", "ProductId", "SandboxId", "ClientCredentials", "IsServer", "EncryptionKey", "OverrideCountryCode", "OverrideLocaleCode", "DeploymentId", "Flags", "CacheDirectory", "TickBudgetInMilliseconds", "RTCOptions", "IntegratedPlatformOptionsContainerHandle", "SystemSpecificOptions"})
+@FieldOrder({"ApiVersion", "Reserved", "ProductId", "SandboxId", "ClientCredentials", "IsServer", "EncryptionKey", "OverrideCountryCode", "OverrideLocaleCode", "DeploymentId", "Flags", "CacheDirectory", "TickBudgetInMilliseconds", "RTCOptions", "IntegratedPlatformOptionsContainerHandle", "SystemSpecificOptions"})
 public class EOS_Platform_Options extends Structure {
 	public static int EOS_COUNTRYCODE_MAX_LENGTH = 4;
 	public static int EOS_COUNTRYCODE_MAX_BUFFER_LEN = EOS_COUNTRYCODE_MAX_LENGTH + 1;

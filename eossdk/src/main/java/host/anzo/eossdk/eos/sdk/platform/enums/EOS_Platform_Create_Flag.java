@@ -46,7 +46,7 @@ public @Getter class EOS_Platform_Create_Flag extends NativeMappedBitMask {
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
 		final EOS_Platform_Create_Flag value = new EOS_Platform_Create_Flag();
-		value.bitMask = (int)nativeValue;
+		value.bitMask = (int) nativeValue;
 		return value;
 	}
 }

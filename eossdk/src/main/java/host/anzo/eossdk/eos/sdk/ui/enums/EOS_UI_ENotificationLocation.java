@@ -40,7 +40,7 @@ public @Getter enum EOS_UI_ENotificationLocation implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_UNL_TopLeft);
+		return values.getOrDefault((int) nativeValue, EOS_UNL_TopLeft);
 	}
 
 	@Override

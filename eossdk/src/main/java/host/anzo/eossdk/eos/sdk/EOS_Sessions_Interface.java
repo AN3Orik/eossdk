@@ -34,6 +34,7 @@ public class EOS_Sessions_Interface extends PointerType {
 	public EOS_Sessions_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Sessions_Interface() {
 		super();
 	}
@@ -144,8 +145,8 @@ public class EOS_Sessions_Interface extends PointerType {
 	 * @param completionDelegate A callback that is fired when the unregistration operation completes, either successfully or in error
 	 */
 	public void unregisterPlayers(EOS_Sessions_UnregisterPlayersOptions options,
-	                                           Pointer clientData,
-	                                           EOS_Sessions_OnUnregisterPlayersCallback completionDelegate) {
+	                              Pointer clientData,
+	                              EOS_Sessions_OnUnregisterPlayersCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Sessions_UnregisterPlayers(this, options, clientData, completionDelegate);
 	}
 
@@ -259,8 +260,8 @@ public class EOS_Sessions_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifySessionInviteReceived(EOS_Sessions_AddNotifySessionInviteReceivedOptions options,
-	                                                                      Pointer clientData,
-	                                                                      EOS_Sessions_OnSessionInviteReceivedCallback notificationFn) {
+	                                                         Pointer clientData,
+	                                                         EOS_Sessions_OnSessionInviteReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifySessionInviteReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -289,8 +290,8 @@ public class EOS_Sessions_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifySessionInviteAccepted(EOS_Sessions_AddNotifySessionInviteAcceptedOptions options,
-	                                                                      Pointer clientData,
-	                                                                      EOS_Sessions_OnSessionInviteAcceptedCallback notificationFn) {
+	                                                         Pointer clientData,
+	                                                         EOS_Sessions_OnSessionInviteAcceptedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifySessionInviteAccepted(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -431,11 +432,11 @@ public class EOS_Sessions_Interface extends PointerType {
 	 * @param options Structure containing the input parameters
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if the user is found in the specified session<br>
-	 *		   {@link EOS_EResult#EOS_NotFound} if the user is not found in the specified session<br>
-	 *		   {@link EOS_EResult#EOS_InvalidParameters} if you pass an invalid invite ID or a null pointer for the out parameter<br>
-	 *		   {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect<br>
-	 *		   {@link EOS_EResult#EOS_Invalid_ProductUserID} if an invalid target user is specified<br>
-	 *		   {@link EOS_EResult#EOS_Sessions_InvalidSession} if the session specified is invalid
+	 *           {@link EOS_EResult#EOS_NotFound} if the user is not found in the specified session<br>
+	 *           {@link EOS_EResult#EOS_InvalidParameters} if you pass an invalid invite ID or a null pointer for the out parameter<br>
+	 *           {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect<br>
+	 *           {@link EOS_EResult#EOS_Invalid_ProductUserID} if an invalid target user is specified<br>
+	 *           {@link EOS_EResult#EOS_Sessions_InvalidSession} if the session specified is invalid
 	 */
 	public EOS_EResult isUserInSession(EOS_Sessions_IsUserInSessionOptions options) {
 		return EOSLibrary.instance.EOS_Sessions_IsUserInSession(this, options);
@@ -504,8 +505,8 @@ public class EOS_Sessions_Interface extends PointerType {
 	 * @see EOS_EIntegratedPlatformManagementFlags#EOS_IPMF_PreferIntegratedIdentity
 	 */
 	public EOS_NotificationId addNotifySendSessionNativeInviteRequested(EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions options,
-	                                                                                 Pointer clientData,
-	                                                                                 EOS_Sessions_OnSendSessionNativeInviteRequestedCallback notificationFn) {
+	                                                                    Pointer clientData,
+	                                                                    EOS_Sessions_OnSendSessionNativeInviteRequestedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Sessions_AddNotifySendSessionNativeInviteRequested(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);

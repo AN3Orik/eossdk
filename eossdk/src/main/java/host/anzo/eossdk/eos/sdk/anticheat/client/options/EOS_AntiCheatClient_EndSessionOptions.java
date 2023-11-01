@@ -15,9 +15,11 @@ public class EOS_AntiCheatClient_EndSessionOptions extends Structure {
 
 	/** API Version: Set this to EOS_ANTICHEATCLIENT_ENDSESSION_API_LATEST. */
 	public int ApiVersion;
+
 	public EOS_AntiCheatClient_EndSessionOptions() {
 		super();
 	}
+
 	public EOS_AntiCheatClient_EndSessionOptions(Pointer peer) {
 		super(peer);
 		ApiVersion = EOS_ANTICHEATCLIENT_ENDSESSION_API_LATEST;

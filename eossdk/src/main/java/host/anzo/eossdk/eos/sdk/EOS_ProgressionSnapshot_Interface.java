@@ -70,8 +70,8 @@ public class EOS_ProgressionSnapshot_Interface extends PointerType {
 	 * Note: This will overwrite any prior progression data stored with the service that's associated with the user.
 	 */
 	public void submitSnapshot(EOS_ProgressionSnapshot_SubmitSnapshotOptions options,
-	                                            Pointer clientData,
-	                                            EOS_ProgressionSnapshot_OnSubmitSnapshotCallback completionDelegate) {
+	                           Pointer clientData,
+	                           EOS_ProgressionSnapshot_OnSubmitSnapshotCallback completionDelegate) {
 		EOSLibrary.instance.EOS_ProgressionSnapshot_SubmitSnapshot(this, options, clientData, completionDelegate);
 	}
 
@@ -89,8 +89,8 @@ public class EOS_ProgressionSnapshot_Interface extends PointerType {
 	 * been submitted yet are retained.
 	 */
 	public void deleteSnapshot(EOS_ProgressionSnapshot_DeleteSnapshotOptions options,
-	                                            Pointer clientData,
-	                                            EOS_ProgressionSnapshot_OnDeleteSnapshotCallback completionDelegate) {
+	                           Pointer clientData,
+	                           EOS_ProgressionSnapshot_OnDeleteSnapshotCallback completionDelegate) {
 		EOSLibrary.instance.EOS_ProgressionSnapshot_DeleteSnapshot(this, options, clientData, completionDelegate);
 	}
 }

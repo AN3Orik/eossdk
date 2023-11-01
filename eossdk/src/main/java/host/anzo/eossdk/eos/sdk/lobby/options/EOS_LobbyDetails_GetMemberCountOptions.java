@@ -18,6 +18,7 @@ public class EOS_LobbyDetails_GetMemberCountOptions extends Structure {
 
 	/** API Version: Set this to EOS_LOBBYDETAILS_GETMEMBERCOUNT_API_LATEST. */
 	public int ApiVersion;
+
 	public EOS_LobbyDetails_GetMemberCountOptions() {
 		super();
 		ApiVersion = EOS_LOBBYDETAILS_GETMEMBERCOUNT_API_LATEST;

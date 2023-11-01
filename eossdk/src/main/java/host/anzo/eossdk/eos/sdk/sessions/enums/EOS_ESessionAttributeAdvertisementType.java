@@ -35,7 +35,7 @@ public @Getter enum EOS_ESessionAttributeAdvertisementType implements NativeMapp
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_SAAT_DontAdvertise);
+		return values.getOrDefault((int) nativeValue, EOS_SAAT_DontAdvertise);
 	}
 
 	@Override

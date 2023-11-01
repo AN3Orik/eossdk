@@ -37,6 +37,7 @@ public class EOS_Ecom_CopyOfferImageInfoByIndexOptions extends Structure {
 
 	public static class ByReference extends EOS_Ecom_CopyOfferImageInfoByIndexOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_Ecom_CopyOfferImageInfoByIndexOptions implements Structure.ByValue {
 	}
 }

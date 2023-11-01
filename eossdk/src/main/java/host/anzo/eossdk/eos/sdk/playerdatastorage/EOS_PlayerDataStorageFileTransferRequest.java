@@ -18,6 +18,7 @@ public class EOS_PlayerDataStorageFileTransferRequest extends PointerType implem
 	public EOS_PlayerDataStorageFileTransferRequest(Pointer address) {
 		super(address);
 	}
+
 	public EOS_PlayerDataStorageFileTransferRequest() {
 		super();
 	}

@@ -37,7 +37,7 @@ public @Getter enum EOS_ELobbyPermissionLevel implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_LPL_PUBLICADVERTISED);
+		return values.getOrDefault((int) nativeValue, EOS_LPL_PUBLICADVERTISED);
 	}
 
 	@Override

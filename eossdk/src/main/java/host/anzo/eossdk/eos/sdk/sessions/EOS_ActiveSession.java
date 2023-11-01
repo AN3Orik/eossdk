@@ -16,7 +16,7 @@ import host.anzo.eossdk.eos.sdk.sessions.options.EOS_Sessions_CopyActiveSessionH
 
 /**
  * Representation of an existing session some local players are actively involved in (via Create/Join)
- * 
+ *
  * @author Anton Lasevich
  * @since 9/5/2023
  */
@@ -24,6 +24,7 @@ public class EOS_ActiveSession extends PointerType implements AutoCloseable {
 	public EOS_ActiveSession(Pointer address) {
 		super(address);
 	}
+
 	public EOS_ActiveSession() {
 		super();
 	}

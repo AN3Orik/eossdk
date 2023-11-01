@@ -26,6 +26,7 @@ public class EOS_AntiCheatCommon_RegisterEventParamDef extends Structure {
 	public EOS_AntiCheatCommon_RegisterEventParamDef() {
 		super();
 	}
+
 	public EOS_AntiCheatCommon_RegisterEventParamDef(Pointer peer) {
 		super(peer);
 	}

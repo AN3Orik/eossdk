@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
  * @since 8/5/2023
  */
 @AllArgsConstructor
-@FieldOrder({ "ClientId", "ClientSecret" })
+@FieldOrder({"ClientId", "ClientSecret"})
 public class EOS_Platform_ClientCredentials extends Structure {
 	/** Client ID of the service permissions entry. Set to NULL if no service permissions are used. */
 	public String ClientId;

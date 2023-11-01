@@ -27,6 +27,7 @@ public class EOS_Auth_Interface extends PointerType {
 	public EOS_Auth_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Auth_Interface() {
 		super();
 	}

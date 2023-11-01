@@ -34,6 +34,7 @@ public class EOS_AntiCheatCommon_Quat extends Structure {
 
 	public static class ByReference extends EOS_AntiCheatCommon_Quat implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_AntiCheatCommon_Quat implements Structure.ByValue {
 	}
 }

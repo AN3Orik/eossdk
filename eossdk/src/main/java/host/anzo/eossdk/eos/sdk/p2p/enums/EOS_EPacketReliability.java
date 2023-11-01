@@ -40,7 +40,7 @@ public @Getter enum EOS_EPacketReliability implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_PR_UnreliableUnordered);
+		return values.getOrDefault((int) nativeValue, EOS_PR_UnreliableUnordered);
 	}
 
 	@Override

@@ -45,7 +45,7 @@ public @Getter enum EOS_EAntiCheatCommonPlayerTakeDamageSource implements Native
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_ACCPTDS_None);
+		return values.getOrDefault((int) nativeValue, EOS_ACCPTDS_None);
 	}
 
 	@Override

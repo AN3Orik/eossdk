@@ -183,7 +183,7 @@ public @Getter class EOS_UI_EKeyCombination extends NativeMappedBitMask {
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
 		final EOS_UI_EKeyCombination value = new EOS_UI_EKeyCombination();
-		value.bitMask = (int)nativeValue;
+		value.bitMask = (int) nativeValue;
 		return value;
 	}
 }

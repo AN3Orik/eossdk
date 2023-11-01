@@ -37,6 +37,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	public EOS_Lobby_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Lobby_Interface() {
 		super();
 	}
@@ -127,7 +128,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @param options Required fields such as lobby ID
 	 * @param outLobbyModificationHandle Pointer to a Lobby Modification Handle only set if successful
 	 * @return {@link EOS_EResult#EOS_Success} if we successfully created the Lobby Modification Handle pointed at in OutLobbyModificationHandle, or an error result if the input data was invalid
-	 *		   {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect
+	 *           {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect
 	 *
 	 * @see EOS_LobbyModification#release()
 	 * @see #updateLobby(EOS_Lobby_UpdateLobbyOptions, Pointer, EOS_Lobby_OnUpdateLobbyCallback)
@@ -231,8 +232,8 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyLobbyMemberUpdateReceived(EOS_Lobby_AddNotifyLobbyMemberUpdateReceivedOptions options,
-	                                                                       Pointer clientData,
-	                                                                       EOS_Lobby_OnLobbyMemberUpdateReceivedCallback notificationFn)  {
+	                                                             Pointer clientData,
+	                                                             EOS_Lobby_OnLobbyMemberUpdateReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyMemberUpdateReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -406,8 +407,8 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyLobbyInviteAccepted(EOS_Lobby_AddNotifyLobbyInviteAcceptedOptions options,
-	                                                                 Pointer clientData,
-	                                                                 EOS_Lobby_OnLobbyInviteAcceptedCallback notificationFn) {
+	                                                       Pointer clientData,
+	                                                       EOS_Lobby_OnLobbyInviteAcceptedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyInviteAccepted(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -464,8 +465,8 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyJoinLobbyAccepted(EOS_Lobby_AddNotifyJoinLobbyAcceptedOptions options,
-	                                                               Pointer clientData,
-	                                                               EOS_Lobby_OnJoinLobbyAcceptedCallback notificationFn) {
+	                                                     Pointer clientData,
+	                                                     EOS_Lobby_OnJoinLobbyAcceptedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyJoinLobbyAccepted(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -501,8 +502,8 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @see EOS_EIntegratedPlatformManagementFlags#EOS_IPMF_PreferIntegratedIdentity
 	 */
 	public EOS_NotificationId addNotifySendLobbyNativeInviteRequested(EOS_Lobby_AddNotifySendLobbyNativeInviteRequestedOptions options,
-	                                                                            Pointer clientData,
-	                                                                            EOS_Lobby_OnSendLobbyNativeInviteRequestedCallback notificationFn) {
+	                                                                  Pointer clientData,
+	                                                                  EOS_Lobby_OnSendLobbyNativeInviteRequestedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifySendLobbyNativeInviteRequested(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -644,8 +645,8 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @see #removeNotifyRTCRoomConnectionChanged(EOS_NotificationId)
 	 */
 	public EOS_NotificationId addNotifyRTCRoomConnectionChanged(EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions options,
-	                                                                      Pointer clientData,
-	                                                                      EOS_Lobby_OnRTCRoomConnectionChangedCallback notificationFn) {
+	                                                            Pointer clientData,
+	                                                            EOS_Lobby_OnRTCRoomConnectionChangedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyRTCRoomConnectionChanged(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);

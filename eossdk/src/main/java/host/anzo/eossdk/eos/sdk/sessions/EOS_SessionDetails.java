@@ -13,7 +13,7 @@ import host.anzo.eossdk.eos.sdk.sessions.options.*;
  * This class represents the details of a session, including its session properties and the attribution associated with it
  * Locally created or joined active sessions will contain this information as will search results.
  * A handle to a session is required to join a session via search or invite
- * 
+ *
  * @author Anton Lasevich
  * @since 9/5/2023
  */

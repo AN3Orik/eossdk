@@ -20,6 +20,7 @@ public class EOS_Sanctions_Interface extends PointerType {
 	public EOS_Sanctions_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Sanctions_Interface() {
 		super();
 	}
@@ -36,8 +37,8 @@ public class EOS_Sanctions_Interface extends PointerType {
 	 * @see #copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions)
 	 */
 	public void queryActivePlayerSanctions(EOS_Sanctions_QueryActivePlayerSanctionsOptions options,
-	                                                     Pointer clientData,
-	                                                     EOS_Sanctions_OnQueryActivePlayerSanctionsCallback completionDelegate) {
+	                                       Pointer clientData,
+	                                       EOS_Sanctions_OnQueryActivePlayerSanctionsCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Sanctions_QueryActivePlayerSanctions(this, options, clientData, completionDelegate);
 	}
 

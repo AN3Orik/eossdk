@@ -27,6 +27,7 @@ public class EOS_Mods_Interface extends PointerType {
 	public EOS_Mods_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Mods_Interface() {
 		super();
 	}

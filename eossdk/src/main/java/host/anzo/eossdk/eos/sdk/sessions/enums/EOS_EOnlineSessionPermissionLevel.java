@@ -37,7 +37,7 @@ public @Getter enum EOS_EOnlineSessionPermissionLevel implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_OSPF_PublicAdvertised);
+		return values.getOrDefault((int) nativeValue, EOS_OSPF_PublicAdvertised);
 	}
 
 	@Override

@@ -19,6 +19,7 @@ public class EOS_Sessions_DumpSessionStateOptions extends Structure {
 	public int ApiVersion;
 	/** Name of the session */
 	public String SessionName;
+
 	public EOS_Sessions_DumpSessionStateOptions() {
 		super();
 		ApiVersion = EOS_SESSIONS_DUMPSESSIONSTATE_API_LATEST;

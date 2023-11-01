@@ -37,7 +37,7 @@ public @Getter enum EOS_EAntiCheatClientMode implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_ACCM_Invalid);
+		return values.getOrDefault((int) nativeValue, EOS_ACCM_Invalid);
 	}
 
 	@Override

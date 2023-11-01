@@ -35,7 +35,7 @@ public @Getter enum EOS_EMetricsAccountIdType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_MAIT_Epic);
+		return values.getOrDefault((int) nativeValue, EOS_MAIT_Epic);
 	}
 
 	@Override

@@ -47,7 +47,7 @@ public @Getter class EOS_ELinkAccountFlags extends NativeMappedBitMask {
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
 		final EOS_ELinkAccountFlags value = new EOS_ELinkAccountFlags();
-		value.bitMask = (int)nativeValue;
+		value.bitMask = (int) nativeValue;
 		return value;
 	}
 }

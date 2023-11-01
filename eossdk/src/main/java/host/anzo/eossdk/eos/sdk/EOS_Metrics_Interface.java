@@ -21,6 +21,7 @@ public class EOS_Metrics_Interface extends PointerType {
 	public EOS_Metrics_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Metrics_Interface() {
 		super();
 	}

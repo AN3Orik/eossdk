@@ -21,6 +21,7 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	public EOS_LobbyDetails(Pointer address) {
 		super(address);
 	}
+
 	public EOS_LobbyDetails() {
 		super();
 	}

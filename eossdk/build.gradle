@@ -1,95 +1,95 @@
 plugins {
-	id 'java-library'
-	id 'maven-publish'
-	id 'signing'
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
 }
 
 dependencies {
-	annotationProcessor('org.jetbrains:annotations:24.0.1')
-	compileOnly('org.jetbrains:annotations:24.0.1')
-	annotationProcessor('org.projectlombok:lombok:1.18.30')
-	compileOnly('org.projectlombok:lombok:1.18.30')
-	api("net.java.dev.jna:jna:5.13.0")
-	compileOnly('org.slf4j:slf4j-api:2.0.9')
+    annotationProcessor('org.jetbrains:annotations:24.0.1')
+    compileOnly('org.jetbrains:annotations:24.0.1')
+    annotationProcessor('org.projectlombok:lombok:1.18.30')
+    compileOnly('org.projectlombok:lombok:1.18.30')
+    api("net.java.dev.jna:jna:5.13.0")
+    compileOnly('org.slf4j:slf4j-api:2.0.9')
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_1_8
-	targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 compileJava {
-	doLast {
-		jar {
-			manifest {
-				attributes('Implementation-Title': project.name,
-						'Implementation-Version': version,
-						'Built-Date': new Date().toString(),
-						'Built-By': System.getProperty('user.name'),
-						'Built-JDK': System.getProperty('java.version'),
-						'Source-Compatibility': project.sourceCompatibility,
-						'Target-Compatibility': project.targetCompatibility
-				)
-			}
-		}
-	}
+    doLast {
+        jar {
+            manifest {
+                attributes('Implementation-Title': project.name,
+                        'Implementation-Version': version,
+                        'Built-Date': new Date().toString(),
+                        'Built-By': System.getProperty('user.name'),
+                        'Built-JDK': System.getProperty('java.version'),
+                        'Source-Compatibility': project.sourceCompatibility,
+                        'Target-Compatibility': project.targetCompatibility
+                )
+            }
+        }
+    }
 }
 
 java {
-	withSourcesJar()
-	withJavadocJar()
+    withSourcesJar()
+    withJavadocJar()
 }
 
 publishing {
-	publications {
-		maven(MavenPublication) {
-			groupId "host.anzo"
-			artifactId = "eossdk"
-			from components.java
+    publications {
+        maven(MavenPublication) {
+            groupId "host.anzo"
+            artifactId = "eossdk"
+            from components.java
 
-			pom {
-				name = "eossdk"
-				description = "Java wrapper for Epic Online Services SDK"
-				url = "https://github.com/AN3Orik/eossdk"
+            pom {
+                name = "eossdk"
+                description = "Java wrapper for Epic Online Services SDK"
+                url = "https://github.com/AN3Orik/eossdk"
 
-				licenses {
-					license {
-						name = 'Apache-2.0 license'
-						url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
-					}
-				}
+                licenses {
+                    license {
+                        name = 'Apache-2.0 license'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
 
-				scm {
-					connection = 'scm:git:https://github.com/AN3Orik/eossdk.git'
-					developerConnection = 'scm:git:https://github.com/AN3Orik/eossdk.git'
-					url = 'https://github.com/AN3Orik/eossdk'
-				}
+                scm {
+                    connection = 'scm:git:https://github.com/AN3Orik/eossdk.git'
+                    developerConnection = 'scm:git:https://github.com/AN3Orik/eossdk.git'
+                    url = 'https://github.com/AN3Orik/eossdk'
+                }
 
-				developers {
-					developer {
-						id = 'ANZO'
-						name = 'Anton Lasevich'
-						email = 'mostproduct@gmail.com'
-					}
-				}
-			}
-		}
-	}
+                developers {
+                    developer {
+                        id = 'ANZO'
+                        name = 'Anton Lasevich'
+                        email = 'mostproduct@gmail.com'
+                    }
+                }
+            }
+        }
+    }
 
-	repositories {
-		maven {
-			url = project.getMavenPublishUrl()
-			credentials {
-				username project.getMavenPublishUser()
-				password project.getMavenPublishPassword()
-			}
-		}
-	}
+    repositories {
+        maven {
+            url = project.getMavenPublishUrl()
+            credentials {
+                username project.getMavenPublishUser()
+                password project.getMavenPublishPassword()
+            }
+        }
+    }
 }
 
 signing {
-	def signingKey = "$mavenCentralSigningKey"
-	def signingPassword = "$mavenCentralSigningKeyPassword"
-	useInMemoryPgpKeys(signingKey, signingPassword)
-	sign publishing.publications.maven
+    def signingKey = "$mavenCentralSigningKey"
+    def signingPassword = "$mavenCentralSigningKeyPassword"
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications.maven
 }

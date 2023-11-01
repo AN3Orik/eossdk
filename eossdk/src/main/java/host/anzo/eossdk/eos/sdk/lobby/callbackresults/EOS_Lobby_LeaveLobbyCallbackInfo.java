@@ -37,6 +37,7 @@ public class EOS_Lobby_LeaveLobbyCallbackInfo extends Structure {
 
 	public static class ByReference extends EOS_Lobby_LeaveLobbyCallbackInfo implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_Lobby_LeaveLobbyCallbackInfo implements Structure.ByValue {
 	}
 }

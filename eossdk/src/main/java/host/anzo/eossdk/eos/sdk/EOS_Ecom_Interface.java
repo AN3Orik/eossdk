@@ -27,6 +27,7 @@ public class EOS_Ecom_Interface extends PointerType {
 	public EOS_Ecom_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Ecom_Interface() {
 		super();
 	}
@@ -42,8 +43,8 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the async operation completes, either successfully or in error
 	 */
 	public void queryOwnership(EOS_Ecom_QueryOwnershipOptions options,
-	                                    Pointer clientData,
-	                                    EOS_Ecom_OnQueryOwnershipCallback completionDelegate) {
+	                           Pointer clientData,
+	                           EOS_Ecom_OnQueryOwnershipCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Ecom_QueryOwnership(this, options, clientData, completionDelegate);
 	}
 
@@ -70,8 +71,8 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the async operation completes, either successfully or in error
 	 */
 	public void queryOwnershipToken(EOS_Ecom_QueryOwnershipTokenOptions options,
-	                                         Pointer clientData,
-	                                         EOS_Ecom_OnQueryOwnershipTokenCallback completionDelegate) {
+	                                Pointer clientData,
+	                                EOS_Ecom_OnQueryOwnershipTokenCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Ecom_QueryOwnershipToken(this, options, clientData, completionDelegate);
 	}
 
@@ -146,8 +147,8 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the async operation completes, either successfully or in error
 	 */
 	public void redeemEntitlements(EOS_Ecom_RedeemEntitlementsOptions options,
-	                                        Pointer clientData,
-	                                        EOS_Ecom_OnRedeemEntitlementsCallback completionDelegate) {
+	                               Pointer clientData,
+	                               EOS_Ecom_OnRedeemEntitlementsCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Ecom_RedeemEntitlements(this, options, clientData, completionDelegate);
 	}
 

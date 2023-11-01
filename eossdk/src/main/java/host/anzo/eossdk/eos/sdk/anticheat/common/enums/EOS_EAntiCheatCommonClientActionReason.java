@@ -59,7 +59,7 @@ public @Getter enum EOS_EAntiCheatCommonClientActionReason implements NativeMapp
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_ACCCAR_Invalid);
+		return values.getOrDefault((int) nativeValue, EOS_ACCCAR_Invalid);
 	}
 
 	@Override

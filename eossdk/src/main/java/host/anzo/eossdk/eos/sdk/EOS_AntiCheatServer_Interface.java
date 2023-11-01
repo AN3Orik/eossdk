@@ -27,6 +27,7 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	public EOS_AntiCheatServer_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_AntiCheatServer_Interface() {
 		super();
 	}
@@ -52,7 +53,7 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 *
 	 * @param notificationId The previously bound notification ID
 	 */
-	public void removeNotifyMessageToClient(EOS_NotificationId notificationId)  {
+	public void removeNotifyMessageToClient(EOS_NotificationId notificationId) {
 		EOSLibrary.instance.EOS_AntiCheatServer_RemoveNotifyMessageToClient(this, notificationId);
 		CallbackUtils.unregisterNotificationCallback(notificationId);
 	}
@@ -65,7 +66,7 @@ public class EOS_AntiCheatServer_Interface extends PointerType {
 	 * @param notificationFn The callback to be fired
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
-	public EOS_NotificationId addNotifyClientActionRequired(Pointer clientData, EOS_AntiCheatServer_OnClientActionRequiredCallback notificationFn)  {
+	public EOS_NotificationId addNotifyClientActionRequired(Pointer clientData, EOS_AntiCheatServer_OnClientActionRequiredCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_AntiCheatServer_AddNotifyClientActionRequired(this, new EOS_AntiCheatServer_AddNotifyClientActionRequiredOptions(), clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);

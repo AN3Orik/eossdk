@@ -33,6 +33,7 @@ public class EOS_AntiCheatServer_AddNotifyMessageToClientOptions extends Structu
 
 	public static class ByReference extends EOS_AntiCheatServer_AddNotifyMessageToClientOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_AntiCheatServer_AddNotifyMessageToClientOptions implements Structure.ByValue {
 	}
 }

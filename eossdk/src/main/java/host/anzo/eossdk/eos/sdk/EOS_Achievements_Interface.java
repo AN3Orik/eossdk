@@ -31,6 +31,7 @@ public class EOS_Achievements_Interface extends PointerType {
 	public EOS_Achievements_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Achievements_Interface() {
 		super();
 	}
@@ -115,8 +116,8 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * @see EOS_Platform_Create_Flag#EOS_PF_DISABLE_SOCIAL_OVERLAY
 	 */
 	public void queryPlayerAchievements(EOS_Achievements_QueryPlayerAchievementsOptions options,
-	                                                     Pointer clientData,
-	                                                     EOS_Achievements_OnQueryPlayerAchievementsCompleteCallback completionDelegate) {
+	                                    Pointer clientData,
+	                                    EOS_Achievements_OnQueryPlayerAchievementsCompleteCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Achievements_QueryPlayerAchievements(this, options, clientData, completionDelegate);
 	}
 
@@ -199,8 +200,8 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyAchievementsUnlockedV2(EOS_Achievements_AddNotifyAchievementsUnlockedV2Options options,
-	                                                                           Pointer clientData,
-	                                                                           EOS_Achievements_OnAchievementsUnlockedCallbackV2 notificationFn) {
+	                                                          Pointer clientData,
+	                                                          EOS_Achievements_OnAchievementsUnlockedCallbackV2 notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Achievements_AddNotifyAchievementsUnlockedV2(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);

@@ -18,7 +18,7 @@ public class EOS_UI_IsSocialOverlayPausedOptions extends Structure {
 
 	/** API Version: Set this to EOS_UI_ISSOCIALOVERLAYPAUSED_API_LATEST. */
 	public int ApiVersion;
-	
+
 	public EOS_UI_IsSocialOverlayPausedOptions() {
 		super();
 		ApiVersion = EOS_UI_ISSOCIALOVERLAYPAUSED_API_LATEST;

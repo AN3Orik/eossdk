@@ -38,7 +38,7 @@ So, let me know via issues if you encounter any problems.
 + Reports
 # RTC
 - RTC Audio
-- RTC Admin
+# RTC Admin
 + Sanctions
 # Sessions
 + Stats

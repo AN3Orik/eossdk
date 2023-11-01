@@ -17,7 +17,7 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_ERTCBackgroundMode;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "ApiVersion", "PlatformSpecificOptions", "BackgroundMode" })
+@FieldOrder({"ApiVersion", "PlatformSpecificOptions", "BackgroundMode"})
 public class EOS_Platform_RTCOptions extends Structure {
 	/** The most recent version of the EOS_Platform_RTCOptions API. */
 	public static int EOS_PLATFORM_RTCOPTIONS_API_LATEST = 2;
@@ -45,6 +45,7 @@ public class EOS_Platform_RTCOptions extends Structure {
 
 	public static class ByReference extends EOS_Platform_RTCOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_Platform_RTCOptions implements Structure.ByValue {
 	}
 }

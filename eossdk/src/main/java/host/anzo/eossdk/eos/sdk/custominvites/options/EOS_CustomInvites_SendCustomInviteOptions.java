@@ -37,6 +37,7 @@ public class EOS_CustomInvites_SendCustomInviteOptions extends Structure {
 
 	public static class ByReference extends EOS_CustomInvites_SendCustomInviteOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_CustomInvites_SendCustomInviteOptions implements Structure.ByValue {
 	}
 }

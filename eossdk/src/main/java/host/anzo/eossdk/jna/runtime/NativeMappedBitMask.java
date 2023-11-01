@@ -13,7 +13,7 @@ public abstract class NativeMappedBitMask implements NativeMapped {
 	}
 
 	protected void setFlags(int... flags) {
-		for(int flag : flags) {
+		for (int flag : flags) {
 			bitMask |= flag;
 		}
 	}

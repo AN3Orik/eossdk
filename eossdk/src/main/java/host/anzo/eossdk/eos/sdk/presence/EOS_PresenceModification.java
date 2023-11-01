@@ -39,6 +39,7 @@ public class EOS_PresenceModification extends PointerType implements AutoCloseab
 	public EOS_PresenceModification(Pointer address) {
 		super(address);
 	}
+
 	public EOS_PresenceModification() {
 		super();
 	}

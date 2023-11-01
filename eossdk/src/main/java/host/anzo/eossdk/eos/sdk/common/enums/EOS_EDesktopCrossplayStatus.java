@@ -87,7 +87,7 @@ public @Getter enum EOS_EDesktopCrossplayStatus implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_DCS_OK);
+		return values.getOrDefault((int) nativeValue, EOS_DCS_OK);
 	}
 
 	@Override

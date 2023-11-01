@@ -18,6 +18,7 @@ public class EOS_LobbySearch_GetSearchResultCountOptions extends Structure {
 
 	/** API Version: Set this to EOS_LOBBYSEARCH_GETSEARCHRESULTCOUNT_API_LATEST. */
 	public int ApiVersion;
+
 	public EOS_LobbySearch_GetSearchResultCountOptions() {
 		super();
 		ApiVersion = EOS_LOBBYSEARCH_GETSEARCHRESULTCOUNT_API_LATEST;

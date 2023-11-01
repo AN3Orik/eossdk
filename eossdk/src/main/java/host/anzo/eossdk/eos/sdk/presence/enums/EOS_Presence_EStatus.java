@@ -48,7 +48,7 @@ public @Getter enum EOS_Presence_EStatus implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_PS_Offline);
+		return values.getOrDefault((int) nativeValue, EOS_PS_Offline);
 	}
 
 	@Override

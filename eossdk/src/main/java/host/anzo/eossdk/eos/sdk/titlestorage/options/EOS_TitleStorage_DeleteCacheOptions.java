@@ -32,6 +32,7 @@ public class EOS_TitleStorage_DeleteCacheOptions extends Structure {
 
 	public static class ByReference extends EOS_TitleStorage_DeleteCacheOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_TitleStorage_DeleteCacheOptions implements Structure.ByValue {
 	}
 }

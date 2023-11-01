@@ -128,7 +128,7 @@ public class EOS_SessionModification extends PointerType implements AutoCloseabl
 	 * @param options Options to set the attribute and its advertised state
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if setting this parameter was successful<br>
-	 *		   {@link EOS_EResult#EOS_InvalidParameters} if the attribution is missing information or otherwise invalid<br>
+	 *           {@link EOS_EResult#EOS_InvalidParameters} if the attribution is missing information or otherwise invalid<br>
 	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
 	 */
 	public EOS_EResult addAttribute(EOS_SessionModification_AddAttributeOptions options) {
@@ -141,7 +141,7 @@ public class EOS_SessionModification extends PointerType implements AutoCloseabl
 	 * @param options Specify the key of the attribute to remove
 	 *
 	 * @return {@link EOS_EResult#EOS_Success} if removing this parameter was successful<br>
-	 *		   {@link EOS_EResult#EOS_InvalidParameters} if the key is null or empty<br>
+	 *           {@link EOS_EResult#EOS_InvalidParameters} if the key is null or empty<br>
 	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect
 	 */
 	public EOS_EResult removeAttribute(EOS_SessionModification_RemoveAttributeOptions options) {

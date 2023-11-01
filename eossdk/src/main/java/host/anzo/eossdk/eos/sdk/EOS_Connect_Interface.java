@@ -69,7 +69,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @param clientData arbitrary data that is passed back to you in the CompletionDelegate.
 	 * @param completionDelegate a callback that is fired when the link operation completes, either successfully or in error.
 	 */
-	public void linkAccount(EOS_Connect_LinkAccountOptions options, Pointer clientData, EOS_Connect_OnLinkAccountCallback completionDelegate)  {
+	public void linkAccount(EOS_Connect_LinkAccountOptions options, Pointer clientData, EOS_Connect_OnLinkAccountCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Connect_LinkAccount(this, options, clientData, completionDelegate);
 	}
 
@@ -223,8 +223,8 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the transfer operation completes, either successfully or in error.
 	 */
 	public void transferDeviceIdAccount(EOS_Connect_TransferDeviceIdAccountOptions options,
-	                                                Pointer clientData,
-	                                                EOS_Connect_OnTransferDeviceIdAccountCallback completionDelegate) {
+	                                    Pointer clientData,
+	                                    EOS_Connect_OnTransferDeviceIdAccountCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Connect_TransferDeviceIdAccount(this, options, clientData, completionDelegate);
 	}
 
@@ -240,8 +240,8 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the query operation completes, either successfully or in error.
 	 */
 	public void queryExternalAccountMappings(EOS_Connect_QueryExternalAccountMappingsOptions options,
-	                                                     Pointer clientData,
-	                                                     EOS_Connect_OnQueryExternalAccountMappingsCallback completionDelegate)  {
+	                                         Pointer clientData,
+	                                         EOS_Connect_OnQueryExternalAccountMappingsCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Connect_QueryExternalAccountMappings(this, options, clientData, completionDelegate);
 	}
 
@@ -264,8 +264,8 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the query operation completes, either successfully or in error.
 	 */
 	public void queryProductUserIdMappings(EOS_Connect_QueryProductUserIdMappingsOptions options,
-	                                                   Pointer clientData,
-	                                                   EOS_Connect_OnQueryProductUserIdMappingsCallback completionDelegate) {
+	                                       Pointer clientData,
+	                                       EOS_Connect_OnQueryProductUserIdMappingsCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Connect_QueryProductUserIdMappings(this, options, clientData, completionDelegate);
 	}
 
@@ -518,8 +518,8 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @param completionDelegate a callback that is fired when the operation completes, either successfully or in error.
 	 */
 	public void verifyIdToken(EOS_Connect_VerifyIdTokenOptions options,
-	                                      Pointer clientData,
-	                                      EOS_Connect_OnVerifyIdTokenCallback completionDelegate) {
+	                          Pointer clientData,
+	                          EOS_Connect_OnVerifyIdTokenCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Connect_VerifyIdToken(this, options, clientData, completionDelegate);
 	}
 }

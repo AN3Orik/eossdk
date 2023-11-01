@@ -35,7 +35,7 @@ public @Getter enum EOS_EConnectionEstablishedType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_CET_NewConnection);
+		return values.getOrDefault((int) nativeValue, EOS_CET_NewConnection);
 	}
 
 	@Override

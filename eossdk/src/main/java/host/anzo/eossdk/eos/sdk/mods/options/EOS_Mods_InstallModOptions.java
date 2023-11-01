@@ -32,6 +32,7 @@ public class EOS_Mods_InstallModOptions extends Structure {
 		super();
 		ApiVersion = EOS_MODS_INSTALLMOD_API_LATEST;
 	}
+
 	public EOS_Mods_InstallModOptions(Pointer peer) {
 		super(peer);
 	}

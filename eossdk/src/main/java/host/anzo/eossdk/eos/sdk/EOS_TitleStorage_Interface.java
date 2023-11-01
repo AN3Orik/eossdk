@@ -56,8 +56,8 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 * @see #copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions)
 	 */
 	public void queryFileList(EOS_TitleStorage_QueryFileListOptions options,
-	                                           Pointer clientData,
-	                                           EOS_TitleStorage_OnQueryFileListCompleteCallback completionCallback) {
+	                          Pointer clientData,
+	                          EOS_TitleStorage_OnQueryFileListCompleteCallback completionCallback) {
 		EOSLibrary.instance.EOS_TitleStorage_QueryFileList(this, options, clientData, completionCallback);
 	}
 

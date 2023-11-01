@@ -65,9 +65,11 @@ public class EOS_Lobby_AttributeData extends Structure {
 
 		public static class ByReference extends Value_union implements Structure.ByReference {
 		}
+
 		public static class ByValue extends Value_union implements Structure.ByValue {
 		}
 	}
+
 	public EOS_Lobby_AttributeData() {
 		super();
 		ApiVersion = EOS_LOBBY_ATTRIBUTEDATA_API_LATEST;

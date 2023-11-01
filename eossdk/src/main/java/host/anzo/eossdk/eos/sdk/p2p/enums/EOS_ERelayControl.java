@@ -50,7 +50,7 @@ public @Getter enum EOS_ERelayControl implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_RC_NoRelays);
+		return values.getOrDefault((int) nativeValue, EOS_RC_NoRelays);
 	}
 
 	@Override

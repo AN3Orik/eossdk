@@ -23,6 +23,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	public EOS_CustomInvites_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_CustomInvites_Interface() {
 		super();
 	}
@@ -47,8 +48,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @param completionDelegate A callback that is fired when the operation completes, either successfully or in error
 	 */
 	public void sendCustomInvite(EOS_CustomInvites_SendCustomInviteOptions options,
-	                                               Pointer clientData,
-	                                               EOS_CustomInvites_OnSendCustomInviteCallback completionDelegate) {
+	                             Pointer clientData,
+	                             EOS_CustomInvites_OnSendCustomInviteCallback completionDelegate) {
 		EOSLibrary.instance.EOS_CustomInvites_SendCustomInvite(this, options, clientData, completionDelegate);
 	}
 
@@ -63,8 +64,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyCustomInviteReceived(EOS_CustomInvites_AddNotifyCustomInviteReceivedOptions options,
-	                                                                          Pointer clientData,
-	                                                                          EOS_CustomInvites_OnCustomInviteReceivedCallback notificationFn) {
+	                                                        Pointer clientData,
+	                                                        EOS_CustomInvites_OnCustomInviteReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -94,8 +95,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyCustomInviteAccepted(EOS_CustomInvites_AddNotifyCustomInviteAcceptedOptions options,
-	                                                                          Pointer clientData,
-	                                                                          EOS_CustomInvites_OnCustomInviteAcceptedCallback notificationFn) {
+	                                                        Pointer clientData,
+	                                                        EOS_CustomInvites_OnCustomInviteAcceptedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteAccepted(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -125,8 +126,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyCustomInviteRejected(EOS_CustomInvites_AddNotifyCustomInviteRejectedOptions options,
-	                                                                          Pointer clientData,
-	                                                                          EOS_CustomInvites_OnCustomInviteRejectedCallback notificationFn) {
+	                                                        Pointer clientData,
+	                                                        EOS_CustomInvites_OnCustomInviteRejectedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyCustomInviteRejected(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -164,8 +165,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @param completionDelegate A callback that is fired when the operation completes, either successfully or in error
 	 */
 	public void sendRequestToJoin(EOS_CustomInvites_SendRequestToJoinOptions options,
-	                                                Pointer clientData,
-	                                                EOS_CustomInvites_OnSendRequestToJoinCallback completionDelegate) {
+	                              Pointer clientData,
+	                              EOS_CustomInvites_OnSendRequestToJoinCallback completionDelegate) {
 		EOSLibrary.instance.EOS_CustomInvites_SendRequestToJoin(this, options, clientData, completionDelegate);
 	}
 
@@ -181,8 +182,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyRequestToJoinResponseReceived(EOS_CustomInvites_AddNotifyRequestToJoinResponseReceivedOptions options,
-	                                                                                   Pointer clientData,
-	                                                                                   EOS_CustomInvites_OnRequestToJoinResponseReceivedCallback notificationFn) {
+	                                                                 Pointer clientData,
+	                                                                 EOS_CustomInvites_OnRequestToJoinResponseReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinResponseReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -211,8 +212,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyRequestToJoinReceived(EOS_CustomInvites_AddNotifyRequestToJoinReceivedOptions options,
-	                                                                           Pointer clientData,
-	                                                                           EOS_CustomInvites_OnRequestToJoinReceivedCallback notificationFn) {
+	                                                         Pointer clientData,
+	                                                         EOS_CustomInvites_OnRequestToJoinReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -248,8 +249,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @see EOS_EIntegratedPlatformManagementFlags#EOS_IPMF_PreferIntegratedIdentity
 	 */
 	public EOS_NotificationId addNotifySendCustomNativeInviteRequested(EOS_CustomInvites_AddNotifySendCustomNativeInviteRequestedOptions options,
-	                                                                                     Pointer clientData,
-	                                                                                     EOS_CustomInvites_OnSendCustomNativeInviteRequestedCallback notificationFn) {
+	                                                                   Pointer clientData,
+	                                                                   EOS_CustomInvites_OnSendCustomNativeInviteRequestedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifySendCustomNativeInviteRequested(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -278,8 +279,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyRequestToJoinAccepted(EOS_CustomInvites_AddNotifyRequestToJoinAcceptedOptions options,
-	                                                                           Pointer clientData,
-	                                                                           EOS_CustomInvites_OnRequestToJoinAcceptedCallback notificationFn) {
+	                                                         Pointer clientData,
+	                                                         EOS_CustomInvites_OnRequestToJoinAcceptedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinAccepted(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -308,8 +309,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyRequestToJoinRejected(EOS_CustomInvites_AddNotifyRequestToJoinRejectedOptions options,
-	                                                                           Pointer clientData,
-	                                                                           EOS_CustomInvites_OnRequestToJoinRejectedCallback notificationFn) {
+	                                                         Pointer clientData,
+	                                                         EOS_CustomInvites_OnRequestToJoinRejectedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_CustomInvites_AddNotifyRequestToJoinRejected(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
@@ -335,8 +336,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @param completionDelegate A callback that is fired when the operation completes, either successfully or in error
 	 */
 	public void acceptRequestToJoin(EOS_CustomInvites_AcceptRequestToJoinOptions options,
-	                                                  Pointer clientData,
-	                                                  EOS_CustomInvites_OnAcceptRequestToJoinCallback completionDelegate) {
+	                                Pointer clientData,
+	                                EOS_CustomInvites_OnAcceptRequestToJoinCallback completionDelegate) {
 		EOSLibrary.instance.EOS_CustomInvites_AcceptRequestToJoin(this, options, clientData, completionDelegate);
 	}
 
@@ -348,8 +349,8 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * @param completionDelegate A callback that is fired when the operation completes, either successfully or in error
 	 */
 	public void rejectRequestToJoin(EOS_CustomInvites_RejectRequestToJoinOptions options,
-	                                                  Pointer clientData,
-	                                                  EOS_CustomInvites_OnRejectRequestToJoinCallback completionDelegate) {
+	                                Pointer clientData,
+	                                EOS_CustomInvites_OnRejectRequestToJoinCallback completionDelegate) {
 		EOSLibrary.instance.EOS_CustomInvites_RejectRequestToJoin(this, options, clientData, completionDelegate);
 	}
 }

@@ -34,7 +34,7 @@ public @Getter enum EOS_EModEnumerationType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_MET_INSTALLED);
+		return values.getOrDefault((int) nativeValue, EOS_MET_INSTALLED);
 	}
 
 	@Override

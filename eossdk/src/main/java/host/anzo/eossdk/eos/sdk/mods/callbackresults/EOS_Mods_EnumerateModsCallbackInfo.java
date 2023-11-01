@@ -27,6 +27,7 @@ public class EOS_Mods_EnumerateModsCallbackInfo extends Structure {
 	public EOS_Mods_EnumerateModsCallbackInfo() {
 		super();
 	}
+
 	public EOS_Mods_EnumerateModsCallbackInfo(Pointer peer) {
 		super(peer);
 	}

@@ -123,8 +123,8 @@ public class EOS_Presence_Interface extends PointerType {
 	 * @see #removeNotifyOnPresenceChanged(EOS_NotificationId)
 	 */
 	public EOS_NotificationId addNotifyOnPresenceChanged(EOS_Presence_AddNotifyOnPresenceChangedOptions options,
-	                                                                  Pointer clientData,
-	                                                                  EOS_Presence_OnPresenceChangedCallback notificationHandler) {
+	                                                     Pointer clientData,
+	                                                     EOS_Presence_OnPresenceChangedCallback notificationHandler) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Presence_AddNotifyOnPresenceChanged(this, options, clientData, notificationHandler);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationHandler);
@@ -153,8 +153,8 @@ public class EOS_Presence_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyJoinGameAccepted(EOS_Presence_AddNotifyJoinGameAcceptedOptions options,
-	                                                                 Pointer clientData,
-	                                                                 EOS_Presence_OnJoinGameAcceptedCallback notificationFn) {
+	                                                    Pointer clientData,
+	                                                    EOS_Presence_OnJoinGameAcceptedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Presence_AddNotifyJoinGameAccepted(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);

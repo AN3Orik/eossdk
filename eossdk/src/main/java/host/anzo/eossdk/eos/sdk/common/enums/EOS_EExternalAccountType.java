@@ -75,7 +75,7 @@ public @Getter enum EOS_EExternalAccountType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_EAT_EPIC);
+		return values.getOrDefault((int) nativeValue, EOS_EAT_EPIC);
 	}
 
 	@Override

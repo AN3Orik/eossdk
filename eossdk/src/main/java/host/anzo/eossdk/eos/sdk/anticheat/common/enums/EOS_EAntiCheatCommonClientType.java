@@ -43,7 +43,7 @@ public @Getter enum EOS_EAntiCheatCommonClientType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_ACCCT_ProtectedClient);
+		return values.getOrDefault((int) nativeValue, EOS_ACCCT_ProtectedClient);
 	}
 
 	@Override

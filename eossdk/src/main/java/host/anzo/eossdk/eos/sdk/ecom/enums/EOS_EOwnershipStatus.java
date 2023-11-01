@@ -35,7 +35,7 @@ public @Getter enum EOS_EOwnershipStatus implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_OS_NotOwned);
+		return values.getOrDefault((int) nativeValue, EOS_OS_NotOwned);
 	}
 
 	@Override

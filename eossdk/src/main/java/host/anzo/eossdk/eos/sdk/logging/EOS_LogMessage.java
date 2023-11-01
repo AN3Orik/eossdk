@@ -17,7 +17,7 @@ import lombok.Getter;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "Category", "Message", "Level" })
+@FieldOrder({"Category", "Message", "Level"})
 public @Getter class EOS_LogMessage extends Structure {
 	/** A string representation of the log message category, encoded in UTF-8. Only valid during the life of the callback, so copy the string if you need it later. */
 	public String Category;

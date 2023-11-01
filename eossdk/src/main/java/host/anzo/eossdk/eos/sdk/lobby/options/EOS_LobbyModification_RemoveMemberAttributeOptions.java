@@ -32,6 +32,7 @@ public class EOS_LobbyModification_RemoveMemberAttributeOptions extends Structur
 
 	public static class ByReference extends EOS_LobbyModification_RemoveMemberAttributeOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_LobbyModification_RemoveMemberAttributeOptions implements Structure.ByValue {
 	}
 }

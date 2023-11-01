@@ -16,6 +16,7 @@ public class EOS_Lobby_AddNotifyLobbyInviteAcceptedOptions extends Structure {
 
 	/** API Version: Set this to EOS_LOBBY_ADDNOTIFYLOBBYINVITEACCEPTED_API_LATEST. */
 	public int ApiVersion;
+
 	public EOS_Lobby_AddNotifyLobbyInviteAcceptedOptions() {
 		super();
 		ApiVersion = EOS_LOBBY_ADDNOTIFYLOBBYINVITEACCEPTED_API_LATEST;

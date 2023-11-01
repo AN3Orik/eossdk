@@ -21,6 +21,7 @@ public class EOS_TitleStorage_DeleteCacheCallbackInfo extends Structure {
 	public Pointer ClientData;
 	/** Product User ID of the local user who initiated this request (optional, will only be present in case it was provided during operation start) */
 	public EOS_ProductUserId LocalUserId;
+
 	public EOS_TitleStorage_DeleteCacheCallbackInfo() {
 		super();
 	}

@@ -17,6 +17,7 @@ public class EOS_AntiCheatClient_AddExternalIntegrityCatalogOptions extends Stru
 	public int ApiVersion;
 	/** UTF-8 path to the .bin catalog file to add */
 	public String PathToBinFile;
+
 	public EOS_AntiCheatClient_AddExternalIntegrityCatalogOptions() {
 		super();
 		ApiVersion = EOS_ANTICHEATCLIENT_ADDEXTERNALINTEGRITYCATALOG_API_LATEST;

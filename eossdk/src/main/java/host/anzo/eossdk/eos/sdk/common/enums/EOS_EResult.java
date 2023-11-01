@@ -532,7 +532,7 @@ public @Getter enum EOS_EResult implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_UnexpectedError);
+		return values.getOrDefault((int) nativeValue, EOS_UnexpectedError);
 	}
 
 	@Override

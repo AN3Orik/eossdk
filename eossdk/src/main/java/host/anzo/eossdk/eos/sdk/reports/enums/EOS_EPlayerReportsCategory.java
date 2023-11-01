@@ -51,7 +51,7 @@ public @Getter enum EOS_EPlayerReportsCategory implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return valueOf((int)nativeValue);
+		return valueOf((int) nativeValue);
 	}
 
 	@Override

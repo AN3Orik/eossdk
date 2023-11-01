@@ -21,6 +21,7 @@ public class EOS_Friends_QueryFriendsCallbackInfo extends Structure {
 	public Pointer ClientData;
 	/** The Epic Account ID of the user whose friends were queried */
 	public EOS_EpicAccountId LocalUserId;
+
 	public EOS_Friends_QueryFriendsCallbackInfo() {
 		super();
 	}

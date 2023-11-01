@@ -24,6 +24,7 @@ public class EOS_Mods_UpdateModCallbackInfo extends Structure {
 	public Pointer ClientData;
 	/** Mod for which update was requested */
 	public EOS_Mod_Identifier.ByReference Mod;
+
 	public EOS_Mods_UpdateModCallbackInfo() {
 		super();
 	}

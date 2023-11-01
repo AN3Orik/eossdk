@@ -35,6 +35,7 @@ public class EOS_Friends_GetBlockedUserAtIndexOptions extends Structure {
 
 	public static class ByReference extends EOS_Friends_GetBlockedUserAtIndexOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_Friends_GetBlockedUserAtIndexOptions implements Structure.ByValue {
 	}
 }

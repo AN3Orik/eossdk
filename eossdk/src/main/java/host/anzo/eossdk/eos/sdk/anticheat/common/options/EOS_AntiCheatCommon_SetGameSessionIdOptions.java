@@ -40,6 +40,7 @@ public class EOS_AntiCheatCommon_SetGameSessionIdOptions extends Structure {
 
 	public static class ByReference extends EOS_AntiCheatCommon_SetGameSessionIdOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_AntiCheatCommon_SetGameSessionIdOptions implements Structure.ByValue {
 	}
 }

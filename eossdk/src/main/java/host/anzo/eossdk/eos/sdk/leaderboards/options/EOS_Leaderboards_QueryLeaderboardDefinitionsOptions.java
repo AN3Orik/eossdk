@@ -46,6 +46,7 @@ public class EOS_Leaderboards_QueryLeaderboardDefinitionsOptions extends Structu
 
 	public static class ByReference extends EOS_Leaderboards_QueryLeaderboardDefinitionsOptions implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_Leaderboards_QueryLeaderboardDefinitionsOptions implements Structure.ByValue {
 	}
 }

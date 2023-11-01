@@ -16,6 +16,7 @@ public class EOS_IntegratedPlatformOptionsContainer extends PointerType implemen
 	public EOS_IntegratedPlatformOptionsContainer(Pointer address) {
 		super(address);
 	}
+
 	public EOS_IntegratedPlatformOptionsContainer() {
 		super();
 	}

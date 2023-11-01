@@ -41,7 +41,7 @@ public @Getter enum EOS_EAntiCheatCommonClientFlags implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_ACCCF_None);
+		return values.getOrDefault((int) nativeValue, EOS_ACCCF_None);
 	}
 
 	@Override

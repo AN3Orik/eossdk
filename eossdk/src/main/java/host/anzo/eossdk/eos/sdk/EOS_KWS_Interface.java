@@ -30,6 +30,7 @@ public class EOS_KWS_Interface extends PointerType {
 	public EOS_KWS_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_KWS_Interface() {
 		super();
 	}
@@ -168,8 +169,8 @@ public class EOS_KWS_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyPermissionsUpdateReceived(EOS_KWS_AddNotifyPermissionsUpdateReceivedOptions options,
-	                                                                     Pointer clientData,
-	                                                                     EOS_KWS_OnPermissionsUpdateReceivedCallback notificationFn) {
+	                                                             Pointer clientData,
+	                                                             EOS_KWS_OnPermissionsUpdateReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_KWS_AddNotifyPermissionsUpdateReceived(this, options, clientData, notificationFn);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);

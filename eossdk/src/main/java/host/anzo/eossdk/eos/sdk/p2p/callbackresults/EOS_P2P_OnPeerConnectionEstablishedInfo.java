@@ -33,6 +33,7 @@ public class EOS_P2P_OnPeerConnectionEstablishedInfo extends Structure {
 	 * What type of network connection is being used for this connection
 	 */
 	public EOS_ENetworkConnectionType NetworkType;
+
 	public EOS_P2P_OnPeerConnectionEstablishedInfo() {
 		super();
 	}

@@ -18,6 +18,7 @@ public class EOS_P2P_GetPacketQueueInfoOptions extends Structure {
 
 	/** API Version: Set this to EOS_P2P_GETPACKETQUEUEINFO_API_LATEST. */
 	public int ApiVersion;
+
 	public EOS_P2P_GetPacketQueueInfoOptions() {
 		super();
 		ApiVersion = EOS_P2P_GETPACKETQUEUEINFO_API_LATEST;

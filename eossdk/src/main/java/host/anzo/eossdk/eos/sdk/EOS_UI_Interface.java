@@ -88,8 +88,8 @@ public class EOS_UI_Interface extends PointerType {
 	 * @return handle representing the registered callback
 	 */
 	public EOS_NotificationId addNotifyDisplaySettingsUpdated(EOS_UI_AddNotifyDisplaySettingsUpdatedOptions options,
-	                                                                 Pointer clientData,
-	                                                                 EOS_UI_OnDisplaySettingsUpdatedCallback completionDelegate) {
+	                                                          Pointer clientData,
+	                                                          EOS_UI_OnDisplaySettingsUpdatedCallback completionDelegate) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_UI_AddNotifyDisplaySettingsUpdated(this, options, clientData, completionDelegate);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, completionDelegate);

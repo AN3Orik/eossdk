@@ -39,7 +39,7 @@ public @Getter enum EOS_EUserControllerType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_UCT_Unknown);
+		return values.getOrDefault((int) nativeValue, EOS_UCT_Unknown);
 	}
 
 	@Override

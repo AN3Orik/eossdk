@@ -62,7 +62,7 @@ public @Getter enum EOS_ELoginStatus implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_LS_NotLoggedIn);
+		return values.getOrDefault((int) nativeValue, EOS_LS_NotLoggedIn);
 	}
 
 	@Override

@@ -25,9 +25,11 @@ public class EOS_CustomInvites_RequestToJoinResponseReceivedCallbackInfo extends
 	 * @see host.anzo.eossdk.eos.sdk.custominvites.enums.EOS_ERequestToJoinResponse
 	 */
 	public int Response;
+
 	public EOS_CustomInvites_RequestToJoinResponseReceivedCallbackInfo() {
 		super();
 	}
+
 	public EOS_CustomInvites_RequestToJoinResponseReceivedCallbackInfo(Pointer peer) {
 		super(peer);
 	}

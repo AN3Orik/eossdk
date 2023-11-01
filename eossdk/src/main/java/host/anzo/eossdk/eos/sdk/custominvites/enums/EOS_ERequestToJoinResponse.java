@@ -35,7 +35,7 @@ public @Getter enum EOS_ERequestToJoinResponse implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_RTJR_ACCEPTED);
+		return values.getOrDefault((int) nativeValue, EOS_RTJR_ACCEPTED);
 	}
 
 	@Override

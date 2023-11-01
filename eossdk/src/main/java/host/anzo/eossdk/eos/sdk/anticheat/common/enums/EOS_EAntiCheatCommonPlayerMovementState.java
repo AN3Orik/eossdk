@@ -53,7 +53,7 @@ public @Getter enum EOS_EAntiCheatCommonPlayerMovementState implements NativeMap
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_ACCPMS_None);
+		return values.getOrDefault((int) nativeValue, EOS_ACCPMS_None);
 	}
 
 	@Override

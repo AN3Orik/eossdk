@@ -17,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "ParamValueType", "ParamValue"})
+@FieldOrder({"ParamValueType", "ParamValue"})
 public class EOS_AntiCheatCommon_LogEventParamPair extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGEVENT_STRING_MAX_LENGTH = 39;
 

@@ -70,7 +70,7 @@ public @Getter enum EOS_EComparisonOp implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_CO_EQUAL);
+		return values.getOrDefault((int) nativeValue, EOS_CO_EQUAL);
 	}
 
 	@Override

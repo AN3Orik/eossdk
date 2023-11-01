@@ -140,7 +140,7 @@ public @Getter enum EOS_ELoginCredentialType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_LCT_Password);
+		return values.getOrDefault((int) nativeValue, EOS_LCT_Password);
 	}
 
 	@Override

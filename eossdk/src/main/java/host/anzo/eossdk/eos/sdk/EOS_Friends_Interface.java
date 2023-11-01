@@ -24,6 +24,7 @@ public class EOS_Friends_Interface extends PointerType {
 	public EOS_Friends_Interface(Pointer address) {
 		super(address);
 	}
+
 	public EOS_Friends_Interface() {
 		super();
 	}
@@ -126,8 +127,8 @@ public class EOS_Friends_Interface extends PointerType {
 	 * @return A valid notification ID if successfully bound, or {@link EOS_NotificationId#EOS_INVALID_NOTIFICATIONID} otherwise
 	 */
 	public EOS_NotificationId addNotifyFriendsUpdate(EOS_Friends_AddNotifyFriendsUpdateOptions options,
-	                                                             Pointer clientData,
-	                                                             EOS_Friends_OnFriendsUpdateCallback friendsUpdateHandler) {
+	                                                 Pointer clientData,
+	                                                 EOS_Friends_OnFriendsUpdateCallback friendsUpdateHandler) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Friends_AddNotifyFriendsUpdate(this, options, clientData, friendsUpdateHandler);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, friendsUpdateHandler);
@@ -179,8 +180,8 @@ public class EOS_Friends_Interface extends PointerType {
 	 * @return A valid notification ID if successfully bound, or EOS_INVALID_NOTIFICATIONID otherwise.
 	 */
 	public EOS_NotificationId addNotifyBlockedUsersUpdate(EOS_Friends_AddNotifyBlockedUsersUpdateOptions options,
-	                                                                  Pointer clientData,
-	                                                                  EOS_Friends_OnBlockedUsersUpdateCallback blockedUsersUpdateHandler) {
+	                                                      Pointer clientData,
+	                                                      EOS_Friends_OnBlockedUsersUpdateCallback blockedUsersUpdateHandler) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Friends_AddNotifyBlockedUsersUpdate(this, options, clientData, blockedUsersUpdateHandler);
 		if (notificationId.isValid()) {
 			CallbackUtils.registerNotificationCallback(notificationId, blockedUsersUpdateHandler);

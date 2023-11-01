@@ -35,7 +35,7 @@ public @Getter enum EOS_ELobbyAttributeVisibility implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_LAT_PUBLIC);
+		return values.getOrDefault((int) nativeValue, EOS_LAT_PUBLIC);
 	}
 
 	@Override

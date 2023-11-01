@@ -51,7 +51,7 @@ public @Getter enum EOS_EAttributeType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_AT_BOOLEAN);
+		return values.getOrDefault((int) nativeValue, EOS_AT_BOOLEAN);
 	}
 
 	@Override

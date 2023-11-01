@@ -39,8 +39,7 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 			if (!taskExecutor.awaitTermination(10, TimeUnit.SECONDS)) {
 				taskExecutor.shutdownNow();
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			throw new RuntimeException("Error while taskExecutor termination", e);
 		}
 		platform.release();
@@ -105,8 +104,7 @@ public abstract class AEOSBase<T extends EOSBaseOptions> {
 			platform.getReportsInterface().sendPlayerBehaviorReport(reportOptions, null, callbackInfo -> {
 				if (callbackInfo.ResultCode.isSuccess()) {
 					log.info("Sent report from productUserId=[{}] to productUserId=[{}]", reporterUserId, reportedUserId);
-				}
-				else {
+				} else {
 					log.error("Failed to send report from productUserId=[{}] to productUserId=[{}] resultCode=[{}]",
 							reporterUserId,
 							reportedUserId,

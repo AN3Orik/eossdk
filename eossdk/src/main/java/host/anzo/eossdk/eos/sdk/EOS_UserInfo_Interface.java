@@ -100,7 +100,7 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 *
 	 * @see EOS_UserInfo
 	 * @see EOS_UserInfo_CopyUserInfoOptions
-	 * @see EOS_UserInfo#release() 
+	 * @see EOS_UserInfo#release()
 	 */
 	public EOS_UserInfo copyUserInfo(EOS_UserInfo_CopyUserInfoOptions options) throws EOSException {
 		final EOS_UserInfo.ByReference outUserInfo = new EOS_UserInfo.ByReference();
@@ -150,7 +150,7 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @param options Structure containing the account type being accessed
 	 * @return The external user info. If it exists and is valid, use EOS_UserInfo_ExternalUserInfo_Release when finished
 	 *
-	 * @see EOS_UserInfo_ExternalUserInfo#release() 
+	 * @see EOS_UserInfo_ExternalUserInfo#release()
 	 *
 	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
 	 * @throws EOSNotFoundException if the external user info is not found
@@ -208,7 +208,7 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @see #copyBestDisplayNameWithPlatform(EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions)
 	 * @see EOS_UserInfo_CopyBestDisplayNameOptions
 	 * @see EOS_UserInfo_BestDisplayName
-	 * @see EOS_UserInfo_BestDisplayName#release() 
+	 * @see EOS_UserInfo_BestDisplayName#release()
 	 */
 	public EOS_UserInfo_BestDisplayName copyBestDisplayName(EOS_UserInfo_CopyBestDisplayNameOptions options) throws EOSException {
 		final EOS_UserInfo_BestDisplayName.ByReference outBestDisplayName = new EOS_UserInfo_BestDisplayName.ByReference();

@@ -15,6 +15,7 @@ public class EOS_AntiCheatClient_AddNotifyMessageToPeerOptions extends Structure
 
 	/** API Version: Set this to EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST. */
 	public int ApiVersion;
+
 	public EOS_AntiCheatClient_AddNotifyMessageToPeerOptions() {
 		super();
 		ApiVersion = EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST;

@@ -18,7 +18,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "ApiVersion", "NetworkWork", "StorageIo", "WebSocketIo", "P2PIo", "HttpRequestIo", "RTCIo"})
+@FieldOrder({"ApiVersion", "NetworkWork", "StorageIo", "WebSocketIo", "P2PIo", "HttpRequestIo", "RTCIo"})
 public class EOS_Initialize_ThreadAffinity extends Structure {
 	/** The most recent version of the EOS_Initialize_ThreadAffinity API. */
 	public static int EOS_INITIALIZE_THREADAFFINITY_API_LATEST = 2;

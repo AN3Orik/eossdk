@@ -41,6 +41,7 @@ public class EOS_UI_OnShowBlockPlayerCallbackInfo extends Structure {
 
 	public static class ByReference extends EOS_UI_OnShowBlockPlayerCallbackInfo implements Structure.ByReference {
 	}
+
 	public static class ByValue extends EOS_UI_OnShowBlockPlayerCallbackInfo implements Structure.ByValue {
 	}
 }

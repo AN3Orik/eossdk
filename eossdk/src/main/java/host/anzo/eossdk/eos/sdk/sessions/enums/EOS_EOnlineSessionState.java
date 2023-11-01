@@ -47,7 +47,7 @@ public @Getter enum EOS_EOnlineSessionState implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_OSS_NoSession);
+		return values.getOrDefault((int) nativeValue, EOS_OSS_NoSession);
 	}
 
 	@Override

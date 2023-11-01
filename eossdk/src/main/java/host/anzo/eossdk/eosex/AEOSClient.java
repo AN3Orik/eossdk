@@ -24,7 +24,8 @@ import org.jetbrains.annotations.NotNull;
  * @since 8/16/2023
  */
 @Slf4j
-public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
+public @Getter
+abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 	private EOS_AntiCheatClient_Interface antiCheatClient;
 
 	private EOS_NotificationId authExpirationNotificationId;
@@ -45,15 +46,13 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 	private void doAuthenticate() {
 		if (options.isUseEpicAuthentication()) {
 			platform.getAuthInterface().login(getAuthLoginOptions(), null, loginCallbackInfo -> {
-				try(EOS_Auth_IdToken authIdToken = platform.getAuthInterface().copyIdToken(loginCallbackInfo.SelectedAccountId)) {
+				try (EOS_Auth_IdToken authIdToken = platform.getAuthInterface().copyIdToken(loginCallbackInfo.SelectedAccountId)) {
 					platform.getConnectInterface().login(getConnectLoginOptions(authIdToken), null, this::onConnectLogin);
-				}
-				catch (Exception e) {
+				} catch (Exception e) {
 					log.error("Failed to copyIdToken", e);
 				}
 			});
-		}
-		else {
+		} else {
 			platform.getConnectInterface().login(getConnectLoginOptions(null), null, this::onConnectLogin);
 		}
 	}
@@ -66,8 +65,7 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 		if (data.ResultCode.isSuccess()) {
 			log.info("EOS_Connect_Login completed with ProductUserId: {}", data.LocalUserId.getString());
 			onConnectLoginComplete(data.ResultCode, data.LocalUserId);
-		}
-		else if (data.ResultCode == EOS_EResult.EOS_InvalidUser) {
+		} else if (data.ResultCode == EOS_EResult.EOS_InvalidUser) {
 			log.warn("EOS_Connect_Login failed with result={}. Trying to create new user...", data.ResultCode);
 
 			final EOS_Connect_CreateUserOptions createUserOptions = new EOS_Connect_CreateUserOptions();
@@ -77,8 +75,7 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 
 			// NOTE: We're not deleting the received context because we're passing it down to another SDK call
 			platform.getConnectInterface().createUser(createUserOptions, data.ClientData, this::onCreateUser);
-		}
-		else {
+		} else {
 			onConnectLoginFailed(data.ResultCode);
 		}
 	}
@@ -87,8 +84,7 @@ public @Getter abstract class AEOSClient extends AEOSBase<EOSClientOptions> {
 		if (data.ResultCode.isSuccess()) {
 			log.info("EOS_Connect_CreateUser completed with ProductUserId: {}, Result: {}", data.LocalUserId.getString(), data.ResultCode);
 			onConnectLoginComplete(data.ResultCode, data.LocalUserId);
-		}
-		else {
+		} else {
 			onConnectLoginFailed(data.ResultCode);
 		}
 	}

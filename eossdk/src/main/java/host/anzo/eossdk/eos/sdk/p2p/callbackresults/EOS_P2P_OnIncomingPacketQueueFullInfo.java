@@ -26,6 +26,7 @@ public class EOS_P2P_OnIncomingPacketQueueFullInfo extends Structure {
 	public byte OverflowPacketChannel;
 	/** The size in bytes of the incoming packet (and related metadata) that would overflow the queue */
 	public int OverflowPacketSizeBytes;
+
 	public EOS_P2P_OnIncomingPacketQueueFullInfo() {
 		super();
 	}

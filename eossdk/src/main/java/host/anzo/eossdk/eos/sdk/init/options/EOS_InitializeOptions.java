@@ -21,8 +21,8 @@ import org.jetbrains.annotations.NotNull;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({ "ApiVersion", "AllocateMemoryFunction", "ReallocateMemoryFunction", "ReleaseMemoryFunction", "ProductName",
-		"ProductVersion", "Reserved", "SystemInitializeOptions", "OverrideThreadAffinity" })
+@FieldOrder({"ApiVersion", "AllocateMemoryFunction", "ReallocateMemoryFunction", "ReleaseMemoryFunction", "ProductName",
+		"ProductVersion", "Reserved", "SystemInitializeOptions", "OverrideThreadAffinity"})
 public class EOS_InitializeOptions extends Structure {
 	/** The most recent version of the EOS_Initialize API. */
 	public static int EOS_INITIALIZE_API_LATEST = 4;

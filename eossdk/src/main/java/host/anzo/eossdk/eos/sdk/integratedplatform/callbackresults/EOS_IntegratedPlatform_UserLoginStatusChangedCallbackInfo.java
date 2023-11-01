@@ -40,6 +40,7 @@ public class EOS_IntegratedPlatform_UserLoginStatusChangedCallbackInfo extends S
 	public EOS_IntegratedPlatform_UserLoginStatusChangedCallbackInfo() {
 		super();
 	}
+
 	public EOS_IntegratedPlatform_UserLoginStatusChangedCallbackInfo(Pointer peer) {
 		super(peer);
 	}

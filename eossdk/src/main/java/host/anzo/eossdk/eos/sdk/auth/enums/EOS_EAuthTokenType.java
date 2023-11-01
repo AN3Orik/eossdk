@@ -47,7 +47,7 @@ public @Getter enum EOS_EAuthTokenType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_ATT_Client);
+		return values.getOrDefault((int) nativeValue, EOS_ATT_Client);
 	}
 
 	@Override

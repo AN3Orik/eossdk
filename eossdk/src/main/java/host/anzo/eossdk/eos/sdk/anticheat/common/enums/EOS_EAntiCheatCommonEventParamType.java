@@ -55,7 +55,7 @@ public @Getter enum EOS_EAntiCheatCommonEventParamType implements NativeMapped {
 
 	@Override
 	public Object fromNative(Object nativeValue, FromNativeContext context) {
-		return values.getOrDefault((int)nativeValue, EOS_ACCEPT_Invalid);
+		return values.getOrDefault((int) nativeValue, EOS_ACCEPT_Invalid);
 	}
 
 	@Override
