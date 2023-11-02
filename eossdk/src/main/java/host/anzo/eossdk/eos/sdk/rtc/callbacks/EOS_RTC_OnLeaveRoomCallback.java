@@ -6,7 +6,7 @@ import host.anzo.eossdk.eos.sdk.rtc.callbackresults.EOS_RTC_LeaveRoomCallbackInf
 /**
  * Callback for completion of room leave request.
  *
- * @author ANZO
+ * @author Anton Lasevich
  * @since 11/1/2023
  */
 public interface EOS_RTC_OnLeaveRoomCallback extends Callback {

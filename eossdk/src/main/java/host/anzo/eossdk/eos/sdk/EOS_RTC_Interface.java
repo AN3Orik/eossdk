@@ -12,7 +12,7 @@ import host.anzo.eossdk.eos.utils.CallbackUtils;
  * The RTC Interface is used to manage joining and leaving rooms.
  * @see EOS_Platform_Interface#getRTCInterface()
  *
- * @author ANZO
+ * @author Anton Lasevich
  * @since 11/1/2023
  */
 public class EOS_RTC_Interface extends PointerType {

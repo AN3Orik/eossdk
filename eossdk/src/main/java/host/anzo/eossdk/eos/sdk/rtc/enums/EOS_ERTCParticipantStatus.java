@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Participant RTC's status change
  *
- * @author ANZO
+ * @author Anton Lasevich
  * @since 11/1/2023
  */
 public @Getter enum EOS_ERTCParticipantStatus implements NativeMapped {

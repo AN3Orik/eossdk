@@ -18,7 +18,7 @@ import host.anzo.eossdk.eos.sdk.rtcadmin.options.*;
  * This is used to manage admin-specific RTC features, such as requesting join tokens, kick users, etc.
  * @see EOS_Platform_Interface#getRTCAdminInterface()
  *
- * @author ANZO
+ * @author Anton Lasevich
  * @since 11/1/2023
  */
 public class EOS_RTC_Admin_Interface extends PointerType {

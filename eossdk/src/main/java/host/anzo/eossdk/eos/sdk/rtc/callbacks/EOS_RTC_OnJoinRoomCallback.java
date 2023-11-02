@@ -6,7 +6,7 @@ import host.anzo.eossdk.eos.sdk.rtc.callbackresults.EOS_RTC_JoinRoomCallbackInfo
 /**
  * Callback for completion of room join request.
  *
- * @author ANZO
+ * @author Anton Lasevich
  * @since 11/1/2023
  */
 public interface EOS_RTC_OnJoinRoomCallback extends Callback {

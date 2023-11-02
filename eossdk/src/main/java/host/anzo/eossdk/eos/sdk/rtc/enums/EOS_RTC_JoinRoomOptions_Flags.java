@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Join room flags
  *
- * @author ANZO
+ * @author Anton Lasevich
  * @since 11/1/2023
  */
 public class EOS_RTC_JoinRoomOptions_Flags extends NativeMappedBitMask {

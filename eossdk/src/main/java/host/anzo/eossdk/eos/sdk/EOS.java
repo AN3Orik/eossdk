@@ -19,8 +19,11 @@ import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
  * @since 8/6/2023
  */
 public class EOS {
+	/** EOS SDK major version */
 	public static final int EOS_MAJOR_VERSION = 1;
+	/** EOS SDK minor version */
 	public static final int EOS_MINOR_VERSION = 16;
+	/** EOS SDK patch version */
 	public static final int EOS_PATCH_VERSION = 1;
 
 	/**

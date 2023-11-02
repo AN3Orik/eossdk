@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.rtcadmin;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
+import host.anzo.eossdk.eos.sdk.EOS_RTC_Admin_Interface;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.rtcadmin.options.EOS_RTCAdmin_CopyUserTokenByIndexOptions;
 import host.anzo.eossdk.eos.sdk.rtcadmin.options.EOS_RTCAdmin_CopyUserTokenByUserIdOptions;
@@ -41,8 +42,8 @@ public class EOS_RTCAdmin_UserToken extends Structure implements AutoCloseable {
 	 * EOS_RTCAdmin_CopyUserTokenByIndex or EOS_RTCAdmin_CopyUserTokenByUserId.
 	 *
 	 * @see EOS_RTCAdmin_UserToken
-	 * @see host.anzo.eossdk.eos.sdk.EOS_RTC_Admin_Interface#copyUserTokenByIndex(EOS_RTCAdmin_CopyUserTokenByIndexOptions)
-	 * @see host.anzo.eossdk.eos.sdk.EOS_RTC_Admin_Interface#copyUserTokenByUserId(EOS_RTCAdmin_CopyUserTokenByUserIdOptions)
+	 * @see EOS_RTC_Admin_Interface#copyUserTokenByIndex(EOS_RTCAdmin_CopyUserTokenByIndexOptions)
+	 * @see EOS_RTC_Admin_Interface#copyUserTokenByUserId(EOS_RTCAdmin_CopyUserTokenByUserIdOptions)
 	 */
 	public void release() {
 		EOSLibrary.instance.EOS_RTCAdmin_UserToken_Release(this);

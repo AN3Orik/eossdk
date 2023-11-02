@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * All background modes supported by the RTC components
  *
- * @author ANZO
+ * @author Anton Lasevich
  * @since 10/31/2023
  */
 public @Getter enum EOS_ERTCBackgroundMode implements NativeMapped {
