@@ -18,12 +18,18 @@ public class EOS_RTCAudio_AudioBuffer extends Structure {
 	/** The most recent version of the EOS_RTCAudio_AudioBuffer API */
 	public static final int EOS_RTCAUDIO_AUDIOBUFFER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCAUDIO_AUDIOBUFFER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCAUDIO_AUDIOBUFFER_API_LATEST}. */
 	public int ApiVersion;
 	/** Pointer to the data with the interleaved audio frames in signed 16 bits format. */
 	public ShortBuffer Frames;
+	/**
+	 * Number of frames available in the Frames buffer.<br>
+	 * <b>This is the number of frames in a channel, not the total number of frames in the buffer!</b>
+	 */
 	public int FramesCount;
+	/** Sample rate for the samples in the Frames buffer. */
 	public int SampleRate;
+	/** Number of channels for the samples in the Frames buffer. */
 	public int Channels;
 
 	public EOS_RTCAudio_AudioBuffer() {

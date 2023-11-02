@@ -16,7 +16,7 @@ public class EOS_RTCAudio_CopyOutputDeviceInformationByIndexOptions extends Stru
 	/** The most recent version of the EOS_RTCAudio_CopyOutputDeviceInformationByIndex API. */
 	public static final int EOS_RTCAUDIO_COPYOUTPUTDEVICEINFORMATIONBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCAUDIO_COPYOUTPUTDEVICEINFORMATIONBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCAUDIO_COPYOUTPUTDEVICEINFORMATIONBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** Index of the audio output device's information to retrieve. */
 	public int DeviceIndex;

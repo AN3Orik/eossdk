@@ -24,7 +24,7 @@ public class EOS_RTC_SetSettingOptions extends Structure {
 	/** The most recent version of the EOS_RTC_SetSetting API. */
 	public static final int EOS_RTC_SETSETTING_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTC_SETSETTING_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTC_SETSETTING_API_LATEST}. */
 	public int ApiVersion;
 	/** Setting that should be set. */
 	public String SettingName;

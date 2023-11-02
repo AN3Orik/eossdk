@@ -1,5 +1,6 @@
 /.gradle
 /.idea
+/build
 /eossdk/build
 /eossdk-example/build
 /tools
@@ -9,3 +10,4 @@
 /eossdk-native-windows/build
 /eossdk-native-android/build
 /local.properties
+/build

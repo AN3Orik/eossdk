@@ -21,12 +21,12 @@ public class EOS_RTCAudio_InputDeviceInformation extends Structure implements Au
 	/** The most recent version of the EOS_RTCAudio_InputDeviceInformation struct. */
 	public static final int EOS_RTCAUDIO_INPUTDEVICEINFORMATION_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCAUDIO_INPUTDEVICEINFORMATION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCAUDIO_INPUTDEVICEINFORMATION_API_LATEST}. */
 	public int ApiVersion;
 	/** True if this is the default audio input device in the system. */
 	public EOS_Bool IsDefaultDevice;
 	/**
-	 * The persistent unique id of the audio input device.
+	 * The persistent unique id of the audio input device.<br>
 	 * The value can be cached - invalidated only when the audio device pool is changed.
 	 *
 	 * @see EOS_RTC_Audio_Interface#addNotifyAudioDevicesChanged(EOS_RTCAudio_AddNotifyAudioDevicesChangedOptions, Pointer, EOS_RTCAudio_OnAudioDevicesChangedCallback)

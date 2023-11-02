@@ -17,7 +17,7 @@ public class EOS_RTC_LeaveRoomOptions extends Structure {
 	/** The most recent version of the EOS_RTC_LeaveRoom API. */
 	public static final int EOS_RTC_LEAVEROOM_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTC_LEAVEROOM_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTC_LEAVEROOM_API_LATEST}. */
 	public int ApiVersion;
 	/** Product User ID of the user requesting to leave the room */
 	public EOS_ProductUserId LocalUserId;

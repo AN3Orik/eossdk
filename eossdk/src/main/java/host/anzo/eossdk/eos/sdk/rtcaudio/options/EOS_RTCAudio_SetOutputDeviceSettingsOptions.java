@@ -19,7 +19,7 @@ public class EOS_RTCAudio_SetOutputDeviceSettingsOptions extends Structure {
 	/** The most recent version of the EOS_RTCAudio_SetOutputDeviceSettings API. */
 	public static final int EOS_RTCAUDIO_SETOUTPUTDEVICESETTINGS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCAUDIO_SETOUTPUTDEVICESETTINGS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCAUDIO_SETOUTPUTDEVICESETTINGS_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the user who initiated this request. */
 	public EOS_ProductUserId LocalUserId;

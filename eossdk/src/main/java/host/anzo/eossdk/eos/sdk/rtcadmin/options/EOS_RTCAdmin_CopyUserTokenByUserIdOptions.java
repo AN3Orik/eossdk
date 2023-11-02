@@ -18,7 +18,7 @@ public class EOS_RTCAdmin_CopyUserTokenByUserIdOptions extends Structure {
 	/** The most recent version of the EOS_RTCAdmin_CopyUserTokenByUserIdOptions struct. */
 	public static final int EOS_RTCADMIN_COPYUSERTOKENBYUSERID_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_RTCADMIN_COPYUSERTOKENBYUSERID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCADMIN_COPYUSERTOKENBYUSERID_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID for the user whose user token we're copying. */
 	public EOS_ProductUserId TargetUserId;

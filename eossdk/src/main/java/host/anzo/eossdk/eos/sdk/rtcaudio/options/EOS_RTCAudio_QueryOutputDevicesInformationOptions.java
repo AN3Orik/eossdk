@@ -13,7 +13,7 @@ public class EOS_RTCAudio_QueryOutputDevicesInformationOptions extends Structure
 	/** The most recent version of the EOS_RTCAudio_QueryOutputDevicesInformation API. */
 	public static final int EOS_RTCAUDIO_QUERYOUTPUTDEVICESINFORMATION_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCAUDIO_QUERYOUTPUTDEVICESINFORMATION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCAUDIO_QUERYOUTPUTDEVICESINFORMATION_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_RTCAudio_QueryOutputDevicesInformationOptions() {

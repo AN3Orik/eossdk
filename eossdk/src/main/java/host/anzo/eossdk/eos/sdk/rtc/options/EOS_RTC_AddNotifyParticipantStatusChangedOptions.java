@@ -17,7 +17,7 @@ public class EOS_RTC_AddNotifyParticipantStatusChangedOptions extends Structure 
 	/** The most recent version of the EOS_RTC_AddNotifyParticipantStatusChanged API. */
 	public static final int EOS_RTC_ADDNOTIFYPARTICIPANTSTATUSCHANGED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTC_ADDNOTIFYPARTICIPANTSTATUSCHANGED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTC_ADDNOTIFYPARTICIPANTSTATUSCHANGED_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the user trying to request this operation. */
 	public EOS_ProductUserId LocalUserId;

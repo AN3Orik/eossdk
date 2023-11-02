@@ -19,7 +19,7 @@ public class EOS_RTC_ParticipantMetadata extends Structure {
 	/** The most recent version of the EOS_RTC_ParticipantMetadata struct. */
 	public static final int EOS_RTC_PARTICIPANTMETADATA_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTC_PARTICIPANTMETADATA_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTC_PARTICIPANTMETADATA_API_LATEST}. */
 	public int ApiVersion;
 	/** The unique key of this metadata item. The max size of the string is {@link #EOS_RTC_PARTICIPANTMETADATA_KEY_MAXCHARCOUNT}. */
 	public String Key;

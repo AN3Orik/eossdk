@@ -18,7 +18,7 @@ public class EOS_RTCAdmin_QueryJoinRoomTokenOptions extends Structure {
 	/** The most recent version of the EOS_RTCAdmin_QueryJoinRoomToken API */
 	public static final int EOS_RTCADMIN_QUERYJOINROOMTOKEN_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_RTCADMIN_QUERYJOINROOMTOKEN_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCADMIN_QUERYJOINROOMTOKEN_API_LATEST}. */
 	public int ApiVersion;
 	/** Product User ID for local user who is querying join room tokens. */
 	public EOS_ProductUserId LocalUserId;

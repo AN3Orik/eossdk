@@ -17,7 +17,7 @@ public class EOS_RTC_AddNotifyDisconnectedOptions extends Structure {
 	/** The most recent version of the EOS_RTC_AddNotifyDisconnected API. */
 	public static final int EOS_RTC_ADDNOTIFYDISCONNECTED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTC_ADDNOTIFYDISCONNECTED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTC_ADDNOTIFYDISCONNECTED_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the user trying to request this operation. */
 	public EOS_ProductUserId LocalUserId;

@@ -17,7 +17,7 @@ public class EOS_RTCAdmin_KickOptions extends Structure {
 	/** The most recent version of the EOS_RTCAdmin_Kick API */
 	public static final int EOS_RTCADMIN_KICK_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCADMIN_KICK_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCADMIN_KICK_API_LATEST}. */
 	public int ApiVersion;
 	/** Room name to kick the participant from */
 	public String RoomName;

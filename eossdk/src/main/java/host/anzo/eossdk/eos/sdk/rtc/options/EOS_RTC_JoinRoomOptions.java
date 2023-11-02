@@ -19,7 +19,7 @@ public class EOS_RTC_JoinRoomOptions extends Structure {
 	/** The most recent version of the EOS_RTC_JoinRoom API. */
 	public final static int EOS_RTC_JOINROOM_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTC_JOINROOM_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTC_JOINROOM_API_LATEST}. */
 	public int ApiVersion;
 	/** The product user id of the user trying to request this operation. */
 	public EOS_ProductUserId LocalUserId;

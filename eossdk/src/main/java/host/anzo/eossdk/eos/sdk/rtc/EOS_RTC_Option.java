@@ -19,7 +19,7 @@ public class EOS_RTC_Option extends Structure {
 	/** The most recent version of the EOS_RTC_Option struct. */
 	public static final int EOS_RTC_OPTION_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTC_OPTION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTC_OPTION_API_LATEST}. */
 	public int ApiVersion;
 	/** The unique key of the option. The max size of the string is {@link #EOS_RTC_OPTION_KEY_MAXCHARCOUNT}. */
 	public String Key;

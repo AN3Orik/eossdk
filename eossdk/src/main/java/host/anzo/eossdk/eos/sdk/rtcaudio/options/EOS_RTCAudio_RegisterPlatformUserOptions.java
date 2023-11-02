@@ -16,7 +16,7 @@ public class EOS_RTCAudio_RegisterPlatformUserOptions extends Structure {
 	/** The most recent version of the EOS_RTCAudio_RegisterPlatformUser API. */
 	public static final int EOS_RTCAUDIO_REGISTERPLATFORMUSER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCAUDIO_REGISTERPLATFORMUSER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCAUDIO_REGISTERPLATFORMUSER_API_LATEST}. */
 	public int ApiVersion;
 	/** Platform dependent user id. */
 	public String PlatformUserId;

@@ -18,7 +18,7 @@ public class EOS_RTCAdmin_SetParticipantHardMuteOptions extends Structure {
 	/** The most recent version of the EOS_RTCAdmin_SetParticipantHardMuteOptions struct. */
 	public static final int EOS_RTCADMIN_SETPARTICIPANTHARDMUTE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCADMIN_SETPARTICIPANTHARDMUTE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCADMIN_SETPARTICIPANTHARDMUTE_API_LATEST}. */
 	public int ApiVersion;
 	/** Room to kick the participant from */
 	public String RoomName;

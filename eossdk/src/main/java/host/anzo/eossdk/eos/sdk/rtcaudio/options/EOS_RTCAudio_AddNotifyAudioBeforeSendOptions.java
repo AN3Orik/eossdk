@@ -17,7 +17,7 @@ public class EOS_RTCAudio_AddNotifyAudioBeforeSendOptions extends Structure {
 	/** The most recent version of the EOS_RTCAudio_AddNotifyAudioBeforeSend API. */
 	public static final int EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORESEND_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORESEND_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCAUDIO_ADDNOTIFYAUDIOBEFORESEND_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the user trying to request this operation. */
 	public EOS_ProductUserId LocalUserId;

@@ -16,7 +16,7 @@ public class EOS_RTCAudio_UnregisterPlatformUserOptions extends Structure {
 	/** The most recent version of the EOS_RTCAudio_UnregisterPlatformUser API. */
 	public static final int EOS_RTCAUDIO_UNREGISTERPLATFORMUSER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCAUDIO_UNREGISTERPLATFORMUSER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCAUDIO_UNREGISTERPLATFORMUSER_API_LATEST}. */
 	public int ApiVersion;
 	/** The account of a user associated with this event. */
 	public String PlatformUserId;

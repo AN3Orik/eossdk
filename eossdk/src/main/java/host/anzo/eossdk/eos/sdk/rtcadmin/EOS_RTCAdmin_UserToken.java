@@ -21,7 +21,7 @@ public class EOS_RTCAdmin_UserToken extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_RTCAdmin_UserToken struct. */
 	public static final int EOS_RTCADMIN_USERTOKEN_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_RTCADMIN_USERTOKEN_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_RTCADMIN_USERTOKEN_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID for the user who owns this user token. */
 	public EOS_ProductUserId ProductUserId;
