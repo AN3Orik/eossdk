@@ -48,18 +48,27 @@ So, let me know via issues if you encounter any problems.
 ```
 
 ## Platform support
-Because project using JNA library, all available platforms are supported (for which Epic released a library, of course).
+Project using JNA library, so all available platforms are supported (for which Epic released a library, of course).
 
 ## Distribution
 New releases are made available on Maven Central, enabling you to employ your preferred dependency management tool for retrieval.
 
-Please note that the library version corresponds to the compatible EOS SDK version (with an added wrapper version after dot)
+*Please note that the library version corresponds to the compatible EOS SDK version (with an added wrapper version after dot)*
 
 ```groovy
 // Gradle
 dependencies {
     // EOS SDK wrapper library
     implementation "host.anzo:eossdk:1.16.1.+"
+}
+```
+
+Of course, for full-fledged work, you will need native EOS SDK libraries. There is two options:
+1. Copy native libraries from EOS SDK distribution to your application classpath/resources manually
+2. Include Maven Central dependencies additionally to wrapper library:
+```groovy
+// Gradle
+dependencies {
     // Windows native library
     implementation "host.anzo:eossdk-native-windows:1.16.1.+"
     // Linux native library
@@ -70,8 +79,8 @@ dependencies {
 ```
 
 ## Using & Documentation
-During development, I try to preserve the original documentation as much as possible, with an eye to the specifics of javadoc generating.
+During development, I try to preserve the original documentation as much as possible, with an eye to the specifics of [javadoc](https://javadoc.io/doc/host.anzo/eossdk) generating.
 
-So use [Official EOS SDK documentation](https://dev.epicgames.com/docs/api-ref)
+So you can use [Official EOS SDK documentation](https://dev.epicgames.com/docs/api-ref)
 
 Also a basic project is available [here](https://github.com/AN3Orik/eossdk/tree/main/eossdk-example) (more just "how-to-use" than ready-to-go example)
