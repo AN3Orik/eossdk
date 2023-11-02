@@ -10,6 +10,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.Structure.FieldOrder;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_ERTCBackgroundMode;
+import host.anzo.eossdk.eos.sdk.common.options.EOS_Windows_RTCOptions;
 
 /**
  * Platform RTC options.
@@ -30,7 +31,7 @@ public class EOS_Platform_RTCOptions extends Structure {
 	 * If provided then the structure will be located in System/eos_System.h.
 	 * The structure will be named EOS_(System)_RTCOptions.
 	 */
-	public Pointer PlatformSpecificOptions;
+	public EOS_Windows_RTCOptions.ByReference PlatformSpecificOptions;
 	/** Configures RTC behavior upon entering to any background application statuses */
 	public EOS_ERTCBackgroundMode BackgroundMode;
 
