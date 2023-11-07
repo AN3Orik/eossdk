@@ -24,7 +24,7 @@ public class EOS_Auth_VerifyUserAuthOptions extends Structure {
 	/** The most recent version of the EOS_Auth_VerifyUserAuth API. */
 	public static int EOS_AUTH_VERIFYUSERAUTH_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_AUTH_VERIFYUSERAUTH_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_AUTH_VERIFYUSERAUTH_API_LATEST}. */
 	public int ApiVersion;
 	/** Auth token to verify against the backend service */
 	public EOS_Auth_Token.ByReference AuthToken;

@@ -30,7 +30,7 @@ public class EOS_Connect_ExternalAccountInfo extends Structure implements AutoCl
 	/** The most recent version of the EOS_Connect_CopyProductUserExternalAccountByAccountId API. */
 	public static int EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_COPYPRODUCTUSEREXTERNALACCOUNTBYACCOUNTID_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the target user. */
 	public EOS_ProductUserId ProductUserId;

@@ -22,7 +22,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatServer_ReceiveMessageFromClientOptions extends Structure {
 	public static int EOS_ANTICHEATSERVER_RECEIVEMESSAGEFROMCLIENT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATSERVER_RECEIVEMESSAGEFROMCLIENT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATSERVER_RECEIVEMESSAGEFROMCLIENT_API_LATEST}. */
 	public int ApiVersion;
 	/** Locally unique value describing the corresponding remote user, as previously passed to RegisterClient */
 	public EOS_AntiCheatCommon_ClientHandle ClientHandle;

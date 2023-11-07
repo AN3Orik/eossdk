@@ -19,7 +19,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatCommon_LogGameRoundEndOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGGAMEROUNDEND_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATCOMMON_LOGGAMEROUNDEND_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGGAMEROUNDEND_API_LATEST}. */
 	public int ApiVersion;
 	/** Optional identifier for the winning team */
 	public int WinningTeamId;

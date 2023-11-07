@@ -27,7 +27,7 @@ public class EOS_Connect_IdToken extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_Connect_IdToken struct. */
 	public static int EOS_CONNECT_IDTOKEN_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CONNECT_IDTOKEN_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_IDTOKEN_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The Product User ID described by the ID token.

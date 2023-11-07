@@ -23,7 +23,7 @@ public class EOS_Auth_VerifyIdTokenOptions extends Structure {
 	/** The most recent version of the EOS_Auth_VerifyIdToken API. */
 	public static int EOS_AUTH_VERIFYIDTOKEN_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_AUTH_VERIFYUSERAUTH_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_AUTH_VERIFYIDTOKEN_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The ID token to verify.

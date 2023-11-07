@@ -24,7 +24,7 @@ public class EOS_Connect_QueryProductUserIdMappingsOptions extends Structure {
 	/** The most recent version of the EOS_Connect_QueryProductUserIdMappings API. */
 	public static int EOS_CONNECT_QUERYPRODUCTUSERIDMAPPINGS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CONNECT_QUERYPRODUCTUSERIDMAPPINGS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_QUERYPRODUCTUSERIDMAPPINGS_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * Game Clients set this field to the Product User ID of the local authenticated user querying account mappings.

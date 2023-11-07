@@ -20,7 +20,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatCommon_LogPlayerUseWeaponOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_API_LATEST}. */
 	public int ApiVersion;
 	/** Struct containing detailed information about a weapon use event */
 	public EOS_AntiCheatCommon_LogPlayerUseWeaponData.ByReference UseWeaponData;

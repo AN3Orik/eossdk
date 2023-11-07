@@ -16,7 +16,7 @@ public class EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions extends 
 	/** The most recent version of the EOS_Achievements_CopyAchievementDefinitionByIndexOptions struct. */
 	public static final int EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYINDEX_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** Index of the achievement definition to retrieve from the cache. */
 	public int AchievementIndex;

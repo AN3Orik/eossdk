@@ -14,7 +14,7 @@ public class EOS_CustomInvites_AddNotifyRequestToJoinRejectedOptions extends Str
 	/** The most recent version of the EOS_CustomInvites_AddNotifyRequestToJoinRejected API. */
 	public static final int EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINREJECTED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINREJECTED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINREJECTED_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_CustomInvites_AddNotifyRequestToJoinRejectedOptions() {

@@ -33,7 +33,7 @@ public class EOS_Auth_LoginOptions extends Structure {
 	/** The most recent version of the EOS_Auth_Login API. */
 	public static int EOS_AUTH_LOGIN_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_AUTH_LOGIN_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_AUTH_LOGIN_API_LATEST}. */
 	public int ApiVersion;
 	/** Credentials specified for a given login method */
 	public EOS_Auth_Credentials.ByReference Credentials;

@@ -21,7 +21,7 @@ public class EOS_Achievements_DefinitionV2 extends Structure implements AutoClos
 	/** The most recent version of the EOS_Achievements_DefinitionV2 struct. */
 	public static final int EOS_ACHIEVEMENTS_DEFINITIONV2_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_DEFINITIONV2_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_DEFINITIONV2_API_LATEST}. */
 	public int ApiVersion;
 	/** Achievement ID that can be used to uniquely identify the achievement. */
 	public String AchievementId;

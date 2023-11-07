@@ -23,8 +23,8 @@ public class EOS_Auth_AccountFeatureRestrictedInfo extends Structure {
 	/** The most recent version of the EOS_Auth_AccountFeatureRestrictedInfo struct. */
 	public static int EOS_AUTH_ACCOUNTFEATURERESTRICTEDINFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_AUTH_ACCOUNTFEATURERESTRICTEDINFO_API_LATEST. */
-	public int ApiVersion = EOS_AUTH_ACCOUNTFEATURERESTRICTEDINFO_API_LATEST;
+	/** API Version: Set this to {@link #EOS_AUTH_ACCOUNTFEATURERESTRICTEDINFO_API_LATEST}. */
+	public int ApiVersion;
 	/** The end-user verification URI. Users must be asked to open the page in a browser to address the restrictions */
 	public String VerificationURI;
 

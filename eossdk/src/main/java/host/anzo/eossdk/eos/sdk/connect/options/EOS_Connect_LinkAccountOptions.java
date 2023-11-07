@@ -24,7 +24,7 @@ public class EOS_Connect_LinkAccountOptions extends Structure {
 	/** The most recent version of the EOS_Connect_LinkAccount API. */
 	public static int EOS_CONNECT_LINKACCOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CONNECT_LINKACCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_LINKACCOUNT_API_LATEST}. */
 	public int ApiVersion;
 	/** The existing logged in product user for which to link the external account described by the continuance token. */
 	public EOS_ProductUserId LocalUserId;

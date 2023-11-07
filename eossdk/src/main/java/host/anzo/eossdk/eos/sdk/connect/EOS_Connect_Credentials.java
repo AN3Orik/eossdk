@@ -31,7 +31,7 @@ public class EOS_Connect_Credentials extends Structure {
 	/** The most recent version of the EOS_Connect_Credentials struct. */
 	public static int EOS_CONNECT_CREDENTIALS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_AUTH_CREDENTIALS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_CREDENTIALS_API_LATEST}. */
 	public int ApiVersion;
 	/** External token associated with the user logging in. */
 	public String Token;

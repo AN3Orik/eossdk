@@ -19,7 +19,7 @@ public class EOS_Achievements_QueryDefinitionsOptions extends Structure {
 	/** The most recent version of the EOS_Achievements_QueryDefinitions struct. */
 	public static final int EOS_ACHIEVEMENTS_QUERYDEFINITIONS_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_QUERYDEFINITIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_QUERYDEFINITIONS_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * Product User ID for user who is querying definitions.

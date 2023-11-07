@@ -15,7 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatClient_BeginSessionOptions extends Structure {
 	public static final int EOS_ANTICHEATCLIENT_BEGINSESSION_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_ANTICHEATCLIENT_BEGINSESSION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_BEGINSESSION_API_LATEST}. */
 	public int ApiVersion;
 	/** Logged in user identifier from earlier call to EOS_Connect_Login family of functions */
 	public EOS_ProductUserId LocalUserId;

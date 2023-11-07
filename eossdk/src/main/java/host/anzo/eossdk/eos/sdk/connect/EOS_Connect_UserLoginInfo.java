@@ -25,7 +25,7 @@ public class EOS_Connect_UserLoginInfo extends Structure {
 	/** The most recent version of the EOS_Connect_UserLoginInfo struct. */
 	public static int EOS_CONNECT_USERLOGININFO_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_CONNECT_USERLOGININFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_USERLOGININFO_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The user's display name on the identity provider systems as UTF-8 encoded null-terminated string.

@@ -25,7 +25,7 @@ public class EOS_Auth_LinkAccountOptions extends Structure {
 	/** The most recent version of the EOS_Auth_LinkAccount API. */
 	public static int EOS_AUTH_LINKACCOUNT_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_AUTH_LINKACCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_AUTH_LINKACCOUNT_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * Combination of the enumeration flags to specify how the account linking operation will be performed.

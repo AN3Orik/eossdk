@@ -17,7 +17,7 @@ public class EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions extend
 	/** The most recent version of the EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions struct. */
 	public static final int EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_COPYPLAYERACHIEVEMENTBYACHIEVEMENTID_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID for the user whose achievement is to be retrieved. */
 	public EOS_ProductUserId TargetUserId;

@@ -25,7 +25,7 @@ public class EOS_Connect_QueryExternalAccountMappingsOptions extends Structure {
 	/** The most recent version of the EOS_Connect_QueryExternalAccountMappings API. */
 	public static int EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_QUERYEXTERNALACCOUNTMAPPINGS_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the existing, logged-in user who is querying account mappings. */
 	public EOS_ProductUserId LocalUserId;

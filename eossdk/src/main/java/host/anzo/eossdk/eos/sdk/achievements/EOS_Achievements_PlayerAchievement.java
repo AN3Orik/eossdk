@@ -23,7 +23,7 @@ public class EOS_Achievements_PlayerAchievement extends Structure implements Aut
 	/** The most recent version of the EOS_Achievements_PlayerAchievement struct. */
 	public static final int EOS_ACHIEVEMENTS_PLAYERACHIEVEMENT_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_PLAYERACHIEVEMENT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_PLAYERACHIEVEMENT_API_LATEST}. */
 	public int ApiVersion;
 	/** This achievement's unique identifier. */
 	public String AchievementId;

@@ -22,7 +22,7 @@ public class EOS_Auth_DeletePersistentAuthOptions extends Structure {
 	/** The most recent version of the EOS_Auth_DeletePersistentAuth API. */
 	public static int EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_AUTH_DELETEPERSISTENTAUTH_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * A long-lived refresh token that is used with the EOS_LCT_PersistentAuth login type and is to be revoked from the authentication server. Only used on Console platforms.

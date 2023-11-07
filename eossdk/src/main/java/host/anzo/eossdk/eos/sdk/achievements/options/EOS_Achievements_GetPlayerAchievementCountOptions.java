@@ -17,7 +17,7 @@ public class EOS_Achievements_GetPlayerAchievementCountOptions extends Structure
 	/** The most recent version of the EOS_Achievements_GetPlayerAchievementCount API. */
 	public static final int EOS_ACHIEVEMENTS_GETPLAYERACHIEVEMENTCOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_GETPLAYERACHIEVEMENTCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_GETPLAYERACHIEVEMENTCOUNT_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID for the user whose achievement count is being retrieved. */
 	public EOS_ProductUserId UserId;

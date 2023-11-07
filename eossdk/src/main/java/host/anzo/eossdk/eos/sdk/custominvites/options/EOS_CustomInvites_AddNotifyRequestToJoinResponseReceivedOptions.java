@@ -14,7 +14,7 @@ public class EOS_CustomInvites_AddNotifyRequestToJoinResponseReceivedOptions ext
 	/** The most recent version of the EOS_CustomInvites_AddNotifyRequestToJoinResponseReceived API. */
 	public static final int EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINRESPONSERECEIVED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINRESPONSERECEIVED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINRESPONSERECEIVED_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_CustomInvites_AddNotifyRequestToJoinResponseReceivedOptions() {

@@ -16,7 +16,7 @@ public class EOS_Android_InitializeOptions extends Structure {
 	/** The most recent version of the EOS_Android_InitializeOptions API. */
 	public static final int EOS_ANDROID_INITIALIZEOPTIONS_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ANDROID_INITIALIZEOPTIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANDROID_INITIALIZEOPTIONS_API_LATEST}. */
 	public int ApiVersion;
 	/** Reserved, set to null */
 	public Pointer Reserved;

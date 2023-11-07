@@ -21,7 +21,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatCommon_LogEventOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGEVENT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATCOMMON_LOGEVENT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGEVENT_API_LATEST}. */
 	public int ApiVersion;
 	/** Optional client who this event is primarily associated with. If not applicable, use 0. */
 	public EOS_AntiCheatCommon_ClientHandle ClientHandle;

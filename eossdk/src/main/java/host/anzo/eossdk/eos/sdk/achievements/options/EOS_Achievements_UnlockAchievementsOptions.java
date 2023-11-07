@@ -18,7 +18,7 @@ public class EOS_Achievements_UnlockAchievementsOptions extends Structure {
 	/** The most recent version of the EOS_Achievements_UnlockAchievements struct. */
 	public static final int EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_UNLOCKACHIEVEMENTS_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID for the user whose achievements we want to unlock. */
 	public EOS_ProductUserId UserId;

@@ -16,7 +16,7 @@ public class EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions 
 	/** The most recent version of the EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions struct. */
 	public static final int EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYACHIEVEMENTID_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYACHIEVEMENTID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_COPYACHIEVEMENTDEFINITIONV2BYACHIEVEMENTID_API_LATEST}. */
 	public int ApiVersion;
 	/** Achievement ID to look for when copying the definition from the cache. */
 	public String AchievementId;

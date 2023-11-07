@@ -20,8 +20,8 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatCommon_LogPlayerUseAbilityOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERUSEABILITY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATCOMMON_LOGPLAYERUSEABILITY_API_LATEST. */
-	public int ApiVersion = EOS_ANTICHEATCOMMON_LOGPLAYERUSEABILITY_API_LATEST;
+	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGPLAYERUSEABILITY_API_LATEST}. */
+	public int ApiVersion;
 	/** Locally unique value used in RegisterClient/RegisterPeer */
 	public EOS_AntiCheatCommon_ClientHandle PlayerHandle;
 	/** Game defined unique identifier for the ability being used */

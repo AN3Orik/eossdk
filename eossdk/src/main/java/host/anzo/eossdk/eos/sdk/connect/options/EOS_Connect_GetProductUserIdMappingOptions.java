@@ -24,7 +24,7 @@ public class EOS_Connect_GetProductUserIdMappingOptions extends Structure {
 	/** The most recent version of the EOS_Connect_GetProductUserIdMapping API. */
 	public static int EOS_CONNECT_GETPRODUCTUSERIDMAPPING_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CONNECT_GETPRODUCTUSERIDMAPPING_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_GETPRODUCTUSERIDMAPPING_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the existing, logged-in user that is querying account mappings. */
 	private EOS_ProductUserId LocalUserId;

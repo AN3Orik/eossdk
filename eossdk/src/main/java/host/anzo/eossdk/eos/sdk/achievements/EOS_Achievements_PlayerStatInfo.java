@@ -17,7 +17,7 @@ public class EOS_Achievements_PlayerStatInfo extends Structure {
 	/** The most recent version of the EOS_Achievements_PlayerStatInfo struct. */
 	public static final int EOS_ACHIEVEMENTS_PLAYERSTATINFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_PLAYERSTATINFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_PLAYERSTATINFO_API_LATEST}. */
 	public int ApiVersion;
 	/** The name of the stat. */
 	public String Name;

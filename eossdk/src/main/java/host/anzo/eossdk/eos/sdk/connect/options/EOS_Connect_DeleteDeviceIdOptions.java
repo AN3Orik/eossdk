@@ -22,7 +22,7 @@ public class EOS_Connect_DeleteDeviceIdOptions extends Structure {
 	/** The most recent version of the EOS_Connect_DeleteDeviceId API. */
 	public static int EOS_CONNECT_DELETEDEVICEID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CONNECT_DELETEDEVICEID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_DELETEDEVICEID_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Connect_DeleteDeviceIdOptions() {

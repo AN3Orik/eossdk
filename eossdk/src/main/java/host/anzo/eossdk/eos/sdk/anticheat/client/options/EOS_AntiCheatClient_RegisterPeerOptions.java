@@ -26,7 +26,7 @@ public class EOS_AntiCheatClient_RegisterPeerOptions extends Structure {
 	public static final int EOS_ANTICHEATCLIENT_REGISTERPEER_MAX_AUTHENTICATIONTIMEOUT = 120;
 	public static final int EOS_ANTICHEATCLIENT_REGISTERPEER_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_ANTICHEATCLIENT_REGISTERPEER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_REGISTERPEER_API_LATEST}. */
 	public int ApiVersion;
 	/** Locally unique value describing the remote user (e.g. a player object pointer) */
 	public EOS_AntiCheatCommon_ClientHandle PeerHandle;

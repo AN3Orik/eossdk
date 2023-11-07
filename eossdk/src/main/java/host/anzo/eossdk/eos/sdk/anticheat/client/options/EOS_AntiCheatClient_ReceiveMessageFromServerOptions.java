@@ -15,7 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatClient_ReceiveMessageFromServerOptions extends Structure {
 	public static final int EOS_ANTICHEATCLIENT_RECEIVEMESSAGEFROMSERVER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATCLIENT_RECEIVEMESSAGEFROMSERVER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_RECEIVEMESSAGEFROMSERVER_API_LATEST}. */
 	public int ApiVersion;
 	/** The size of the data received */
 	public int DataLengthBytes;

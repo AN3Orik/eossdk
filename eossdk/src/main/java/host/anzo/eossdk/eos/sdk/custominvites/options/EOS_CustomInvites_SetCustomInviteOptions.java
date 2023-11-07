@@ -18,7 +18,7 @@ public class EOS_CustomInvites_SetCustomInviteOptions extends Structure {
 	/** Maximum size of the custom invite payload string */
 	public static final int EOS_CUSTOMINVITES_MAX_PAYLOAD_LENGTH = 500;
 
-	/** API Version: Set this to EOS_CUSTOMINVITES_SETCUSTOMINVITE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CUSTOMINVITES_SETCUSTOMINVITE_API_LATEST}. */
 	public int ApiVersion;
 	/** Local user creating / sending a Custom Invite */
 	public EOS_ProductUserId LocalUserId;

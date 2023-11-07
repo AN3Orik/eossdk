@@ -19,7 +19,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatCommon_LogGameRoundStartOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGGAMEROUNDSTART_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATCOMMON_LOGGAMEROUNDSTART_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGGAMEROUNDSTART_API_LATEST}. */
 	public int ApiVersion;
 	/** Optional game session or match identifier useful for some backend API integrations */
 	public String SessionIdentifier;

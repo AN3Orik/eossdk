@@ -23,7 +23,7 @@ public class EOS_Connect_CreateUserOptions extends Structure {
 	/** The most recent version of the EOS_Connect_CreateUser API. */
 	public static int EOS_CONNECT_CREATEUSER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_CONNECT_CREATEUSER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_CONNECT_CREATEUSER_API_LATEST}. */
 	public int ApiVersion;
 	/** Continuance token from previous call to EOS_Connect_Login */
 	public EOS_ContinuanceToken ContinuanceToken;

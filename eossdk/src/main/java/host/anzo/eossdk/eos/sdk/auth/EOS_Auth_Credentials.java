@@ -22,7 +22,7 @@ public class EOS_Auth_Credentials extends Structure {
 	/** The most recent version of the EOS_Auth_Credentials struct. */
 	public static int EOS_AUTH_CREDENTIALS_API_LATEST = 4;
 
-	/** API Version: Set this to EOS_AUTH_CREDENTIALS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_AUTH_CREDENTIALS_API_LATEST}. */
 	public int ApiVersion;
 	/** ID of the user logging in, based on EOS_ELoginCredentialType */
 	public String Id;

@@ -16,7 +16,7 @@ public class EOS_Achievements_AddNotifyAchievementsUnlockedV2Options extends Str
 	/** The most recent version of the EOS_Achievements_AddNotifyAchievementsUnlockedV2 API. */
 	public static final int EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_ADDNOTIFYACHIEVEMENTSUNLOCKEDV2_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Achievements_AddNotifyAchievementsUnlockedV2Options() {

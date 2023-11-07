@@ -20,12 +20,12 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatCommon_LogPlayerReviveOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERREVIVE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATCOMMON_LOGPLAYERREVIVE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGPLAYERREVIVE_API_LATEST}. */
 	private int ApiVersion;
 	/** Locally unique value used in RegisterClient/RegisterPeer */
-	private EOS_AntiCheatCommon_ClientHandle RevivedPlayerHandle;
+	public EOS_AntiCheatCommon_ClientHandle RevivedPlayerHandle;
 	/** Locally unique value used in RegisterClient/RegisterPeer */
-	private EOS_AntiCheatCommon_ClientHandle ReviverPlayerHandle;
+	public EOS_AntiCheatCommon_ClientHandle ReviverPlayerHandle;
 
 	public EOS_AntiCheatCommon_LogPlayerReviveOptions() {
 		super();

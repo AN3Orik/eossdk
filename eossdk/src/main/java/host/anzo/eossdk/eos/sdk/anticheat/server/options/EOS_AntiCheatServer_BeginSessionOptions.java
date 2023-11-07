@@ -27,7 +27,7 @@ public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
 
 	public static int EOS_ANTICHEATSERVER_BEGINSESSION_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_ANTICHEATSERVER_BEGINSESSION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATSERVER_BEGINSESSION_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * Time in seconds to allow newly registered clients to complete anti-cheat authentication.

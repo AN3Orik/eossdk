@@ -13,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatClient_AddNotifyMessageToPeerOptions extends Structure {
 	public static final int EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_AntiCheatClient_AddNotifyMessageToPeerOptions() {

@@ -17,7 +17,7 @@ public class EOS_Achievements_QueryPlayerAchievementsOptions extends Structure {
 	/** The most recent version of the EOS_Achievements_QueryPlayerAchievements struct. */
 	public static final int EOS_ACHIEVEMENTS_QUERYPLAYERACHIEVEMENTS_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_ACHIEVEMENTS_QUERYPLAYERACHIEVEMENTS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACHIEVEMENTS_QUERYPLAYERACHIEVEMENTS_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID for the user whose achievements are to be retrieved. */
 	public EOS_ProductUserId TargetUserId;

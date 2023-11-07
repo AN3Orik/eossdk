@@ -23,7 +23,7 @@ public class EOS_AntiCheatCommon_RegisterEventOptions extends Structure {
 	public static int EOS_ANTICHEATCOMMON_REGISTEREVENT_CUSTOMEVENTBASE = 0x10000000;
 	public static int EOS_ANTICHEATCOMMON_REGISTEREVENT_MAX_PARAMDEFSCOUNT = 12;
 
-	/** API Version: Set this to EOS_ANTICHEATCOMMON_REGISTEREVENT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_REGISTEREVENT_API_LATEST}. */
 	public int ApiVersion;
 	/** Unique event identifier. Must be {@literal >=} EOS_ANTICHEATCOMMON_REGISTEREVENT_CUSTOMEVENTBASE. */
 	public int EventId;

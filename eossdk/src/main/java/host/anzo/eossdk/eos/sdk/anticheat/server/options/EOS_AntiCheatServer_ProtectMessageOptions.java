@@ -22,7 +22,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_AntiCheatServer_ProtectMessageOptions extends Structure {
 	public static int EOS_ANTICHEATSERVER_PROTECTMESSAGE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ANTICHEATSERVER_PROTECTMESSAGE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ANTICHEATSERVER_PROTECTMESSAGE_API_LATEST}. */
 	public int ApiVersion;
 	/** Locally unique value describing the remote user to whom the message will be sent */
 	public EOS_AntiCheatCommon_ClientHandle ClientHandle;
