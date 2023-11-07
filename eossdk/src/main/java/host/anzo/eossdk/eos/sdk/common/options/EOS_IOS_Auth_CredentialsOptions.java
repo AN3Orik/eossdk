@@ -34,9 +34,9 @@ public class EOS_IOS_Auth_CredentialsOptions extends Structure {
 		super(peer);
 	}
 
-	public static class ByReference extends EOS_Windows_RTCOptions implements Structure.ByReference {
+	public static class ByReference extends EOS_IOS_Auth_CredentialsOptions implements Structure.ByReference {
 	}
 
-	public static class ByValue extends EOS_Windows_RTCOptions implements Structure.ByValue {
+	public static class ByValue extends EOS_IOS_Auth_CredentialsOptions implements Structure.ByValue {
 	}
 }
