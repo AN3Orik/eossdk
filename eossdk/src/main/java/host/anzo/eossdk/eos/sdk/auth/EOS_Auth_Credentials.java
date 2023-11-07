@@ -10,6 +10,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.auth.enums.EOS_ELoginCredentialType;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EExternalCredentialType;
+import host.anzo.eossdk.eos.sdk.common.options.EOS_IOS_Auth_CredentialsOptions;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -36,7 +37,7 @@ public class EOS_Auth_Credentials extends Structure {
 	 * If provided, the structure will be located in (System)/eos_(system).h.
 	 * The structure will be named EOS_(System)_Auth_CredentialsOptions.
 	 */
-	public Pointer SystemAuthCredentialsOptions;
+	public EOS_IOS_Auth_CredentialsOptions SystemAuthCredentialsOptions;
 	/**
 	 * Type of external login. Needed to identify the external auth method to use.
 	 * Used when login type is set to EOS_LCT_ExternalAuth, ignored for other EOS_ELoginCredentialType methods.
