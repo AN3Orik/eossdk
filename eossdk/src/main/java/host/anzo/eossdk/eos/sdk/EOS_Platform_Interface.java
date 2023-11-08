@@ -11,14 +11,24 @@ import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EApplicationStatus;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_ENetworkStatus;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+import host.anzo.eossdk.eos.sdk.init.options.EOS_InitializeOptions;
 import host.anzo.eossdk.eos.sdk.platform.EOS_Platform_DesktopCrossplayStatusInfo;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_GetDesktopCrossplayStatusOptions;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
 
 /**
+ * The Platform Instance is used to gain access to all other Epic Online Service interfaces and to drive internal operations through the Tick.
+ * All Platform Instance calls take a handle of type EOS_HPlatform as the first parameter.
+ * EOS_HPlatform handles are created by calling EOS_Platform_Create and subsequently released by calling EOS_Platform_Release.
+ *
  * @author Anton Lasevich
  * @since 8/6/2023
+ * @see EOS#EOS_Initialize(EOS_InitializeOptions)
+ * @see EOS#EOS_Platform_Create(EOS_Platform_Options)
+ * @see #release()
+ * @see EOS#EOS_Shutdown()
  */
+
 public class EOS_Platform_Interface extends PointerType {
 	public EOS_Platform_Interface(Pointer address) {
 		super(address);

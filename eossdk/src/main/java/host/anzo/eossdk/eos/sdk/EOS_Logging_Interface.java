@@ -8,6 +8,10 @@ import host.anzo.eossdk.eos.sdk.logging.enums.EOS_ELogLevel;
 import host.anzo.eossdk.eos.utils.CallbackUtils;
 
 /**
+ * The Logging Interface grants access to log output coming from the SDK at various levels of detail.
+ * Unlike other interfaces, the Logging Interface does not require a handle from the Platform Interface,
+ * as it functions entirely on the local system.
+ *
  * @author Anton Lasevich
  * @since 8/8/2023
  */

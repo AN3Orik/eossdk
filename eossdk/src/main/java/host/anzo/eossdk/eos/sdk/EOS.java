@@ -6,14 +6,7 @@ import host.anzo.eossdk.eos.sdk.init.options.EOS_InitializeOptions;
 import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
 
 /**
- * The Platform Instance is used to gain access to all other Epic Online Service interfaces and to drive internal operations through the Tick.
- * All Platform Instance calls take a handle of type EOS_HPlatform as the first parameter.
- * EOS_HPlatform handles are created by calling EOS_Platform_Create and subsequently released by calling EOS_Platform_Release.
- *
- * @see #EOS_Initialize(EOS_InitializeOptions)
- * @see #EOS_Platform_Create(EOS_Platform_Options)
- * @see EOS_Platform_Interface#release()
- * @see #EOS_Shutdown()
+ * Epic Online Services SDK entry point
  *
  * @author Anton Lasevich
  * @since 8/6/2023

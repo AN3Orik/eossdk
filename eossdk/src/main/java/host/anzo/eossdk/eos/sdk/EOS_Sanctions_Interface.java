@@ -13,6 +13,7 @@ import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_GetPlayerSanctio
 import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_QueryActivePlayerSanctionsOptions;
 
 /**
+ * The following EOS_Sanctions_* functions allow you to query sanctions info for specified players
  * @author Anton Lasevich
  * @since 8/19/2023
  */

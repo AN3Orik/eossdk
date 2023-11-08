@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.nio.ByteBuffer;
 
 /**
+ * The Anti-Cheat server Interface is used to implement anti-cheat interface at game server side
+ *
  * @author Anton Lasevich
  * @since 8/9/2023
  */

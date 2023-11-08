@@ -139,6 +139,8 @@ import java.nio.IntBuffer;
 import java.util.Collections;
 
 /**
+ * JNA wrapper interface for Epic Online Services SDK
+ *
  * @author Anton Lasevich
  * @since 8/8/2023
  */
