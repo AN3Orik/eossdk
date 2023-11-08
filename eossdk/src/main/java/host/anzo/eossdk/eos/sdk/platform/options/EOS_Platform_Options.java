@@ -45,7 +45,7 @@ public class EOS_Platform_Options extends Structure {
 	/** The most recent version of the EOS_Platform_Create API. */
 	public static int EOS_PLATFORM_OPTIONS_API_LATEST = 13;
 
-	/** API Version: Set this to EOS_PLATFORM_OPTIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PLATFORM_OPTIONS_API_LATEST}. */
 	public int ApiVersion;
 	/** A reserved field that should always be nulled. */
 	public Pointer Reserved;

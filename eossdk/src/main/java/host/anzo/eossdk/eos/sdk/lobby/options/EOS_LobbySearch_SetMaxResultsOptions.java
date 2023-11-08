@@ -16,7 +16,7 @@ public class EOS_LobbySearch_SetMaxResultsOptions extends Structure {
 	/** The most recent version of the EOS_LobbySearch_SetMaxResults API. */
 	public static final int EOS_LOBBYSEARCH_SETMAXRESULTS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYSEARCH_SETMAXRESULTS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYSEARCH_SETMAXRESULTS_API_LATEST}. */
 	public int ApiVersion;
 	/** Maximum number of search results to return from the query */
 	public int MaxResults;

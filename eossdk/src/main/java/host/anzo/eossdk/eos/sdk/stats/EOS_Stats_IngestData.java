@@ -16,7 +16,7 @@ public class EOS_Stats_IngestData extends Structure {
 	/** The most recent version of the EOS_Stats_IngestData struct. */
 	public static final int EOS_STATS_INGESTDATA_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_STATS_INGESTDATA_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_STATS_INGESTDATA_API_LATEST}. */
 	public int ApiVersion;
 	/** The name of the stat to ingest. */
 	public String StatName;

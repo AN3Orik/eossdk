@@ -16,7 +16,7 @@ public class EOS_LobbyDetails_CopyInfoOptions extends Structure {
 	/** The most recent version of the EOS_LobbyDetails_CopyInfo API. */
 	public static final int EOS_LOBBYDETAILS_COPYINFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYDETAILS_COPYINFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYDETAILS_COPYINFO_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_LobbyDetails_CopyInfoOptions() {

@@ -16,7 +16,7 @@ public class EOS_LobbyModification_SetBucketIdOptions extends Structure {
 	/** The most recent version of the EOS_LobbyModification_SetBucketId API. */
 	public static final int EOS_LOBBYMODIFICATION_SETBUCKETID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYMODIFICATION_SETBUCKETID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYMODIFICATION_SETBUCKETID_API_LATEST}. */
 	public int ApiVersion;
 	/** The new bucket id associated with the lobby */
 	public String BucketId;

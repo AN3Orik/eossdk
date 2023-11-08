@@ -16,7 +16,7 @@ public class EOS_IntegratedPlatform_CreateIntegratedPlatformOptionsContainerOpti
 	/** The most recent version of the EOS_IntegratedPlatform_CreateIntegratedPlatformOptionsContainer API. */
 	public static final int EOS_INTEGRATEDPLATFORM_CREATEINTEGRATEDPLATFORMOPTIONSCONTAINER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_CREATEINTEGRATEDPLATFORMOPTIONSCONTAINER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_INTEGRATEDPLATFORM_CREATEINTEGRATEDPLATFORMOPTIONSCONTAINER_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_IntegratedPlatform_CreateIntegratedPlatformOptionsContainerOptions() {

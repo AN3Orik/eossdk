@@ -18,7 +18,7 @@ public class EOS_Mods_UpdateModOptions extends Structure {
 	/** The most recent version of the EOS_Mods_UpdateModOptions API. */
 	public static final int EOS_MODS_UPDATEMOD_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_MODS_UPDATEMOD_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_MODS_UPDATEMOD_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the user for which the mod should be updated */
 	public EOS_EpicAccountId LocalUserId;

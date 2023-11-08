@@ -14,9 +14,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "DisplayName"})
 public class EOS_UserInfo_QueryUserInfoByDisplayNameOptions extends Structure {
+	/** The most recent version of the EOS_UserInfo_QueryUserInfoByDisplayName API. */
 	public static final int EOS_USERINFO_QUERYUSERINFOBYDISPLAYNAME_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_USERINFO_QUERYUSERINFOBYDISPLAYNAME_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_USERINFO_QUERYUSERINFOBYDISPLAYNAME_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the local player requesting the information */
 	public EOS_EpicAccountId LocalUserId;

@@ -16,7 +16,7 @@ public class EOS_LobbyDetails_GetMemberByIndexOptions extends Structure {
 	/** The most recent version of the EOS_LobbyDetails_GetMemberByIndex API. */
 	public static final int EOS_LOBBYDETAILS_GETMEMBERBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYDETAILS_GETMEMBERBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYDETAILS_GETMEMBERBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** Index of the member to retrieve */
 	public int MemberIndex;

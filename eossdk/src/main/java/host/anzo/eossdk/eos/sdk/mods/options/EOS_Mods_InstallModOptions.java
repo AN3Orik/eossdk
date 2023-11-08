@@ -19,7 +19,7 @@ public class EOS_Mods_InstallModOptions extends Structure {
 	/** The most recent version of the EOS_Mods_InstallMod API. */
 	public static int EOS_MODS_INSTALLMOD_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_MODS_INSTALLMOD_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_MODS_INSTALLMOD_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the user for which the mod should be installed */
 	public EOS_EpicAccountId LocalUserId;

@@ -16,7 +16,7 @@ public class EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions extends Str
 	/** The most recent version of the EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions struct. */
 	public static final int EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** Index of the sorted leaderboard user score to retrieve from the cache. */
 	public int LeaderboardUserScoreIndex;

@@ -13,9 +13,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SessionId"})
 public class EOS_SessionSearch_SetSessionIdOptions extends Structure {
+	/** The most recent version of the EOS_SessionSearch_SetSessionId API. */
 	public static final int EOS_SESSIONSEARCH_SETSESSIONID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONSEARCH_SETSESSIONID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONSEARCH_SETSESSIONID_API_LATEST}. */
 	public int ApiVersion;
 	/** Search sessions for a specific session ID, returning at most one session */
 	public String SessionId;

@@ -16,7 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_Sessions_GetInviteCountOptions extends Structure {
 	public static final int EOS_SESSIONS_GETINVITECOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONS_GETINVITECOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONS_GETINVITECOUNT_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user who has one or more invitations in the cache */
 	public EOS_ProductUserId LocalUserId;

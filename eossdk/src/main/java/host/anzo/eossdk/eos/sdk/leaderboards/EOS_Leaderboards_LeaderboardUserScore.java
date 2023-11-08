@@ -21,7 +21,7 @@ public class EOS_Leaderboards_LeaderboardUserScore extends Structure implements 
 	/** The most recent version of the EOS_Leaderboards_LeaderboardUserScore struct. */
 	public static final int EOS_LEADERBOARDS_LEADERBOARDUSERSCORE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_LEADERBOARDUSERSCORE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_LEADERBOARDUSERSCORE_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the user who got this score */
 	public EOS_ProductUserId UserId;

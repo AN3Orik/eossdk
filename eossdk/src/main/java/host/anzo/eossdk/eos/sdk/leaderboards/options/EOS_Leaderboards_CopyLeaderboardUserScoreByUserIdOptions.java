@@ -17,7 +17,7 @@ public class EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions extends St
 	/** The most recent version of the EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions struct. */
 	public static final int EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYUSERID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYUSERID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_COPYLEADERBOARDUSERSCOREBYUSERID_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID to look for when copying leaderboard score data from the cache */
 	public EOS_ProductUserId UserId;

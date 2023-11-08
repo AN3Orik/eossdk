@@ -14,7 +14,7 @@ public class EOS_Ecom_CheckoutEntry extends Structure {
 	/** The most recent version of the EOS_Ecom_CheckoutEntry struct. */
 	public static final int EOS_ECOM_CHECKOUTENTRY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ECOM_CHECKOUTENTRY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ECOM_CHECKOUTENTRY_API_LATEST}. */
 	public int ApiVersion;
 	/** The ID of the offer to purchase */
 	public String OfferId;

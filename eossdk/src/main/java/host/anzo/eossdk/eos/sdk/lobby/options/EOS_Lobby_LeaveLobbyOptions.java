@@ -17,7 +17,7 @@ public class EOS_Lobby_LeaveLobbyOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_LeaveLobby API. */
 	private static final int EOS_LOBBY_LEAVELOBBY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_LEAVELOBBY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_LEAVELOBBY_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user leaving the lobby */
 	public EOS_ProductUserId LocalUserId;

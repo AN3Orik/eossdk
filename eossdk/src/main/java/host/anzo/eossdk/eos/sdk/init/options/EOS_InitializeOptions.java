@@ -32,7 +32,7 @@ public class EOS_InitializeOptions extends Structure {
 	/** Max length of a product version, not including the terminating null. */
 	public static int EOS_INITIALIZEOPTIONS_PRODUCTVERSION_MAX_LENGTH = 64;
 
-	/** API Version: Set this to EOS_INITIALIZE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_INITIALIZE_API_LATEST}. */
 	public int ApiVersion;
 	/** A custom memory allocator, if desired. */
 	public EOS_AllocateMemoryFunc AllocateMemoryFunction;

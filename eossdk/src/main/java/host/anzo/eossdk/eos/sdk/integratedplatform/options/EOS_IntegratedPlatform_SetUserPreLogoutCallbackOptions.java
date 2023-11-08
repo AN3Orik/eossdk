@@ -16,7 +16,7 @@ public class EOS_IntegratedPlatform_SetUserPreLogoutCallbackOptions extends Stru
 	/** The most recent version of the EOS_IntegratedPlatform_SetUserPreLogoutCallback API. */
 	public static final int EOS_INTEGRATEDPLATFORM_SETUSERPRELOGOUTCALLBACK_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_SETUSERPRELOGOUTCALLBACK_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_INTEGRATEDPLATFORM_SETUSERPRELOGOUTCALLBACK_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_IntegratedPlatform_SetUserPreLogoutCallbackOptions() {

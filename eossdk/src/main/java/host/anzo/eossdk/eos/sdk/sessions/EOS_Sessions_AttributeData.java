@@ -15,9 +15,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Key", "Value", "ValueType"})
 public class EOS_Sessions_AttributeData extends Structure {
+	/** The most recent version of the EOS_Sessions_AttributeData struct. */
 	public static final int EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONS_ATTRIBUTEDATA_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the session attribute */
 	public String Key;

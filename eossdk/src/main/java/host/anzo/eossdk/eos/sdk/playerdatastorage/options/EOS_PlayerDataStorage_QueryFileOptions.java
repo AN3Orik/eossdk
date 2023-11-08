@@ -17,7 +17,7 @@ public class EOS_PlayerDataStorage_QueryFileOptions extends Structure {
 	/** The most recent version of the EOS_PlayerDataStorage_QueryFile API. */
 	public static final int EOS_PLAYERDATASTORAGE_QUERYFILE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PLAYERDATASTORAGE_QUERYFILE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PLAYERDATASTORAGE_QUERYFILE_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user requesting file metadata */
 	public EOS_ProductUserId LocalUserId;

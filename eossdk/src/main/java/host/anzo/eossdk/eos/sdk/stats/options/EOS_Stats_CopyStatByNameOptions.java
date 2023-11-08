@@ -17,7 +17,7 @@ public class EOS_Stats_CopyStatByNameOptions extends Structure {
 	/** The most recent version of the EOS_Stats_CopyStatByNameOptions struct. */
 	public static final int EOS_STATS_COPYSTATBYNAME_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_STATS_COPYSTATBYNAME_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_STATS_COPYSTATBYNAME_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the user who owns the stat */
 	public EOS_ProductUserId TargetUserId;

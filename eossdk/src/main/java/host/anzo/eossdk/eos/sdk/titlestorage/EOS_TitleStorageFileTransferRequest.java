@@ -41,7 +41,7 @@ public class EOS_TitleStorageFileTransferRequest extends PointerType implements 
 	 * @param outStringLength How long the file name is (not including null terminator)
 	 * @return {@link EOS_EResult#EOS_Success} if the file name was successfully written to OutFilenameBuffer, a failure result otherwise
 	 *
-	 * @see EOS_TitleStorageFileTransferRequest#EOS_TITLESTORAGE_FILENAME_MAX_LENGTH_BYTES
+	 * @see #EOS_TITLESTORAGE_FILENAME_MAX_LENGTH_BYTES
 	 */
 	public EOS_EResult getFilename(int filenameStringBufferSizeBytes, ByteBuffer outStringBuffer, IntBuffer outStringLength) {
 		return EOSLibrary.instance.EOS_TitleStorageFileTransferRequest_GetFilename(this, filenameStringBufferSizeBytes, outStringBuffer, outStringLength);

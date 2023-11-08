@@ -19,7 +19,7 @@ public class EOS_Lobby_JoinLobbyByIdOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_JoinLobbyById API. */
 	public static final int EOS_LOBBY_JOINLOBBYBYID_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_LOBBY_JOINLOBBYBYID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_JOINLOBBYBYID_API_LATEST}. */
 	public int ApiVersion;
 	/** The ID of the lobby */
 	public String LobbyId;

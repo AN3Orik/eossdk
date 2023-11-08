@@ -16,7 +16,7 @@ public class EOS_PresenceModification_SetRawRichTextOptions extends Structure {
 	/** The most recent version of the EOS_PresenceModification_SetRawRichText function. */
 	public static final int EOS_PRESENCEMODIFICATION_SETRAWRICHTEXT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PRESENCEMODIFICATION_SETRAWRICHTEXT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PRESENCEMODIFICATION_SETRAWRICHTEXT_API_LATEST}. */
 	public int ApiVersion;
 	/** The status of the user */
 	public String RichText;

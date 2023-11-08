@@ -18,7 +18,7 @@ public class EOS_Mods_UninstallModOptions extends Structure {
 	/** The most recent version of the EOS_Mods_UninstallModOptions API. */
 	public static final int EOS_MODS_UNINSTALLMOD_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_MODS_UNINSTALLMOD_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_MODS_UNINSTALLMOD_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the user for which the mod should be uninstalled */
 	public EOS_EpicAccountId LocalUserId;

@@ -16,7 +16,7 @@ public class EOS_UI_SetToggleFriendsKeyOptions extends Structure {
 	/** The most recent version of the EOS_UI_SetToggleFriendsKey API. */
 	public static final int EOS_UI_SETTOGGLEFRIENDSKEY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_UI_SETTOGGLEFRIENDSKEY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_UI_SETTOGGLEFRIENDSKEY_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The new key combination which will be used to toggle the friends overlay.

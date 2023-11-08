@@ -17,7 +17,7 @@ public class EOS_LobbySearch_SetTargetUserIdOptions extends Structure {
 	/** The most recent version of the EOS_LobbySearch_SetTargetUserId API. */
 	public static final int EOS_LOBBYSEARCH_SETTARGETUSERID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYSEARCH_SETTARGETUSERID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYSEARCH_SETTARGETUSERID_API_LATEST}. */
 	public int ApiVersion;
 	/** Search lobbies for given user by Product User ID, returning any lobbies where this user is currently registered */
 	public EOS_ProductUserId TargetUserId;

@@ -16,7 +16,7 @@ public class EOS_Lobby_CreateLobbySearchOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_CreateLobbySearch API. */
 	public static final int EOS_LOBBY_CREATELOBBYSEARCH_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_CREATELOBBYSEARCH_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_CREATELOBBYSEARCH_API_LATEST}. */
 	public int ApiVersion;
 	/** Maximum number of results allowed from the search */
 	public int MaxResults;

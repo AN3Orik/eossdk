@@ -25,7 +25,7 @@ public class EOS_Ecom_CatalogItem extends Structure implements AutoCloseable {
 	/** Timestamp value representing an undefined EntitlementEndTimestamp for EOS_Ecom_CatalogItem */
 	public static final int EOS_ECOM_CATALOGITEM_ENTITLEMENTENDTIMESTAMP_UNDEFINED = -1;
 
-	/** API Version: Set this to EOS_ECOM_CATALOGITEM_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ECOM_CATALOGITEM_API_LATEST}. */
 	public int ApiVersion;
 	/** Product namespace in which this item exists */
 	public String CatalogNamespace;

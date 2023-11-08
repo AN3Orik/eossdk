@@ -17,7 +17,7 @@ public class EOS_Sanctions_PlayerSanction extends Structure implements AutoClose
 	/** The most recent version of the EOS_Sanctions_PlayerSanction struct. */
 	public static final int EOS_SANCTIONS_PLAYERSANCTION_API_LATEST = 2;
 
-	/** API Version: This will be set to EOS_SANCTIONS_PLAYERSANCTION_API_LATEST. */
+	/** API Version: This will be set to {@link #EOS_SANCTIONS_PLAYERSANCTION_API_LATEST}. */
 	public int ApiVersion;
 	/** The POSIX timestamp when the sanction was placed */
 	public long TimePlaced;

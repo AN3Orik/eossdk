@@ -17,7 +17,7 @@ public class EOS_Lobby_AddNotifyRTCRoomConnectionChangedOptions extends Structur
 	/** The most recent version of the EOS_Lobby_AddNotifyRTCRoomConnectionChanged API. */
 	public static final int EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_ADDNOTIFYRTCROOMCONNECTIONCHANGED_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The ID of the lobby to receive RTC Room connection change notifications for

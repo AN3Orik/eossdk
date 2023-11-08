@@ -19,7 +19,7 @@ public class EOS_Lobby_Attribute extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_Lobby_Attribute struct. */
 	public static final int EOS_LOBBY_ATTRIBUTE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_ATTRIBUTE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_ATTRIBUTE_API_LATEST}. */
 	public int ApiVersion;
 
 	/** Key/Value pair describing the attribute */

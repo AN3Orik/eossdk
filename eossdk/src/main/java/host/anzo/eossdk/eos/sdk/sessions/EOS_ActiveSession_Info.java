@@ -18,7 +18,7 @@ public class EOS_ActiveSession_Info extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_ActiveSession_Info struct. */
 	public static final int EOS_ACTIVESESSION_INFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ACTIVESESSION_INFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACTIVESESSION_INFO_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the session */
 	public Pointer SessionName;

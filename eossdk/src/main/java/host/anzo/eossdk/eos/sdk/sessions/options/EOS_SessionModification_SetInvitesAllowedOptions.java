@@ -16,7 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_SessionModification_SetInvitesAllowedOptions extends Structure {
 	public static final int EOS_SESSIONMODIFICATION_SETINVITESALLOWED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONMODIFICATION_SETINVITESALLOWED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONMODIFICATION_SETINVITESALLOWED_API_LATEST}. */
 	public int ApiVersion;
 	/** If true then invites can currently be sent for the associated session */
 	public EOS_Bool IsInvitesAllowed;

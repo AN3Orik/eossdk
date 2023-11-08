@@ -16,7 +16,7 @@ public class EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions extends St
 	/** The most recent version of the EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions struct. */
 	public static final int EOS_LEADERBOARDS_COPYLEADERBOARDDEFINITIONBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_COPYLEADERBOARDDEFINITIONBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_COPYLEADERBOARDDEFINITIONBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** Index of the leaderboard definition to retrieve from the cache */
 	public int LeaderboardIndex;

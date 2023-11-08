@@ -22,7 +22,7 @@ public class EOS_CustomInvites_SetCustomInviteOptions extends Structure {
 	public int ApiVersion;
 	/** Local user creating / sending a Custom Invite */
 	public EOS_ProductUserId LocalUserId;
-	/** String payload for the Custom Invite (must be less than {@link #EOS_CUSTOMINVITES_SETCUSTOMINVITE_API_LATEST}) */
+	/** String payload for the Custom Invite (must be less than {@link #EOS_CUSTOMINVITES_MAX_PAYLOAD_LENGTH}) */
 	public String Payload;
 
 	public EOS_CustomInvites_SetCustomInviteOptions() {

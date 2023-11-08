@@ -17,7 +17,7 @@ public class EOS_UI_ShowReportPlayerOptions extends Structure {
 	/** The most recent version of the EOS_UI_ShowReportPlayer API. */
 	public static final int EOS_UI_SHOWREPORTPLAYER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_UI_SHOWREPORTPLAYER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_UI_SHOWREPORTPLAYER_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Online Services Account ID of the user who is requesting the Report. */
 	public EOS_EpicAccountId LocalUserId;

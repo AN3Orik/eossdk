@@ -22,7 +22,7 @@ public class EOS_Platform_GetDesktopCrossplayStatusOptions extends Structure {
 	/** The most recent version of the EOS_Platform_GetDesktopCrossplayStatus API. */
 	public static int EOS_PLATFORM_GETDESKTOPCROSSPLAYSTATUS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PLATFORM_GETDESKTOPCROSSPLAYSTATUS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PLATFORM_GETDESKTOPCROSSPLAYSTATUS_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Platform_GetDesktopCrossplayStatusOptions() {

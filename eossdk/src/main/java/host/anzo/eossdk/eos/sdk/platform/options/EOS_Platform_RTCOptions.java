@@ -23,7 +23,7 @@ public class EOS_Platform_RTCOptions extends Structure {
 	/** The most recent version of the EOS_Platform_RTCOptions API. */
 	public static int EOS_PLATFORM_RTCOPTIONS_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_PLATFORM_RTCOPTIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PLATFORM_RTCOPTIONS_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * This field is for platform specific initialization if any.

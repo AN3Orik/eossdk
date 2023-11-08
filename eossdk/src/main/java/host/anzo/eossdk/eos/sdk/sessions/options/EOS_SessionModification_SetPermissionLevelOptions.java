@@ -16,7 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_SessionModification_SetPermissionLevelOptions extends Structure {
 	public static final int EOS_SESSIONMODIFICATION_SETPERMISSIONLEVEL_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONMODIFICATION_SETPERMISSIONLEVEL_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONMODIFICATION_SETPERMISSIONLEVEL_API_LATEST}. */
 	public int ApiVersion;
 	/** Permission level to set on the session */
 	public EOS_EOnlineSessionPermissionLevel PermissionLevel;

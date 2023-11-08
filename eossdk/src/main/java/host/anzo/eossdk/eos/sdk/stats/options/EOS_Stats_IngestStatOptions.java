@@ -21,7 +21,7 @@ public class EOS_Stats_IngestStatOptions extends Structure {
 	/** The most recent version of the EOS_Stats_IngestStat struct. */
 	public static final int EOS_STATS_INGESTSTAT_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_STATS_INGESTSTAT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_STATS_INGESTSTAT_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user requesting the ingest.  Set to null for dedicated server. */
 	public EOS_ProductUserId LocalUserId;

@@ -17,7 +17,7 @@ public class EOS_Lobby_UpdateLobbyModificationOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_UpdateLobbyModification API. */
 	public static final int EOS_LOBBY_UPDATELOBBYMODIFICATION_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_UPDATELOBBYMODIFICATION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_UPDATELOBBYMODIFICATION_API_LATEST}. */
 	public int ApiVersion;
 	/** The ID of the local user making modifications. Must be the owner to modify lobby data, but any lobby member can modify their own attributes. */
 	public EOS_ProductUserId LocalUserId;

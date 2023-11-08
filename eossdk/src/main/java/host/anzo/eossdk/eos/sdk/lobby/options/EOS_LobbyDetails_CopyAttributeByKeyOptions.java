@@ -14,7 +14,7 @@ public class EOS_LobbyDetails_CopyAttributeByKeyOptions extends Structure {
 	/** The most recent version of the EOS_LobbyDetails_CopyAttributeByKey API. */
 	public static final int EOS_LOBBYDETAILS_COPYATTRIBUTEBYKEY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYDETAILS_COPYATTRIBUTEBYKEY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYDETAILS_COPYATTRIBUTEBYKEY_API_LATEST}. */
 	public int ApiVersion;
 
 	/** Name of the attribute */

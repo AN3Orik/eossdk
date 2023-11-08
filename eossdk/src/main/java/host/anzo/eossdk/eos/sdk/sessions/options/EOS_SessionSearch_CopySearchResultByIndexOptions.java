@@ -14,9 +14,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SessionIndex"})
 public class EOS_SessionSearch_CopySearchResultByIndexOptions extends Structure {
+	/** The most recent version of the EOS_SessionSearch_CopySearchResultByIndex API. */
 	public static final int EOS_SESSIONSEARCH_COPYSEARCHRESULTBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONSEARCH_COPYSEARCHRESULTBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONSEARCH_COPYSEARCHRESULTBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The index of the session to retrieve within the completed search query

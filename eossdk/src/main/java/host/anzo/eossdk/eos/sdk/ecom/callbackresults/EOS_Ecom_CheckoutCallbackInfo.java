@@ -2,8 +2,10 @@ package host.anzo.eossdk.eos.sdk.ecom.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOS_Ecom_Interface;
 import host.anzo.eossdk.eos.sdk.common.EOS_EpicAccountId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+import host.anzo.eossdk.eos.sdk.ecom.options.EOS_Ecom_CopyTransactionByIdOptions;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -21,7 +23,7 @@ public class EOS_Ecom_CheckoutCallbackInfo extends Structure {
 	public Pointer ClientData;
 	/** The Epic Account ID of the user who initiated the purchase */
 	public EOS_EpicAccountId LocalUserId;
-	/** The transaction ID which can be used to obtain an EOS_Ecom_HTransaction using EOS_Ecom_CopyTransactionById. */
+	/** The transaction ID which can be used to obtain an EOS_Ecom_Transaction using {@link EOS_Ecom_Interface#copyTransactionById(EOS_Ecom_CopyTransactionByIdOptions)}. */
 	public String TransactionId;
 
 	public EOS_Ecom_CheckoutCallbackInfo() {

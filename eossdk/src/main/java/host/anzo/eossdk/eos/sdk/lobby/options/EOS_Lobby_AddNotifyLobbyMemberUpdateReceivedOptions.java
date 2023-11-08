@@ -14,7 +14,7 @@ public class EOS_Lobby_AddNotifyLobbyMemberUpdateReceivedOptions extends Structu
 	/** The most recent version of the EOS_Lobby_AddNotifyLobbyMemberUpdateReceived API. */
 	public static final int EOS_LOBBY_ADDNOTIFYLOBBYMEMBERUPDATERECEIVED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_ADDNOTIFYLOBBYMEMBERUPDATERECEIVED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_ADDNOTIFYLOBBYMEMBERUPDATERECEIVED_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Lobby_AddNotifyLobbyMemberUpdateReceivedOptions() {

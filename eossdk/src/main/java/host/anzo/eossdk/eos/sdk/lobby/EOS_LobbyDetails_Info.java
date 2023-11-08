@@ -17,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
 	public static final int EOS_LOBBYDETAILS_INFO_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_LOBBYDETAILS_INFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYDETAILS_INFO_API_LATEST}. */
 	public int ApiVersion;
 	/** Lobby ID */
 	public String LobbyId;

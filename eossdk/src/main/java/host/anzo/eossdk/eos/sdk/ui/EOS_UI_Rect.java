@@ -16,7 +16,7 @@ public class EOS_UI_Rect extends Structure {
 	/** The most recent version of the EOS_UI_Rect struct. */
 	public static final int EOS_UI_RECT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_UI_RECT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_UI_RECT_API_LATEST}. */
 	public int ApiVersion;
 	/** Left coordinate. */
 	public int X;

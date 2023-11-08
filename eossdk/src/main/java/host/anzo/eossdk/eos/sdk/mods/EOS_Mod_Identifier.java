@@ -16,7 +16,7 @@ public class EOS_Mod_Identifier extends Structure {
 	/** The most recent version of the EOS_Mod_Identifier struct. */
 	public static int EOS_MOD_IDENTIFIER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_MOD_IDENTIFIER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_MOD_IDENTIFIER_API_LATEST}. */
 	public int ApiVersion;
 	/** Product namespace id in which this mod item exists */
 	public String NamespaceId;

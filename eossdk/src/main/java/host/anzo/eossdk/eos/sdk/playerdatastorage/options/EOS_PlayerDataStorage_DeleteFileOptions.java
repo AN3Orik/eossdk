@@ -15,7 +15,7 @@ public class EOS_PlayerDataStorage_DeleteFileOptions extends Structure {
 	/** The most recent version of the EOS_PlayerDataStorage_DeleteFile API. */
 	public static final int EOS_PLAYERDATASTORAGE_DELETEFILE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PLAYERDATASTORAGE_DELETEFILE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PLAYERDATASTORAGE_DELETEFILE_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user who authorizes deletion of the file; must be the file's owner */
 	public EOS_ProductUserId LocalUserId;

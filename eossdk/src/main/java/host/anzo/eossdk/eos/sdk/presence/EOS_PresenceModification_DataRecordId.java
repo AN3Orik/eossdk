@@ -16,7 +16,7 @@ public class EOS_PresenceModification_DataRecordId extends Structure {
 	/** The most recent version of the EOS_PresenceModification_DataRecordId API. */
 	public static final int EOS_PRESENCEMODIFICATION_DATARECORDID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PRESENCEMODIFICATION_DATARECORDID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PRESENCEMODIFICATION_DATARECORDID_API_LATEST}. */
 	public int ApiVersion;
 	/** The key to be deleted from the data record */
 	public String Key;

@@ -22,7 +22,7 @@ public class EOS_Lobby_JoinLobbyOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_JoinLobby API. */
 	public static final int EOS_LOBBY_JOINLOBBY_API_LATEST = 4;
 
-	/** API Version: Set this to EOS_LOBBY_JOINLOBBY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_JOINLOBBY_API_LATEST}. */
 	public int ApiVersion;
 	/** The handle of the lobby to join */
 	public EOS_LobbyDetails LobbyDetailsHandle;

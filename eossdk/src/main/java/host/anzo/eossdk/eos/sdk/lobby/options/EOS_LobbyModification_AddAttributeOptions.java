@@ -18,7 +18,7 @@ public class EOS_LobbyModification_AddAttributeOptions extends Structure {
 	/** The most recent version of the EOS_LobbyModification_AddAttribute API. */
 	public static final int EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYMODIFICATION_ADDATTRIBUTE_API_LATEST}. */
 	public int ApiVersion;
 	/** Key/Value pair describing the attribute to add to the lobby */
 	public EOS_Lobby_AttributeData.ByReference Attribute;

@@ -3,7 +3,7 @@ package host.anzo.eossdk.eos.sdk.common.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
-import static com.sun.jna.Structure.*;
+import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * Options for initializing rtc functionality required for some platforms.

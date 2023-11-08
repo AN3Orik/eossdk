@@ -17,7 +17,7 @@ public class EOS_UI_AcknowledgeEventIdOptions extends Structure {
 	/** The most recent version of the EOS_UI_AcknowledgeEventId API. */
 	public static final int EOS_UI_ACKNOWLEDGEEVENTID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONSEARCH_SETSESSIONID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_UI_ACKNOWLEDGEEVENTID_API_LATEST}. */
 	public int ApiVersion;
 	/** The ID being acknowledged. */
 	public long UiEventId;

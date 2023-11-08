@@ -16,7 +16,7 @@ public class EOS_Friends_AddNotifyBlockedUsersUpdateOptions extends Structure {
 	/** The most recent version of the EOS_Friends_AddNotifyBlockedUsersUpdate API. */
 	public static final int EOS_FRIENDS_ADDNOTIFYBLOCKEDUSERSUPDATE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_FRIENDS_ADDNOTIFYBLOCKEDUSERSUPDATE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_FRIENDS_ADDNOTIFYBLOCKEDUSERSUPDATE_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Friends_AddNotifyBlockedUsersUpdateOptions() {

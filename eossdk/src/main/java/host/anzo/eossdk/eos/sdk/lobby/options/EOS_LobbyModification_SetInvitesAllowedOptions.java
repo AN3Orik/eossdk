@@ -17,7 +17,7 @@ public class EOS_LobbyModification_SetInvitesAllowedOptions extends Structure {
 	/** The most recent version of the EOS_LobbyModification_SetInvitesAllowed API. */
 	public static final int EOS_LOBBYMODIFICATION_SETINVITESALLOWED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYMODIFICATION_SETINVITESALLOWED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYMODIFICATION_SETINVITESALLOWED_API_LATEST}. */
 	public int ApiVersion;
 	/** If true then invites can currently be sent for the associated lobby */
 	public EOS_Bool IsInvitesAllowed;

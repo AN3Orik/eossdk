@@ -14,7 +14,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "TargetUserId"})
 public class EOS_UI_ShowBlockPlayerOptions extends Structure {
-	/** API Version: Set this to EOS_UI_SHOWBLOCKPLAYER_API_LATEST. */
+	/** The most recent version of the EOS_UI_ShowBlockPlayer API. */
+	public static final int EOS_UI_SHOWBLOCKPLAYER_API_LATEST = 1;
+
+	/** API Version: Set this to {@link #EOS_UI_SHOWBLOCKPLAYER_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Online Services Account ID of the user who is requesting the Block. */
 	public EOS_EpicAccountId LocalUserId;
@@ -23,6 +26,7 @@ public class EOS_UI_ShowBlockPlayerOptions extends Structure {
 
 	public EOS_UI_ShowBlockPlayerOptions() {
 		super();
+		ApiVersion = EOS_UI_SHOWBLOCKPLAYER_API_LATEST;
 	}
 
 	public EOS_UI_ShowBlockPlayerOptions(Pointer peer) {

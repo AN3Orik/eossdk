@@ -16,7 +16,7 @@ public class EOS_P2P_SetPortRangeOptions extends Structure {
 	/** The most recent version of the EOS_P2P_SetPortRange API. */
 	public static final int EOS_P2P_SETPORTRANGE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_P2P_SETPORTRANGE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_P2P_SETPORTRANGE_API_LATEST}. */
 	public int ApiVersion;
 
 	/** The ideal port to use for P2P traffic. The default value is 7777. If set to 0, the OS will choose a port. If set to 0, MaxAdditionalPortsToTry must be set to 0. */

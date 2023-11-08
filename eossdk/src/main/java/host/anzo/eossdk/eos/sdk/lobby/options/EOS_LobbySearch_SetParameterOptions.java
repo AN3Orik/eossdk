@@ -18,7 +18,7 @@ public class EOS_LobbySearch_SetParameterOptions extends Structure {
 	/** The most recent version of the EOS_LobbySearch_SetParameter API. */
 	public static final int EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYSEARCH_SETPARAMETER_API_LATEST}. */
 	public int ApiVersion;
 	/** Search parameter describing a key and a value to compare */
 	public EOS_Lobby_AttributeData.ByReference Parameter;

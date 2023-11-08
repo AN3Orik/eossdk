@@ -17,7 +17,7 @@ public class EOS_Lobby_GetInviteIdByIndexOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_GetInviteIdByIndex API. */
 	public static final int EOS_LOBBY_GETINVITEIDBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_GETINVITEIDBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_GETINVITEIDBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user who received the cached invitation */
 	public EOS_ProductUserId LocalUserId;

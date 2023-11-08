@@ -17,7 +17,7 @@ public class EOS_SessionDetails_CopySessionAttributeByIndexOptions extends Struc
 	/** The most recent version of the EOS_SessionDetails_CopySessionAttributeByIndex API. */
 	public static final int EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The index of the attribute to retrieve

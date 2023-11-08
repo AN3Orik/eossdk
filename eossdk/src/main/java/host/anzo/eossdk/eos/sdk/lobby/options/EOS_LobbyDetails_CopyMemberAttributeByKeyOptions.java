@@ -16,7 +16,7 @@ public class EOS_LobbyDetails_CopyMemberAttributeByKeyOptions extends Structure 
 	/** The most recent version of the EOS_LobbyDetails_CopyMemberAttributeByKey API. */
 	public static final int EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYKEY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYKEY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYKEY_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the lobby member */
 	public EOS_ProductUserId TargetUserId;

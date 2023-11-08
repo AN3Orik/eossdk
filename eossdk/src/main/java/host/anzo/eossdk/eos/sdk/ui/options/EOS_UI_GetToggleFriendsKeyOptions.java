@@ -13,11 +13,15 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_UI_GetToggleFriendsKeyOptions extends Structure {
-	/** API Version: Set this to EOS_UI_GETTOGGLEFRIENDSKEY_API_LATEST. */
+	/** The most recent version of the EOS_UI_GetToggleFriendsKey API. */
+	public static final int EOS_UI_GETTOGGLEFRIENDSKEY_API_LATEST = 1;
+
+	/** API Version: Set this to {@link #EOS_UI_GETTOGGLEFRIENDSKEY_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_UI_GetToggleFriendsKeyOptions() {
 		super();
+		ApiVersion = EOS_UI_GETTOGGLEFRIENDSKEY_API_LATEST;
 	}
 
 	public EOS_UI_GetToggleFriendsKeyOptions(Pointer peer) {

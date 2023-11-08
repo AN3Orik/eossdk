@@ -19,7 +19,7 @@ public class EOS_Ecom_CatalogRelease extends Structure implements AutoCloseable 
 	/** The most recent version of the EOS_Ecom_CatalogRelease struct. */
 	public static final int EOS_ECOM_CATALOGRELEASE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ECOM_CATALOGRELEASE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ECOM_CATALOGRELEASE_API_LATEST}. */
 	public int ApiVersion;
 	/** The number of APP IDs */
 	public int CompatibleAppIdCount;

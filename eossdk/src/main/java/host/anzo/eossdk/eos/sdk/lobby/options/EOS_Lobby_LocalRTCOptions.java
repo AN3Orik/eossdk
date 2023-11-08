@@ -17,7 +17,7 @@ public class EOS_Lobby_LocalRTCOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_LocalRTCOptions structure. */
 	public static final int EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST}. */
 	public int ApiVersion;
 	/** Flags for the local user in this room. The default is 0 if this struct is not specified. @see EOS_RTC_JoinRoomOptions::Flags */
 	public int Flags;

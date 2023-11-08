@@ -15,7 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_SessionDetails_CopyInfoOptions extends Structure {
 	public static final int EOS_SESSIONDETAILS_COPYINFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONDETAILS_COPYINFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONDETAILS_COPYINFO_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_SessionDetails_CopyInfoOptions() {

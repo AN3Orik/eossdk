@@ -18,7 +18,7 @@ public class EOS_Leaderboards_QueryLeaderboardUserScoresOptions extends Structur
 	/** The most recent version of the EOS_Leaderboards_QueryLeaderboardUserScores struct. */
 	public static final int EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_QUERYLEADERBOARDUSERSCORES_API_LATEST}. */
 	public int ApiVersion;
 	/** An array of Product User IDs indicating the users whose scores you want to retrieve */
 	public EOS_ProductUserId UserIds;

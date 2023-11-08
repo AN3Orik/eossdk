@@ -17,7 +17,7 @@ public class EOS_Presence_GetJoinInfoOptions extends Structure {
 	/** The most recent version of the EOS_Presence_GetJoinInfo API. */
 	public static int EOS_PRESENCE_GETJOININFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PRESENCE_GETJOININFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PRESENCE_GETJOININFO_API_LATEST}. */
 	public int ApiVersion;
 	/** The local user's Epic Account ID */
 	public EOS_EpicAccountId LocalUserId;

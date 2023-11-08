@@ -15,9 +15,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId", "ListOfTags", "ListOfTagsCount"})
 public class EOS_TitleStorage_QueryFileListOptions extends Structure {
+	/** The most recent version of the EOS_TitleStorage_QueryFileList API. */
 	public static final int EOS_TITLESTORAGE_QUERYFILELIST_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_TITLESTORAGE_QUERYFILELIST_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_TITLESTORAGE_QUERYFILELIST_API_LATEST}. */
 	public int ApiVersion;
 	/** Product User ID of the local user who requested file metadata (optional) */
 	public EOS_ProductUserId LocalUserId;

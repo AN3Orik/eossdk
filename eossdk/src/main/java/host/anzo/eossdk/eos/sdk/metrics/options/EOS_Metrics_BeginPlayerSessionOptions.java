@@ -20,7 +20,7 @@ public class EOS_Metrics_BeginPlayerSessionOptions extends Structure {
 	/** The most recent version of the EOS_Metrics_BeginPlayerSessionOptions struct. */
 	public static final int EOS_METRICS_BEGINPLAYERSESSION_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_METRICS_BEGINPLAYERSESSION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_METRICS_BEGINPLAYERSESSION_API_LATEST}. */
 	public int ApiVersion;
 	/** The Account ID type that is set in the union. */
 	public EOS_EMetricsAccountIdType AccountIdType;

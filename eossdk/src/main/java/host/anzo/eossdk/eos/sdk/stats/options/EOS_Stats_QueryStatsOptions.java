@@ -21,7 +21,7 @@ public class EOS_Stats_QueryStatsOptions extends Structure {
 	/** The most recent version of the EOS_Stats_QueryStats struct. */
 	public static int EOS_STATS_QUERYSTATS_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_STATS_QUERYSTATS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_STATS_QUERYSTATS_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user requesting the stats. Set to null for dedicated server. */
 	public EOS_ProductUserId LocalUserId;
@@ -31,7 +31,7 @@ public class EOS_Stats_QueryStatsOptions extends Structure {
 	public long EndTime;
 	/** An array of stat names to query for (Optional). */
 	public PointerByReference StatNames;
-	/** The number of stat names included in query (Optional), may not exceed {@link EOS_Stats_QueryStatsOptions#EOS_STATS_MAX_QUERY_STATS}. */
+	/** The number of stat names included in query (Optional), may not exceed {@link #EOS_STATS_MAX_QUERY_STATS}. */
 	public int StatNamesCount;
 	/** The Product User ID for the user whose stats are being retrieved */
 	public EOS_ProductUserId TargetUserId;

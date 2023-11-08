@@ -15,9 +15,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Key", "ComparisonOp"})
 public class EOS_SessionSearch_RemoveParameterOptions extends Structure {
+	/** The most recent version of the EOS_SessionSearch_RemoveParameter API. */
 	public static final int EOS_SESSIONSEARCH_REMOVEPARAMETER_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONSEARCH_REMOVEPARAMETER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONSEARCH_REMOVEPARAMETER_API_LATEST}. */
 	public int ApiVersion;
 	/** Search parameter key to remove from the search */
 	public String Key;

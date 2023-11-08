@@ -13,12 +13,13 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "MaxSearchResults"})
 public class EOS_SessionSearch_SetMaxResultsOptions extends Structure {
+	/** The most recent version of the EOS_SessionSearch_SetMaxResults API. */
+	public static final int EOS_SESSIONSEARCH_SETMAXSEARCHRESULTS_API_LATEST = 1;
+
 	/** Maximum number of search results allowed with a given query */
 	public static final int EOS_SESSIONS_MAX_SEARCH_RESULTS = 200;
 
-	public static final int EOS_SESSIONSEARCH_SETMAXSEARCHRESULTS_API_LATEST = 1;
-
-	/** API Version: Set this to EOS_SESSIONSEARCH_SETMAXSEARCHRESULTS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONS_MAX_SEARCH_RESULTS}. */
 	public int ApiVersion;
 	/** Maximum number of search results returned with this query, may not exceed {@link #EOS_SESSIONS_MAX_SEARCH_RESULTS} */
 	public int MaxSearchResults;

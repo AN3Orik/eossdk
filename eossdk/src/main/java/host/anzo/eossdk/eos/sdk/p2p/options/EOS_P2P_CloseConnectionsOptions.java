@@ -18,7 +18,7 @@ public class EOS_P2P_CloseConnectionsOptions extends Structure {
 	/** The most recent version of the EOS_P2P_CloseConnections API. */
 	public static final int EOS_P2P_CLOSECONNECTIONS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_P2P_CLOSECONNECTIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_P2P_CLOSECONNECTIONS_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user who would like to close all connections that use a particular socket ID */
 	public EOS_ProductUserId LocalUserId;

@@ -31,7 +31,7 @@ public class EOS_Sessions_CreateSessionModificationOptions extends Structure {
 	/** The most recent version of the EOS_Sessions_CreateSessionModification API. */
 	public static int EOS_SESSIONS_CREATESESSIONMODIFICATION_API_LATEST = 5;
 
-	/** API Version: Set this to EOS_SESSIONS_CREATESESSIONMODIFICATION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONS_CREATESESSIONMODIFICATION_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the session to create */
 	public String SessionName;

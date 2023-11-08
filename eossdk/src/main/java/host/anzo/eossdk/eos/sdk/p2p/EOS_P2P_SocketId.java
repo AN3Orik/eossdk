@@ -26,10 +26,10 @@ public class EOS_P2P_SocketId extends Structure {
 	/** The total buffer size of a EOS_P2P_SocketId SocketName, including space for the null-terminator */
 	public static final int EOS_P2P_SOCKETID_SOCKETNAME_SIZE = 33;
 
-	/** API Version: Set this to EOS_P2P_SOCKETID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_P2P_SOCKETID_API_LATEST}. */
 	public int ApiVersion;
-	/** A name for the connection. Must be a NULL-terminated string of between 1-32 alpha-numeric characters (A-Z, a-z, 0-9, '-', '_', ' ', '+', '=', '.') */
-	public char[] SocketName = new char[EOS_P2P_SOCKETID_SOCKETNAME_SIZE];
+	/** A name for the connection. Must be a NULL-terminated string of between 1-32 ({@link #EOS_P2P_SOCKETID_SOCKETNAME_SIZE}) alpha-numeric characters (A-Z, a-z, 0-9, '-', '_', ' ', '+', '=', '.') */
+	public String SocketName;
 
 	public EOS_P2P_SocketId() {
 		super();

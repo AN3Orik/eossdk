@@ -15,7 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_SessionModification_RemoveAttributeOptions extends Structure {
 	public static final int EOS_SESSIONMODIFICATION_REMOVEATTRIBUTE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONMODIFICATION_REMOVEATTRIBUTE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONMODIFICATION_REMOVEATTRIBUTE_API_LATEST}. */
 	public int ApiVersion;
 	/** Session attribute to remove from the session */
 	public String Key;

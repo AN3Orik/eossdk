@@ -14,7 +14,7 @@ public class EOS_PresenceModification_SetStatusOptions extends Structure {
 	/** The most recent version of the EOS_PresenceModification_SetStatus API. */
 	public static final int EOS_PRESENCEMODIFICATION_SETSTATUS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PRESENCEMODIFICATION_SETSTATUS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PRESENCEMODIFICATION_SETSTATUS_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The status of the user

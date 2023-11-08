@@ -17,7 +17,7 @@ public class EOS_Lobby_DestroyLobbyOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_DestroyLobby API. */
 	public static final int EOS_LOBBY_DESTROYLOBBY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_DESTROYLOBBY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_DESTROYLOBBY_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user requesting destruction of the lobby; this user must currently own the lobby */
 	public EOS_ProductUserId LocalUserId;

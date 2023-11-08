@@ -17,7 +17,7 @@ public class EOS_Lobby_GetInviteCountOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_GetInviteCount API. */
 	public static final int EOS_LOBBY_GETINVITECOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_GETINVITECOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_GETINVITECOUNT_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user whose cached lobby invitations you want to count */
 	public EOS_ProductUserId LocalUserId;

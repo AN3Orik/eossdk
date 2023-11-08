@@ -17,7 +17,7 @@ public class EOS_UI_PauseSocialOverlayOptions extends Structure {
 	/** The most recent version of the EOS_UI_PauseSocialOverlay API. */
 	public static final int EOS_UI_PAUSESOCIALOVERLAY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_UI_PAUSESOCIALOVERLAY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_UI_PAUSESOCIALOVERLAY_API_LATEST}. */
 	public int ApiVersion;
 	/** The desired IsPaused state of the overlay. */
 	public EOS_Bool IsPaused;

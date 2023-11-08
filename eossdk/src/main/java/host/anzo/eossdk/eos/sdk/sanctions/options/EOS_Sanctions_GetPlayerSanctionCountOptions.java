@@ -17,7 +17,7 @@ public class EOS_Sanctions_GetPlayerSanctionCountOptions extends Structure {
 	/** The most recent version of the EOS_Sanctions_GetPlayerSanctionCount API. */
 	public static final int EOS_SANCTIONS_GETPLAYERSANCTIONCOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SANCTIONS_GETPLAYERSANCTIONCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SANCTIONS_GETPLAYERSANCTIONCOUNT_API_LATEST}. */
 	public int ApiVersion;
 	/** Product User ID of the user whose sanction count should be returned */
 	public EOS_ProductUserId TargetUserId;

@@ -20,7 +20,7 @@ public class EOS_IntegratedPlatform_Steam_Options extends Structure {
 	/** The most recent version of the EOS_IntegratedPlatform_Steam_Options API. */
 	public static final int EOS_INTEGRATEDPLATFORM_STEAM_OPTIONS_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_STEAM_OPTIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_INTEGRATEDPLATFORM_STEAM_OPTIONS_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * Usage of this parameter is dependent on the specified EOS_EIntegratedPlatformManagementFlags.

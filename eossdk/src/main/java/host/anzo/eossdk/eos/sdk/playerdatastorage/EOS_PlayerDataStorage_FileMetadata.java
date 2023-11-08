@@ -19,7 +19,7 @@ public class EOS_PlayerDataStorage_FileMetadata extends Structure implements Aut
 	/** The most recent version of the EOS_PlayerDataStorage_FileMetadata API. */
 	public static final int EOS_PLAYERDATASTORAGE_FILEMETADATA_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_PLAYERDATASTORAGE_FILEMETADATA_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PLAYERDATASTORAGE_FILEMETADATA_API_LATEST}. */
 	public int ApiVersion;
 	/** The total size of the file in bytes (Includes file header in addition to file contents) */
 	public int FileSizeBytes;

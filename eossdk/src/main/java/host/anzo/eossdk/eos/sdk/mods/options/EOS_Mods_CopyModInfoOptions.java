@@ -17,7 +17,7 @@ public class EOS_Mods_CopyModInfoOptions extends Structure {
 	/** The most recent version of the EOS_Mods_CopyModInfoOptions API. */
 	public static final int EOS_MODS_COPYMODINFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_MODS_COPYMODINFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_MODS_COPYMODINFO_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the user for which mods should be copied */
 	public EOS_EpicAccountId LocalUserId;

@@ -20,7 +20,7 @@ public class EOS_Leaderboards_QueryLeaderboardRanksOptions extends Structure {
 	/** The most recent version of the EOS_Leaderboards_QueryLeaderboardRanks struct. */
 	public static final int EOS_LEADERBOARDS_QUERYLEADERBOARDRANKS_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_QUERYLEADERBOARDRANKS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_QUERYLEADERBOARDRANKS_API_LATEST}. */
 	public int ApiVersion;
 	/** The ID of the leaderboard whose information you want to retrieve. */
 	public String LeaderboardId;

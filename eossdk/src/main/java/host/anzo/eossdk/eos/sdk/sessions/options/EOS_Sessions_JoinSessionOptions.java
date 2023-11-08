@@ -21,7 +21,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_Sessions_JoinSessionOptions extends Structure {
 	public static final int EOS_SESSIONS_JOINSESSION_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_SESSIONS_JOINSESSION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONS_JOINSESSION_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the session to create after joining session */
 	public String SessionName;

@@ -17,7 +17,7 @@ public class EOS_Friends_GetBlockedUsersCountOptions extends Structure {
 	/** The most recent version of the EOS_Friends_GetBlockedUsersCount API. */
 	public static final int EOS_FRIENDS_GETBLOCKEDUSERSCOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_FRIENDS_GETBLOCKEDUSERSCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_FRIENDS_GETBLOCKEDUSERSCOUNT_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the user whose blocked users should be counted. */
 	public EOS_EpicAccountId LocalUserId;

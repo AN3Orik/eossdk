@@ -13,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions extends Structure {
 	public static final int EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONS_ADDNOTIFYSENDSESSIONNATIVEINVITEREQUESTED_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Sessions_AddNotifySendSessionNativeInviteRequestedOptions() {

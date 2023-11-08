@@ -17,7 +17,7 @@ public class EOS_Friends_GetFriendAtIndexOptions extends Structure {
 	/** The most recent version of the EOS_Friends_GetFriendAtIndex API. */
 	public static final int EOS_FRIENDS_GETFRIENDATINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_FRIENDS_GETFRIENDATINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_FRIENDS_GETFRIENDATINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the user whose friend list is being queried */
 	public EOS_EpicAccountId LocalUserId;

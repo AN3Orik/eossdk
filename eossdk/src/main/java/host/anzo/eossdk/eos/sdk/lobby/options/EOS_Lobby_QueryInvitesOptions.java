@@ -17,7 +17,7 @@ public class EOS_Lobby_QueryInvitesOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_QueryInvites API. */
 	public static final int EOS_LOBBY_QUERYINVITES_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_QUERYINVITES_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_QUERYINVITES_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user whose invitations you want to retrieve */
 	public EOS_ProductUserId LocalUserId;

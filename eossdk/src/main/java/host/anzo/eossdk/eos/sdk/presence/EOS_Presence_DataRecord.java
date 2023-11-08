@@ -18,7 +18,7 @@ public class EOS_Presence_DataRecord extends Structure {
 	/** The most recent version of the EOS_Presence_DataRecord API. */
 	public static final int EOS_PRESENCE_DATARECORD_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PRESENCE_DATARECORD_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PRESENCE_DATARECORD_API_LATEST}. */
 	public int ApiVersion;
 	/** The name of this data */
 	public String Key;

@@ -25,7 +25,7 @@ public class EOS_Ecom_KeyImageInfo extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_Ecom_KeyImageInfo struct. */
 	public static final int EOS_ECOM_KEYIMAGEINFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ECOM_KEYIMAGEINFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ECOM_KEYIMAGEINFO_API_LATEST}. */
 	public int ApiVersion;
 	/** Describes the usage of the image (ex: home_thumbnail) */
 	public String Type;

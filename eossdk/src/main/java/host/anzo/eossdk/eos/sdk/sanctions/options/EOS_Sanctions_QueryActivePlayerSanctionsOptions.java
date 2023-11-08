@@ -17,7 +17,7 @@ public class EOS_Sanctions_QueryActivePlayerSanctionsOptions extends Structure {
 	/** The most recent version of the EOS_Sanctions_QueryActivePlayerSanctions API. */
 	public static final int EOS_SANCTIONS_QUERYACTIVEPLAYERSANCTIONS_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_SANCTIONS_QUERYACTIVEPLAYERSANCTIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SANCTIONS_QUERYACTIVEPLAYERSANCTIONS_API_LATEST}. */
 	public int ApiVersion;
 	/** Product User ID of the user whose active sanctions are to be retrieved. */
 	public EOS_ProductUserId TargetUserId;

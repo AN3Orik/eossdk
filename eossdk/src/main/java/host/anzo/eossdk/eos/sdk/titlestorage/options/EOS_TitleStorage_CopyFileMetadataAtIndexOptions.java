@@ -11,9 +11,10 @@ import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
  * @since 9/3/2023
  */
 public class EOS_TitleStorage_CopyFileMetadataAtIndexOptions extends Structure {
+	/** The most recent version of the EOS_TitleStorage_CopyFileMetadataAtIndex API. */
 	public static final int EOS_TITLESTORAGE_COPYFILEMETADATAATINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_TITLESTORAGE_COPYFILEMETADATAATINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_TITLESTORAGE_COPYFILEMETADATAATINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** Product User ID of the local user who is requesting file metadata (optional) */
 	public EOS_ProductUserId LocalUserId;

@@ -18,7 +18,7 @@ public class EOS_P2P_AddNotifyPeerConnectionEstablishedOptions extends Structure
 	/** The most recent version of the EOS_P2P_AddNotifyPeerConnectionEstablished API. */
 	public static final int EOS_P2P_ADDNOTIFYPEERCONNECTIONESTABLISHED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_P2P_ADDNOTIFYPEERCONNECTIONESTABLISHED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_P2P_ADDNOTIFYPEERCONNECTIONESTABLISHED_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user who would like to receive notifications */
 	public EOS_ProductUserId LocalUserId;

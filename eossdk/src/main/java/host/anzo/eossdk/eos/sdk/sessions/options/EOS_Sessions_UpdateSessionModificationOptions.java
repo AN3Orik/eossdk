@@ -16,7 +16,7 @@ public class EOS_Sessions_UpdateSessionModificationOptions extends Structure {
 	/** The most recent version of the EOS_Sessions_UpdateSessionModification API. */
 	public static final int EOS_SESSIONS_UPDATESESSIONMODIFICATION_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONS_UPDATESESSIONMODIFICATION_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONS_UPDATESESSIONMODIFICATION_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the session to update */
 	public String SessionName;

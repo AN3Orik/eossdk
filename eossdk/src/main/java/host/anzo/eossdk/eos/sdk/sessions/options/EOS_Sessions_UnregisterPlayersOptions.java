@@ -14,7 +14,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SessionName", "PlayersToUnregister", "PlayersToUnregisterCount"})
 public class EOS_Sessions_UnregisterPlayersOptions extends Structure {
-	/** API Version: Set this to EOS_SESSIONS_UNREGISTERPLAYERS_API_LATEST. */
+	/** The most recent version of the EOS_Sessions_UnregisterPlayers API. */
+	public static final int EOS_SESSIONS_UNREGISTERPLAYERS_API_LATEST = 2;
+
+	/** API Version: Set this to {@link #EOS_SESSIONS_UNREGISTERPLAYERS_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the session for which to unregister players */
 	public String SessionName;
@@ -25,6 +28,7 @@ public class EOS_Sessions_UnregisterPlayersOptions extends Structure {
 
 	public EOS_Sessions_UnregisterPlayersOptions() {
 		super();
+		ApiVersion = EOS_SESSIONS_UNREGISTERPLAYERS_API_LATEST;
 	}
 
 	public EOS_Sessions_UnregisterPlayersOptions(Pointer peer) {

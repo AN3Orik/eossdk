@@ -16,7 +16,7 @@ public class EOS_Leaderboards_GetLeaderboardRecordCountOptions extends Structure
 	/** The most recent version of the EOS_Leaderboards_GetLeaderboardRecordCount API. */
 	public static final int EOS_LEADERBOARDS_GETLEADERBOARDRECORDCOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_GETLEADERBOARDRECORDCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_GETLEADERBOARDRECORDCOUNT_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Leaderboards_GetLeaderboardRecordCountOptions() {

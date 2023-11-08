@@ -15,7 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_SessionModification_SetHostAddressOptions extends Structure {
 	public static final int EOS_SESSIONMODIFICATION_SETHOSTADDRESS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONMODIFICATION_SETHOSTADDRESS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONMODIFICATION_SETHOSTADDRESS_API_LATEST}. */
 	public int ApiVersion;
 	/** A string representing the host address for the session, its meaning is up to the application */
 	public String HostAddress;

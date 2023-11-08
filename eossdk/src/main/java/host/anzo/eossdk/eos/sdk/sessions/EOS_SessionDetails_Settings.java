@@ -16,9 +16,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "BucketId", "NumPublicConnections", "IsAllowJoinInProgress", "PermissionLevel", "IsInvitesAllowed", "IsSanctionsEnabled", "AllowedPlatformIds", "AllowedPlatformIdsCount"})
 public class EOS_SessionDetails_Settings extends Structure {
+	/** The most recent version of the EOS_SessionDetails_Settings struct. */
 	public static final int EOS_SESSIONDETAILS_SETTINGS_API_LATEST = 4;
 
-	/** API Version: Set this to EOS_SESSIONDETAILS_SETTINGS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONDETAILS_SETTINGS_API_LATEST}. */
 	public int ApiVersion;
 	/** The main indexed parameter for this session, can be any string (i.e. "Region:GameMode") */
 	public String BucketId;

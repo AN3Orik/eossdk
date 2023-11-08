@@ -14,7 +14,7 @@ public class EOS_Lobby_AddNotifySendLobbyNativeInviteRequestedOptions extends St
 	/** The most recent version of the EOS_Lobby_AddNotifySendLobbyNativeInviteRequested API. */
 	public static final int EOS_LOBBY_ADDNOTIFYSENDLOBBYNATIVEINVITEREQUESTED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_ADDNOTIFYSENDLOBBYNATIVEINVITEREQUESTED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_ADDNOTIFYSENDLOBBYNATIVEINVITEREQUESTED_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Lobby_AddNotifySendLobbyNativeInviteRequestedOptions() {

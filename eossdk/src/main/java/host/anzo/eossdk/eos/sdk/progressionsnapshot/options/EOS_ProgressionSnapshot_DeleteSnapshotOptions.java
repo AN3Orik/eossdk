@@ -14,7 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_ProgressionSnapshot_DeleteSnapshotOptions extends Structure {
 	public static final int EOS_PROGRESSIONSNAPSHOT_DELETESNAPSHOT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PROGRESSIONSNAPSHOT_DELETESNAPSHOT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PROGRESSIONSNAPSHOT_DELETESNAPSHOT_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user to whom the key/value pair belong */
 	public EOS_ProductUserId LocalUserId;

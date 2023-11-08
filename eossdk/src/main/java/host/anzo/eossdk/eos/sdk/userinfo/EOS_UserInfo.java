@@ -24,7 +24,7 @@ public class EOS_UserInfo extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_UserInfo_CopyUserInfo API. */
 	public static int EOS_USERINFO_COPYUSERINFO_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_USERINFO_COPYUSERINFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_USERINFO_COPYUSERINFO_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the user */
 	public EOS_EpicAccountId UserId;

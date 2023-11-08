@@ -16,7 +16,7 @@ public class EOS_UI_PrePresentOptions extends Structure {
 	/** The most recent version of the EOS_UI_PrePresent API. */
 	public static final int EOS_UI_PREPRESENT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_UI_PREPRESENT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_UI_PREPRESENT_API_LATEST}. */
 	public int ApiVersion;
 	/** Platform specific data. */
 	public Pointer PlatformSpecificData;

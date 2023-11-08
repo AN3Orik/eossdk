@@ -17,7 +17,7 @@ public class EOS_Lobby_UpdateLobbyOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_UpdateLobby API. */
 	public static final int EOS_LOBBY_UPDATELOBBY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBY_UPDATELOBBY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_UPDATELOBBY_API_LATEST}. */
 	public int ApiVersion;
 	/** Builder handle */
 	public EOS_LobbyModification LobbyModificationHandle;

@@ -16,7 +16,7 @@ public class EOS_ActiveSession_GetRegisteredPlayerByIndexOptions extends Structu
 	/** The most recent version of the EOS_ActiveSession_GetRegisteredPlayerByIndex function. */
 	public static final int EOS_ACTIVESESSION_GETREGISTEREDPLAYERBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ACTIVESESSION_GETREGISTEREDPLAYERBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACTIVESESSION_GETREGISTEREDPLAYERBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** Index of the registered player to retrieve */
 	public int PlayerIndex;

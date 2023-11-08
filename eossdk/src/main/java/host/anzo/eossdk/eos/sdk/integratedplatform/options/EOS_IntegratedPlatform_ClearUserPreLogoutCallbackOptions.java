@@ -15,7 +15,7 @@ public class EOS_IntegratedPlatform_ClearUserPreLogoutCallbackOptions extends St
 	/** The most recent version of the EOS_IntegratedPlatform_ClearUserPreLogoutCallback API. */
 	public static final int EOS_INTEGRATEDPLATFORM_CLEARUSERPRELOGOUTCALLBACK_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_INTEGRATEDPLATFORM_CLEARUSERPRELOGOUTCALLBACK_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_INTEGRATEDPLATFORM_CLEARUSERPRELOGOUTCALLBACK_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_IntegratedPlatform_ClearUserPreLogoutCallbackOptions() {

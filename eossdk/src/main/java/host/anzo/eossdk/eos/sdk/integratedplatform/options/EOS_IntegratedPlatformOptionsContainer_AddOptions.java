@@ -17,7 +17,7 @@ public class EOS_IntegratedPlatformOptionsContainer_AddOptions extends Structure
 	/** The most recent version of the EOS_IntegratedPlatformOptionsContainer_Add API. */
 	public static final int EOS_INTEGRATEDPLATFORMOPTIONSCONTAINER_ADD_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_INTEGRATEDPLATFORMOPTIONSCONTAINER_ADD_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_INTEGRATEDPLATFORMOPTIONSCONTAINER_ADD_API_LATEST}. */
 	public int ApiVersion;
 	/** The integrated platform options to add. */
 	public EOS_IntegratedPlatform_Options.ByReference Options;

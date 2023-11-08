@@ -17,7 +17,7 @@ public class EOS_PresenceModification_DeleteDataOptions extends Structure {
 	/** Most recent version of the EOS_PresenceModification_DeleteData API. */
 	public static int EOS_PRESENCEMODIFICATION_DELETEDATA_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PRESENCEMODIFICATION_DELETEDATA_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PRESENCEMODIFICATION_DELETEDATA_API_LATEST}. */
 	public int ApiVersion;
 	/** The count of data keys to delete */
 	public int RecordsCount;

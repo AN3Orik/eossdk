@@ -18,7 +18,7 @@ public class EOS_UI_ReportInputStateOptions extends Structure {
 	/** The most recent version of the EOS_UI_ReportInputState API. */
 	public static final int EOS_UI_REPORTINPUTSTATE_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_UI_REPORTINPUTSTATE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_UI_REPORTINPUTSTATE_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * Flags to identify the current buttons which are pressed.

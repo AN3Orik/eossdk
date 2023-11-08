@@ -16,7 +16,7 @@ public class EOS_UI_AddNotifyMemoryMonitorOptions extends Structure {
 	/** The most recent version of the EOS_UI_AddNotifyMemoryMonitor API. */
 	public static final int EOS_UI_ADDNOTIFYMEMORYMONITOR_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_UI_ADDNOTIFYMEMORYMONITOR_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_UI_ADDNOTIFYMEMORYMONITOR_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_UI_AddNotifyMemoryMonitorOptions() {

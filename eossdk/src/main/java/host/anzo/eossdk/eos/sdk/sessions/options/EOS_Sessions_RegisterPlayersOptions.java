@@ -16,7 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_Sessions_RegisterPlayersOptions extends Structure {
 	public static final int EOS_SESSIONS_REGISTERPLAYERS_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_SESSIONS_REGISTERPLAYERS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONS_REGISTERPLAYERS_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the session for which to register players */
 	public String SessionName;

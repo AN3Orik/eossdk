@@ -17,7 +17,7 @@ public class EOS_Friends_RejectInviteOptions extends Structure {
 	/** The most recent version of the EOS_Friends_RejectInvite API. */
 	public static final int EOS_FRIENDS_REJECTINVITE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_FRIENDS_REJECTINVITE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_FRIENDS_REJECTINVITE_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the local, logged-in user who is rejecting a friends list invitation */
 	public EOS_EpicAccountId LocalUserId;

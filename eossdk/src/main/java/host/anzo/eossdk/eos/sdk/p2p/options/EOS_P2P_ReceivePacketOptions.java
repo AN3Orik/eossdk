@@ -18,7 +18,7 @@ public class EOS_P2P_ReceivePacketOptions extends Structure {
 	/** The most recent version of the EOS_P2P_ReceivePacket API. */
 	public static final int EOS_P2P_RECEIVEPACKET_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_P2P_RECEIVEPACKET_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_P2P_RECEIVEPACKET_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the user who is receiving the packet */
 	public EOS_ProductUserId LocalUserId;

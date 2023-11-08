@@ -16,7 +16,7 @@ public class EOS_LobbyModification_SetMaxMembersOptions extends Structure {
 	/** The most recent version of the EOS_LobbyModification_SetMaxMembers API. */
 	public static final int EOS_LOBBYMODIFICATION_SETMAXMEMBERS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYMODIFICATION_SETMAXMEMBERS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYMODIFICATION_SETMAXMEMBERS_API_LATEST}. */
 	public int ApiVersion;
 	/** New maximum number of lobby members */
 	public int MaxMembers;

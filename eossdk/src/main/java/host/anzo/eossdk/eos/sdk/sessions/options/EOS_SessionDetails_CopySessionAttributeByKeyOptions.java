@@ -18,7 +18,7 @@ public class EOS_SessionDetails_CopySessionAttributeByKeyOptions extends Structu
 	/** The most recent version of the EOS_SessionDetails_CopySessionAttributeByKey API. */
 	public static final int EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYKEY_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYKEY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONDETAILS_COPYSESSIONATTRIBUTEBYKEY_API_LATEST}. */
 	public int ApiVersion;
 	/** The name of the key to get the session attribution for
 	 * @see EOS_SessionModification#addAttribute(EOS_SessionModification_AddAttributeOptions)

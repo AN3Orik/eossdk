@@ -17,9 +17,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "AccountType", "AccountId", "DisplayName", "DisplayNameSanitized"})
 public class EOS_UserInfo_ExternalUserInfo extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_UserInfo_ExternalUserInfo struct. */
 	public static final int EOS_USERINFO_EXTERNALUSERINFO_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_USERINFO_EXTERNALUSERINFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_USERINFO_EXTERNALUSERINFO_API_LATEST}. */
 	public int ApiVersion;
 	/** The type of the external account */
 	public EOS_EExternalAccountType AccountType;

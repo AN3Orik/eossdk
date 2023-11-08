@@ -23,7 +23,7 @@ public class EOS_Ecom_Entitlement extends Structure implements AutoCloseable {
 	/** Timestamp value representing an undefined EndTimestamp for EOS_Ecom_Entitlement */
 	public static final int EOS_ECOM_ENTITLEMENT_ENDTIMESTAMP_UNDEFINED = -1;
 
-	/** API Version: Set this to EOS_ECOM_ENTITLEMENT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ECOM_ENTITLEMENT_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the entitlement */
 	public String EntitlementName;

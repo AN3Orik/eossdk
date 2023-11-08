@@ -14,6 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "FileSizeBytes", "MD5Hash", "Filename", "UnencryptedDataSizeBytes"})
 public class EOS_TitleStorage_FileMetadata extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_TitleStorage_FileMetadata API. */
 	public static final int EOS_TITLESTORAGE_FILEMETADATA_API_LATEST = 2;
 
 	/** API Version: Set this to EOS_TITLESTORAGE_FILEMETADATA_API_LATEST. */

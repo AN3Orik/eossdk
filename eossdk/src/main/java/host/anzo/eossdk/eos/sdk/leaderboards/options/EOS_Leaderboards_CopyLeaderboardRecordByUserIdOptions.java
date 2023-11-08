@@ -17,7 +17,7 @@ public class EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions extends Struc
 	/** The most recent version of the EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions struct. */
 	public static final int EOS_LEADERBOARDS_COPYLEADERBOARDRECORDBYUSERID_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_COPYLEADERBOARDRECORDBYUSERID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_COPYLEADERBOARDRECORDBYUSERID_API_LATEST}. */
 	public int ApiVersion;
 	/** Leaderboard data will be copied from the cache if it relates to the user matching this Product User ID */
 	public EOS_ProductUserId UserId;

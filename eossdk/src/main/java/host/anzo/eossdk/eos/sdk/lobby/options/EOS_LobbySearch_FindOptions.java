@@ -17,7 +17,7 @@ public class EOS_LobbySearch_FindOptions extends Structure {
 	/** The most recent version of the EOS_LobbySearch_Find API. */
 	public static final int EOS_LOBBYSEARCH_FIND_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYSEARCH_FIND_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYSEARCH_FIND_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the user making the search request */
 	public EOS_ProductUserId LocalUserId;

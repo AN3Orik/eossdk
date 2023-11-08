@@ -16,7 +16,7 @@ public class EOS_LobbySearch_GetSearchResultCountOptions extends Structure {
 	/** The most recent version of the EOS_LobbySearch_GetSearchResultCount API. */
 	public static final int EOS_LOBBYSEARCH_GETSEARCHRESULTCOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYSEARCH_GETSEARCHRESULTCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYSEARCH_GETSEARCHRESULTCOUNT_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_LobbySearch_GetSearchResultCountOptions() {

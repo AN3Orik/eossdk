@@ -14,9 +14,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "LocalUserId"})
 public class EOS_SessionSearch_FindOptions extends Structure {
+	/** The most recent version of the EOS_SessionSearch_Find API. */
 	public static final int EOS_SESSIONSEARCH_FIND_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_SESSIONSEARCH_FIND_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONSEARCH_FIND_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user who is searching */
 	public EOS_ProductUserId LocalUserId;

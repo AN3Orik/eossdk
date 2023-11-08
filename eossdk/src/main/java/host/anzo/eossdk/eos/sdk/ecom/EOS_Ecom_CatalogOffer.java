@@ -29,7 +29,7 @@ public class EOS_Ecom_CatalogOffer extends Structure implements AutoCloseable {
 	/** Timestamp value representing an undefined EffectiveDateTimestamp for EOS_Ecom_CatalogOffer */
 	public static final int EOS_ECOM_CATALOGOFFER_EFFECTIVEDATETIMESTAMP_UNDEFINED = -1;
 
-	/** API Version: Set this to EOS_ECOM_CATALOGOFFER_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ECOM_CATALOGOFFER_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The index of this offer as it exists on the server.

@@ -20,7 +20,7 @@ public class EOS_Stats_Stat extends Structure implements AutoCloseable {
 	/** Timestamp value representing an undefined StartTime or EndTime for EOS_Stats_Stat */
 	public static final int EOS_STATS_TIME_UNDEFINED = -1;
 
-	/** API Version: Set this to EOS_STATS_STAT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_STATS_STAT_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the stat. */
 	public String Name;

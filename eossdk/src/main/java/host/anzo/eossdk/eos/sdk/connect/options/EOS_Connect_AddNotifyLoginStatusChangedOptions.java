@@ -22,7 +22,7 @@ public class EOS_Connect_AddNotifyLoginStatusChangedOptions extends Structure {
 	/** The most recent version of the EOS_Connect_AddNotifyLoginStatusChanged API. */
 	public static int EOS_CONNECT_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST = 1;
 
-	/** API Version: Set this to {@link #EOS_CONNECT_GETEXTERNALACCOUNTMAPPING_API_LATEST}. */
+	/** API Version: Set this to {@link #EOS_CONNECT_ADDNOTIFYLOGINSTATUSCHANGED_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_Connect_AddNotifyLoginStatusChangedOptions() {

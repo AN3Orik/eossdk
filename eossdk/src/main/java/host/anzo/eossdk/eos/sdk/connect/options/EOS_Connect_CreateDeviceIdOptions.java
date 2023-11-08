@@ -37,6 +37,8 @@ public class EOS_Connect_CreateDeviceIdOptions extends Structure {
 	 * length of 64 characters. Longer string will be silently truncated.
 	 * <p>
 	 * This field is required to be present.
+	 * <p>
+	 * Must be less than {@link #EOS_CONNECT_CREATEDEVICEID_DEVICEMODEL_MAX_LENGTH}
 	 */
 	public String DeviceModel;
 

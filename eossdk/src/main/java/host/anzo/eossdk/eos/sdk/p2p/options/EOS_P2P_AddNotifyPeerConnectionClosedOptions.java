@@ -18,7 +18,7 @@ public class EOS_P2P_AddNotifyPeerConnectionClosedOptions extends Structure {
 	/** The most recent version of the EOS_P2P_AddNotifyPeerConnectionClosed API. */
 	public static final int EOS_P2P_ADDNOTIFYPEERCONNECTIONCLOSED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_P2P_ADDNOTIFYPEERCONNECTIONCLOSED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_P2P_ADDNOTIFYPEERCONNECTIONCLOSED_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user who would like notifications */
 	public EOS_ProductUserId LocalUserId;

@@ -17,7 +17,7 @@ public class EOS_KWS_QueryPermissionsOptions extends Structure {
 	/** The most recent version of the EOS_KWS_QueryPermissions API. */
 	public static final int EOS_KWS_QUERYPERMISSIONS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_KWS_QUERYPERMISSIONS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_KWS_QUERYPERMISSIONS_API_LATEST}. */
 	public int ApiVersion;
 	/** Local user querying their permissions */
 	public EOS_ProductUserId LocalUserId;

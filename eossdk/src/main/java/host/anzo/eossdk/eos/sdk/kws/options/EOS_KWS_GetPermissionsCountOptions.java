@@ -17,7 +17,7 @@ public class EOS_KWS_GetPermissionsCountOptions extends Structure {
 	/** The most recent version of the EOS_KWS_GetPermissionsCount API. */
 	public static final int EOS_KWS_GETPERMISSIONSCOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_KWS_GETPERMISSIONSCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_KWS_GETPERMISSIONSCOUNT_API_LATEST}. */
 	public int ApiVersion;
 
 	/** The Product User ID of the local user whose permissions are being accessed */

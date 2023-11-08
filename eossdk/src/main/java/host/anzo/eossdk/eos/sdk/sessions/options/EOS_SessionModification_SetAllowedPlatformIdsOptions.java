@@ -17,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_SessionModification_SetAllowedPlatformIdsOptions extends Structure {
 	public static final int EOS_SESSIONMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * Array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are

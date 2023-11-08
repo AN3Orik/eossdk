@@ -16,7 +16,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SessionAttribute", "AdvertisementType"})
 public class EOS_SessionModification_AddAttributeOptions extends Structure {
-	/** API Version: Set this to EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST. */
+	/** The most recent version of the EOS_SessionModification_AddAttribute API. */
+	public static final int EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST = 2;
+
+	/** API Version: Set this to {@link #EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST}. */
 	public int ApiVersion;
 	/** Key/Value pair describing the attribute to add to the session */
 	public EOS_Sessions_AttributeData.ByReference SessionAttribute;
@@ -25,6 +28,7 @@ public class EOS_SessionModification_AddAttributeOptions extends Structure {
 
 	public EOS_SessionModification_AddAttributeOptions() {
 		super();
+		ApiVersion = EOS_SESSIONMODIFICATION_ADDATTRIBUTE_API_LATEST;
 	}
 
 	public EOS_SessionModification_AddAttributeOptions(Pointer peer) {

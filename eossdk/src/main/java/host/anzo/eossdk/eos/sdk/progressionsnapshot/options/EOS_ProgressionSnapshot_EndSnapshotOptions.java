@@ -13,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
 public class EOS_ProgressionSnapshot_EndSnapshotOptions extends Structure {
 	public static final int EOS_PROGRESSIONSNAPSHOT_ENDSNAPSHOT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PROGRESSIONSNAPSHOT_ENDSNAPSHOT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PROGRESSIONSNAPSHOT_ENDSNAPSHOT_API_LATEST}. */
 	public int ApiVersion;
 	/** The Snapshot Id received via a EOS_ProgressionSnapshot_BeginSnapshot function. */
 	public int SnapshotId;

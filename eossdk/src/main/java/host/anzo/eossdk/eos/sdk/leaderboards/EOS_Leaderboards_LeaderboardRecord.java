@@ -21,7 +21,7 @@ public class EOS_Leaderboards_LeaderboardRecord extends Structure implements Aut
 	/** The most recent version of the EOS_Leaderboards_LeaderboardRecord struct. */
 	public static final int EOS_LEADERBOARDS_LEADERBOARDRECORD_API_LATEST = 2;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_LEADERBOARDRECORD_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_LEADERBOARDRECORD_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID associated with this record */
 	public EOS_ProductUserId UserId;

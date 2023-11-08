@@ -19,9 +19,10 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "UserId", "DisplayName", "DisplayNameSanitized", "Nickname", "PlatformType"})
 public class EOS_UserInfo_BestDisplayName extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_UserInfo_BestDisplayName API. */
 	public static final int EOS_USERINFO_BESTDISPLAYNAME_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_USERINFO_BESTDISPLAYNAME_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_USERINFO_BESTDISPLAYNAME_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the user */
 	public EOS_EpicAccountId UserId;

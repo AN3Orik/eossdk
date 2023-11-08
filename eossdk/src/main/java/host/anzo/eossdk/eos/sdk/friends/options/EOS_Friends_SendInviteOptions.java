@@ -17,7 +17,7 @@ public class EOS_Friends_SendInviteOptions extends Structure {
 	/** The most recent version of the EOS_Friends_SendInvite API. */
 	public static int EOS_FRIENDS_SENDINVITE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_FRIENDS_SENDINVITE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_FRIENDS_SENDINVITE_API_LATEST}. */
 	public int ApiVersion;
 	/** The Epic Account ID of the local, logged-in user who is sending the friends list invitation */
 	public EOS_EpicAccountId LocalUserId;

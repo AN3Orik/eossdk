@@ -17,7 +17,7 @@ public class EOS_PresenceModification_SetDataOptions extends Structure {
 	/** The most recent version of the EOS_PresenceModification_SetData API. */
 	public static final int EOS_PRESENCEMODIFICATION_SETDATA_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_PRESENCEMODIFICATION_SETDATA_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PRESENCEMODIFICATION_SETDATA_API_LATEST}. */
 	public int ApiVersion;
 	/** The count of records to set */
 	public int RecordsCount;

@@ -16,7 +16,7 @@ public class EOS_LobbyDetails_CopyMemberAttributeByIndexOptions extends Structur
 	/** The most recent version of the EOS_LobbyDetails_CopyMemberAttributeByIndex API. */
 	public static final int EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYINDEX_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYINDEX_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBYDETAILS_COPYMEMBERATTRIBUTEBYINDEX_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the lobby member */
 	public EOS_ProductUserId TargetUserId;

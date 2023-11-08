@@ -24,7 +24,7 @@ public class EOS_Reports_SendPlayerBehaviorReportOptions extends Structure {
 	/** Max length of a report context JSON payload, not including the null terminator. */
 	public static final int EOS_REPORTS_REPORTCONTEXT_MAX_LENGTH = 4096;
 
-	/** API Version: Set this to EOS_REPORTS_SENDPLAYERBEHAVIORREPORT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_REPORTS_SENDPLAYERBEHAVIORREPORT_API_LATEST}. */
 	public int ApiVersion;
 	/** Product User ID of the reporting player */
 	public EOS_ProductUserId ReporterUserId;

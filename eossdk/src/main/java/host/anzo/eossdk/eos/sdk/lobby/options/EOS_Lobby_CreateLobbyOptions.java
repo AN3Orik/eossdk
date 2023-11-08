@@ -28,7 +28,7 @@ public class EOS_Lobby_CreateLobbyOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_CreateLobby API. */
 	public static final int EOS_LOBBY_CREATELOBBY_API_LATEST = 9;
 
-	/** API Version: Set this to EOS_LOBBY_CREATELOBBY_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LOBBY_CREATELOBBY_API_LATEST}. */
 	public int ApiVersion;
 	/** The Product User ID of the local user creating the lobby; this user will automatically join the lobby as its owner */
 	public EOS_ProductUserId LocalUserId;

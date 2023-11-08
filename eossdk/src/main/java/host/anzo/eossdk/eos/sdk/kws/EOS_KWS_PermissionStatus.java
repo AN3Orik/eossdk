@@ -16,13 +16,11 @@ public class EOS_KWS_PermissionStatus extends Structure implements AutoCloseable
 	/** The most recent version of the EOS_KWS_PermissionStatus API. */
 	public static final int EOS_KWS_PERMISSIONSTATUS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_KWS_PERMISSIONSTATUS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_KWS_PERMISSIONSTATUS_API_LATEST}. */
 	public int ApiVersion;
 	/** Name of the permission */
 	public String Name;
-	/**
-	 * Status of the permission
-	 */
+	/** Status of the permission */
 	public EOS_EKWSPermissionStatus Status;
 
 	public EOS_KWS_PermissionStatus() {

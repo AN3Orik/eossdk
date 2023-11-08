@@ -16,7 +16,7 @@ public class EOS_ActiveSession_GetRegisteredPlayerCountOptions extends Structure
 	/** The most recent version of the EOS_ActiveSession_GetRegisteredPlayerCount function. */
 	public static final int EOS_ACTIVESESSION_GETREGISTEREDPLAYERCOUNT_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_ACTIVESESSION_GETREGISTEREDPLAYERCOUNT_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_ACTIVESESSION_GETREGISTEREDPLAYERCOUNT_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_ActiveSession_GetRegisteredPlayerCountOptions() {

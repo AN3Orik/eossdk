@@ -18,7 +18,7 @@ public class EOS_Mods_EnumerateModsOptions extends Structure {
 	/** The most recent version of the EOS_Mods_EnumerateModsOptions API. */
 	public static final int EOS_MODS_ENUMERATEMODS_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_MODS_ENUMERATEMODS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_MODS_ENUMERATEMODS_API_LATEST}. */
 	public int ApiVersion;
 
 	/** The Epic Account ID of the user for which the mod should be enumerated */

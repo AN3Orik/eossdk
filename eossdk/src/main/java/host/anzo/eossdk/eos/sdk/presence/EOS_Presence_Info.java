@@ -24,7 +24,7 @@ public class EOS_Presence_Info extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_Presence_Info API. */
 	public static final int EOS_PRESENCE_INFO_API_LATEST = 3;
 
-	/** API Version: Set this to EOS_PRESENCE_INFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_PRESENCE_INFO_API_LATEST}. */
 	public int ApiVersion;
 	/**
 	 * The status of the user

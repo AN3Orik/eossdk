@@ -16,7 +16,7 @@ public class EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions ex
 	/** The most recent version of the EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions struct. */
 	public static final int EOS_LEADERBOARDS_COPYLEADERBOARDDEFINITIONBYLEADERBOARDID_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_LEADERBOARDS_COPYLEADERBOARDDEFINITIONBYLEADERBOARDID_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_LEADERBOARDS_COPYLEADERBOARDDEFINITIONBYLEADERBOARDID_API_LATEST}. */
 	public int ApiVersion;
 
 	/** The ID of the leaderboard whose definition you want to copy from the cache */

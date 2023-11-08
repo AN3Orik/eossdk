@@ -20,7 +20,7 @@ public class EOS_Mods_ModInfo extends Structure implements AutoCloseable {
 	/** The most recent version of the EOS_Mods_ModInfo struct. */
 	public static int EOS_MODS_MODINFO_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_MODS_MODINFO_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_MODS_MODINFO_API_LATEST}. */
 	public int ApiVersion;
 	/** The count of enumerated mods */
 	public int ModsCount;

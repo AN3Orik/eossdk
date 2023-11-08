@@ -18,7 +18,7 @@ public class EOS_SessionDetails_Attribute extends Structure implements AutoClose
 	/** The most recent version of the EOS_SessionDetails_Attribute struct. */
 	public static final int EOS_SESSIONDETAILS_ATTRIBUTE_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_SESSIONDETAILS_ATTRIBUTE_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONDETAILS_ATTRIBUTE_API_LATEST}. */
 	public int ApiVersion;
 	/** Key/Value pair describing the attribute */
 	public EOS_Sessions_AttributeData.ByReference Data;

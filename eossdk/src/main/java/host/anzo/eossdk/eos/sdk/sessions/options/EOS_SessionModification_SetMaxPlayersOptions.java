@@ -20,7 +20,7 @@ public class EOS_SessionModification_SetMaxPlayersOptions extends Structure {
 	/** Maximum number of players allowed in a single session */
 	public static int EOS_SESSIONS_MAXREGISTEREDPLAYERS = 1000;
 
-	/** API Version: Set this to EOS_SESSIONMODIFICATION_SETMAXPLAYERS_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_SESSIONMODIFICATION_SETMAXPLAYERS_API_LATEST}. */
 	public int ApiVersion;
 	/** Max number of players to allow in the session */
 	public int MaxPlayers;

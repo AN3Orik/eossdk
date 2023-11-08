@@ -14,7 +14,7 @@ public class EOS_KWS_AddNotifyPermissionsUpdateReceivedOptions extends Structure
 	/** The most recent version of the EOS_KWS_AddNotifyPermissionsUpdateReceived API. */
 	public static final int EOS_KWS_ADDNOTIFYPERMISSIONSUPDATERECEIVED_API_LATEST = 1;
 
-	/** API Version: Set this to EOS_KWS_ADDNOTIFYPERMISSIONSUPDATERECEIVED_API_LATEST. */
+	/** API Version: Set this to {@link #EOS_KWS_ADDNOTIFYPERMISSIONSUPDATERECEIVED_API_LATEST}. */
 	public int ApiVersion;
 
 	public EOS_KWS_AddNotifyPermissionsUpdateReceivedOptions() {

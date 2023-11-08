@@ -18,6 +18,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Parameter", "ComparisonOp"})
 public class EOS_SessionSearch_SetParameterOptions extends Structure {
+	/** The most recent version of the EOS_SessionSearch_SetParameter API. */
 	public static final int EOS_SESSIONSEARCH_SETPARAMETER_API_LATEST = 1;
 
 	/** API Version: Set this to EOS_SESSIONSEARCH_SETPARAMETER_API_LATEST. */
