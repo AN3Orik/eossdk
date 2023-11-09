@@ -53,7 +53,7 @@ Project using JNA library, so all available platforms are supported (for which E
 ## Distribution
 New releases are made available on Maven Central, enabling you to employ your preferred dependency management tool for retrieval.
 
-*Please note that the library version corresponds to the compatible EOS SDK version (with an added wrapper version after dot)*
+*Please note that the library version corresponds to the compatible EOS SDK version (with an added wrapper version after last dot)*
 
 ```groovy
 // Gradle
