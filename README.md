@@ -65,16 +65,16 @@ dependencies {
 
 Of course, for full-fledged work, you will need native EOS SDK libraries. There is two options:
 1. Copy native libraries from EOS SDK distribution to your application classpath/resources manually
-2. Include Maven Central dependencies additionally to wrapper library:
+2. Include Maven Central dependencies additionally to wrapper library (version must be corresponds to EOS SDK version, not to a wrapper version):
 ```groovy
 // Gradle
 dependencies {
     // Windows native library
-    implementation "host.anzo:eossdk-native-windows:1.16.1.+"
+    implementation "host.anzo:eossdk-native-windows:1.16.1"
     // Linux native library
-    implementation "host.anzo:eossdk-native-linux:1.16.1.+"
+    implementation "host.anzo:eossdk-native-linux:1.16.1"
     // iOS native library
-    implementation "host.anzo:eossdk-native-ios:1.16.1.+"
+    implementation "host.anzo:eossdk-native-ios:1.16.1"
 }
 ```
 
