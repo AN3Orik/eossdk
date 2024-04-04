@@ -8,6 +8,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.server.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOS_Defines;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eosex.EOSServerOptions;
@@ -21,10 +22,6 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "RegisterTimeoutSeconds", "ServerName", "EnableGameplayData", "LocalUserId"})
 public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
-	/** Limits on RegisterTimeoutSeconds parameter */
-	public static int EOS_ANTICHEATSERVER_BEGINSESSION_MIN_REGISTERTIMEOUT = 10;
-	public static int EOS_ANTICHEATSERVER_BEGINSESSION_MAX_REGISTERTIMEOUT = 120;
-
 	public static int EOS_ANTICHEATSERVER_BEGINSESSION_API_LATEST = 3;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATSERVER_BEGINSESSION_API_LATEST}. */
@@ -38,7 +35,7 @@ public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
 	public String ServerName;
 	/**
 	 * Gameplay data collection APIs such as LogPlayerTick will be enabled if set to true.
-	 * If you do not use these APIs, it is more efficient to set this value to false.
+	 * If you do not use these APIs you should set this value to false to reduce memory use.
 	 */
 	public EOS_Bool EnableGameplayData;
 	/** The Product User ID of the local user who is associated with this session. Dedicated servers should set this to null. */
@@ -51,7 +48,7 @@ public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
 
 	public EOS_AntiCheatServer_BeginSessionOptions(@NotNull EOSServerOptions options) {
 		this();
-		RegisterTimeoutSeconds = Math.min(Math.max(options.getAntiCheatRegisterTimeoutSeconds(), EOS_ANTICHEATSERVER_BEGINSESSION_MIN_REGISTERTIMEOUT), EOS_ANTICHEATSERVER_BEGINSESSION_MAX_REGISTERTIMEOUT);
+		RegisterTimeoutSeconds = Math.min(Math.max(options.getAntiCheatRegisterTimeoutSeconds(), EOS_Defines.EOS_ANTICHEATSERVER_BEGINSESSION_MIN_REGISTERTIMEOUT), EOS_Defines.EOS_ANTICHEATSERVER_BEGINSESSION_MAX_REGISTERTIMEOUT);
 		ServerName = options.getAntiCheatServerName();
 		EnableGameplayData = EOS_Bool.of(options.isAntiCheatEnableGamePlayData());
 		LocalUserId = null;

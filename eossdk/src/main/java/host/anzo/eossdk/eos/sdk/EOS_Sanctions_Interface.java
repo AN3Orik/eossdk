@@ -7,8 +7,10 @@ import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.sanctions.EOS_Sanctions_PlayerSanction;
+import host.anzo.eossdk.eos.sdk.sanctions.callbacks.EOS_Sanctions_CreatePlayerSanctionAppealCallback;
 import host.anzo.eossdk.eos.sdk.sanctions.callbacks.EOS_Sanctions_OnQueryActivePlayerSanctionsCallback;
 import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_CopyPlayerSanctionByIndexOptions;
+import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_CreatePlayerSanctionAppealOptions;
 import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_GetPlayerSanctionCountOptions;
 import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_QueryActivePlayerSanctionsOptions;
 
@@ -61,7 +63,7 @@ public class EOS_Sanctions_Interface extends PointerType {
 	/**
 	 * Copies an active player sanction.
 	 * You must call QueryActivePlayerSanctions first to retrieve the data from the service backend.
-	 * On success, EOS_Sanctions_PlayerSanction_Release must be called on OutSanction to free memory.
+	 * On success, {@link EOS_Sanctions_PlayerSanction#release()} must be called on OutSanction to free memory.
 	 *
 	 * @param options Structure containing the input parameters
 	 * @return The player sanction data for the given index, if it exists and is valid
@@ -79,5 +81,20 @@ public class EOS_Sanctions_Interface extends PointerType {
 			throw EOSException.fromResult(result);
 		}
 		return outSanction;
+	}
+
+	/**
+	 * Create a sanction appeal on behalf of a local user.
+	 * Note that for creating the sanction appeal you'll need the sanction reference id, which is available through {@link #copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions)}.
+	 *
+	 * @param options Structure containing the player sanction appeal information.
+	 * @param clientData Optional client data provided by the user of the SDK.
+	 * @param completionDelegate This function is called when the send operation completes.
+	 */
+	public void createPlayerSanctionAppeal(EOS_Sanctions_Interface handle,
+	                                       EOS_Sanctions_CreatePlayerSanctionAppealOptions options,
+	                                       Pointer clientData,
+	                                       EOS_Sanctions_CreatePlayerSanctionAppealCallback completionDelegate) {
+		EOSLibrary.instance.EOS_Sanctions_CreatePlayerSanctionAppeal(this, options, clientData, completionDelegate);
 	}
 }

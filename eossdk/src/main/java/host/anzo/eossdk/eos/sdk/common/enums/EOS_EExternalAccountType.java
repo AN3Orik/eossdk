@@ -57,7 +57,9 @@ public @Getter enum EOS_EExternalAccountType implements NativeMapped {
 	/** External account is associated with itch.io */
 	EOS_EAT_ITCHIO(12),
 	/** External account is associated with Amazon */
-	EOS_EAT_AMAZON(13);
+	EOS_EAT_AMAZON(13),
+	/** External account is associated with Viveport */
+	EOS_EAT_VIVEPORT(14);
 
 	private final int id;
 

@@ -11,7 +11,9 @@ import host.anzo.eossdk.eos.sdk.lobby.options.EOS_Lobby_LocalRTCOptions;
 import host.anzo.eossdk.eos.sdk.rtc.options.EOS_RTC_JoinRoomOptions;
 import host.anzo.eossdk.eos.sdk.rtcaudio.EOS_RTCAudio_InputDeviceInformation;
 import host.anzo.eossdk.eos.sdk.rtcaudio.EOS_RTCAudio_OutputDeviceInformation;
+import host.anzo.eossdk.eos.sdk.rtcaudio.callbackresults.EOS_RTCAudio_ParticipantUpdatedCallbackInfo;
 import host.anzo.eossdk.eos.sdk.rtcaudio.callbacks.*;
+import host.anzo.eossdk.eos.sdk.rtcaudio.enums.EOS_ERTCAudioStatus;
 import host.anzo.eossdk.eos.sdk.rtcaudio.options.*;
 import host.anzo.eossdk.eos.utils.CallbackUtils;
 
@@ -114,17 +116,21 @@ public class EOS_RTC_Audio_Interface extends PointerType {
 	}
 
 	/**
-	 * Register to receive notifications when a room participant audio status is updated (f.e when speaking flag changes).
+	 * Register to receive notifications when a room participant audio status is updated (f.e when mute state changes or speaking flag changes).
+	 * <p>
+	 * The notification is raised when the participant's audio status is updated. In order not to miss any participant status changes, applications need to add the notification before joining a room.
 	 * <p>
 	 * If the returned NotificationId is valid, you must call EOS_RTCAudio_RemoveNotifyParticipantUpdated when you no longer wish
 	 * to have your completionDelegate called.
 	 *
 	 * @param clientData Arbitrary data that is passed back in the completionDelegate
-	 * @param completionDelegate The callback to be fired when a presence change occurs
+	 * @param completionDelegate The callback to be fired when a participant changes audio status
 	 * @return Notification ID representing the registered callback if successful, an invalid NotificationId if not
 	 *
 	 * @see EOS_NotificationId#EOS_INVALID_NOTIFICATIONID
 	 * @see #removeNotifyParticipantUpdated(EOS_NotificationId)
+	 * @see EOS_RTCAudio_ParticipantUpdatedCallbackInfo
+	 * @see EOS_ERTCAudioStatus
 	 */
 	public EOS_NotificationId addNotifyParticipantUpdated(EOS_RTCAudio_AddNotifyParticipantUpdatedOptions options,
 	                                                      Pointer clientData,
@@ -258,9 +264,11 @@ public class EOS_RTC_Audio_Interface extends PointerType {
 	 * <p>
 	 * If the returned NotificationId is valid, you must call EOS_RTCAudio_RemoveNotifyAudioBeforeSend when you no longer wish to
 	 * have your completionDelegate called.
+	 * <p>
+	 * <b>The CompletionDelegate may be called from a thread other than the one from which the SDK is ticking.</b>
 	 *
 	 * @param clientData Arbitrary data that is passed back in the completionDelegate
-	 * @param completionDelegate The callback to be fired when a presence change occurs
+	 * @param completionDelegate The callback to be fired when local audio buffers are about to be encoded and sent
 	 * @return Notification ID representing the registered callback if successful, an invalid NotificationId if not
 	 *
 	 * @see EOS_NotificationId#EOS_INVALID_NOTIFICATIONID
@@ -293,9 +301,11 @@ public class EOS_RTC_Audio_Interface extends PointerType {
 	 * <p>
 	 * If the returned NotificationId is valid, you must call EOS_RTCAudio_RemoveNotifyAudioBeforeRender when you no longer wish to
 	 * have your completionDelegate called.
+	 * <p>
+	 * <b>The CompletionDelegate may be called from a thread other than the one from which the SDK is ticking.</b>
 	 *
 	 * @param clientData Arbitrary data that is passed back in the completionDelegate
-	 * @param completionDelegate The callback to be fired when a presence change occurs
+	 * @param completionDelegate The callback to be fired when remote audio buffers are about to be rendered
 	 * @return Notification ID representing the registered callback if successful, an invalid NotificationId if not
 	 *
 	 * @see EOS_NotificationId#EOS_INVALID_NOTIFICATIONID

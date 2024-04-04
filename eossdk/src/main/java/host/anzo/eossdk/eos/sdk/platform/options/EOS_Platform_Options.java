@@ -8,7 +8,10 @@ package host.anzo.eossdk.eos.sdk.platform.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import com.sun.jna.ptr.DoubleByReference;
+import host.anzo.eossdk.eos.sdk.EOS_Platform_Interface;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_ENetworkStatus;
 import host.anzo.eossdk.eos.sdk.integratedplatform.EOS_IntegratedPlatformOptionsContainer;
 import host.anzo.eossdk.eos.sdk.platform.EOS_Platform_ClientCredentials;
 import host.anzo.eossdk.eos.sdk.platform.enums.EOS_Platform_Create_Flag;
@@ -23,7 +26,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "Reserved", "ProductId", "SandboxId", "ClientCredentials", "IsServer", "EncryptionKey", "OverrideCountryCode", "OverrideLocaleCode", "DeploymentId", "Flags", "CacheDirectory", "TickBudgetInMilliseconds", "RTCOptions", "IntegratedPlatformOptionsContainerHandle", "SystemSpecificOptions"})
+@FieldOrder({"ApiVersion", "Reserved", "ProductId", "SandboxId", "ClientCredentials", "IsServer", "EncryptionKey", "OverrideCountryCode", "OverrideLocaleCode", "DeploymentId", "Flags", "CacheDirectory", "TickBudgetInMilliseconds", "RTCOptions", "IntegratedPlatformOptionsContainerHandle", "SystemSpecificOptions", "TaskNetworkTimeoutSeconds"})
 public class EOS_Platform_Options extends Structure {
 	public static int EOS_COUNTRYCODE_MAX_LENGTH = 4;
 	public static int EOS_COUNTRYCODE_MAX_BUFFER_LEN = EOS_COUNTRYCODE_MAX_LENGTH + 1;
@@ -43,7 +46,7 @@ public class EOS_Platform_Options extends Structure {
 	public static int EOS_PLATFORM_OPTIONS_DEPLOYMENTID_MAX_LENGTH = 64;
 
 	/** The most recent version of the EOS_Platform_Create API. */
-	public static int EOS_PLATFORM_OPTIONS_API_LATEST = 13;
+	public static int EOS_PLATFORM_OPTIONS_API_LATEST = 14;
 
 	/** API Version: Set this to {@link #EOS_PLATFORM_OPTIONS_API_LATEST}. */
 	public int ApiVersion;
@@ -84,6 +87,18 @@ public class EOS_Platform_Options extends Structure {
 	public EOS_IntegratedPlatformOptionsContainer IntegratedPlatformOptionsContainerHandle;
 	/** Pointer to EOS_Platform_SystemSpecificOptions. This structure will be located in Platform/eos_Platform.h */
 	public Pointer SystemSpecificOptions;
+	/**
+	 * Number of seconds for a task to wait for the network to become available before timing out with an EOS_TimedOut error.
+	 * This timeout period applies when the network status is not EOS_NS_Online. Tasks that need the network will queue for up to
+	 * this timeout until EOS_Platform_SetNetworkStatus is used to set the network status to online.
+	 * <p>
+	 * Pass a null pointer to use the default.
+	 * Otherwise, pass a pointer to a double containing the number of seconds for tasks that are waiting for network to time out.
+	 *
+	 * @see EOS_Platform_Interface#setNetworkStatus(EOS_ENetworkStatus)
+	 * @see EOS_ENetworkStatus
+	 */
+	public DoubleByReference TaskNetworkTimeoutSeconds;
 
 	public EOS_Platform_Options() {
 		super();

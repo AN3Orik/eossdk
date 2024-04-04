@@ -329,6 +329,8 @@ public @Getter enum EOS_EResult implements NativeMapped {
 
 	/** The social overlay page failed to load */
 	EOS_UI_SocialOverlayLoadError(8000),
+	/** Virtual Memory Functions are an inconsistent mix of functions and nullptrs */
+	EOS_UI_InconsistentVirtualMemoryFunctions(8001),
 
 	/** Client has no permissions to modify this lobby */
 	EOS_Lobby_NotOwner(9000),
@@ -469,6 +471,10 @@ public @Getter enum EOS_EResult implements NativeMapped {
 
 	/** EOS Android VM not stored */
 	EOS_Android_JavaVMNotStored(17000),
+	/** EOS Android if Reserved is set it must reference stored VM */
+	EOS_Android_ReservedMustReferenceLocalVM(17001),
+	/** EOS Android Reserved must not be provided */
+	EOS_Android_ReservedMustBeNull(17002),
 
 	/** Patch required before the user can use the privilege */
 	EOS_Permission_RequiredPatchAvailable(18000),
@@ -499,6 +505,17 @@ public @Getter enum EOS_EResult implements NativeMapped {
 
 	/** The best display name could not be safely determined. */
 	EOS_UserInfo_BestDisplayNameIndeterminate(22000),
+
+	/** OnNetworkRequested_DEPRECATED callback not set when initializing platform */
+	EOS_ConsoleInit_OnNetworkRequestedDeprecatedCallbackNotSet(23000),
+	/** CacheStorageSizeKB must be a multiple of 16 **/
+	EOS_ConsoleInit_CacheStorage_SizeKBNotMultipleOf16(23001),
+	/** CacheStorageSizeKB is less than the minimum allowed **/
+	EOS_ConsoleInit_CacheStorage_SizeKBBelowMinimumSize(23002),
+	/** CacheStorageSizeKB is greater than the maximum allowed (4000 MB) **/
+	EOS_ConsoleInit_CacheStorage_SizeKBExceedsMaximumSize(23003),
+	/** CacheStorageIndex is out of its allowed range **/
+	EOS_ConsoleInit_CacheStorage_IndexOutOfRangeRange(23004),
 
 	/** An unexpected error that we cannot identify has occurred. */
 	EOS_UnexpectedError(0x7FFFFFFF);

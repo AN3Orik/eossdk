@@ -15,8 +15,8 @@ import java.util.Map;
  */
 public @Getter enum EOS_ERTCBackgroundMode implements NativeMapped {
 	/**
-	 * Upon entering a background application status, all logged in users leave any RTC rooms. All subsequent attemps to join any RTC rooms will be rejected.
-	 * Upon returning to a foreground application status, all subsequent attemps to join any RTC rooms will be allowed.
+	 * Upon entering a background application status, all logged in users leave any RTC rooms. All subsequent attempts to join any RTC rooms will be rejected.
+	 * Upon returning to a foreground application status, all subsequent attempts to join any RTC rooms will be allowed.
 	 */
 	EOS_RTCBM_LeaveRooms(0),
 	/**

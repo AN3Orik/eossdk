@@ -18,6 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class CallbackUtils {
 	private static final Map<EOS_NotificationId, Callback> notificationCallbacks = new ConcurrentHashMap<>();
+	@SuppressWarnings("FieldCanBeLocal")
 	private static EOS_LogMessageFunc loggingCallback;
 
 	static {

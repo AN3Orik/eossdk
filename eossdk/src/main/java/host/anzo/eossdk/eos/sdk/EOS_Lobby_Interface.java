@@ -261,7 +261,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 *
 	 * @return handle representing the registered callback
 	 */
-	public EOS_NotificationId EOS_Lobby_AddNotifyLobbyMemberStatusReceived(EOS_Lobby_AddNotifyLobbyMemberStatusReceivedOptions options,
+	public EOS_NotificationId addNotifyLobbyMemberStatusReceived(EOS_Lobby_AddNotifyLobbyMemberStatusReceivedOptions options,
 	                                                                       Pointer clientData,
 	                                                                       EOS_Lobby_OnLobbyMemberStatusReceivedCallback notificationFn) {
 		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLobbyMemberStatusReceived(this, options, clientData, notificationFn);

@@ -52,6 +52,18 @@ public class EOS_Connect_Interface extends PointerType {
 	}
 
 	/**
+	 * Logout a currently logged in user.
+	 * NOTE: Access tokens for Product User IDs cannot be revoked. This operation really just cleans up state for the Product User ID and locally discards any associated access token.
+	 *
+	 * @param options Structure containing the input parameters for the operation
+	 * @param clientData Arbitrary data that is passed back to the caller in the CompletionDelegate.
+	 * @param completionDelegate A callback that is fired when the operation completes, either successfully or in error.
+	 */
+	public void logout(EOS_Connect_LogoutOptions options, Pointer clientData, EOS_Connect_OnLogoutCallback completionDelegate) {
+		EOSLibrary.instance.EOS_Connect_Logout(this, options, clientData, completionDelegate);
+	}
+
+	/**
 	 * Create an account association with the Epic Online Service as a product user given their external auth credentials.
 	 *
 	 * @param options structure containing a continuance token from a "user not found" response during Login (always try login first).
@@ -433,7 +445,7 @@ public class EOS_Connect_Interface extends PointerType {
 	 * Notification is approximately 10 minutes prior to expiration.
 	 * Call EOS_Connect_Login again with valid third party credentials to refresh access.
 	 * <p>
-	 * <b>Must call {@link #removeNotifyAuthExpiration(EOS_NotificationId)} to remove the notification.</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyAuthExpiration(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options structure containing the API version of the callback to use.
 	 * @param clientData arbitrary data that is passed back to you in the callback.
@@ -463,7 +475,7 @@ public class EOS_Connect_Interface extends PointerType {
 
 	/**
 	 * Register to receive user login status updates.<br>
-	 * <b>Must call {@link #removeNotifyLoginStatusChanged(EOS_NotificationId)} to remove the notification.</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyLoginStatusChanged(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options structure containing the API version of the callback to use.
 	 * @param clientData arbitrary data that is passed back to you in the callback.

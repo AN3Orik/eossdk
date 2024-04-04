@@ -37,7 +37,9 @@ public @Getter enum EOS_EAntiCheatCommonEventParamType implements NativeMapped {
 	/** EOS_AntiCheatCommon_Vec3f */
 	EOS_ACCEPT_Vector3f(7),
 	/** EOS_AntiCheatCommon_Quat */
-	EOS_ACCEPT_Quat(8);
+	EOS_ACCEPT_Quat(8),
+	/** float */
+	EOS_ACCEPT_Float(9);
 
 	private final int id;
 

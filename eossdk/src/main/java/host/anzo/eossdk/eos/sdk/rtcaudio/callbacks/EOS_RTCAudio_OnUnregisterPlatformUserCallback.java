@@ -6,7 +6,6 @@ import host.anzo.eossdk.eos.sdk.rtcaudio.callbackresults.EOS_RTCAudio_OnUnregist
 /**
  * Callback for completion of unregister platform user request.
  *
- *
  * @author Anton Lasevich
  * @since 11/2/2023
  */

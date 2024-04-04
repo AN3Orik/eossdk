@@ -161,6 +161,8 @@ public class EOS_UI_Interface extends PointerType {
 	 * <p>
 	 * On PC the EOS Overlay automatically listens to gamepad input and routes it to the overlay when appropriate. If this button is configured, the user may open the overlay using either this button or the toggle friends key.
 	 * On console platforms, the game must be calling EOS_UI_ReportInputState to route gamepad input to the EOS Overlay.
+	 * <p>
+	 * Note: If you do not have a button mapped, it'll suppress the part of the toast notification that prompts the user to press it.
 	 *
 	 * @param options Structure containing the button combination to use.
 	 *
@@ -315,7 +317,7 @@ public class EOS_UI_Interface extends PointerType {
 	/**
 	 * Register to receive notifications from the memory monitor.
 	 * Newly registered handlers will always be called the next tick with the current state.<br>
-	 * <b>Must call {@link #removeNotifyMemoryMonitor(EOS_NotificationId)} to remove the notification.</b>
+	 * <b>If the returned NotificationId is valid, you must call #removeNotifyMemoryMonitor(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the notificationFn.

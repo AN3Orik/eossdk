@@ -255,7 +255,7 @@ public class EOS_Auth_Interface extends PointerType {
 
 	/**
 	 * Register to receive login status updates.<br>
-	 * <b>Must call {@link #removeNotifyLoginStatusChanged(EOS_NotificationId)} to remove the notification</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyLoginStatusChanged(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options structure containing the api version of AddNotifyLoginStatusChanged to use
 	 * @param clientData arbitrary data that is passed back to you in the callback

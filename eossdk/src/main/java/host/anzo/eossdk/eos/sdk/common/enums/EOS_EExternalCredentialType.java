@@ -54,6 +54,8 @@ public @Getter enum EOS_EExternalCredentialType implements NativeMapped {
 	/**
 	 * Steam Encrypted App Ticket
 	 * <p>
+	 * <b>Note that EOS_ECT_STEAM_APP_TICKET is deprecated for use with EOS_Auth_Login. Use {@link #EOS_ECT_STEAM_SESSION_TICKET} instead.</b>
+	 * <p>
 	 * Generated using the ISteamUser::RequestEncryptedAppTicket API of Steamworks SDK.
 	 * For ticket generation parameters, use pDataToInclude(NULL) and cbDataToInclude(0).
 	 * <p>
@@ -241,7 +243,13 @@ public @Getter enum EOS_EExternalCredentialType implements NativeMapped {
 	 *
 	 * @since 1.15.1+
 	 */
-	EOS_ECT_STEAM_SESSION_TICKET(18);
+	EOS_ECT_STEAM_SESSION_TICKET(18),
+	/**
+	 * VIVEPORT User Session Token
+	 * <p>
+	 * Supported with EOS_Connect_Login.
+	 */
+	EOS_ECT_VIVEPORT_USER_TOKEN(19);
 
 	private final int id;
 

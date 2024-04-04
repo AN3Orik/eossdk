@@ -26,10 +26,18 @@ public class EOS_RTC_Interface extends PointerType {
 
 	/**
 	 * Get a handle to the Audio interface
-	 * @return EOS_RTC_InterfaceAudio handle
+	 * @return EOS_RTC_Audio_Interface handle
 	 */
 	public EOS_RTC_Audio_Interface getAudioInterface() {
 		return EOSLibrary.instance.EOS_RTC_GetAudioInterface(this);
+	}
+
+	/**
+	 * Get a handle to the Data interface
+	 * @return EOS_RTC_Data_Interface handle
+	 */
+	public EOS_RTC_Data_Interface getDataInterface() {
+		return EOSLibrary.instance.EOS_RTC_GetDataInterface(this);
 	}
 
 	/**
@@ -81,7 +89,7 @@ public class EOS_RTC_Interface extends PointerType {
 	 * status of a Lobby-managed RTC room, use the EOS_Lobby_AddNotifyRTCRoomConnectionChanged function instead.
 	 *
 	 * @param clientData Arbitrary data that is passed back in the CompletionDelegate
-	 * @param completionDelegate The callback to be fired when a presence change occurs
+	 * @param completionDelegate The callback to be fired when a participant is disconnected from the room
 	 * @return Notification ID representing the registered callback if successful, an invalid NotificationId if not
 	 *
 	 * @see EOS_NotificationId#EOS_INVALID_NOTIFICATIONID
@@ -124,7 +132,7 @@ public class EOS_RTC_Interface extends PointerType {
 	 * ParticipantStatus set to EOS_RTCPS_Joined and bParticipantInBlocklist set to false.
 	 *
 	 * @param clientData Arbitrary data that is passed back in the CompletionDelegate
-	 * @param completionDelegate The callback to be fired when a presence change occurs
+	 * @param completionDelegate The callback to be fired when a participant changes status
 	 * @return Notification ID representing the registered callback if successful, an invalid NotificationId if not
 	 * <p>
 	 * <b>This notification is also raised when the local user joins the room, but NOT when the local user leaves the room.</b>

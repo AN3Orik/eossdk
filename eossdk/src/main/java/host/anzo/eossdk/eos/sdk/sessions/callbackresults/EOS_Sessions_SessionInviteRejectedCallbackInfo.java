@@ -2,7 +2,10 @@ package host.anzo.eossdk.eos.sdk.sessions.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOS_Sessions_Interface;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
+import host.anzo.eossdk.eos.sdk.sessions.callbacks.EOS_Sessions_OnSessionInviteRejectedCallback;
+import host.anzo.eossdk.eos.sdk.sessions.options.EOS_Sessions_AddNotifySessionInviteRejectedOptions;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -14,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ClientData", "InviteId", "LocalUserId", "TargetUserId", "SessionId"})
 public class EOS_Sessions_SessionInviteRejectedCallbackInfo extends Structure {
-	/** Context that was passed into EOS_Lobby_AddNotifySessionInviteRejected */
+	/** Context that was passed into {@link EOS_Sessions_Interface#addNotifySessionInviteRejected(EOS_Sessions_AddNotifySessionInviteRejectedOptions, Pointer, EOS_Sessions_OnSessionInviteRejectedCallback)} */
 	public Pointer ClientData;
 	/** The invite ID */
 	public String InviteId;

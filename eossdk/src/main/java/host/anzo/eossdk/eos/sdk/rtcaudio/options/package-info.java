@@ -1,5 +1,5 @@
 /**
- * Core package for Sessions Audio option classes
+ * Core package for RTC Audio option classes
  * @author Anton Lasevich
  * @since 11/8/2023
  */

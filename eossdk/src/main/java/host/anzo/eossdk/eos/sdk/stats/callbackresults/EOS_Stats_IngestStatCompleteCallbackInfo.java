@@ -8,6 +8,13 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Data containing the result information for an ingest stat request.
+ * <p>
+ * NOTE: A result code of EOS_Success indicates the ingest request
+ * reached the server successfully, but does not guarantee successful processing.
+ * For example, if an incorrect StatName value is provided in the ingest call,
+ * processing may still fail.
+ *
  * @author Anton Lasevich
  * @since 8/31/2023
  */

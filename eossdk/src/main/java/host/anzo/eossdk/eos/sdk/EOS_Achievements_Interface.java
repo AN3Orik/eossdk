@@ -108,7 +108,7 @@ public class EOS_Achievements_Interface extends PointerType {
 
 	/**
 	 * Query for a list of achievements for a specific player, including progress towards completion for each achievement.<br>
-	 * <b> When the Social Overlay is enabled then this will be called automatically.  The Social Overlay is enabled by default (see EOS_Platform_Create_Flag#EOS_PF_DISABLE_SOCIAL_OVERLAY).</b>
+	 * <b>When the Social Overlay is enabled then this will be called automatically. The Social Overlay is enabled by default</b>
 	 *
 	 * @param options Structure containing information about the player whose achievements we're retrieving.
 	 * @param clientData Arbitrary data that is passed back to you in the completionDelegate
@@ -189,8 +189,7 @@ public class EOS_Achievements_Interface extends PointerType {
 
 	/**
 	 * Register to receive achievement unlocked notifications.<br>
-	 * <b>Must call EOS_Achievements_RemoveNotifyAchievementsUnlocked to remove the notification</b>
-	 *
+	 * <b>If the returned NotificationId is valid, you must call EOS_Achievements_RemoveNotifyAchievementsUnlocked when you no longer wish to have your NotificationHandler called.</b>
 	 * @see #removeNotifyAchievementsUnlocked(EOS_NotificationId)
 	 *
 	 * @param options Structure containing information about the achievement unlocked notification

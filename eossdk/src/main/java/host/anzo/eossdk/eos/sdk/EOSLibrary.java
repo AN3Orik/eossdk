@@ -102,9 +102,16 @@ import host.anzo.eossdk.eos.sdk.rtcaudio.EOS_RTCAudio_InputDeviceInformation;
 import host.anzo.eossdk.eos.sdk.rtcaudio.EOS_RTCAudio_OutputDeviceInformation;
 import host.anzo.eossdk.eos.sdk.rtcaudio.callbacks.*;
 import host.anzo.eossdk.eos.sdk.rtcaudio.options.*;
+import host.anzo.eossdk.eos.sdk.rtcdata.callbacks.EOS_RTCData_OnDataReceivedCallback;
+import host.anzo.eossdk.eos.sdk.rtcdata.callbacks.EOS_RTCData_OnParticipantUpdatedCallback;
+import host.anzo.eossdk.eos.sdk.rtcdata.callbacks.EOS_RTCData_OnUpdateReceivingCallback;
+import host.anzo.eossdk.eos.sdk.rtcdata.callbacks.EOS_RTCData_OnUpdateSendingCallback;
+import host.anzo.eossdk.eos.sdk.rtcdata.options.*;
 import host.anzo.eossdk.eos.sdk.sanctions.EOS_Sanctions_PlayerSanction;
+import host.anzo.eossdk.eos.sdk.sanctions.callbacks.EOS_Sanctions_CreatePlayerSanctionAppealCallback;
 import host.anzo.eossdk.eos.sdk.sanctions.callbacks.EOS_Sanctions_OnQueryActivePlayerSanctionsCallback;
 import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_CopyPlayerSanctionByIndexOptions;
+import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_CreatePlayerSanctionAppealOptions;
 import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_GetPlayerSanctionCountOptions;
 import host.anzo.eossdk.eos.sdk.sanctions.options.EOS_Sanctions_QueryActivePlayerSanctionsOptions;
 import host.anzo.eossdk.eos.sdk.sessions.*;
@@ -435,6 +442,8 @@ public interface EOSLibrary extends Library {
 	// Connect
 	void EOS_Connect_Login(EOS_Connect_Interface handle, EOS_Connect_LoginOptions options, Pointer clientData, EOS_Connect_OnLoginCallback completionDelegate);
 
+	void EOS_Connect_Logout(EOS_Connect_Interface handle, EOS_Connect_LogoutOptions options, Pointer clientData, EOS_Connect_OnLogoutCallback completionDelegate);
+
 	void EOS_Connect_CreateUser(EOS_Connect_Interface handle, EOS_Connect_CreateUserOptions options, Pointer clientData, EOS_Connect_OnCreateUserCallback completionDelegate);
 
 	void EOS_Connect_LinkAccount(EOS_Connect_Interface handle, EOS_Connect_LinkAccountOptions options, Pointer clientData, EOS_Connect_OnLinkAccountCallback completionDelegate);
@@ -717,7 +726,9 @@ public interface EOSLibrary extends Library {
 
 	EOS_EResult EOS_Sanctions_CopyPlayerSanctionByIndex(EOS_Sanctions_Interface handle, EOS_Sanctions_CopyPlayerSanctionByIndexOptions options, EOS_Sanctions_PlayerSanction.ByReference outSanction);
 
+	void EOS_Sanctions_CreatePlayerSanctionAppeal(EOS_Sanctions_Interface handle, EOS_Sanctions_CreatePlayerSanctionAppealOptions options, Pointer clientData, EOS_Sanctions_CreatePlayerSanctionAppealCallback completionDelegate);
 	void EOS_Sanctions_PlayerSanction_Release(EOS_Sanctions_PlayerSanction sanction);
+
 
 	// Reports
 	void EOS_Reports_SendPlayerBehaviorReport(EOS_Reports_Interface handle, EOS_Reports_SendPlayerBehaviorReportOptions options, Pointer clientData, EOS_Reports_OnSendPlayerBehaviorReportCompleteCallback completionDelegate);
@@ -1365,6 +1376,7 @@ public interface EOSLibrary extends Library {
 
 	// RTC
 	EOS_RTC_Audio_Interface EOS_RTC_GetAudioInterface(EOS_RTC_Interface handle);
+	EOS_RTC_Data_Interface EOS_RTC_GetDataInterface(EOS_RTC_Interface handle);
 
 	void EOS_RTC_JoinRoom(EOS_RTC_Interface handle, EOS_RTC_JoinRoomOptions options, Pointer clientData, EOS_RTC_OnJoinRoomCallback completionDelegate);
 
@@ -1461,4 +1473,19 @@ public interface EOSLibrary extends Library {
 	void EOS_RTCAudio_OutputDeviceInformation_Release(EOS_RTCAudio_OutputDeviceInformation deviceInformation);
 
 	void EOS_RTCAudio_InputDeviceInformation_Release(EOS_RTCAudio_InputDeviceInformation deviceInformation);
+
+	// RTC Data
+	EOS_NotificationId EOS_RTCData_AddNotifyDataReceived(EOS_RTC_Data_Interface handle, EOS_RTCData_AddNotifyDataReceivedOptions options, Pointer clientData, EOS_RTCData_OnDataReceivedCallback completionDelegate);
+
+	void EOS_RTCData_RemoveNotifyDataReceived(EOS_RTC_Data_Interface handle, EOS_NotificationId NotificationId);
+
+	EOS_EResult EOS_RTCData_SendData(EOS_RTC_Data_Interface handle, EOS_RTCData_SendDataOptions options);
+
+	void EOS_RTCData_UpdateSending(EOS_RTC_Data_Interface handle, EOS_RTCData_UpdateSendingOptions options, Pointer clientData, EOS_RTCData_OnUpdateSendingCallback completionDelegate);
+
+	void EOS_RTCData_UpdateReceiving(EOS_RTC_Data_Interface handle, EOS_RTCData_UpdateReceivingOptions options, Pointer clientData, EOS_RTCData_OnUpdateReceivingCallback completionDelegate);
+
+	EOS_NotificationId EOS_RTCData_AddNotifyParticipantUpdated(EOS_RTC_Data_Interface handle, EOS_RTCData_AddNotifyParticipantUpdatedOptions options, Pointer clientData, EOS_RTCData_OnParticipantUpdatedCallback completionDelegate);
+
+	void EOS_RTCData_RemoveNotifyParticipantUpdated(EOS_RTC_Data_Interface handle, EOS_NotificationId notificationId);
 }

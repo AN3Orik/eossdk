@@ -23,23 +23,23 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "VictimPlayerHandle", "VictimPlayerPosition", "VictimPlayerViewRotation", "AttackerPlayerHandle", "AttackerPlayerPosition", "AttackerPlayerViewRotation", "IsHitscanAttack", "HasLineOfSight", "IsCriticalHit", "HitBoneId_DEPRECATED", "DamageTaken", "HealthRemaining", "DamageSource", "DamageType", "DamageResult", "PlayerUseWeaponData", "TimeSincePlayerUseWeaponMs", "DamagePosition"})
+@FieldOrder({"ApiVersion", "VictimPlayerHandle", "VictimPlayerPosition", "VictimPlayerViewRotation", "AttackerPlayerHandle", "AttackerPlayerPosition", "AttackerPlayerViewRotation", "IsHitscanAttack", "HasLineOfSight", "IsCriticalHit", "HitBoneId_DEPRECATED", "DamageTaken", "HealthRemaining", "DamageSource", "DamageType", "DamageResult", "PlayerUseWeaponData", "TimeSincePlayerUseWeaponMs", "DamagePosition", "AttackerPlayerViewPosition"})
 public class EOS_AntiCheatCommon_LogPlayerTakeDamageOptions extends Structure {
-	public static int EOS_ANTICHEATCOMMON_LOGPLAYERTAKEDAMAGE_API_LATEST = 3;
+	public static int EOS_ANTICHEATCOMMON_LOGPLAYERTAKEDAMAGE_API_LATEST = 4;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGPLAYERTAKEDAMAGE_API_LATEST}. */
 	public int ApiVersion;
 	/** Locally unique value used in RegisterClient/RegisterPeer */
 	public EOS_AntiCheatCommon_ClientHandle VictimPlayerHandle;
-	/** Victim player's current world position as a 3D vector */
+	/** Victim player character's world position as a 3D vector. This should be the center of the character. */
 	public EOS_AntiCheatCommon_Vec3f.ByReference VictimPlayerPosition;
-	/** Victim player's view rotation as a quaternion */
+	/** Victim player camera's world rotation as a quaternion. */
 	public EOS_AntiCheatCommon_Quat.ByReference VictimPlayerViewRotation;
 	/** Locally unique value used in RegisterClient/RegisterPeer if applicable, otherwise 0. */
 	public EOS_AntiCheatCommon_ClientHandle AttackerPlayerHandle;
-	/** Attacker player's current world position as a 3D vector if applicable, otherwise NULL. */
+	/** Attacker player character's world position as a 3D vector if applicable, otherwise NULL. */
 	public EOS_AntiCheatCommon_Vec3f.ByReference AttackerPlayerPosition;
-	/** Attacker player's view rotation as a quaternion if applicable, otherwise NULL. */
+	/** Attacker player camera's world rotation as a quaternion if applicable, otherwise NULL. */
 	public EOS_AntiCheatCommon_Quat.ByReference AttackerPlayerViewRotation;
 	/**
 	 * {@link EOS_Bool#EOS_TRUE} if the damage was applied instantly at the time of attack from the game
@@ -77,6 +77,8 @@ public class EOS_AntiCheatCommon_LogPlayerTakeDamageOptions extends Structure {
 	public int TimeSincePlayerUseWeaponMs;
 	/** World position where damage hit the victim as a 3D vector if available, otherwise NULL */
 	public EOS_AntiCheatCommon_Vec3f.ByReference DamagePosition;
+	/** Attacker player camera's world position as a 3D vector if applicable, otherwise NULL */
+	public EOS_AntiCheatCommon_Vec3f.ByReference AttackerPlayerViewPosition;
 
 	public EOS_AntiCheatCommon_LogPlayerTakeDamageOptions() {
 		super();

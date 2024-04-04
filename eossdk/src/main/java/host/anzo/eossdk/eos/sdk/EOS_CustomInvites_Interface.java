@@ -55,7 +55,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 
 	/**
 	 * Register to receive notifications when a Custom Invite for any logged in local user is received<br>
-	 * <b>Must call {@link #removeNotifyCustomInviteReceived(EOS_NotificationId)} to remove the notification</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyCustomInviteReceived(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.
@@ -86,7 +86,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	/**
 	 * Register to receive notifications when a Custom Invite for any logged in local user is accepted via the Social Overlay
 	 * Invites accepted in this way still need to have FinalizeInvite called on them after you have finished processing the invite accept (e.g. after joining the game)<br>
-	 * <b>Must call {@link #removeNotifyCustomInviteAccepted(EOS_NotificationId)} to remove the notification</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyCustomInviteAccepted(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.
@@ -117,7 +117,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	/**
 	 * Register to receive notifications when a Custom Invite for any logged in local user is rejected via the Social Overlay
 	 * Invites rejected in this way do not need to have FinalizeInvite called on them, it is called automatically internally by the SDK.<br>
-	 * <b>Must call {@link #removeNotifyCustomInviteRejected(EOS_NotificationId)} to remove the notification</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyCustomInviteRejected(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.
@@ -173,7 +173,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	/**
 	 * Register to receive notifications when a request to join is responded to by a target user. Note that there is no guarantee a response will be received for every request to join.
 	 * A player is free to ignore a Request to Join until it expires at which point it will be deleted without sending a response.<br>
-	 * <b>Must call {@link #removeNotifyRequestToJoinResponseReceived(EOS_NotificationId)} to remove the notification</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyRequestToJoinResponseReceived(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.
@@ -203,7 +203,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 
 	/**
 	 * Register to receive notifications when a request to join is received for a local user<br>
-	 * <b>Must call {@link #removeNotifyRequestToJoinReceived(EOS_NotificationId)} to remove the notification</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyRequestToJoinReceived(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.
@@ -236,7 +236,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 	 * This is only needed when a configured integrated platform has EOS_IPMF_DisableSDKManagedSessions set.  The EOS SDK will
 	 * then use the state of EOS_IPMF_PreferEOSIdentity and EOS_IPMF_PreferIntegratedIdentity to determine when the notificationFn is
 	 * called.<br>
-	 * <b>Must call {@link #removeNotifySendCustomNativeInviteRequested(EOS_NotificationId)} to remove the notification.</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifySendCustomNativeInviteRequested(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.
@@ -270,7 +270,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 
 	/**
 	 * Register to receive notifications when a Request to Join for any logged in local user is accepted via the Social Overlay<br>
-	 * <b>Must call {@link #removeNotifyRequestToJoinAccepted(EOS_NotificationId)} to remove the notification</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyRequestToJoinAccepted(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.
@@ -300,7 +300,7 @@ public class EOS_CustomInvites_Interface extends PointerType {
 
 	/**
 	 * Register to receive notifications when a Request to Join for any logged in local user is rejected via the Social Overlay<br>
-	 * <b>Must call {@link #removeNotifyRequestToJoinRejected(EOS_NotificationId)} to remove the notification</b>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyRequestToJoinRejected(EOS_NotificationId)} when you no longer wish to have your NotificationHandler called.</b>
 	 *
 	 * @param options Structure containing information about the request.
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.

@@ -36,6 +36,7 @@ public class EOS_AntiCheatCommon_LogEventParamPair extends Structure {
 		public long Int64;
 		public EOS_AntiCheatCommon_Vec3f Vec3f;
 		public EOS_AntiCheatCommon_Quat Quat;
+		public float Float_;
 
 		public ParamValue_union() {
 			super();
@@ -75,6 +76,12 @@ public class EOS_AntiCheatCommon_LogEventParamPair extends Structure {
 			super();
 			this.Quat = Quat;
 			setType(EOS_AntiCheatCommon_Quat.class);
+		}
+
+		public ParamValue_union(float Float_) {
+			super();
+			this.Float_ = Float_;
+			setType(Float.TYPE);
 		}
 
 		public static class ByReference extends ParamValue_union implements Structure.ByReference {

@@ -30,7 +30,7 @@ public class EOS_AntiCheatClient_OnMessageToServerCallbackInfo extends Structure
 		super(peer);
 	}
 
-	public ByteBuffer getByteBuffer() {
+	public ByteBuffer getMessageDataByteBuffer() {
 		return MessageData.getByteBuffer(0, MessageDataSizeBytes);
 	}
 

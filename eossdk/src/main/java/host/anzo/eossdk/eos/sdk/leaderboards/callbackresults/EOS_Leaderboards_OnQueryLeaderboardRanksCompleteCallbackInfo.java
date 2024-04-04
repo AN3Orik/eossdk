@@ -12,7 +12,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/21/2023
  */
-@FieldOrder({"ResultCode", "ClientData"})
+@FieldOrder({"ResultCode", "ClientData", "LeaderboardId"})
 public class EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo extends Structure {
 	/**
 	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
@@ -22,6 +22,8 @@ public class EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo extend
 	public EOS_EResult ResultCode;
 	/** Context that was passed into EOS_Leaderboards_QueryLeaderboardRanks. */
 	public Pointer ClientData;
+	/** The Leaderboard ID for the leaderboard that was queried. */
+	public String LeaderboardId;
 
 	public EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallbackInfo() {
 		super();

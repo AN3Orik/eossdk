@@ -13,7 +13,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/19/2023
  */
-@FieldOrder({"ResultCode", "ClientData", "UserId"})
+@FieldOrder({"ResultCode", "ClientData", "TargetUserId", "LocalUserId"})
 public class EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo extends Structure {
 	/**
 	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
@@ -24,8 +24,10 @@ public class EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo exte
 	public EOS_EResult ResultCode;
 	/** Context that was passed into EOS_Achievements_QueryPlayerAchievements. */
 	public Pointer ClientData;
-	/** The Product User ID of the user who initiated this request. */
-	public EOS_ProductUserId UserId;
+	/** The Product User ID whose achievements were retrieved. */
+	public EOS_ProductUserId TargetUserId;
+	/** The Product User ID of the user who initiated this request. For a Dedicated Server this should be null. */
+	public EOS_ProductUserId LocalUserId;
 
 	public EOS_Achievements_OnQueryPlayerAchievementsCompleteCallbackInfo() {
 		super();
