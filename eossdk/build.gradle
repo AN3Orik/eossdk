@@ -5,12 +5,12 @@ plugins {
 }
 
 dependencies {
-    annotationProcessor('org.jetbrains:annotations:24.0.1')
-    compileOnly('org.jetbrains:annotations:24.0.1')
-    annotationProcessor('org.projectlombok:lombok:1.18.30')
-    compileOnly('org.projectlombok:lombok:1.18.30')
-    api("net.java.dev.jna:jna:5.13.0")
-    compileOnly('org.slf4j:slf4j-api:2.0.9')
+    annotationProcessor('org.jetbrains:annotations:24.1.0')
+    compileOnly('org.jetbrains:annotations:24.1.0')
+    annotationProcessor('org.projectlombok:lombok:1.18.32')
+    compileOnly('org.projectlombok:lombok:1.18.32')
+    api("net.java.dev.jna:jna:5.14.0")
+    compileOnly('org.slf4j:slf4j-api:2.0.12')
 }
 
 java {
