@@ -20,7 +20,7 @@ subprojects {
 	repositories {
 		mavenCentral()
 	}
-	version = "1.16.2.0"
+	version = "1.16.3.0"
 }
 
 allprojects {
@@ -50,11 +50,11 @@ allprojects {
 	}
 
 	ext.getMavenPublishUser = {
-		return rootProject.isPrivateBuild ? "$nexusUsername" : "$mavenCentralUsername"
+		return rootProject.isPrivateBuild ? "$nexusUsername" : "$mavenCentralUsernameToken"
 	}
 
 	ext.getMavenPublishPassword = {
-		return rootProject.isPrivateBuild ? "$nexusPassword" : "$mavenCentralPassword"
+		return rootProject.isPrivateBuild ? "$nexusPassword" : "$mavenCentralPasswordToken"
 	}
 }
 
