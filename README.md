@@ -85,3 +85,7 @@ During development, I try to preserve the original documentation as much as poss
 So you can use [Official EOS SDK documentation](https://dev.epicgames.com/docs/api-ref)
 
 Also a basic project is available [here](https://github.com/AN3Orik/eossdk/tree/main/eossdk-example) (more just "how-to-use" than ready-to-go example)
+
+## SAST Tools
+
+[PVS-Studio](https://pvs-studio.com/pvs-studio/?utm_source=website&utm_medium=github&utm_campaign=open_source) - static analyzer for C, C++, C#, and Java code.
