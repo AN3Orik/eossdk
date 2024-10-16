@@ -11,18 +11,15 @@ import java.util.Map;
  * Setting for controlling whether relay servers are used.
  * <p>
  * Please see the following EOS_ERelayControl value compatibility-chart to better understand how changing this value
- * can affect compatibility between clients with different settings.
- * <pre>
- * <code>
- * +------------------------------+---------------------+-------------------------------+---------------------+
- * |                              |   EOS_RC_NoRelays   |  EOS_RC_AllowRelays (Default) |  EOS_RC_ForceRelays |
- * +------------------------------+---------------------+-------------------------------+---------------------
- * | EOS_RC_NoRelays              |  Compatible         |  Compatible                   |  Connection Failure |
- * | EOS_RC_AllowRelays (Default) |  Compatible         |  Compatible                   |  Compatible         |
- * | EOS_RC_ForceRelays           |  Connection Failure |  Compatible                   |  Compatible         |
- * +------------------------------+---------------------+-------------------------------+---------------------+
- * </code>
- * </pre>
+ * can affect compatibility between clients with different settings.<br>
+ * Connections between clients using Incompatible settings may succeed in limited scenarios but should be treated as though they will consistently fail.<br>
+ * <table border="1" >
+ *     <caption></caption>
+ *     <tr><th>Type</th><th>EOS_RC_NoRelays</th><th>EOS_RC_AllowRelays (Default)</th><th>EOS_RC_ForceRelays</th></tr>
+ *     <tr><td>EOS_RC_NoRelays</td><td>Compatible</td><td>Compatible</td><td>Incompatible</td></tr>
+ *     <tr><td>EOS_RC_AllowRelays (Default)</td><td>Compatible</td><td>Compatible</td><td>Compatible</td></tr>
+ *     <tr><td>EOS_RC_ForceRelays</td><td>Incompatible</td><td>Compatible</td><td>Compatible</td></tr>
+ * </table>
  * @author Anton Lasevich
  * @since 8/21/2023
  */

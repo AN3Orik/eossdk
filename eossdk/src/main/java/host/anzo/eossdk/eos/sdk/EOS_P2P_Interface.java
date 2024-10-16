@@ -198,7 +198,7 @@ public class EOS_P2P_Interface extends PointerType {
 	}
 
 	/**
-	 * Listen for when a previously opened connection is closed.
+	 * Listen for when a previously accepted connection that was either open or pending is closed.
 	 *
 	 * @param options Information about who would like notifications about closed connections, and for which socket
 	 * @param clientData This value is returned to the caller when ConnectionClosedHandler is invoked

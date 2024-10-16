@@ -17,7 +17,7 @@ import static com.sun.jna.Structure.FieldOrder;
 @FieldOrder({"ApiVersion", "LocalUserId", "Filename", "ReadChunkLengthBytes", "ReadFileDataCallback", "FileTransferProgressCallback"})
 public class EOS_TitleStorage_ReadFileOptions extends Structure {
 	/** The most recent version of the EOS_TitleStorage_ReadFile API. */
-	public static final int EOS_TITLESTORAGE_READFILE_API_LATEST = 1;
+	public static final int EOS_TITLESTORAGE_READFILE_API_LATEST = 2;
 
 	/** API Version: Set this to {@link #EOS_TITLESTORAGE_READFILE_API_LATEST}. */
 	public int ApiVersion;

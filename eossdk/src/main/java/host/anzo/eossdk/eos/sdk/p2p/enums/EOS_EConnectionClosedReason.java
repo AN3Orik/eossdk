@@ -35,7 +35,9 @@ public @Getter enum EOS_EConnectionClosedReason implements NativeMapped {
 	/** The connection was locally accepted, but we failed to negotiate a connection with the remote user. This most commonly occurs if the local user goes offline or is logged-out during the connection process. */
 	EOS_CCR_NegotiationFailed(9),
 	/** The connection was accepted, but there was an internal error occurred and the connection cannot be created or continue. */
-	EOS_CCR_UnexpectedError(10);
+	EOS_CCR_UnexpectedError(10),
+	/** The connection was ignored because no connection listeners were bound. */
+	EOS_CCR_ConnectionIgnored(11);
 
 	private final int id;
 

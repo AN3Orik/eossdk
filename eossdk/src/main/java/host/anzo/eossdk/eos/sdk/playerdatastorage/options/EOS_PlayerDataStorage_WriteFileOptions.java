@@ -16,7 +16,7 @@ import static com.sun.jna.Structure.FieldOrder;
 @FieldOrder({"ApiVersion", "LocalUserId", "Filename", "ChunkLengthBytes", "WriteFileDataCallback", "FileTransferProgressCallback"})
 public class EOS_PlayerDataStorage_WriteFileOptions extends Structure {
 	/** The most recent version of the EOS_PlayerDataStorage_WriteFile API. */
-	public static final int EOS_PLAYERDATASTORAGE_WRITEFILE_API_LATEST = 1;
+	public static final int EOS_PLAYERDATASTORAGE_WRITEFILE_API_LATEST = 2;
 
 	/** API Version: Set this to {@link #EOS_PLAYERDATASTORAGE_WRITEFILE_API_LATEST}. */
 	public int ApiVersion;

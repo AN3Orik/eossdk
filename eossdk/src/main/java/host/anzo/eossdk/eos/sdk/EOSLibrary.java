@@ -166,7 +166,12 @@ public interface EOSLibrary extends Library {
 				}
 				break;
 			case Platform.LINUX:
-				libName = "EOSSDK-Linux-Shipping";
+				if (Platform.isARM()) {
+					libName = "EOSSDK-LinuxArm64-Shipping";
+				}
+				else {
+					libName = "EOSSDK-Linux-Shipping";
+				}
 				break;
 			case Platform.MAC:
 				libName = "EOSSDK-Mac-Shipping";

@@ -15,7 +15,7 @@ import static com.sun.jna.Structure.FieldOrder;
 @FieldOrder({"ApiVersion", "LocalUserId", "Filename", "ReadChunkLengthBytes", "ReadFileDataCallback", "FileTransferProgressCallback"})
 public class EOS_PlayerDataStorage_ReadFileOptions extends Structure {
 	/** The most recent version of the EOS_PlayerDataStorage_ReadFile API. */
-	public static final int EOS_PLAYERDATASTORAGE_READFILE_API_LATEST = 1;
+	public static final int EOS_PLAYERDATASTORAGE_READFILE_API_LATEST = 2;
 
 	/** API Version: Set this to {@link #EOS_PLAYERDATASTORAGE_READFILE_API_LATEST}. */
 	public int ApiVersion;
@@ -27,7 +27,7 @@ public class EOS_PlayerDataStorage_ReadFileOptions extends Structure {
 	public int ReadChunkLengthBytes;
 	/** Callback function that handles data as it comes in, and can stop the transfer early */
 	public EOS_PlayerDataStorage_OnReadFileDataCallback ReadFileDataCallback;
-	/** Optional callback function to be informed of download progress, if the file is not already locally cached; if provided, this will be called at least once before completion if the request is successfully started */
+	/** Optional callback function to be informed of download progress, if the file is not already locally cached;<br>if provided, this will be called at least once before completion if the request is successfully started */
 	public EOS_PlayerDataStorage_OnFileTransferProgressCallback FileTransferProgressCallback;
 
 	public EOS_PlayerDataStorage_ReadFileOptions() {

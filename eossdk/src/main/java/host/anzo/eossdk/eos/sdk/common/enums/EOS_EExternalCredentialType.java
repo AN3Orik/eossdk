@@ -108,7 +108,8 @@ public @Getter enum EOS_EExternalCredentialType implements NativeMapped {
 	 * Identifies a Nintendo user account and is acquired through web flow authentication where the local user logs in using their email address/sign-in ID and password.
 	 * This is the common Nintendo account that users login with outside the Nintendo Switch device.
 	 * <p>
-	 * Supported with EOS_Auth_Login, EOS_Connect_Login.
+	 * Supported with EOS_Auth_Login, EOS_Connect_Login.<br>
+	 * <b>Note: EOS_Auth_Login usage is restricted to Epic first party products only, attempting to use it will result in authentication failures.</b>
 	 */
 	EOS_ECT_NINTENDO_ID_TOKEN(6),
 	/**
@@ -130,10 +131,12 @@ public @Getter enum EOS_EExternalCredentialType implements NativeMapped {
 	 * progression if it is only associated with this account type.
 	 * <p>
 	 * Supported with EOS_Auth_Login, EOS_Connect_Login.
+	 * <b>Note: EOS_Auth_Login usage is restricted to Epic first party products only, attempting to use it will result in authentication failures.</b>
 	 */
 	EOS_ECT_NINTENDO_NSA_ID_TOKEN(7),
 	/**
-	 * Uplay Access Token
+	 * Uplay Access Token<br>
+	 * Supported with EOS_Connect_Login.
 	 */
 	EOS_ECT_UPLAY_ACCESS_TOKEN(8),
 	/**

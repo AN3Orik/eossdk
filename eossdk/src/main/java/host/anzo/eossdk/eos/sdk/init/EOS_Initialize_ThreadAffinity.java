@@ -18,10 +18,10 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "NetworkWork", "StorageIo", "WebSocketIo", "P2PIo", "HttpRequestIo", "RTCIo"})
+@FieldOrder({"ApiVersion", "NetworkWork", "StorageIo", "WebSocketIo", "P2PIo", "HttpRequestIo", "RTCIo", "EmbeddedOverlayMainThread", "EmbeddedOverlayWorkerThreads"})
 public class EOS_Initialize_ThreadAffinity extends Structure {
 	/** The most recent version of the EOS_Initialize_ThreadAffinity API. */
-	public static int EOS_INITIALIZE_THREADAFFINITY_API_LATEST = 2;
+	public static int EOS_INITIALIZE_THREADAFFINITY_API_LATEST = 3;
 
 	/** API Version: Set this to EOS_ANTICHEATSERVER_UNPROTECTMESSAGE_API_LATEST. */
 	public int ApiVersion;
@@ -37,6 +37,10 @@ public class EOS_Initialize_ThreadAffinity extends Structure {
 	public long HttpRequestIo;
 	/** Any thread that will generate IO related to RTC traffic and management. */
 	public long RTCIo;
+	/** Main thread of the external overlay */
+	public long EmbeddedOverlayMainThread;
+	/** Worker threads of the external overlay */
+	public long EmbeddedOverlayWorkerThreads;
 
 	public EOS_Initialize_ThreadAffinity() {
 		super();

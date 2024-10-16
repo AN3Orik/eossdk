@@ -8,6 +8,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.common.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_EAntiCheatCommonGameRoundCompetitionType;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -15,9 +16,9 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "SessionIdentifier", "LevelName", "ModeName", "RoundTimeSeconds"})
+@FieldOrder({"ApiVersion", "SessionIdentifier", "LevelName", "ModeName", "RoundTimeSeconds", "CompetitionType"})
 public class EOS_AntiCheatCommon_LogGameRoundStartOptions extends Structure {
-	public static int EOS_ANTICHEATCOMMON_LOGGAMEROUNDSTART_API_LATEST = 1;
+	public static int EOS_ANTICHEATCOMMON_LOGGAMEROUNDSTART_API_LATEST = 2;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGGAMEROUNDSTART_API_LATEST}. */
 	public int ApiVersion;
@@ -29,6 +30,10 @@ public class EOS_AntiCheatCommon_LogGameRoundStartOptions extends Structure {
 	public String ModeName;
 	/** Optional length of the game round to be played, in seconds. If none, use 0. */
 	public int RoundTimeSeconds;
+	/**
+	 * Type of competition for this game round
+	 */
+	public EOS_EAntiCheatCommonGameRoundCompetitionType CompetitionType;
 
 	public EOS_AntiCheatCommon_LogGameRoundStartOptions() {
 		super();

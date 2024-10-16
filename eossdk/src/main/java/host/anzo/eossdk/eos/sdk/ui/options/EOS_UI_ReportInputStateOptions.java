@@ -24,7 +24,7 @@ public class EOS_UI_ReportInputStateOptions extends Structure {
 	 * Flags to identify the current buttons which are pressed.
 	 * @see EOS_UI_EInputStateButtonFlags
 	 */
-	public int ButtonDownFlags;
+	public EOS_UI_EInputStateButtonFlags ButtonDownFlags;
 	/**
 	 * Whether the current platform and configuration uses the right face button as the default accept button.
 	 * When this flag is true, the right face button is the accept action, and the down face button is the cancel action.

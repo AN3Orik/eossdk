@@ -14,6 +14,9 @@ import java.util.Map;
 public @Getter enum EOS_OnlinePlatformType implements NativeMapped {
 	EOS_OPT_Unknown(0),
 	EOS_OPT_Epic(100),
+	EOS_OPT_PSN(1000),
+	EOS_OPT_Nintendo(2000),
+	EOS_OPT_XBL(3000),
 	EOS_OPT_Steam(4000);
 
 	private final int id;
