@@ -16,6 +16,7 @@ import host.anzo.eossdk.eos.utils.CallbackUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 
 /**
  * The Anti-Cheat client Interface is used to implement anti-cheat interface at game client side
@@ -202,6 +203,16 @@ public class EOS_AntiCheatClient_Interface extends PointerType {
 	 */
 	public EOS_EResult endSession() {
 		return EOSLibrary.instance.EOS_AntiCheatClient_EndSession(this, new EOS_AntiCheatClient_EndSessionOptions());
+	}
+
+	/**
+	 * This function is reserved for future use and must not be called.<br>
+	 * @param options Structure containing input data.<br>
+	 * @param outValue Reserved.<br>
+	 * @return {@link EOS_EResult#EOS_NotImplemented} - Always
+	 */
+	public EOS_EResult reserved01(EOS_AntiCheatClient_Reserved01Options options, IntBuffer outValue) {
+		return EOSLibrary.instance.EOS_AntiCheatClient_Reserved01(this, options, outValue);
 	}
 
 	/**

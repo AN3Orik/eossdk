@@ -108,6 +108,7 @@ public class EOS_Achievements_Interface extends PointerType {
 
 	/**
 	 * Query for a list of achievements for a specific player, including progress towards completion for each achievement.<br>
+	 * Note: By default, this query will not return locked hidden achievements. To return all achievements, call EOS_Achievements_QueryDefinitions first.<br>
 	 * <b>When the Social Overlay is enabled then this will be called automatically. The Social Overlay is enabled by default</b>
 	 *
 	 * @param options Structure containing information about the player whose achievements we're retrieving.

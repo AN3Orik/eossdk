@@ -49,4 +49,3 @@ public class EOS_AntiCheatClient_UnprotectMessageOptions extends Structure {
 	public static class ByValue extends EOS_AntiCheatClient_UnprotectMessageOptions implements Structure.ByValue {
 	}
 }
-

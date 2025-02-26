@@ -85,7 +85,7 @@ public class EOS_Platform_Options extends Structure {
 	 * When set to NULL, the EOS Integrated Platform behavior for the host platform will be disabled.
 	 */
 	public EOS_IntegratedPlatformOptionsContainer IntegratedPlatformOptionsContainerHandle;
-	/** Pointer to EOS_Platform_SystemSpecificOptions. This structure will be located in Platform/eos_Platform.h */
+	/** Pointer to EOS_"PLATFORM_NAME"_SystemSpecificOptions. This structure will be located in "PLATFORM_NAME"/eos_"PLATFORM_NAME".h */
 	public Pointer SystemSpecificOptions;
 	/**
 	 * Number of seconds for a task to wait for the network to become available before timing out with an EOS_TimedOut error.

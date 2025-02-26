@@ -21,9 +21,9 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "ClientHandle", "ClientType", "ClientPlatform", "AccountId_DEPRECATED", "IpAddress", "UserId"})
+@FieldOrder({"ApiVersion", "ClientHandle", "ClientType", "ClientPlatform", "AccountId_DEPRECATED", "IpAddress", "UserId", "Reserved01"})
 public class EOS_AntiCheatServer_RegisterClientOptions extends Structure {
-	public static int EOS_ANTICHEATSERVER_REGISTERCLIENT_API_LATEST = 2;
+	public static int EOS_ANTICHEATSERVER_REGISTERCLIENT_API_LATEST = 3;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATSERVER_REGISTERCLIENT_API_LATEST}. */
 	public int ApiVersion;
@@ -49,6 +49,8 @@ public class EOS_AntiCheatServer_RegisterClientOptions extends Structure {
 	public String IpAddress;
 	/** The Product User ID for the remote user who is being registered. */
 	public EOS_ProductUserId UserId;
+	/** Reserved for future use. Must be set to 0. */
+	public int Reserved01;
 
 	public EOS_AntiCheatServer_RegisterClientOptions() {
 		super();
@@ -62,6 +64,7 @@ public class EOS_AntiCheatServer_RegisterClientOptions extends Structure {
 		ClientPlatform = client.getPlatformType();
 		IpAddress = client.getIpAddress();
 		UserId = client.getProductUserId();
+		Reserved01 = 0;
 	}
 
 	public EOS_AntiCheatServer_RegisterClientOptions(Pointer peer) {

@@ -15,10 +15,10 @@ import static com.sun.jna.Structure.FieldOrder;
 @FieldOrder({"ResultCode", "ClientData", "LobbyId"})
 public class EOS_Lobby_LeaveLobbyCallbackInfo extends Structure {
 	/**
-	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.
-	 * {@link EOS_EResult#EOS_Success} if the leave completes successfully
-	 * {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect
-	 * {@link EOS_EResult#EOS_AlreadyPending} if the lobby is already marked for leave
+	 * The EOS_EResult code for the operation. EOS_Success indicates that the operation succeeded; other codes indicate errors.<br>
+	 * {@link EOS_EResult#EOS_Success} if the leave completes successfully<br>
+	 * {@link EOS_EResult#EOS_InvalidParameters} if any of the options are incorrect<br>
+	 * {@link EOS_EResult#EOS_AlreadyPending} if the lobby is already marked for leave<br>
 	 * {@link EOS_EResult#EOS_NotFound} if a lobby to be left does not exist
 	 */
 	public EOS_EResult ResultCode;

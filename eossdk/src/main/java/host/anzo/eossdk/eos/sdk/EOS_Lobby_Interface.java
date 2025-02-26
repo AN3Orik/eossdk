@@ -599,6 +599,34 @@ public class EOS_Lobby_Interface extends PointerType {
 	}
 
 	/**
+	 * Joins the RTC room associated with a specific lobby a local user belongs to.
+	 * <p>
+	 * This function will only succeed when called on a lobby that has the RTC Room feature enabled.
+	 * Clients may check if the RTC Room feature is enabled by inspecting the value of EOS_LobbyDetails_Info::bRTCRoomEnabled.
+	 *
+	 * @param options Structure containing information about which lobby a local user should join the RTC Room for
+	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate
+	 * @param completionDelegate A callback that is fired when the join RTC Room operation completes, either successfully or in error
+	 */
+	void joinRTCRoom(EOS_Lobby_JoinRTCRoomOptions options, Pointer clientData, EOS_Lobby_OnJoinRTCRoomCallback completionDelegate) {
+		EOSLibrary.instance.EOS_Lobby_JoinRTCRoom(this, options, clientData, completionDelegate);
+	}
+
+	/**
+	 * Leaves the RTC room associated with a specific lobby a local user belongs to.
+	 * <p>
+	 * This function will only succeed when called on a lobby that has the RTC Room feature enabled.
+	 * Clients may check if the RTC Room feature is enabled by inspecting the value of EOS_LobbyDetails_Info::bRTCRoomEnabled.
+	 *
+	 * @param options Structure containing information about which lobby a local user should leave the RTC Room for
+	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate
+	 * @param completionDelegate A callback that is fired when the join RTC Room operation completes, either successfully or in error
+	 */
+	void leaveRTCRoom(EOS_Lobby_LeaveRTCRoomOptions options, Pointer clientData, EOS_Lobby_OnLeaveRTCRoomCallback completionDelegate) {
+		EOSLibrary.instance.EOS_Lobby_LeaveRTCRoom(this, options, clientData, completionDelegate);
+	}
+
+	/**
 	 * Get the current connection status of the RTC Room for a lobby.
 	 * <p>
 	 * The RTC Room connection status is independent of the lobby connection status, however the lobby system will attempt to keep

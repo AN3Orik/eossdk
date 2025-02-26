@@ -386,39 +386,41 @@ public interface EOSLibrary extends Library {
 	                                                                Pointer clientData,
 	                                                                EOS_AntiCheatClient_OnMessageToServerCallback notificationFn);
 
-	void EOS_AntiCheatClient_RemoveNotifyMessageToServer(EOS_AntiCheatClient_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_AntiCheatClient_RemoveNotifyMessageToServer(EOS_AntiCheatClient_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_AntiCheatClient_AddNotifyMessageToPeer(EOS_AntiCheatClient_Interface handle,
 	                                                              EOS_AntiCheatClient_AddNotifyMessageToPeerOptions options,
 	                                                              Pointer clientData,
 	                                                              EOS_AntiCheatClient_OnMessageToPeerCallback notificationFn);
 
-	void EOS_AntiCheatClient_RemoveNotifyMessageToPeer(EOS_AntiCheatClient_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_AntiCheatClient_RemoveNotifyMessageToPeer(EOS_AntiCheatClient_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_AntiCheatClient_AddNotifyPeerActionRequired(EOS_AntiCheatClient_Interface handle,
 	                                                                   EOS_AntiCheatClient_AddNotifyPeerActionRequiredOptions options,
 	                                                                   Pointer clientData,
 	                                                                   EOS_AntiCheatClient_OnPeerActionRequiredCallback notificationFn);
 
-	void EOS_AntiCheatClient_RemoveNotifyPeerActionRequired(EOS_AntiCheatClient_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_AntiCheatClient_RemoveNotifyPeerActionRequired(EOS_AntiCheatClient_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_AntiCheatClient_AddNotifyPeerAuthStatusChanged(EOS_AntiCheatClient_Interface handle,
 	                                                                      EOS_AntiCheatClient_AddNotifyPeerAuthStatusChangedOptions options,
 	                                                                      Pointer clientData,
 	                                                                      EOS_AntiCheatClient_OnPeerAuthStatusChangedCallback notificationFn);
 
-	void EOS_AntiCheatClient_RemoveNotifyPeerAuthStatusChanged(EOS_AntiCheatClient_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_AntiCheatClient_RemoveNotifyPeerAuthStatusChanged(EOS_AntiCheatClient_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_AntiCheatClient_AddNotifyClientIntegrityViolated(EOS_AntiCheatClient_Interface handle,
 	                                                                        EOS_AntiCheatClient_AddNotifyClientIntegrityViolatedOptions options,
 	                                                                        Pointer clientData,
 	                                                                        EOS_AntiCheatClient_OnClientIntegrityViolatedCallback notificationFn);
 
-	void EOS_AntiCheatClient_RemoveNotifyClientIntegrityViolated(EOS_AntiCheatClient_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_AntiCheatClient_RemoveNotifyClientIntegrityViolated(EOS_AntiCheatClient_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_EResult EOS_AntiCheatClient_BeginSession(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_BeginSessionOptions options);
 
 	EOS_EResult EOS_AntiCheatClient_EndSession(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_EndSessionOptions options);
+
+	EOS_EResult EOS_AntiCheatClient_Reserved01(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_Reserved01Options Options, IntBuffer OutValue);
 
 	EOS_EResult EOS_AntiCheatClient_AddExternalIntegrityCatalog(EOS_AntiCheatClient_Interface handle, EOS_AntiCheatClient_AddExternalIntegrityCatalogOptions options);
 
@@ -654,6 +656,10 @@ public interface EOSLibrary extends Library {
 	EOS_EResult EOS_Lobby_CopyLobbyDetailsHandle(EOS_Lobby_Interface handle, EOS_Lobby_CopyLobbyDetailsHandleOptions options, PointerByReference OutLobbyDetailsHandle);
 
 	EOS_EResult EOS_Lobby_GetRTCRoomName(EOS_Lobby_Interface handle, EOS_Lobby_GetRTCRoomNameOptions options, ByteBuffer outBuffer, IntBuffer inOutBufferLength);
+
+	void EOS_Lobby_JoinRTCRoom(EOS_Lobby_Interface handle, EOS_Lobby_JoinRTCRoomOptions options, Pointer ClientData, EOS_Lobby_OnJoinRTCRoomCallback completionDelegate);
+
+	void EOS_Lobby_LeaveRTCRoom(EOS_Lobby_Interface handle, EOS_Lobby_LeaveRTCRoomOptions options, Pointer ClientData, EOS_Lobby_OnLeaveRTCRoomCallback completionDelegate);
 
 	EOS_EResult EOS_Lobby_IsRTCRoomConnected(EOS_Lobby_Interface handle, EOS_Lobby_IsRTCRoomConnectedOptions options, IntBuffer bOutIsConnected);
 
@@ -929,7 +935,7 @@ public interface EOSLibrary extends Library {
 	                                                                          Pointer clientData,
 	                                                                          EOS_IntegratedPlatform_OnUserLoginStatusChangedCallback CallbackFunction);
 
-	void EOS_IntegratedPlatform_RemoveNotifyUserLoginStatusChanged(EOS_IntegratedPlatform_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_IntegratedPlatform_RemoveNotifyUserLoginStatusChanged(EOS_IntegratedPlatform_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_EResult EOS_IntegratedPlatform_SetUserPreLogoutCallback(EOS_IntegratedPlatform_Interface handle,
 	                                                            EOS_IntegratedPlatform_SetUserPreLogoutCallbackOptions options,
@@ -1015,19 +1021,19 @@ public interface EOSLibrary extends Library {
 
 	EOS_NotificationId EOS_P2P_AddNotifyPeerConnectionRequest(EOS_P2P_Interface handle, EOS_P2P_AddNotifyPeerConnectionRequestOptions options, Pointer clientData, EOS_P2P_OnIncomingConnectionRequestCallback connectionRequestHandler);
 
-	void EOS_P2P_RemoveNotifyPeerConnectionRequest(EOS_P2P_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_P2P_RemoveNotifyPeerConnectionRequest(EOS_P2P_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_P2P_AddNotifyPeerConnectionEstablished(EOS_P2P_Interface handle, EOS_P2P_AddNotifyPeerConnectionEstablishedOptions options, Pointer clientData, EOS_P2P_OnPeerConnectionEstablishedCallback connectionEstablishedHandler);
 
-	void EOS_P2P_RemoveNotifyPeerConnectionEstablished(EOS_P2P_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_P2P_RemoveNotifyPeerConnectionEstablished(EOS_P2P_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_P2P_AddNotifyPeerConnectionInterrupted(EOS_P2P_Interface handle, EOS_P2P_AddNotifyPeerConnectionInterruptedOptions options, Pointer clientData, EOS_P2P_OnPeerConnectionInterruptedCallback connectionInterruptedHandler);
 
-	void EOS_P2P_RemoveNotifyPeerConnectionInterrupted(EOS_P2P_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_P2P_RemoveNotifyPeerConnectionInterrupted(EOS_P2P_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_P2P_AddNotifyPeerConnectionClosed(EOS_P2P_Interface handle, EOS_P2P_AddNotifyPeerConnectionClosedOptions options, Pointer clientData, EOS_P2P_OnRemoteConnectionClosedCallback connectionClosedHandler);
 
-	void EOS_P2P_RemoveNotifyPeerConnectionClosed(EOS_P2P_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_P2P_RemoveNotifyPeerConnectionClosed(EOS_P2P_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_EResult EOS_P2P_AcceptConnection(EOS_P2P_Interface handle, EOS_P2P_AcceptConnectionOptions options);
 
@@ -1101,7 +1107,7 @@ public interface EOSLibrary extends Library {
 
 	EOS_NotificationId EOS_Presence_AddNotifyOnPresenceChanged(EOS_Presence_Interface handle, EOS_Presence_AddNotifyOnPresenceChangedOptions options, Pointer clientData, EOS_Presence_OnPresenceChangedCallback NotificationHandler);
 
-	void EOS_Presence_RemoveNotifyOnPresenceChanged(EOS_Presence_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_Presence_RemoveNotifyOnPresenceChanged(EOS_Presence_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_Presence_AddNotifyJoinGameAccepted(EOS_Presence_Interface handle, EOS_Presence_AddNotifyJoinGameAcceptedOptions options, Pointer clientData, EOS_Presence_OnJoinGameAcceptedCallback notificationFn);
 
@@ -1433,27 +1439,27 @@ public interface EOSLibrary extends Library {
 
 	EOS_NotificationId EOS_RTCAudio_AddNotifyParticipantUpdated(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_AddNotifyParticipantUpdatedOptions options, Pointer clientData, EOS_RTCAudio_OnParticipantUpdatedCallback completionDelegate);
 
-	void EOS_RTCAudio_RemoveNotifyParticipantUpdated(EOS_RTC_Audio_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_RTCAudio_RemoveNotifyParticipantUpdated(EOS_RTC_Audio_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_RTCAudio_AddNotifyAudioDevicesChanged(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_AddNotifyAudioDevicesChangedOptions options, Pointer clientData, EOS_RTCAudio_OnAudioDevicesChangedCallback completionDelegate);
 
-	void EOS_RTCAudio_RemoveNotifyAudioDevicesChanged(EOS_RTC_Audio_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_RTCAudio_RemoveNotifyAudioDevicesChanged(EOS_RTC_Audio_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_RTCAudio_AddNotifyAudioInputState(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_AddNotifyAudioInputStateOptions options, Pointer clientData, EOS_RTCAudio_OnAudioInputStateCallback completionDelegate);
 
-	void EOS_RTCAudio_RemoveNotifyAudioInputState(EOS_RTC_Audio_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_RTCAudio_RemoveNotifyAudioInputState(EOS_RTC_Audio_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_RTCAudio_AddNotifyAudioOutputState(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_AddNotifyAudioOutputStateOptions options, Pointer clientData, EOS_RTCAudio_OnAudioOutputStateCallback completionDelegate);
 
-	void EOS_RTCAudio_RemoveNotifyAudioOutputState(EOS_RTC_Audio_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_RTCAudio_RemoveNotifyAudioOutputState(EOS_RTC_Audio_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_RTCAudio_AddNotifyAudioBeforeSend(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_AddNotifyAudioBeforeSendOptions options, Pointer clientData, EOS_RTCAudio_OnAudioBeforeSendCallback completionDelegate);
 
-	void EOS_RTCAudio_RemoveNotifyAudioBeforeSend(EOS_RTC_Audio_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_RTCAudio_RemoveNotifyAudioBeforeSend(EOS_RTC_Audio_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_NotificationId EOS_RTCAudio_AddNotifyAudioBeforeRender(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_AddNotifyAudioBeforeRenderOptions options, Pointer clientData, EOS_RTCAudio_OnAudioBeforeRenderCallback completionDelegate);
 
-	void EOS_RTCAudio_RemoveNotifyAudioBeforeRender(EOS_RTC_Audio_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_RTCAudio_RemoveNotifyAudioBeforeRender(EOS_RTC_Audio_Interface handle, EOS_NotificationId notificationId);
 
 	void EOS_RTCAudio_RegisterPlatformUser(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_RegisterPlatformUserOptions options, Pointer clientData, EOS_RTCAudio_OnRegisterPlatformUserCallback completionDelegate);
 
@@ -1482,7 +1488,7 @@ public interface EOSLibrary extends Library {
 	// RTC Data
 	EOS_NotificationId EOS_RTCData_AddNotifyDataReceived(EOS_RTC_Data_Interface handle, EOS_RTCData_AddNotifyDataReceivedOptions options, Pointer clientData, EOS_RTCData_OnDataReceivedCallback completionDelegate);
 
-	void EOS_RTCData_RemoveNotifyDataReceived(EOS_RTC_Data_Interface handle, EOS_NotificationId NotificationId);
+	void EOS_RTCData_RemoveNotifyDataReceived(EOS_RTC_Data_Interface handle, EOS_NotificationId notificationId);
 
 	EOS_EResult EOS_RTCData_SendData(EOS_RTC_Data_Interface handle, EOS_RTCData_SendDataOptions options);
 

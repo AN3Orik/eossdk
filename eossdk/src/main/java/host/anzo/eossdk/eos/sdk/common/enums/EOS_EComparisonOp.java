@@ -8,6 +8,7 @@ package host.anzo.eossdk.eos.sdk.common.enums;
 
 import com.sun.jna.FromNativeContext;
 import com.sun.jna.NativeMapped;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.lobby.EOS_LobbySearch;
 import host.anzo.eossdk.eos.sdk.lobby.options.EOS_LobbySearch_SetParameterOptions;
 import host.anzo.eossdk.eos.sdk.sessions.EOS_SessionSearch;
@@ -47,9 +48,9 @@ public @Getter enum EOS_EComparisonOp implements NativeMapped {
 	EOS_CO_ANYOF(7),
 	/** Value stored on the lobby/session may NOT be any from a specified list */
 	EOS_CO_NOTANYOF(8),
-	/** This one value is a part of a collection */
+	/** This one value is a part of a collection. Supported in {@link EOSLibrary#EOS_SessionSearch_SetParameter} only. */
 	EOS_CO_ONEOF(9),
-	/** This one value is NOT part of a collection */
+	/** This one value is NOT part of a collection. Supported in {@link EOSLibrary#EOS_SessionSearch_SetParameter} only. */
 	EOS_CO_NOTONEOF(10),
 	/** This value is a CASE SENSITIVE substring of an attribute stored on the lobby/session */
 	EOS_CO_CONTAINS(11);

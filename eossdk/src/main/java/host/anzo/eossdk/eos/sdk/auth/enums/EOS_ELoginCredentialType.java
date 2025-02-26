@@ -30,7 +30,7 @@ public @Getter enum EOS_ELoginCredentialType implements NativeMapped {
 	/**
 	 * Login using account email address and password.
 	 * <p>
-	 * <b>Use of this login method is restricted and cannot be used in general.</b>
+	 * <b>Note: This login method is restricted to Epic Games internal use only. Do not use.</b>
 	 */
 	EOS_LCT_Password(0),
 	/**

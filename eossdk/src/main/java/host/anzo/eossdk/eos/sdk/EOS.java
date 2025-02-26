@@ -15,9 +15,9 @@ public class EOS {
 	/** EOS SDK major version */
 	public static final int EOS_MAJOR_VERSION = 1;
 	/** EOS SDK minor version */
-	public static final int EOS_MINOR_VERSION = 16;
+	public static final int EOS_MINOR_VERSION = 17;
 	/** EOS SDK patch version */
-	public static final int EOS_PATCH_VERSION = 4;
+	public static final int EOS_PATCH_VERSION = 0;
 
 	/**
 	 * The name of the env var used to determine if the game was launched by the Epic Games Launcher.

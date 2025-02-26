@@ -14,10 +14,10 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/20/2023
  */
-@FieldOrder({"ApiVersion", "LocalUserId", "EntitlementNames", "EntitlementNameCount", "IsIncludeRedeemed"})
+@FieldOrder({"ApiVersion", "LocalUserId", "EntitlementNames", "EntitlementNameCount", "IsIncludeRedeemed", "OverrideCatalogNamespace"})
 public class EOS_Ecom_QueryEntitlementsOptions extends Structure {
 	/** The most recent version of the EOS_Ecom_QueryEntitlements API. */
-	public static final int EOS_ECOM_QUERYENTITLEMENTS_API_LATEST = 2;
+	public static final int EOS_ECOM_QUERYENTITLEMENTS_API_LATEST = 3;
 
 	/**
 	 * The maximum number of entitlements that may be queried in a single QueryEntitlements API call.
@@ -34,6 +34,8 @@ public class EOS_Ecom_QueryEntitlementsOptions extends Structure {
 	public int EntitlementNameCount;
 	/** If true, Entitlements that have been redeemed will be included in the results. */
 	public EOS_Bool IsIncludeRedeemed;
+	/** If not provided then the SandboxId is used as the catalog namespace */
+	public String OverrideCatalogNamespace;
 
 	public EOS_Ecom_QueryEntitlementsOptions() {
 		super();

@@ -31,7 +31,7 @@ public class EOS_AntiCheatCommon_RegisterEventOptions extends Structure {
 	public String EventName;
 	/** Type of the custom event */
 	public EOS_EAntiCheatCommonEventType EventType;
-	/** Number of parameters described in ParamDefs. Must be {@literal <=} EOS_ANTICHEATCOMMON_REGISTEREVENT_MAX_PARAMDEFSCOUNT. */
+	/** Number of parameters described in ParamDefs. Must be equal to or less than EOS_ANTICHEATCOMMON_REGISTEREVENT_MAX_PARAMDEFSCOUNT. */
 	public int ParamDefsCount;
 	/** Pointer to an array of EOS_AntiCheatCommon_RegisterEventParamDef with ParamDefsCount elements */
 	public EOS_AntiCheatCommon_RegisterEventParamDef.ByReference ParamDefs;

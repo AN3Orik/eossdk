@@ -8,6 +8,7 @@ import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.lobby.callbacks.EOS_Lobby_OnRTCRoomConnectionChangedCallback;
 import host.anzo.eossdk.eos.sdk.lobby.enums.EOS_ELobbyPermissionLevel;
+import host.anzo.eossdk.eos.sdk.lobby.enums.EOS_ELobbyRTCRoomJoinActionType;
 import host.anzo.eossdk.eos.sdk.presence.options.EOS_PresenceModification_SetJoinInfoOptions;
 import host.anzo.eossdk.eos.sdk.sessions.options.EOS_Sessions_CreateSessionModificationOptions;
 import host.anzo.eossdk.eos.sdk.sessions.options.EOS_Sessions_JoinSessionOptions;
@@ -23,10 +24,10 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/17/2023
  */
-@FieldOrder({"ApiVersion", "LocalUserId", "MaxLobbyMembers", "PermissionLevel", "IsPresenceEnabled", "IsAllowInvites", "BucketId", "IsDisableHostMigration", "IsEnableRTCRoom", "LocalRTCOptions", "LobbyId", "IsEnableJoinById", "IsRejoinAfterKickRequiresInvite", "AllowedPlatformIds", "AllowedPlatformIdsCount", "IsCrossplayOptOut"})
+@FieldOrder({"ApiVersion", "LocalUserId", "MaxLobbyMembers", "PermissionLevel", "IsPresenceEnabled", "IsAllowInvites", "BucketId", "IsDisableHostMigration", "IsEnableRTCRoom", "LocalRTCOptions", "LobbyId", "IsEnableJoinById", "IsRejoinAfterKickRequiresInvite", "AllowedPlatformIds", "AllowedPlatformIdsCount", "IsCrossplayOptOut", "RTCRoomJoinActionType"})
 public class EOS_Lobby_CreateLobbyOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_CreateLobby API. */
-	public static final int EOS_LOBBY_CREATELOBBY_API_LATEST = 9;
+	public static final int EOS_LOBBY_CREATELOBBY_API_LATEST = 10;
 
 	/** API Version: Set this to {@link #EOS_LOBBY_CREATELOBBY_API_LATEST}. */
 	public int ApiVersion;
@@ -112,6 +113,11 @@ public class EOS_Lobby_CreateLobbyOptions extends Structure {
 	 * the platform of the lobby owner.
 	 */
 	public EOS_Bool IsCrossplayOptOut;
+	/**
+	 * If bEnableRTCRoom is true, this value indicates the action to take against the RTC Room when joining the lobby. This may be used
+	 * to indicate the RTCRoom should be joined immediately or manually at a later time.
+	 */
+	public EOS_ELobbyRTCRoomJoinActionType RTCRoomJoinActionType;
 
 	public EOS_Lobby_CreateLobbyOptions() {
 		super();

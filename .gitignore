@@ -11,3 +11,5 @@
 /eossdk-native-android/build
 /local.properties
 /build
+/.PVS-Studio/ide-warnings.json
+/.PVS-Studio/settings.json
