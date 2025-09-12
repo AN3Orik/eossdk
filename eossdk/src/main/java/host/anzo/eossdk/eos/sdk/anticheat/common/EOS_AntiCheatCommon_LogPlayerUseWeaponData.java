@@ -18,7 +18,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"PlayerHandle", "PlayerPosition", "PlayerViewRotation", "IsPlayerViewZoomed", "IsMeleeAttack", "WeaponName"})
 public class EOS_AntiCheatCommon_LogPlayerUseWeaponData extends Structure {
-	public static int EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_WEAPONNAME_MAX_LENGTH = 16;
+	public static int EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_WEAPONNAME_MAX_LENGTH = 32;
 
 	/** Locally unique value used in RegisterClient/RegisterPeer */
 	public EOS_AntiCheatCommon_ClientHandle PlayerHandle;

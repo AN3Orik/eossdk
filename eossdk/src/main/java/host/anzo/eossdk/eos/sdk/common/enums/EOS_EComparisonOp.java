@@ -53,7 +53,11 @@ public @Getter enum EOS_EComparisonOp implements NativeMapped {
 	/** This one value is NOT part of a collection. Supported in {@link EOSLibrary#EOS_SessionSearch_SetParameter} only. */
 	EOS_CO_NOTONEOF(10),
 	/** This value is a CASE SENSITIVE substring of an attribute stored on the lobby/session */
-	EOS_CO_CONTAINS(11);
+	EOS_CO_CONTAINS(11),
+	/** This value is a regex match of an attribute */
+	EOS_CO_REGEXMATCH(12),
+	/** This array or string value's size must be equal to the one stored in the attribute */
+	EOS_CO_SIZE(13);
 
 	private final int id;
 

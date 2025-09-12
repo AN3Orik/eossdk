@@ -105,7 +105,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_ApplicationSuspended(40),
 	/** Network is disconnected */
 	EOS_NetworkDisconnected(41),
-
 	/** Account locked due to login failures */
 	EOS_Auth_AccountLocked(1001),
 	/** Account locked by update operation. */
@@ -144,14 +143,12 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Auth_AccountPortalLoadError(1018),
 	/** An attempted login has failed due to the user needing to take corrective action on their account. */
 	EOS_Auth_CorrectiveActionRequired(1019),
-
 	/** Pin grant code initiated */
 	EOS_Auth_PinGrantCode(1020),
 	/** Pin grant code attempt expired */
 	EOS_Auth_PinGrantExpired(1021),
 	/** Pin grant code attempt pending */
 	EOS_Auth_PinGrantPending(1022),
-
 	/** External auth source did not yield an account */
 	EOS_Auth_ExternalAuthNotLinked(1030),
 	/** External auth access revoked */
@@ -166,27 +163,20 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Auth_ExternalAuthExpired(1036),
 	/** External auth cannot be removed since it's the last possible way to login */
 	EOS_Auth_ExternalAuthIsLastLoginType(1037),
-
 	/** Exchange code not found */
 	EOS_Auth_ExchangeCodeNotFound(1040),
 	/** Originating exchange code session has expired */
 	EOS_Auth_OriginatingExchangeCodeSessionExpired(1041),
-
 	/** The account has been disabled and cannot be used for authentication */
 	EOS_Auth_AccountNotActive(1050),
-
 	/** MFA challenge required */
 	EOS_Auth_MFARequired(1060),
-
 	/** Parental locks are in place */
 	EOS_Auth_ParentalControls(1070),
-
 	/** Korea real ID association required but missing */
 	EOS_Auth_NoRealId(1080),
-
 	/** Silent login failed when EOS_LF_NO_USER_INTERFACE was specified, and user interaction is needed before the user can be logged in. */
 	EOS_Auth_UserInterfaceRequired(1090),
-
 	/** An outgoing friend invitation is awaiting acceptance; sending another invite to the same user is erroneous */
 	EOS_Friends_InviteAwaitingAcceptance(2000),
 	/** There is no friend invitation to accept/reject */
@@ -203,7 +193,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Friends_TargetUserFriendLimitExceeded(2007),
 	/** Local user has too many friends to make a new friendship */
 	EOS_Friends_LocalUserFriendLimitExceeded(2008),
-
 	/** Request data was null or invalid */
 	EOS_Presence_DataInvalid(3000),
 	/** Request contained too many or too few unique data items(or the request would overflow the maximum amount of data allowed */
@@ -222,7 +211,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Presence_RichTextLengthInvalid(3007),
 	/** Request contained an invalid status state */
 	EOS_Presence_StatusInvalid(3008),
-
 	/** The entitlement retrieved is stale(requery for updated information */
 	EOS_Ecom_EntitlementStale(4000),
 	/** The offer retrieved is stale(requery for updated information */
@@ -235,7 +223,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Ecom_CheckoutLoadError(4004),
 	/** The player closed the purchase flow overlay after clicking the purchase button. The purchase may still go through, and the game needs to query unredeemed entitlements for a short time. */
 	EOS_Ecom_PurchaseProcessing(4005),
-
 	/** Session is already in progress */
 	EOS_Sessions_SessionInProgress(5000),
 	/** Too many players to register with this session */
@@ -276,7 +263,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Sessions_NotAllowed(5018),
 	/** Session operation not allowed */
 	EOS_Sessions_PlayerSanctioned(5019),
-
 	/** Request filename was invalid */
 	EOS_PlayerDataStorage_FilenameInvalid(6000),
 	/** Request filename was too long */
@@ -307,7 +293,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_PlayerDataStorage_FileHeaderHasNewerVersion(6013),
 	/** The file is corrupted. In some cases retry can fix the issue. */
 	EOS_PlayerDataStorage_FileCorrupted(6014),
-
 	/** EOS Auth service deemed the external token invalid */
 	EOS_Connect_ExternalTokenValidationFailed(7000),
 	/** EOS Auth user already exists */
@@ -326,12 +311,10 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Connect_ExternalServiceConfigurationFailure(7007),
 	/** EOS Auth Account link failure. Tried to link Nintendo Network Service Account without first linking Nintendo Account. DEPRECATED: The requirement has been removed and this error is no longer used. */
 	EOS_Connect_LinkAccountFailedMissingNintendoIdAccount_DEPRECATED(7008),
-
 	/** The social overlay page failed to load */
 	EOS_UI_SocialOverlayLoadError(8000),
 	/** Virtual Memory Functions are an inconsistent mix of functions and nullptrs */
 	EOS_UI_InconsistentVirtualMemoryFunctions(8001),
-
 	/** Client has no permissions to modify this lobby */
 	EOS_Lobby_NotOwner(9000),
 	/** Lobby lock required for operation */
@@ -374,7 +357,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Lobby_VoiceNotEnabled(9019),
 	/** The client platform does not match the allowed platform list for the lobby. */
 	EOS_Lobby_PlatformNotAllowed(9020),
-
 	/** User callback that receives data from storage returned error. */
 	EOS_TitleStorage_UserErrorFromDataCallback(10000),
 	/** User forgot to set Encryption key during platform init. Title Storage can't work without it. */
@@ -383,7 +365,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_TitleStorage_FileCorrupted(10002),
 	/** Downloaded file's format is newer than client SDK version. */
 	EOS_TitleStorage_FileHeaderHasNewerVersion(10003),
-
 	/** ModSdk process is already running. This error comes from the EOSSDK. */
 	EOS_Mods_ModSdkProcessIsAlreadyRunning(11000),
 	/** ModSdk command is empty. Either the ModSdk configuration file is missing or the manifest location is empty. */
@@ -418,7 +399,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Mods_CannotGetManifestLocation(11015),
 	/** Attempting to perform an action with a mod that does not support the current operating system. */
 	EOS_Mods_UnsupportedOS(11016),
-
 	/** The anti-cheat client protection is not available. Check that the game was started using the anti-cheat bootstrapper. */
 	EOS_AntiCheat_ClientProtectionNotAvailable(12000),
 	/** The current anti-cheat mode is incorrect for using this API */
@@ -443,7 +423,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_AntiCheat_ClientDeploymentIdMismatch(12010),
 	/** EOS Connect DeviceID auth method is not supported for anti-cheat */
 	EOS_AntiCheat_DeviceIdAuthIsNotSupported(12011),
-
 	/** EOS RTC room cannot accept more participants */
 	EOS_RTC_TooManyParticipants(13000),
 	/** EOS RTC room already exists*/
@@ -460,22 +439,22 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_RTC_ShutdownInvoked(13006),
 	/** EOS RTC operation failed because the user is in the local user's block list */
 	EOS_RTC_UserIsInBlocklist(13007),
-
+	/** Failed to allocate resources */
+	EOS_RTC_AllocationFailed(13009),
+	/** Failed to join room due to voice moderation mode mismatch */
+	EOS_RTC_VoiceModerationModeMismatch(13010),
 	/** The number of available Snapshot IDs have all been exhausted. */
 	EOS_ProgressionSnapshot_SnapshotIdUnavailable(14000),
-
 	/** The KWS user does not have a parental email associated with the account.  The parent account was unlinked or deleted */
 	EOS_KWS_ParentEmailMissing(15000),
 	/** The KWS user is no longer a minor and trying to update the parent email */
 	EOS_KWS_UserGraduated(15001),
-
 	/** EOS Android VM not stored */
 	EOS_Android_JavaVMNotStored(17000),
 	/** EOS Android if Reserved is set it must reference stored VM */
 	EOS_Android_ReservedMustReferenceLocalVM(17001),
 	/** EOS Android Reserved must not be provided */
 	EOS_Android_ReservedMustBeNull(17002),
-
 	/** Patch required before the user can use the privilege */
 	EOS_Permission_RequiredPatchAvailable(18000),
 	/** System update required before the user can use the privilege */
@@ -490,7 +469,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Permission_UGCRestriction(18005),
 	/** Online play is restricted */
 	EOS_Permission_OnlinePlayRestricted(18006),
-
 	/** The application was not launched through the Bootstrapper. Desktop crossplay functionality is unavailable. */
 	EOS_DesktopCrossplay_ApplicationNotBootstrapped(19000),
 	/** The redistributable service is not installed. */
@@ -499,13 +477,10 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_DesktopCrossplay_ServiceStartFailed(19002),
 	/** The desktop crossplay service is no longer running for an unknown reason. */
 	EOS_DesktopCrossplay_ServiceNotRunning(19003),
-
 	/** When sending the custom invite failed. */
 	EOS_CustomInvites_InviteFailed(20000),
-
 	/** The best display name could not be safely determined. */
 	EOS_UserInfo_BestDisplayNameIndeterminate(22000),
-
 	/** OnNetworkRequested_DEPRECATED callback not set when initializing platform */
 	EOS_ConsoleInit_OnNetworkRequestedDeprecatedCallbackNotSet(23000),
 	/** CacheStorageSizeKB must be a multiple of 16 **/
@@ -516,7 +491,6 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_ConsoleInit_CacheStorage_SizeKBExceedsMaximumSize(23003),
 	/** CacheStorageIndex is out of its allowed range **/
 	EOS_ConsoleInit_CacheStorage_IndexOutOfRangeRange(23004),
-
 	/** An unexpected error that we cannot identify has occurred. */
 	EOS_UnexpectedError(0x7FFFFFFF);
 

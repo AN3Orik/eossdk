@@ -25,6 +25,12 @@ public class EOS_RTC_JoinRoomOptions_Flags extends NativeMappedBitMask {
 	 * listening will receive the data.
 	 */
 	public static final int EOS_RTC_JOINROOMFLAGS_ENABLE_DATACHANNEL = 0x04;
+	/**
+	 * The flag is reserved for future use.
+	 *
+	 * @see EOS_RTC_JoinRoomOptions_Flags
+	 */
+	public static final int EOS_RTC_JOINROOMFLAGS_RESERVED_VOICE_FEATURE = 0x08;
 
 	public static @NotNull EOS_RTC_JoinRoomOptions_Flags of(int... flags) {
 		final EOS_RTC_JoinRoomOptions_Flags result = new EOS_RTC_JoinRoomOptions_Flags();

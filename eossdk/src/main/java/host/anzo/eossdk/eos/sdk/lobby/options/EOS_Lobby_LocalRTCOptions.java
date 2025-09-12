@@ -12,10 +12,10 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/17/2023
  */
-@FieldOrder({"ApiVersion", "Flags", "IsUseManualAudioInput", "IsUseManualAudioOutput", "IsLocalAudioDeviceInputStartsMuted"})
+@FieldOrder({"ApiVersion", "Flags", "IsUseManualAudioInput", "IsUseManualAudioOutput", "IsLocalAudioDeviceInputStartsMuted", "Reserved"})
 public class EOS_Lobby_LocalRTCOptions extends Structure {
 	/** The most recent version of the EOS_Lobby_LocalRTCOptions structure. */
-	public static final int EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST = 1;
+	public static final int EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST = 2;
 
 	/** API Version: Set this to {@link #EOS_LOBBY_LOCALRTCOPTIONS_API_LATEST}. */
 	public int ApiVersion;
@@ -39,6 +39,11 @@ public class EOS_Lobby_LocalRTCOptions extends Structure {
 	 * The default value is EOS_FALSE if this struct is not specified.
 	 */
 	public EOS_Bool IsLocalAudioDeviceInputStartsMuted;
+
+	/**
+	 * Reserved field, should be nullptr by default
+	 */
+	public Pointer Reserved;
 
 	public EOS_Lobby_LocalRTCOptions() {
 		super();
