@@ -5,19 +5,19 @@ plugins {
 }
 
 dependencies {
-    compileOnly("org.jetbrains:annotations:26.0.2")
+    compileOnly("org.jetbrains:annotations:26.0.2-1")
 
-    annotationProcessor("org.projectlombok:lombok:1.18.36")
-    compileOnly("org.projectlombok:lombok:1.18.36")
+    annotationProcessor("org.projectlombok:lombok:1.18.40")
+    compileOnly("org.projectlombok:lombok:1.18.40")
 
-    api("net.java.dev.jna:jna:5.16.0")
+    api("net.java.dev.jna:jna:5.17.0")
 
-    compileOnly('org.slf4j:slf4j-api:2.0.16')
+    compileOnly('org.slf4j:slf4j-api:2.0.17')
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 compileJava {

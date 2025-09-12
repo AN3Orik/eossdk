@@ -25,16 +25,16 @@ application {
 }
 
 dependencies {
-	compileOnly("org.jetbrains:annotations:26.0.2")
+	compileOnly("org.jetbrains:annotations:26.0.2-1")
 
-	annotationProcessor("org.projectlombok:lombok:1.18.36")
-	compileOnly("org.projectlombok:lombok:1.18.36")
+	annotationProcessor("org.projectlombok:lombok:1.18.40")
+	compileOnly("org.projectlombok:lombok:1.18.40")
 
-	implementation("org.slf4j:slf4j-api:2.0.16")
-	implementation("org.slf4j:slf4j-ext:2.0.16")
-	implementation("org.slf4j:slf4j-simple:2.0.16")
-	implementation("org.apache.httpcomponents.client5:httpclient5-fluent:5.4.2")
-	implementation("org.json:json:20250107")
+	implementation("org.slf4j:slf4j-api:2.0.17")
+	implementation("org.slf4j:slf4j-ext:2.0.17")
+	implementation("org.slf4j:slf4j-simple:2.0.17")
+	implementation("org.apache.httpcomponents.client5:httpclient5-fluent:5.5")
+	implementation("org.json:json:20250517")
 	implementation(project(':eossdk'))
 
 	def osName = System.getProperty("os.name").toLowerCase()
