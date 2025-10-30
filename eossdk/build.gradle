@@ -1,16 +1,16 @@
 plugins {
-    id 'java-library'
+    id "java-library"
     id 'maven-publish'
-    id 'signing'
+    id 'org.jreleaser' version '1.20.0'
 }
 
 dependencies {
     compileOnly("org.jetbrains:annotations:26.0.2-1")
 
-    annotationProcessor("org.projectlombok:lombok:1.18.40")
-    compileOnly("org.projectlombok:lombok:1.18.40")
+    annotationProcessor("org.projectlombok:lombok:1.18.42")
+    compileOnly("org.projectlombok:lombok:1.18.42")
 
-    api("net.java.dev.jna:jna:5.17.0")
+    api("net.java.dev.jna:jna:5.18.1")
 
     compileOnly('org.slf4j:slf4j-api:2.0.17')
 }
@@ -80,18 +80,29 @@ publishing {
 
     repositories {
         maven {
-            url = project.getMavenPublishUrl()
-            credentials {
-                username project.getMavenPublishUser()
-                password project.getMavenPublishPassword()
-            }
+            url = layout.buildDirectory.dir('staging-deploy')
         }
     }
 }
 
-signing {
-    def signingKey = "$mavenCentralSigningKey"
-    def signingPassword = "$mavenCentralSigningKeyPassword"
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign publishing.publications.maven
+jreleaser {
+    signing {
+        active = 'ALWAYS'
+        armored = true
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                sonatype {
+                    active = 'ALWAYS'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    sign = true
+                    checksums = true
+                    sourceJar = true
+                    javadocJar = true
+                    stagingRepository('build/staging-deploy')
+                }
+            }
+        }
+    }
 }

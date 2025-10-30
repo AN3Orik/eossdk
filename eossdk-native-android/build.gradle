@@ -1,7 +1,7 @@
 plugins {
-    id 'com.android.library'
+    id "java-library"
     id 'maven-publish'
-    id 'signing'
+    id 'org.jreleaser' version '1.20.0'
 }
 
 android {
@@ -97,19 +97,30 @@ afterEvaluate {
 
         repositories {
             maven {
-                url = project.getMavenPublishUrl()
-                credentials {
-                    username project.getMavenPublishUser()
-                    password project.getMavenPublishPassword()
-                }
+                url = layout.buildDirectory.dir('staging-deploy')
             }
         }
     }
 }
 
-signing {
-    def signingKey = "$mavenCentralSigningKey"
-    def signingPassword = "$mavenCentralSigningKeyPassword"
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign publishing.publications.maven
+jreleaser {
+    signing {
+        active = 'ALWAYS'
+        armored = true
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                sonatype {
+                    active = 'ALWAYS'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    sign = true
+                    checksums = true
+                    sourceJar = true
+                    javadocJar = true
+                    stagingRepository('build/staging-deploy')
+                }
+            }
+        }
+    }
 }

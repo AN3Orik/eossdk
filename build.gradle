@@ -34,28 +34,6 @@ allprojects {
 
 	apply plugin: 'idea'
 	apply plugin: 'eclipse'
-
-	ext.getMavenPublishUrl = {
-		def releasesRepoUrl = ""
-		def snapshotsRepoUrl = ""
-		if (rootProject.isPrivateBuild) {
-			releasesRepoUrl = "https://nexus.anzo.host/repository/maven-releases/"
-			snapshotsRepoUrl = "https://nexus.anzo.host/repository/maven-snapshots/"
-		}
-		else {
-			releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-			snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
-		}
-		return version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-	}
-
-	ext.getMavenPublishUser = {
-		return rootProject.isPrivateBuild ? "$nexusUsername" : "$mavenCentralUsernameToken"
-	}
-
-	ext.getMavenPublishPassword = {
-		return rootProject.isPrivateBuild ? "$nexusPassword" : "$mavenCentralPasswordToken"
-	}
 }
 
 idea {
@@ -63,9 +41,4 @@ idea {
 		excludeDirs += file('gradle')
 		excludeDirs += file('tools')
 	}
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
 }
