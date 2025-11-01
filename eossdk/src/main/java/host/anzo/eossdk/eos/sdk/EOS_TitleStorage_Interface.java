@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.titlestorage.EOS_TitleStorageFileTransferRequest;
@@ -69,12 +70,14 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 * @return A copy of the FileMetadata structure will be set if successful. This data must be released by calling EOS_TitleStorage_FileMetadata_Release.
 	 */
 	public EOS_TitleStorage_FileMetadata copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions options) throws EOSException {
-		final EOS_TitleStorage_FileMetadata.ByReference outMetadata = new EOS_TitleStorage_FileMetadata.ByReference();
+		final PointerByReference outMetadata = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_TitleStorage_CopyFileMetadataByFilename(this, options, outMetadata);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outMetadata;
+		final EOS_TitleStorage_FileMetadata metadata = new EOS_TitleStorage_FileMetadata(outMetadata.getValue());
+		metadata.read();
+		return metadata;
 	}
 
 	/**
@@ -99,12 +102,14 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 * @see EOS_TitleStorage_FileMetadata#release()
 	 */
 	public EOS_TitleStorage_FileMetadata copyFileMetadataAtIndex(EOS_TitleStorage_CopyFileMetadataAtIndexOptions options) throws EOSException {
-		final EOS_TitleStorage_FileMetadata.ByReference outMetadata = new EOS_TitleStorage_FileMetadata.ByReference();
+		final PointerByReference outMetadata = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_TitleStorage_CopyFileMetadataAtIndex(this, options, outMetadata);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outMetadata;
+		final EOS_TitleStorage_FileMetadata metadata = new EOS_TitleStorage_FileMetadata(outMetadata.getValue());
+		metadata.read();
+		return metadata;
 	}
 
 	/**

@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.sessions;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSIncompatibleVersionException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
@@ -41,12 +42,14 @@ public class EOS_SessionDetails extends PointerType implements AutoCloseable {
 	 * @see EOS_SessionDetails_Info#release()
 	 */
 	public EOS_SessionDetails_Info copyInfo(EOS_SessionDetails_CopyInfoOptions options) throws EOSException {
-		final EOS_SessionDetails_Info.ByReference outSessionInfo = new EOS_SessionDetails_Info.ByReference();
+		final PointerByReference outSessionInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_SessionDetails_CopyInfo(this, options, outSessionInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outSessionInfo;
+		final EOS_SessionDetails_Info info = new EOS_SessionDetails_Info(outSessionInfo.getValue());
+		info.read();
+		return info;
 	}
 
 	/**
@@ -75,12 +78,14 @@ public class EOS_SessionDetails extends PointerType implements AutoCloseable {
 	 * @see EOS_SessionDetails_Attribute#release()
 	 */
 	public EOS_SessionDetails_Attribute copySessionAttributeByIndex(EOS_SessionDetails_CopySessionAttributeByIndexOptions options) throws EOSException {
-		final EOS_SessionDetails_Attribute.ByReference outSessionAttribute = new EOS_SessionDetails_Attribute.ByReference();
+		final PointerByReference outSessionAttribute = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_SessionDetails_CopySessionAttributeByIndex(this, options, outSessionAttribute);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outSessionAttribute;
+		final EOS_SessionDetails_Attribute attribute = new EOS_SessionDetails_Attribute(outSessionAttribute.getValue());
+		attribute.read();
+		return attribute;
 	}
 
 	/**
@@ -98,12 +103,14 @@ public class EOS_SessionDetails extends PointerType implements AutoCloseable {
 	 * @see EOS_SessionDetails_Attribute#release()
 	 */
 	public EOS_SessionDetails_Attribute copySessionAttributeByKey(EOS_SessionDetails_CopySessionAttributeByKeyOptions options) throws EOSException {
-		final EOS_SessionDetails_Attribute.ByReference outSessionAttribute = new EOS_SessionDetails_Attribute.ByReference();
+		final PointerByReference outSessionAttribute = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_SessionDetails_CopySessionAttributeByKey(this, options, outSessionAttribute);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outSessionAttribute;
+		final EOS_SessionDetails_Attribute attribute = new EOS_SessionDetails_Attribute(outSessionAttribute.getValue());
+		attribute.read();
+		return attribute;
 	}
 
 	/**

@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.mods.EOS_Mods_ModInfo;
@@ -78,12 +79,14 @@ public class EOS_Mods_Interface extends PointerType {
 	 * @see EOS_Mods_ModInfo#release()
 	 */
 	public EOS_Mods_ModInfo copyModInfo(EOS_Mods_CopyModInfoOptions options) throws EOSException {
-		final EOS_Mods_ModInfo.ByReference outEnumeratedMods = new EOS_Mods_ModInfo.ByReference();
+		final PointerByReference outEnumeratedMods = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Mods_CopyModInfo(this, options, outEnumeratedMods);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outEnumeratedMods;
+		final EOS_Mods_ModInfo modInfo = new EOS_Mods_ModInfo(outEnumeratedMods.getValue());
+		modInfo.read();
+		return modInfo;
 	}
 
 	/**

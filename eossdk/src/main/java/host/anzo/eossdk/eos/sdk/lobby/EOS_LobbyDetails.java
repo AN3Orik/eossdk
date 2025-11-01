@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.lobby;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSIncompatibleVersionException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
@@ -52,12 +53,14 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_LobbyDetails_Info copyInfo(EOS_LobbyDetails_CopyInfoOptions options) throws EOSException {
-		final EOS_LobbyDetails_Info.ByReference outLobbyDetailsInfo = new EOS_LobbyDetails_Info.ByReference();
+		final PointerByReference outLobbyDetailsInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyInfo(this, options, outLobbyDetailsInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outLobbyDetailsInfo;
+		final EOS_LobbyDetails_Info lobbyInfo = new EOS_LobbyDetails_Info(outLobbyDetailsInfo.getValue());
+		lobbyInfo.read();
+		return lobbyInfo;
 	}
 
 	/**
@@ -86,12 +89,14 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_Lobby_Attribute copyAttributeByIndex(EOS_LobbyDetails_CopyAttributeByIndexOptions options) throws EOSException {
-		final EOS_Lobby_Attribute.ByReference outAttribute = new EOS_Lobby_Attribute.ByReference();
+		final PointerByReference outAttribute = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyAttributeByIndex(this, options, outAttribute);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outAttribute;
+		final EOS_Lobby_Attribute attribute = new EOS_Lobby_Attribute(outAttribute.getValue());
+		attribute.read();
+		return attribute;
 	}
 
 	/**
@@ -109,12 +114,14 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_Lobby_Attribute copyAttributeByKey(EOS_LobbyDetails_CopyAttributeByKeyOptions options) throws EOSException {
-		final EOS_Lobby_Attribute.ByReference outAttribute = new EOS_Lobby_Attribute.ByReference();
+		final PointerByReference outAttribute = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyAttributeByKey(this, options, outAttribute);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outAttribute;
+		final EOS_Lobby_Attribute attribute = new EOS_Lobby_Attribute(outAttribute.getValue());
+		attribute.read();
+		return attribute;
 	}
 
 	/**
@@ -171,12 +178,14 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_Lobby_Attribute copyMemberAttributeByIndex(EOS_LobbyDetails_CopyMemberAttributeByIndexOptions options) throws EOSException {
-		final EOS_Lobby_Attribute.ByReference outAttribute = new EOS_Lobby_Attribute.ByReference();
+		final PointerByReference outAttribute = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyMemberAttributeByIndex(this, options, outAttribute);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outAttribute;
+		final EOS_Lobby_Attribute attribute = new EOS_Lobby_Attribute(outAttribute.getValue());
+		attribute.read();
+		return attribute;
 	}
 
 	/**
@@ -194,12 +203,14 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	 * @see EOS_LobbyDetails#release()
 	 */
 	public EOS_Lobby_Attribute copyMemberAttributeByKey(EOS_LobbyDetails_CopyMemberAttributeByKeyOptions options) throws EOSException {
-		final EOS_Lobby_Attribute.ByReference outAttribute = new EOS_Lobby_Attribute.ByReference();
+		final PointerByReference outAttribute = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyMemberAttributeByKey(this, options, outAttribute);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outAttribute;
+		final EOS_Lobby_Attribute attribute = new EOS_Lobby_Attribute(outAttribute.getValue());
+		attribute.read();
+		return attribute;
 	}
 
 	public void release() {

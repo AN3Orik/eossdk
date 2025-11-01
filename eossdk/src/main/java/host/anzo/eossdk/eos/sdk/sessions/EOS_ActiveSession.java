@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.sessions;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSIncompatibleVersionException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
@@ -44,12 +45,14 @@ public class EOS_ActiveSession extends PointerType implements AutoCloseable {
 	 * @see EOS_ActiveSession_Info#release()
 	 */
 	public EOS_ActiveSession_Info copyInfo(EOS_ActiveSession_CopyInfoOptions options) throws EOSException {
-		final EOS_ActiveSession_Info.ByReference outActiveSessionInfo = new EOS_ActiveSession_Info.ByReference();
+		final PointerByReference outActiveSessionInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_ActiveSession_CopyInfo(this, options, outActiveSessionInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outActiveSessionInfo;
+		final EOS_ActiveSession_Info info = new EOS_ActiveSession_Info(outActiveSessionInfo.getValue());
+		info.read();
+		return info;
 	}
 
 	/**

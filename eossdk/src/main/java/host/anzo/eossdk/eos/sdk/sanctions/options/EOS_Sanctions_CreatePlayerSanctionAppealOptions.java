@@ -5,7 +5,7 @@ import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.sanctions.enums.EOS_ESanctionAppealReason;
 
-import static com.sun.jna.Structure.*;
+import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * Input parameters for the EOS_Sanctions_CreatePlayerSanctionAppeal function.

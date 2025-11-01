@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk;
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.ptr.IntByReference;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSLimitExceededException;
@@ -70,12 +71,14 @@ public class EOS_Presence_Interface extends PointerType {
 	 * @see EOS_Presence_Info#release()
 	 */
 	public EOS_Presence_Info copyPresence(EOS_Presence_CopyPresenceOptions options) throws EOSException {
-		final EOS_Presence_Info.ByReference outPresence = new EOS_Presence_Info.ByReference();
+		final PointerByReference outPresence = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Presence_CopyPresence(this, options, outPresence);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outPresence;
+		final EOS_Presence_Info info = new EOS_Presence_Info(outPresence.getValue());
+		info.read();
+		return info;
 	}
 
 	/**

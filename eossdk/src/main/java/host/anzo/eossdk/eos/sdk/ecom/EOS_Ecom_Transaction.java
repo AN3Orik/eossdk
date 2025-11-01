@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.ecom;
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.Structure;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSEcomEntitlementStaleException;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
@@ -80,12 +81,14 @@ public class EOS_Ecom_Transaction extends PointerType implements AutoCloseable {
 	 * @throws EOSNotFoundException if the entitlement is not found
 	 */
 	public EOS_Ecom_Entitlement copyEntitlementByIndex(EOS_Ecom_Transaction_CopyEntitlementByIndexOptions options) throws EOSException {
-		final EOS_Ecom_Entitlement.ByReference outEntitlement = new EOS_Ecom_Entitlement.ByReference();
+		final PointerByReference outEntitlement = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_Transaction_CopyEntitlementByIndex(this, options, outEntitlement);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outEntitlement;
+		final EOS_Ecom_Entitlement entitlement = new EOS_Ecom_Entitlement(outEntitlement.getValue());
+		entitlement.read();
+		return entitlement;
 	}
 
 	/**

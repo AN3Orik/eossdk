@@ -3,7 +3,7 @@ package host.anzo.eossdk.eos.sdk.connect.options;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
-import static com.sun.jna.Structure.*;
+import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * Input parameters for the EOS_Connect_Logout API

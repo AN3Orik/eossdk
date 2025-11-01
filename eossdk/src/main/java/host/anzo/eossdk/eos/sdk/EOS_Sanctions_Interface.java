@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
@@ -75,12 +76,14 @@ public class EOS_Sanctions_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the player achievement is not found
 	 */
 	public EOS_Sanctions_PlayerSanction copyPlayerSanctionByIndex(EOS_Sanctions_CopyPlayerSanctionByIndexOptions options) throws EOSException {
-		final EOS_Sanctions_PlayerSanction.ByReference outSanction = new EOS_Sanctions_PlayerSanction.ByReference();
+		final PointerByReference outSanction = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Sanctions_CopyPlayerSanctionByIndex(this, options, outSanction);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outSanction;
+		final EOS_Sanctions_PlayerSanction sanction = new EOS_Sanctions_PlayerSanction(outSanction.getValue());
+		sanction.read();
+		return sanction;
 	}
 
 	/**

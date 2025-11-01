@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidProductUserIDException;
@@ -77,12 +78,14 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * @throws EOSInvalidProductUserIDException if any of the userid options are incorrect
 	 */
 	public EOS_Achievements_DefinitionV2 copyAchievementDefinitionV2ByIndex(EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions options) throws EOSException {
-		final EOS_Achievements_DefinitionV2.ByReference achievementsDefinitionReference = new EOS_Achievements_DefinitionV2.ByReference();
-		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionV2ByIndex(this, options, achievementsDefinitionReference);
+		final PointerByReference outDefinition = new PointerByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionV2ByIndex(this, options, outDefinition);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return achievementsDefinitionReference;
+		final EOS_Achievements_DefinitionV2 definition = new EOS_Achievements_DefinitionV2(outDefinition.getValue());
+		definition.read();
+		return definition;
 	}
 
 	/**
@@ -98,12 +101,14 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * @throws EOSInvalidProductUserIDException if any of the userid options are incorrect
 	 */
 	public EOS_Achievements_DefinitionV2 copyAchievementDefinitionV2ByAchievementId(EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions options) throws EOSException {
-		final EOS_Achievements_DefinitionV2.ByReference achievementsDefinitionReference = new EOS_Achievements_DefinitionV2.ByReference();
-		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(this, options, achievementsDefinitionReference);
+		final PointerByReference outDefinition = new PointerByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(this, options, outDefinition);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return achievementsDefinitionReference;
+		final EOS_Achievements_DefinitionV2 definition = new EOS_Achievements_DefinitionV2(outDefinition.getValue());
+		definition.read();
+		return definition;
 	}
 
 	/**
@@ -148,12 +153,14 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * @throws EOSInvalidProductUserIDException if you pass an invalid user ID
 	 */
 	public EOS_Achievements_PlayerAchievement copyPlayerAchievementByIndex(EOS_Achievements_CopyPlayerAchievementByIndexOptions options) throws EOSException {
-		final EOS_Achievements_PlayerAchievement.ByReference playerAchievementReference = new EOS_Achievements_PlayerAchievement.ByReference();
-		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyPlayerAchievementByIndex(this, options, playerAchievementReference);
+		final PointerByReference outAchievement = new PointerByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyPlayerAchievementByIndex(this, options, outAchievement);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return playerAchievementReference;
+		final EOS_Achievements_PlayerAchievement achievement = new EOS_Achievements_PlayerAchievement(outAchievement.getValue());
+		achievement.read();
+		return achievement;
 	}
 
 	/**
@@ -169,12 +176,14 @@ public class EOS_Achievements_Interface extends PointerType {
 	 * @throws EOSInvalidProductUserIDException if you pass an invalid user ID
 	 */
 	public EOS_Achievements_PlayerAchievement copyPlayerAchievementByAchievementId(EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions options) throws EOSException {
-		final EOS_Achievements_PlayerAchievement.ByReference playerAchievementReference = new EOS_Achievements_PlayerAchievement.ByReference();
-		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyPlayerAchievementByAchievementId(this, options, playerAchievementReference);
+		final PointerByReference outAchievement = new PointerByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_Achievements_CopyPlayerAchievementByAchievementId(this, options, outAchievement);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return playerAchievementReference;
+		final EOS_Achievements_PlayerAchievement achievement = new EOS_Achievements_PlayerAchievement(outAchievement.getValue());
+		achievement.read();
+		return achievement;
 	}
 
 	/**

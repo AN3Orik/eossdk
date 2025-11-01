@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
 import host.anzo.eossdk.eos.sdk.common.EOS_NotificationId;
@@ -129,12 +130,14 @@ public class EOS_KWS_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the user is not found or the index is invalid
 	 */
 	public EOS_KWS_PermissionStatus copyPermissionByIndex(EOS_KWS_CopyPermissionByIndexOptions options) throws EOSException {
-		final EOS_KWS_PermissionStatus.ByReference outPermission = new EOS_KWS_PermissionStatus.ByReference();
+		final PointerByReference outPermission = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_KWS_CopyPermissionByIndex(this, options, outPermission);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outPermission;
+		final EOS_KWS_PermissionStatus permission = new EOS_KWS_PermissionStatus(outPermission.getValue());
+		permission.read();
+		return permission;
 	}
 
 	/**

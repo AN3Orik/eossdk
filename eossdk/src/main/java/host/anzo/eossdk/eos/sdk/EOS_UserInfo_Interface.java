@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.*;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_OnlinePlatformType;
@@ -103,12 +104,14 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @see EOS_UserInfo#release()
 	 */
 	public EOS_UserInfo copyUserInfo(EOS_UserInfo_CopyUserInfoOptions options) throws EOSException {
-		final EOS_UserInfo.ByReference outUserInfo = new EOS_UserInfo.ByReference();
+		final PointerByReference outUserInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyUserInfo(this, options, outUserInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outUserInfo;
+		final EOS_UserInfo userInfo = new EOS_UserInfo(outUserInfo.getValue());
+		userInfo.read();
+		return userInfo;
 	}
 
 	/**
@@ -136,12 +139,14 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the external user info is not found
 	 */
 	public EOS_UserInfo_ExternalUserInfo copyExternalUserInfoByIndex(EOS_UserInfo_CopyExternalUserInfoByIndexOptions options) throws EOSException {
-		final EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo = new EOS_UserInfo_ExternalUserInfo.ByReference();
+		final PointerByReference outExternalUserInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByIndex(this, options, outExternalUserInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outExternalUserInfo;
+		final EOS_UserInfo_ExternalUserInfo externalUserInfo = new EOS_UserInfo_ExternalUserInfo(outExternalUserInfo.getValue());
+		externalUserInfo.read();
+		return externalUserInfo;
 	}
 
 	/**
@@ -156,12 +161,14 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the external user info is not found
 	 */
 	public EOS_UserInfo_ExternalUserInfo copyExternalUserInfoByAccountType(EOS_UserInfo_CopyExternalUserInfoByAccountTypeOptions options) throws EOSException {
-		final EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo = new EOS_UserInfo_ExternalUserInfo.ByReference();
+		final PointerByReference outExternalUserInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByAccountType(this, options, outExternalUserInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outExternalUserInfo;
+		final EOS_UserInfo_ExternalUserInfo externalUserInfo = new EOS_UserInfo_ExternalUserInfo(outExternalUserInfo.getValue());
+		externalUserInfo.read();
+		return externalUserInfo;
 	}
 
 	/**
@@ -176,12 +183,14 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the external user info is not found
 	 */
 	public EOS_UserInfo_ExternalUserInfo copyExternalUserInfoByAccountId(EOS_UserInfo_CopyExternalUserInfoByAccountIdOptions options) throws EOSException {
-		final EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo = new EOS_UserInfo_ExternalUserInfo.ByReference();
+		final PointerByReference outExternalUserInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyExternalUserInfoByAccountId(this, options, outExternalUserInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outExternalUserInfo;
+		final EOS_UserInfo_ExternalUserInfo externalUserInfo = new EOS_UserInfo_ExternalUserInfo(outExternalUserInfo.getValue());
+		externalUserInfo.read();
+		return externalUserInfo;
 	}
 
 	/**
@@ -211,12 +220,14 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @see EOS_UserInfo_BestDisplayName#release()
 	 */
 	public EOS_UserInfo_BestDisplayName copyBestDisplayName(EOS_UserInfo_CopyBestDisplayNameOptions options) throws EOSException {
-		final EOS_UserInfo_BestDisplayName.ByReference outBestDisplayName = new EOS_UserInfo_BestDisplayName.ByReference();
+		final PointerByReference outBestDisplayName = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyBestDisplayName(this, options, outBestDisplayName);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outBestDisplayName;
+		final EOS_UserInfo_BestDisplayName bestDisplayName = new EOS_UserInfo_BestDisplayName(outBestDisplayName.getValue());
+		bestDisplayName.read();
+		return bestDisplayName;
 	}
 
 	/**
@@ -245,12 +256,14 @@ public class EOS_UserInfo_Interface extends PointerType {
 	 * @see EOS_UserInfo_BestDisplayName#release()
 	 */
 	public EOS_UserInfo_BestDisplayName copyBestDisplayNameWithPlatform(EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions options) throws EOSException {
-		final EOS_UserInfo_BestDisplayName.ByReference outBestDisplayName = new EOS_UserInfo_BestDisplayName.ByReference();
+		final PointerByReference outBestDisplayName = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_UserInfo_CopyBestDisplayNameWithPlatform(this, options, outBestDisplayName);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outBestDisplayName;
+		final EOS_UserInfo_BestDisplayName bestDisplayName = new EOS_UserInfo_BestDisplayName(outBestDisplayName.getValue());
+		bestDisplayName.read();
+		return bestDisplayName;
 	}
 
 	/**

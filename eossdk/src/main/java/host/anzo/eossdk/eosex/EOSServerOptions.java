@@ -1,7 +1,6 @@
 package host.anzo.eossdk.eosex;
 
 import host.anzo.eossdk.eos.sdk.EOS_Defines;
-import host.anzo.eossdk.eos.sdk.anticheat.server.options.EOS_AntiCheatServer_BeginSessionOptions;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;

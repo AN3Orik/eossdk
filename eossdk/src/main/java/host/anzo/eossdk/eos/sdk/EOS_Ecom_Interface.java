@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.*;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.ecom.*;
@@ -224,12 +225,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the entitlement is not found
 	 */
 	public EOS_Ecom_Entitlement copyEntitlementByIndex(EOS_Ecom_CopyEntitlementByIndexOptions options) throws EOSException {
-		final EOS_Ecom_Entitlement.ByReference entitlementReference = new EOS_Ecom_Entitlement.ByReference();
+		final PointerByReference entitlementReference = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyEntitlementByIndex(this, options, entitlementReference);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return entitlementReference;
+		final EOS_Ecom_Entitlement entitlement = new EOS_Ecom_Entitlement(entitlementReference.getValue());
+		entitlement.read();
+		return entitlement;
 	}
 
 	/**
@@ -247,12 +250,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the entitlement is not found
 	 */
 	public EOS_Ecom_Entitlement copyEntitlementByNameAndIndex(EOS_Ecom_CopyEntitlementByNameAndIndexOptions options) throws EOSException {
-		final EOS_Ecom_Entitlement.ByReference outEntitlement = new EOS_Ecom_Entitlement.ByReference();
+		final PointerByReference outEntitlement = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyEntitlementByNameAndIndex(this, options, outEntitlement);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outEntitlement;
+		final EOS_Ecom_Entitlement entitlement = new EOS_Ecom_Entitlement(outEntitlement.getValue());
+		entitlement.read();
+		return entitlement;
 	}
 
 	/**
@@ -269,12 +274,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the entitlement is not found
 	 */
 	public EOS_Ecom_Entitlement copyEntitlementById(EOS_Ecom_CopyEntitlementByIdOptions options) throws EOSException {
-		final EOS_Ecom_Entitlement.ByReference outEntitlement = new EOS_Ecom_Entitlement.ByReference();
+		final PointerByReference outEntitlement = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyEntitlementById(this, options, outEntitlement);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outEntitlement;
+		final EOS_Ecom_Entitlement entitlement = new EOS_Ecom_Entitlement(outEntitlement.getValue());
+		entitlement.read();
+		return entitlement;
 	}
 
 	/**
@@ -305,12 +312,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the offer is not found
 	 */
 	public EOS_Ecom_CatalogOffer copyOfferByIndex(EOS_Ecom_CopyOfferByIndexOptions options) throws EOSException {
-		final EOS_Ecom_CatalogOffer.ByReference outOffer = new EOS_Ecom_CatalogOffer.ByReference();
+		final PointerByReference outOffer = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyOfferByIndex(this, options, outOffer);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outOffer;
+		final EOS_Ecom_CatalogOffer offer = new EOS_Ecom_CatalogOffer(outOffer.getValue());
+		offer.read();
+		return offer;
 	}
 
 	/**
@@ -328,12 +337,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the offer is not found
 	 */
 	public EOS_Ecom_CatalogOffer copyOfferById(EOS_Ecom_CopyOfferByIdOptions options) throws EOSException {
-		final EOS_Ecom_CatalogOffer.ByReference outOffer = new EOS_Ecom_CatalogOffer.ByReference();
+		final PointerByReference outOffer = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyOfferById(this, options, outOffer);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outOffer;
+		final EOS_Ecom_CatalogOffer offer = new EOS_Ecom_CatalogOffer(outOffer.getValue());
+		offer.read();
+		return offer;
 	}
 
 	/**
@@ -360,12 +371,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the item is not found
 	 */
 	public EOS_Ecom_CatalogItem copyOfferItemByIndex(EOS_Ecom_CopyOfferItemByIndexOptions options) throws EOSException {
-		final EOS_Ecom_CatalogItem.ByReference outItem = new EOS_Ecom_CatalogItem.ByReference();
+		final PointerByReference outItem = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyOfferItemByIndex(this, options, outItem);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outItem;
+		final EOS_Ecom_CatalogItem item = new EOS_Ecom_CatalogItem(outItem.getValue());
+		item.read();
+		return item;
 	}
 
 	/**
@@ -383,12 +396,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the offer is not found
 	 */
 	public EOS_Ecom_CatalogItem copyItemById(EOS_Ecom_CopyItemByIdOptions options) throws EOSException {
-		final EOS_Ecom_CatalogItem.ByReference outItem = new EOS_Ecom_CatalogItem.ByReference();
+		final PointerByReference outItem = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyItemById(this, options, outItem);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outItem;
+		final EOS_Ecom_CatalogItem item = new EOS_Ecom_CatalogItem(outItem.getValue());
+		item.read();
+		return item;
 	}
 
 	/**
@@ -413,12 +428,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the image is not found
 	 */
 	public EOS_Ecom_KeyImageInfo copyOfferImageInfoByIndex(EOS_Ecom_CopyOfferImageInfoByIndexOptions options) throws EOSException {
-		final EOS_Ecom_KeyImageInfo.ByReference outImageInfo = new EOS_Ecom_KeyImageInfo.ByReference();
+		final PointerByReference outImageInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyOfferImageInfoByIndex(this, options, outImageInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outImageInfo;
+		final EOS_Ecom_KeyImageInfo imageInfo = new EOS_Ecom_KeyImageInfo(outImageInfo.getValue());
+		imageInfo.read();
+		return imageInfo;
 	}
 
 	/**
@@ -443,12 +460,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the image is not found
 	 */
 	public EOS_Ecom_KeyImageInfo copyItemImageInfoByIndex(EOS_Ecom_CopyItemImageInfoByIndexOptions options) throws EOSException {
-		final EOS_Ecom_KeyImageInfo.ByReference outImageInfo = new EOS_Ecom_KeyImageInfo.ByReference();
+		final PointerByReference outImageInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyItemImageInfoByIndex(this, options, outImageInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outImageInfo;
+		final EOS_Ecom_KeyImageInfo imageInfo = new EOS_Ecom_KeyImageInfo(outImageInfo.getValue());
+		imageInfo.read();
+		return imageInfo;
 	}
 
 	/**
@@ -473,12 +492,14 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the release is not found
 	 */
 	public EOS_Ecom_CatalogRelease copyItemReleaseByIndex(EOS_Ecom_CopyItemReleaseByIndexOptions options) throws EOSException {
-		final EOS_Ecom_CatalogRelease.ByReference outRelease = new EOS_Ecom_CatalogRelease.ByReference();
+		final PointerByReference outRelease = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyItemReleaseByIndex(this, options, outRelease);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outRelease;
+		final EOS_Ecom_CatalogRelease release = new EOS_Ecom_CatalogRelease(outRelease.getValue());
+		release.read();
+		return release;
 	}
 
 	/**
@@ -505,12 +526,12 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the transaction is not found
 	 */
 	public EOS_Ecom_Transaction copyTransactionByIndex(EOS_Ecom_CopyTransactionByIndexOptions options) throws EOSException {
-		final EOS_Ecom_Transaction.ByReference outTransaction = new EOS_Ecom_Transaction.ByReference();
+		final PointerByReference outTransaction = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyTransactionByIndex(this, options, outTransaction);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outTransaction;
+		return new EOS_Ecom_Transaction(outTransaction.getValue());
 	}
 
 	/**
@@ -525,11 +546,11 @@ public class EOS_Ecom_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the transaction is not found
 	 */
 	public EOS_Ecom_Transaction copyTransactionById(EOS_Ecom_CopyTransactionByIdOptions options) throws EOSException {
-		final EOS_Ecom_Transaction.ByReference outTransaction = new EOS_Ecom_Transaction.ByReference();
+		final PointerByReference outTransaction = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Ecom_CopyTransactionById(this, options, outTransaction);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outTransaction;
+		return new EOS_Ecom_Transaction(outTransaction.getValue());
 	}
 }

@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.*;
 import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_IdToken;
 import host.anzo.eossdk.eos.sdk.auth.EOS_Auth_Token;
@@ -148,12 +149,14 @@ public class EOS_Auth_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the auth token is not found or expired.
 	 */
 	public EOS_Auth_Token copyUserAuthToken(EOS_Auth_CopyUserAuthTokenOptions options, EOS_EpicAccountId localUserId) throws EOSException {
-		final EOS_Auth_Token.ByReference authTokenReference = new EOS_Auth_Token.ByReference();
+		final PointerByReference authTokenReference = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Auth_CopyUserAuthToken(this, options, localUserId, authTokenReference);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return authTokenReference;
+		final EOS_Auth_Token authToken = new EOS_Auth_Token(authTokenReference.getValue());
+		authToken.read();
+		return authToken;
 	}
 
 	/**
@@ -176,12 +179,14 @@ public class EOS_Auth_Interface extends PointerType {
 	 *
 	 */
 	public EOS_Auth_IdToken copyIdToken(EOS_EpicAccountId accountId) throws EOSException {
-		final EOS_Auth_IdToken.ByReference authIdTokenReference = new EOS_Auth_IdToken.ByReference();
+		final PointerByReference authIdTokenReference = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Auth_CopyIdToken(this, new EOS_Auth_CopyIdTokenOptions(accountId), authIdTokenReference);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return authIdTokenReference;
+		final EOS_Auth_IdToken idToken = new EOS_Auth_IdToken(authIdTokenReference.getValue());
+		idToken.read();
+		return idToken;
 	}
 
 	/**

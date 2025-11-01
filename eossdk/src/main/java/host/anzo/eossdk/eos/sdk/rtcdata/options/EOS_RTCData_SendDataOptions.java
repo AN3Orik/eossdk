@@ -7,7 +7,7 @@ import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
 import java.nio.ByteBuffer;
 
-import static com.sun.jna.Structure.*;
+import static com.sun.jna.Structure.FieldOrder;
 
 /**
  * This struct is used to call EOS_RTCData_SendData.

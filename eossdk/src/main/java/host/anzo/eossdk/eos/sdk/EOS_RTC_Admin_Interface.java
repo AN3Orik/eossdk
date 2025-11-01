@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
@@ -60,12 +61,14 @@ public class EOS_RTC_Admin_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the user token is not found
 	 */
 	public EOS_RTCAdmin_UserToken copyUserTokenByIndex(EOS_RTCAdmin_CopyUserTokenByIndexOptions options) throws EOSException {
-		final EOS_RTCAdmin_UserToken.ByReference outUserToken = new EOS_RTCAdmin_UserToken.ByReference();
+		final PointerByReference outUserToken = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_RTCAdmin_CopyUserTokenByIndex(this, options, outUserToken);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outUserToken;
+		final EOS_RTCAdmin_UserToken userToken = new EOS_RTCAdmin_UserToken(outUserToken.getValue());
+		userToken.read();
+		return userToken;
 	}
 
 	/**
@@ -79,12 +82,14 @@ public class EOS_RTC_Admin_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the user token is not found
 	 */
 	public EOS_RTCAdmin_UserToken copyUserTokenByUserId(EOS_RTCAdmin_CopyUserTokenByUserIdOptions options) throws EOSException {
-		final EOS_RTCAdmin_UserToken.ByReference outUserToken = new EOS_RTCAdmin_UserToken.ByReference();
+		final PointerByReference outUserToken = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_RTCAdmin_CopyUserTokenByUserId(this, options, outUserToken);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outUserToken;
+		final EOS_RTCAdmin_UserToken userToken = new EOS_RTCAdmin_UserToken(outUserToken.getValue());
+		userToken.read();
+		return userToken;
 	}
 
 	/**

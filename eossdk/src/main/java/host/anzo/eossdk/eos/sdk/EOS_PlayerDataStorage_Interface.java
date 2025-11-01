@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk;
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.ptr.IntByReference;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import host.anzo.eossdk.eos.sdk.playerdatastorage.EOS_PlayerDataStorageFileTransferRequest;
@@ -74,12 +75,14 @@ public class EOS_PlayerDataStorage_Interface extends PointerType {
 	 * @throws EOSException error result explaining what went wrong if the metadata isn't cached
 	 */
 	public EOS_PlayerDataStorage_FileMetadata copyFileMetadataByFilename(EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions copyFileMetadataOptions) throws EOSException {
-		final EOS_PlayerDataStorage_FileMetadata.ByReference outMetadata = new EOS_PlayerDataStorage_FileMetadata.ByReference();
+		final PointerByReference outMetadata = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_PlayerDataStorage_CopyFileMetadataByFilename(this, copyFileMetadataOptions, outMetadata);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outMetadata;
+		final EOS_PlayerDataStorage_FileMetadata metadata = new EOS_PlayerDataStorage_FileMetadata(outMetadata.getValue());
+		metadata.read();
+		return metadata;
 	}
 
 	/**
@@ -114,12 +117,14 @@ public class EOS_PlayerDataStorage_Interface extends PointerType {
 	 * @see EOS_PlayerDataStorage_FileMetadata#release()
 	 */
 	public EOS_PlayerDataStorage_FileMetadata copyFileMetadataAtIndex(EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions copyFileMetadataOptions) throws EOSException {
-		final EOS_PlayerDataStorage_FileMetadata.ByReference outMetadata = new EOS_PlayerDataStorage_FileMetadata.ByReference();
+		final PointerByReference outMetadata = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_PlayerDataStorage_CopyFileMetadataAtIndex(this, copyFileMetadataOptions, outMetadata);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outMetadata;
+		final EOS_PlayerDataStorage_FileMetadata metadata = new EOS_PlayerDataStorage_FileMetadata(outMetadata.getValue());
+		metadata.read();
+		return metadata;
 	}
 
 	/**

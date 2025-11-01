@@ -484,19 +484,19 @@ public interface EOSLibrary extends Library {
 
 	EOS_EResult EOS_Connect_CopyProductUserExternalAccountByIndex(EOS_Connect_Interface handle,
 	                                                              EOS_Connect_CopyProductUserExternalAccountByIndexOptions options,
-	                                                              EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo);
+	                                                              PointerByReference outExternalAccountInfo);
 
 	EOS_EResult EOS_Connect_CopyProductUserExternalAccountByAccountType(EOS_Connect_Interface handle,
 	                                                                    EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions options,
-	                                                                    EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo);
+	                                                                    PointerByReference outExternalAccountInfo);
 
 	EOS_EResult EOS_Connect_CopyProductUserExternalAccountByAccountId(EOS_Connect_Interface handle,
 	                                                                  EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions options,
-	                                                                  EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo);
+	                                                                  PointerByReference outExternalAccountInfo);
 
 	EOS_EResult EOS_Connect_CopyProductUserInfo(EOS_Connect_Interface handle,
 	                                            EOS_Connect_CopyProductUserInfoOptions options,
-	                                            EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo);
+	                                            PointerByReference outExternalAccountInfo);
 
 	int EOS_Connect_GetLoggedInUsersCount(EOS_Connect_Interface handle);
 
@@ -518,7 +518,7 @@ public interface EOSLibrary extends Library {
 
 	void EOS_Connect_RemoveNotifyLoginStatusChanged(EOS_Connect_Interface handle, EOS_NotificationId InId);
 
-	EOS_EResult EOS_Connect_CopyIdToken(EOS_Connect_Interface handle, EOS_Connect_CopyIdTokenOptions options, EOS_Connect_IdToken.ByReference outIdToken);
+	EOS_EResult EOS_Connect_CopyIdToken(EOS_Connect_Interface handle, EOS_Connect_CopyIdTokenOptions options, PointerByReference outIdToken);
 
 	void EOS_Connect_VerifyIdToken(EOS_Connect_Interface handle,
 	                               EOS_Connect_VerifyIdTokenOptions options,
@@ -546,9 +546,9 @@ public interface EOSLibrary extends Library {
 
 	EOS_ELoginStatus EOS_Auth_GetLoginStatus(EOS_Auth_Interface handle, EOS_EpicAccountId localUserId);
 
-	EOS_EResult EOS_Auth_CopyUserAuthToken(EOS_Auth_Interface handle, EOS_Auth_CopyUserAuthTokenOptions options, EOS_EpicAccountId LocalUserId, EOS_Auth_Token.ByReference outUserAuthToken);
+	EOS_EResult EOS_Auth_CopyUserAuthToken(EOS_Auth_Interface handle, EOS_Auth_CopyUserAuthTokenOptions options, EOS_EpicAccountId LocalUserId, PointerByReference outUserAuthToken);
 
-	EOS_EResult EOS_Auth_CopyIdToken(EOS_Auth_Interface handle, EOS_Auth_CopyIdTokenOptions options, EOS_Auth_IdToken.ByReference outIdToken);
+	EOS_EResult EOS_Auth_CopyIdToken(EOS_Auth_Interface handle, EOS_Auth_CopyIdTokenOptions options, PointerByReference outIdToken);
 
 	void EOS_Auth_QueryIdToken(EOS_Auth_Interface handle, EOS_Auth_QueryIdTokenOptions options, Pointer clientData, EOS_Auth_OnQueryIdTokenCallback completionDelegate);
 
@@ -578,7 +578,7 @@ public interface EOSLibrary extends Library {
 
 	void EOS_Mods_EnumerateMods(EOS_Mods_Interface handle, EOS_Mods_EnumerateModsOptions options, Pointer clientData, EOS_Mods_OnEnumerateModsCallback completionDelegate);
 
-	EOS_EResult EOS_Mods_CopyModInfo(EOS_Mods_Interface handle, EOS_Mods_CopyModInfoOptions options, EOS_Mods_ModInfo.ByReference outEnumeratedMods);
+	EOS_EResult EOS_Mods_CopyModInfo(EOS_Mods_Interface handle, EOS_Mods_CopyModInfoOptions options, PointerByReference outEnumeratedMods);
 
 	void EOS_Mods_UpdateMod(EOS_Mods_Interface handle, EOS_Mods_UpdateModOptions options, Pointer clientData, EOS_Mods_OnUpdateModCallback completionDelegate);
 
@@ -689,13 +689,13 @@ public interface EOSLibrary extends Library {
 	// Lobby Details
 	EOS_ProductUserId EOS_LobbyDetails_GetLobbyOwner(EOS_LobbyDetails handle, EOS_LobbyDetails_GetLobbyOwnerOptions options);
 
-	EOS_EResult EOS_LobbyDetails_CopyInfo(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyInfoOptions options, EOS_LobbyDetails_Info.ByReference outLobbyDetailsInfo);
+	EOS_EResult EOS_LobbyDetails_CopyInfo(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyInfoOptions options, PointerByReference outLobbyDetailsInfo);
 
 	int EOS_LobbyDetails_GetAttributeCount(EOS_LobbyDetails handle, EOS_LobbyDetails_GetAttributeCountOptions options);
 
-	EOS_EResult EOS_LobbyDetails_CopyAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByIndexOptions options, EOS_Lobby_Attribute.ByReference outAttribute);
+	EOS_EResult EOS_LobbyDetails_CopyAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByIndexOptions options, PointerByReference outAttribute);
 
-	EOS_EResult EOS_LobbyDetails_CopyAttributeByKey(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByKeyOptions options, EOS_Lobby_Attribute.ByReference outAttribute);
+	EOS_EResult EOS_LobbyDetails_CopyAttributeByKey(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByKeyOptions options, PointerByReference outAttribute);
 
 	int EOS_LobbyDetails_GetMemberCount(EOS_LobbyDetails handle, EOS_LobbyDetails_GetMemberCountOptions options);
 
@@ -703,9 +703,9 @@ public interface EOSLibrary extends Library {
 
 	int EOS_LobbyDetails_GetMemberAttributeCount(EOS_LobbyDetails handle, EOS_LobbyDetails_GetMemberAttributeCountOptions options);
 
-	EOS_EResult EOS_LobbyDetails_CopyMemberAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberAttributeByIndexOptions options, EOS_Lobby_Attribute.ByReference outAttribute);
+	EOS_EResult EOS_LobbyDetails_CopyMemberAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberAttributeByIndexOptions options, PointerByReference outAttribute);
 
-	EOS_EResult EOS_LobbyDetails_CopyMemberAttributeByKey(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberAttributeByKeyOptions options, EOS_Lobby_Attribute.ByReference outAttribute);
+	EOS_EResult EOS_LobbyDetails_CopyMemberAttributeByKey(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberAttributeByKeyOptions options, PointerByReference outAttribute);
 
 	void EOS_LobbyDetails_Info_Release(EOS_LobbyDetails_Info lobbyDetailsInfo);
 
@@ -735,7 +735,7 @@ public interface EOSLibrary extends Library {
 
 	int EOS_Sanctions_GetPlayerSanctionCount(EOS_Sanctions_Interface handle, EOS_Sanctions_GetPlayerSanctionCountOptions options);
 
-	EOS_EResult EOS_Sanctions_CopyPlayerSanctionByIndex(EOS_Sanctions_Interface handle, EOS_Sanctions_CopyPlayerSanctionByIndexOptions options, EOS_Sanctions_PlayerSanction.ByReference outSanction);
+	EOS_EResult EOS_Sanctions_CopyPlayerSanctionByIndex(EOS_Sanctions_Interface handle, EOS_Sanctions_CopyPlayerSanctionByIndexOptions options, PointerByReference outSanction);
 
 	void EOS_Sanctions_CreatePlayerSanctionAppeal(EOS_Sanctions_Interface handle, EOS_Sanctions_CreatePlayerSanctionAppealOptions options, Pointer clientData, EOS_Sanctions_CreatePlayerSanctionAppealCallback completionDelegate);
 	void EOS_Sanctions_PlayerSanction_Release(EOS_Sanctions_PlayerSanction sanction);
@@ -749,17 +749,17 @@ public interface EOSLibrary extends Library {
 
 	int EOS_Achievements_GetAchievementDefinitionCount(EOS_Achievements_Interface handle, EOS_Achievements_GetAchievementDefinitionCountOptions options);
 
-	EOS_EResult EOS_Achievements_CopyAchievementDefinitionV2ByIndex(EOS_Achievements_Interface handle, EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions options, EOS_Achievements_DefinitionV2.ByReference outDefinition);
+	EOS_EResult EOS_Achievements_CopyAchievementDefinitionV2ByIndex(EOS_Achievements_Interface handle, EOS_Achievements_CopyAchievementDefinitionV2ByIndexOptions options, PointerByReference outDefinition);
 
-	EOS_EResult EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(EOS_Achievements_Interface handle, EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions options, EOS_Achievements_DefinitionV2.ByReference outDefinition);
+	EOS_EResult EOS_Achievements_CopyAchievementDefinitionV2ByAchievementId(EOS_Achievements_Interface handle, EOS_Achievements_CopyAchievementDefinitionV2ByAchievementIdOptions options, PointerByReference outDefinition);
 
 	void EOS_Achievements_QueryPlayerAchievements(EOS_Achievements_Interface handle, EOS_Achievements_QueryPlayerAchievementsOptions options, Pointer clientData, EOS_Achievements_OnQueryPlayerAchievementsCompleteCallback completionDelegate);
 
 	int EOS_Achievements_GetPlayerAchievementCount(EOS_Achievements_Interface handle, EOS_Achievements_GetPlayerAchievementCountOptions options);
 
-	EOS_EResult EOS_Achievements_CopyPlayerAchievementByIndex(EOS_Achievements_Interface handle, EOS_Achievements_CopyPlayerAchievementByIndexOptions options, EOS_Achievements_PlayerAchievement.ByReference outAchievement);
+	EOS_EResult EOS_Achievements_CopyPlayerAchievementByIndex(EOS_Achievements_Interface handle, EOS_Achievements_CopyPlayerAchievementByIndexOptions options, PointerByReference outAchievement);
 
-	EOS_EResult EOS_Achievements_CopyPlayerAchievementByAchievementId(EOS_Achievements_Interface handle, EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions options, EOS_Achievements_PlayerAchievement.ByReference outAchievement);
+	EOS_EResult EOS_Achievements_CopyPlayerAchievementByAchievementId(EOS_Achievements_Interface handle, EOS_Achievements_CopyPlayerAchievementByAchievementIdOptions options, PointerByReference outAchievement);
 
 	void EOS_Achievements_UnlockAchievements(EOS_Achievements_Interface handle, EOS_Achievements_UnlockAchievementsOptions options, Pointer clientData, EOS_Achievements_OnUnlockAchievementsCompleteCallback completionDelegate);
 
@@ -841,47 +841,47 @@ public interface EOSLibrary extends Library {
 
 	int EOS_Ecom_GetEntitlementsByNameCount(EOS_Ecom_Interface handle, EOS_Ecom_GetEntitlementsByNameCountOptions options);
 
-	EOS_EResult EOS_Ecom_CopyEntitlementByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyEntitlementByIndexOptions options, EOS_Ecom_Entitlement.ByReference outEntitlement);
+	EOS_EResult EOS_Ecom_CopyEntitlementByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyEntitlementByIndexOptions options, PointerByReference outEntitlement);
 
-	EOS_EResult EOS_Ecom_CopyEntitlementByNameAndIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyEntitlementByNameAndIndexOptions options, EOS_Ecom_Entitlement.ByReference outEntitlement);
+	EOS_EResult EOS_Ecom_CopyEntitlementByNameAndIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyEntitlementByNameAndIndexOptions options, PointerByReference outEntitlement);
 
-	EOS_EResult EOS_Ecom_CopyEntitlementById(EOS_Ecom_Interface handle, EOS_Ecom_CopyEntitlementByIdOptions options, EOS_Ecom_Entitlement.ByReference outEntitlement);
+	EOS_EResult EOS_Ecom_CopyEntitlementById(EOS_Ecom_Interface handle, EOS_Ecom_CopyEntitlementByIdOptions options, PointerByReference outEntitlement);
 
 	int EOS_Ecom_GetOfferCount(EOS_Ecom_Interface handle, EOS_Ecom_GetOfferCountOptions options);
 
-	EOS_EResult EOS_Ecom_CopyOfferByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyOfferByIndexOptions options, EOS_Ecom_CatalogOffer.ByReference outOffer);
+	EOS_EResult EOS_Ecom_CopyOfferByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyOfferByIndexOptions options, PointerByReference outOffer);
 
-	EOS_EResult EOS_Ecom_CopyOfferById(EOS_Ecom_Interface handle, EOS_Ecom_CopyOfferByIdOptions options, EOS_Ecom_CatalogOffer.ByReference outOffer);
+	EOS_EResult EOS_Ecom_CopyOfferById(EOS_Ecom_Interface handle, EOS_Ecom_CopyOfferByIdOptions options, PointerByReference outOffer);
 
 	int EOS_Ecom_GetOfferItemCount(EOS_Ecom_Interface handle, EOS_Ecom_GetOfferItemCountOptions options);
 
-	EOS_EResult EOS_Ecom_CopyOfferItemByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyOfferItemByIndexOptions options, EOS_Ecom_CatalogItem.ByReference outItem);
+	EOS_EResult EOS_Ecom_CopyOfferItemByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyOfferItemByIndexOptions options, PointerByReference outItem);
 
-	EOS_EResult EOS_Ecom_CopyItemById(EOS_Ecom_Interface handle, EOS_Ecom_CopyItemByIdOptions options, EOS_Ecom_CatalogItem.ByReference outItem);
+	EOS_EResult EOS_Ecom_CopyItemById(EOS_Ecom_Interface handle, EOS_Ecom_CopyItemByIdOptions options, PointerByReference outItem);
 
 	int EOS_Ecom_GetOfferImageInfoCount(EOS_Ecom_Interface handle, EOS_Ecom_GetOfferImageInfoCountOptions options);
 
-	EOS_EResult EOS_Ecom_CopyOfferImageInfoByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyOfferImageInfoByIndexOptions options, EOS_Ecom_KeyImageInfo.ByReference outImageInfo);
+	EOS_EResult EOS_Ecom_CopyOfferImageInfoByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyOfferImageInfoByIndexOptions options, PointerByReference outImageInfo);
 
 	int EOS_Ecom_GetItemImageInfoCount(EOS_Ecom_Interface handle, EOS_Ecom_GetItemImageInfoCountOptions options);
 
-	EOS_EResult EOS_Ecom_CopyItemImageInfoByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyItemImageInfoByIndexOptions options, EOS_Ecom_KeyImageInfo.ByReference outImageInfo);
+	EOS_EResult EOS_Ecom_CopyItemImageInfoByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyItemImageInfoByIndexOptions options, PointerByReference outImageInfo);
 
 	int EOS_Ecom_GetItemReleaseCount(EOS_Ecom_Interface handle, EOS_Ecom_GetItemReleaseCountOptions options);
 
-	EOS_EResult EOS_Ecom_CopyItemReleaseByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyItemReleaseByIndexOptions options, EOS_Ecom_CatalogRelease.ByReference outRelease);
+	EOS_EResult EOS_Ecom_CopyItemReleaseByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyItemReleaseByIndexOptions options, PointerByReference outRelease);
 
 	int EOS_Ecom_GetTransactionCount(EOS_Ecom_Interface handle, EOS_Ecom_GetTransactionCountOptions options);
 
-	EOS_EResult EOS_Ecom_CopyTransactionByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyTransactionByIndexOptions options, EOS_Ecom_Transaction.ByReference outTransaction);
+	EOS_EResult EOS_Ecom_CopyTransactionByIndex(EOS_Ecom_Interface handle, EOS_Ecom_CopyTransactionByIndexOptions options, PointerByReference outTransaction);
 
-	EOS_EResult EOS_Ecom_CopyTransactionById(EOS_Ecom_Interface handle, EOS_Ecom_CopyTransactionByIdOptions options, EOS_Ecom_Transaction.ByReference outTransaction);
+	EOS_EResult EOS_Ecom_CopyTransactionById(EOS_Ecom_Interface handle, EOS_Ecom_CopyTransactionByIdOptions options, PointerByReference outTransaction);
 
 	EOS_EResult EOS_Ecom_Transaction_GetTransactionId(EOS_Ecom_Transaction handle, ByteBuffer OutBuffer, IntBuffer InOutBufferLength);
 
 	int EOS_Ecom_Transaction_GetEntitlementsCount(EOS_Ecom_Transaction handle, EOS_Ecom_Transaction_GetEntitlementsCountOptions options);
 
-	EOS_EResult EOS_Ecom_Transaction_CopyEntitlementByIndex(EOS_Ecom_Transaction handle, EOS_Ecom_Transaction_CopyEntitlementByIndexOptions options, EOS_Ecom_Entitlement.ByReference OutEntitlement);
+	EOS_EResult EOS_Ecom_Transaction_CopyEntitlementByIndex(EOS_Ecom_Transaction handle, EOS_Ecom_Transaction_CopyEntitlementByIndexOptions options, PointerByReference OutEntitlement);
 
 	void EOS_Ecom_Transaction_Release(EOS_Ecom_Transaction transaction);
 
@@ -963,7 +963,7 @@ public interface EOSLibrary extends Library {
 
 	int EOS_KWS_GetPermissionsCount(EOS_KWS_Interface handle, EOS_KWS_GetPermissionsCountOptions options);
 
-	EOS_EResult EOS_KWS_CopyPermissionByIndex(EOS_KWS_Interface handle, EOS_KWS_CopyPermissionByIndexOptions options, EOS_KWS_PermissionStatus.ByReference outPermission);
+	EOS_EResult EOS_KWS_CopyPermissionByIndex(EOS_KWS_Interface handle, EOS_KWS_CopyPermissionByIndexOptions options, PointerByReference outPermission);
 
 	EOS_EResult EOS_KWS_GetPermissionByKey(EOS_KWS_Interface handle, EOS_KWS_GetPermissionByKeyOptions options, IntBuffer outPermission);
 
@@ -981,25 +981,25 @@ public interface EOSLibrary extends Library {
 
 	int EOS_Leaderboards_GetLeaderboardDefinitionCount(EOS_Leaderboards_Interface handle, EOS_Leaderboards_GetLeaderboardDefinitionCountOptions options);
 
-	EOS_EResult EOS_Leaderboards_CopyLeaderboardDefinitionByIndex(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions options, EOS_Leaderboards_Definition.ByReference outLeaderboardDefinition);
+	EOS_EResult EOS_Leaderboards_CopyLeaderboardDefinitionByIndex(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardDefinitionByIndexOptions options, PointerByReference outLeaderboardDefinition);
 
-	EOS_EResult EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions options, EOS_Leaderboards_Definition.ByReference outLeaderboardDefinition);
+	EOS_EResult EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardId(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardDefinitionByLeaderboardIdOptions options, PointerByReference outLeaderboardDefinition);
 
 	void EOS_Leaderboards_QueryLeaderboardRanks(EOS_Leaderboards_Interface handle, EOS_Leaderboards_QueryLeaderboardRanksOptions options, Pointer clientData, EOS_Leaderboards_OnQueryLeaderboardRanksCompleteCallback completionDelegate);
 
 	int EOS_Leaderboards_GetLeaderboardRecordCount(EOS_Leaderboards_Interface handle, EOS_Leaderboards_GetLeaderboardRecordCountOptions options);
 
-	EOS_EResult EOS_Leaderboards_CopyLeaderboardRecordByIndex(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions options, EOS_Leaderboards_LeaderboardRecord.ByReference outLeaderboardRecord);
+	EOS_EResult EOS_Leaderboards_CopyLeaderboardRecordByIndex(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardRecordByIndexOptions options, PointerByReference outLeaderboardRecord);
 
-	EOS_EResult EOS_Leaderboards_CopyLeaderboardRecordByUserId(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions options, EOS_Leaderboards_LeaderboardRecord.ByReference outLeaderboardRecord);
+	EOS_EResult EOS_Leaderboards_CopyLeaderboardRecordByUserId(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardRecordByUserIdOptions options, PointerByReference outLeaderboardRecord);
 
 	void EOS_Leaderboards_QueryLeaderboardUserScores(EOS_Leaderboards_Interface handle, EOS_Leaderboards_QueryLeaderboardUserScoresOptions options, Pointer clientData, EOS_Leaderboards_OnQueryLeaderboardUserScoresCompleteCallback completionDelegate);
 
 	int EOS_Leaderboards_GetLeaderboardUserScoreCount(EOS_Leaderboards_Interface handle, EOS_Leaderboards_GetLeaderboardUserScoreCountOptions options);
 
-	EOS_EResult EOS_Leaderboards_CopyLeaderboardUserScoreByIndex(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions options, EOS_Leaderboards_LeaderboardUserScore.ByReference outLeaderboardUserScore);
+	EOS_EResult EOS_Leaderboards_CopyLeaderboardUserScoreByIndex(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardUserScoreByIndexOptions options, PointerByReference outLeaderboardUserScore);
 
-	EOS_EResult EOS_Leaderboards_CopyLeaderboardUserScoreByUserId(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions options, EOS_Leaderboards_LeaderboardUserScore.ByReference outLeaderboardUserScore);
+	EOS_EResult EOS_Leaderboards_CopyLeaderboardUserScoreByUserId(EOS_Leaderboards_Interface handle, EOS_Leaderboards_CopyLeaderboardUserScoreByUserIdOptions options, PointerByReference outLeaderboardUserScore);
 
 	void EOS_Leaderboards_LeaderboardUserScore_Release(EOS_Leaderboards_LeaderboardUserScore leaderboardUserScore);
 
@@ -1068,11 +1068,11 @@ public interface EOSLibrary extends Library {
 
 	void EOS_PlayerDataStorage_QueryFileList(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_QueryFileListOptions queryFileListOptions, Pointer clientData, EOS_PlayerDataStorage_OnQueryFileListCompleteCallback completionCallback);
 
-	EOS_EResult EOS_PlayerDataStorage_CopyFileMetadataByFilename(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions copyFileMetadataOptions, EOS_PlayerDataStorage_FileMetadata.ByReference outMetadata);
+	EOS_EResult EOS_PlayerDataStorage_CopyFileMetadataByFilename(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_CopyFileMetadataByFilenameOptions copyFileMetadataOptions, PointerByReference outMetadata);
 
 	EOS_EResult EOS_PlayerDataStorage_GetFileMetadataCount(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_GetFileMetadataCountOptions getFileMetadataCountOptions, IntByReference outFileMetadataCount);
 
-	EOS_EResult EOS_PlayerDataStorage_CopyFileMetadataAtIndex(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions copyFileMetadataOptions, EOS_PlayerDataStorage_FileMetadata.ByReference outMetadata);
+	EOS_EResult EOS_PlayerDataStorage_CopyFileMetadataAtIndex(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_CopyFileMetadataAtIndexOptions copyFileMetadataOptions, PointerByReference outMetadata);
 
 	void EOS_PlayerDataStorage_DuplicateFile(EOS_PlayerDataStorage_Interface handle, EOS_PlayerDataStorage_DuplicateFileOptions duplicateOptions, Pointer clientData, EOS_PlayerDataStorage_OnDuplicateFileCompleteCallback completionCallback);
 
@@ -1099,7 +1099,7 @@ public interface EOSLibrary extends Library {
 
 	EOS_Bool EOS_Presence_HasPresence(EOS_Presence_Interface handle, EOS_Presence_HasPresenceOptions options);
 
-	EOS_EResult EOS_Presence_CopyPresence(EOS_Presence_Interface handle, EOS_Presence_CopyPresenceOptions options, EOS_Presence_Info.ByReference outPresence);
+	EOS_EResult EOS_Presence_CopyPresence(EOS_Presence_Interface handle, EOS_Presence_CopyPresenceOptions options, PointerByReference outPresence);
 
 	EOS_EResult EOS_Presence_CreatePresenceModification(EOS_Presence_Interface handle, EOS_Presence_CreatePresenceModificationOptions options, EOS_PresenceModification OutPresenceModificationHandle);
 
@@ -1147,9 +1147,9 @@ public interface EOSLibrary extends Library {
 
 	int EOS_Stats_GetStatsCount(EOS_Stats_Interface handle, EOS_Stats_GetStatCountOptions options);
 
-	EOS_EResult EOS_Stats_CopyStatByIndex(EOS_Stats_Interface handle, EOS_Stats_CopyStatByIndexOptions options, EOS_Stats_Stat.ByReference outStat);
+	EOS_EResult EOS_Stats_CopyStatByIndex(EOS_Stats_Interface handle, EOS_Stats_CopyStatByIndexOptions options, PointerByReference outStat);
 
-	EOS_EResult EOS_Stats_CopyStatByName(EOS_Stats_Interface handle, EOS_Stats_CopyStatByNameOptions options, EOS_Stats_Stat.ByReference outStat);
+	EOS_EResult EOS_Stats_CopyStatByName(EOS_Stats_Interface handle, EOS_Stats_CopyStatByNameOptions options, PointerByReference outStat);
 
 	void EOS_Stats_Stat_Release(EOS_Stats_Stat stat);
 
@@ -1158,11 +1158,11 @@ public interface EOSLibrary extends Library {
 
 	void EOS_TitleStorage_QueryFileList(EOS_TitleStorage_Interface handle, EOS_TitleStorage_QueryFileListOptions options, Pointer clientData, EOS_TitleStorage_OnQueryFileListCompleteCallback completionCallback);
 
-	EOS_EResult EOS_TitleStorage_CopyFileMetadataByFilename(EOS_TitleStorage_Interface handle, EOS_TitleStorage_CopyFileMetadataByFilenameOptions options, EOS_TitleStorage_FileMetadata.ByReference outMetadata);
+	EOS_EResult EOS_TitleStorage_CopyFileMetadataByFilename(EOS_TitleStorage_Interface handle, EOS_TitleStorage_CopyFileMetadataByFilenameOptions options, PointerByReference outMetadata);
 
 	int EOS_TitleStorage_GetFileMetadataCount(EOS_TitleStorage_Interface handle, EOS_TitleStorage_GetFileMetadataCountOptions options);
 
-	EOS_EResult EOS_TitleStorage_CopyFileMetadataAtIndex(EOS_TitleStorage_Interface handle, EOS_TitleStorage_CopyFileMetadataAtIndexOptions options, EOS_TitleStorage_FileMetadata.ByReference outMetadata);
+	EOS_EResult EOS_TitleStorage_CopyFileMetadataAtIndex(EOS_TitleStorage_Interface handle, EOS_TitleStorage_CopyFileMetadataAtIndexOptions options, PointerByReference outMetadata);
 
 	EOS_TitleStorageFileTransferRequest EOS_TitleStorage_ReadFile(EOS_TitleStorage_Interface handle, EOS_TitleStorage_ReadFileOptions options, Pointer clientData, EOS_TitleStorage_OnReadFileCompleteCallback completionCallback);
 
@@ -1185,19 +1185,19 @@ public interface EOSLibrary extends Library {
 
 	void EOS_UserInfo_QueryUserInfoByExternalAccount(EOS_UserInfo_Interface handle, EOS_UserInfo_QueryUserInfoByExternalAccountOptions options, Pointer clientData, EOS_UserInfo_OnQueryUserInfoByExternalAccountCallback completionDelegate);
 
-	EOS_EResult EOS_UserInfo_CopyUserInfo(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyUserInfoOptions options, EOS_UserInfo.ByReference outUserInfo);
+	EOS_EResult EOS_UserInfo_CopyUserInfo(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyUserInfoOptions options, PointerByReference outUserInfo);
 
 	int EOS_UserInfo_GetExternalUserInfoCount(EOS_UserInfo_Interface handle, EOS_UserInfo_GetExternalUserInfoCountOptions options);
 
-	EOS_EResult EOS_UserInfo_CopyExternalUserInfoByIndex(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyExternalUserInfoByIndexOptions options, EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo);
+	EOS_EResult EOS_UserInfo_CopyExternalUserInfoByIndex(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyExternalUserInfoByIndexOptions options, PointerByReference outExternalUserInfo);
 
-	EOS_EResult EOS_UserInfo_CopyExternalUserInfoByAccountType(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyExternalUserInfoByAccountTypeOptions options, EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo);
+	EOS_EResult EOS_UserInfo_CopyExternalUserInfoByAccountType(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyExternalUserInfoByAccountTypeOptions options, PointerByReference outExternalUserInfo);
 
-	EOS_EResult EOS_UserInfo_CopyExternalUserInfoByAccountId(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyExternalUserInfoByAccountIdOptions options, EOS_UserInfo_ExternalUserInfo.ByReference outExternalUserInfo);
+	EOS_EResult EOS_UserInfo_CopyExternalUserInfoByAccountId(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyExternalUserInfoByAccountIdOptions options, PointerByReference outExternalUserInfo);
 
-	EOS_EResult EOS_UserInfo_CopyBestDisplayName(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyBestDisplayNameOptions options, EOS_UserInfo_BestDisplayName.ByReference outBestDisplayName);
+	EOS_EResult EOS_UserInfo_CopyBestDisplayName(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyBestDisplayNameOptions options, PointerByReference outBestDisplayName);
 
-	EOS_EResult EOS_UserInfo_CopyBestDisplayNameWithPlatform(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions options, EOS_UserInfo_BestDisplayName.ByReference outBestDisplayName);
+	EOS_EResult EOS_UserInfo_CopyBestDisplayNameWithPlatform(EOS_UserInfo_Interface handle, EOS_UserInfo_CopyBestDisplayNameWithPlatformOptions options, PointerByReference outBestDisplayName);
 
 	EOS_OnlinePlatformType EOS_UserInfo_GetLocalPlatformType(EOS_UserInfo_Interface handle, EOS_UserInfo_GetLocalPlatformTypeOptions options);
 
@@ -1292,19 +1292,19 @@ public interface EOSLibrary extends Library {
 
 	EOS_EResult EOS_SessionModification_RemoveAttribute(EOS_SessionModification handle, EOS_SessionModification_RemoveAttributeOptions options);
 
-	EOS_EResult EOS_ActiveSession_CopyInfo(EOS_ActiveSession handle, EOS_ActiveSession_CopyInfoOptions options, EOS_ActiveSession_Info.ByReference outActiveSessionInfo);
+	EOS_EResult EOS_ActiveSession_CopyInfo(EOS_ActiveSession handle, EOS_ActiveSession_CopyInfoOptions options, PointerByReference outActiveSessionInfo);
 
 	int EOS_ActiveSession_GetRegisteredPlayerCount(EOS_ActiveSession handle, EOS_ActiveSession_GetRegisteredPlayerCountOptions options);
 
 	EOS_ProductUserId EOS_ActiveSession_GetRegisteredPlayerByIndex(EOS_ActiveSession handle, EOS_ActiveSession_GetRegisteredPlayerByIndexOptions options);
 
-	EOS_EResult EOS_SessionDetails_CopyInfo(EOS_SessionDetails handle, EOS_SessionDetails_CopyInfoOptions options, EOS_SessionDetails_Info.ByReference outSessionInfo);
+	EOS_EResult EOS_SessionDetails_CopyInfo(EOS_SessionDetails handle, EOS_SessionDetails_CopyInfoOptions options, PointerByReference outSessionInfo);
 
 	int EOS_SessionDetails_GetSessionAttributeCount(EOS_SessionDetails handle, EOS_SessionDetails_GetSessionAttributeCountOptions options);
 
-	EOS_EResult EOS_SessionDetails_CopySessionAttributeByIndex(EOS_SessionDetails handle, EOS_SessionDetails_CopySessionAttributeByIndexOptions options, EOS_SessionDetails_Attribute.ByReference outSessionAttribute);
+	EOS_EResult EOS_SessionDetails_CopySessionAttributeByIndex(EOS_SessionDetails handle, EOS_SessionDetails_CopySessionAttributeByIndexOptions options, PointerByReference outSessionAttribute);
 
-	EOS_EResult EOS_SessionDetails_CopySessionAttributeByKey(EOS_SessionDetails handle, EOS_SessionDetails_CopySessionAttributeByKeyOptions options, EOS_SessionDetails_Attribute.ByReference outSessionAttribute);
+	EOS_EResult EOS_SessionDetails_CopySessionAttributeByKey(EOS_SessionDetails handle, EOS_SessionDetails_CopySessionAttributeByKeyOptions options, PointerByReference outSessionAttribute);
 
 	EOS_EResult EOS_SessionSearch_SetSessionId(EOS_SessionSearch handle, EOS_SessionSearch_SetSessionIdOptions options);
 
@@ -1414,9 +1414,9 @@ public interface EOSLibrary extends Library {
 	// RTC Admin
 	void EOS_RTCAdmin_QueryJoinRoomToken(EOS_RTC_Admin_Interface handle, EOS_RTCAdmin_QueryJoinRoomTokenOptions options, Pointer clientData, EOS_RTCAdmin_OnQueryJoinRoomTokenCompleteCallback completionDelegate);
 
-	EOS_EResult EOS_RTCAdmin_CopyUserTokenByIndex(EOS_RTC_Admin_Interface handle, EOS_RTCAdmin_CopyUserTokenByIndexOptions options, EOS_RTCAdmin_UserToken.ByReference outUserToken);
+	EOS_EResult EOS_RTCAdmin_CopyUserTokenByIndex(EOS_RTC_Admin_Interface handle, EOS_RTCAdmin_CopyUserTokenByIndexOptions options, PointerByReference outUserToken);
 
-	EOS_EResult EOS_RTCAdmin_CopyUserTokenByUserId(EOS_RTC_Admin_Interface handle, EOS_RTCAdmin_CopyUserTokenByUserIdOptions options, EOS_RTCAdmin_UserToken.ByReference outUserToken);
+	EOS_EResult EOS_RTCAdmin_CopyUserTokenByUserId(EOS_RTC_Admin_Interface handle, EOS_RTCAdmin_CopyUserTokenByUserIdOptions options, PointerByReference outUserToken);
 
 	void EOS_RTCAdmin_Kick(EOS_RTC_Admin_Interface handle, EOS_RTCAdmin_KickOptions options, Pointer clientData, EOS_RTCAdmin_OnKickCompleteCallback completionDelegate);
 
@@ -1469,13 +1469,13 @@ public interface EOSLibrary extends Library {
 
 	int EOS_RTCAudio_GetInputDevicesCount(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_GetInputDevicesCountOptions options);
 
-	EOS_EResult EOS_RTCAudio_CopyInputDeviceInformationByIndex(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_CopyInputDeviceInformationByIndexOptions options, EOS_RTCAudio_InputDeviceInformation.ByReference outInputDeviceInformation);
+	EOS_EResult EOS_RTCAudio_CopyInputDeviceInformationByIndex(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_CopyInputDeviceInformationByIndexOptions options, PointerByReference outInputDeviceInformation);
 
 	void EOS_RTCAudio_QueryOutputDevicesInformation(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_QueryOutputDevicesInformationOptions options, Pointer clientData, EOS_RTCAudio_OnQueryOutputDevicesInformationCallback completionDelegate);
 
 	int EOS_RTCAudio_GetOutputDevicesCount(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_GetOutputDevicesCountOptions options);
 
-	EOS_EResult EOS_RTCAudio_CopyOutputDeviceInformationByIndex(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_CopyOutputDeviceInformationByIndexOptions options, EOS_RTCAudio_OutputDeviceInformation.ByReference outOutputDeviceInformation);
+	EOS_EResult EOS_RTCAudio_CopyOutputDeviceInformationByIndex(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_CopyOutputDeviceInformationByIndexOptions options, PointerByReference outOutputDeviceInformation);
 
 	void EOS_RTCAudio_SetInputDeviceSettings(EOS_RTC_Audio_Interface handle, EOS_RTCAudio_SetInputDeviceSettingsOptions options, Pointer clientData, EOS_RTCAudio_OnSetInputDeviceSettingsCallback completionDelegate);
 

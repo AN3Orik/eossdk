@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk;
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.ptr.IntByReference;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSLimitExceededException;
@@ -338,12 +339,14 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the account data doesn't exist or hasn't been queried yet.
 	 */
 	public EOS_Connect_ExternalAccountInfo copyProductUserExternalAccountByIndex(EOS_Connect_CopyProductUserExternalAccountByIndexOptions options) throws EOSException {
-		final EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo = new EOS_Connect_ExternalAccountInfo.ByReference();
+		final PointerByReference outExternalAccountInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByIndex(this, options, outExternalAccountInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outExternalAccountInfo;
+		final EOS_Connect_ExternalAccountInfo accountInfo = new EOS_Connect_ExternalAccountInfo(outExternalAccountInfo.getValue());
+		accountInfo.read();
+		return accountInfo;
 	}
 
 	/**
@@ -359,12 +362,14 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the account data doesn't exist or hasn't been queried yet.
 	 */
 	public EOS_Connect_ExternalAccountInfo copyProductUserExternalAccountByAccountType(EOS_Connect_CopyProductUserExternalAccountByAccountTypeOptions options) throws EOSException {
-		final EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo = new EOS_Connect_ExternalAccountInfo.ByReference();
+		final PointerByReference outExternalAccountInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByAccountType(this, options, outExternalAccountInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outExternalAccountInfo;
+		final EOS_Connect_ExternalAccountInfo accountInfo = new EOS_Connect_ExternalAccountInfo(outExternalAccountInfo.getValue());
+		accountInfo.read();
+		return accountInfo;
 	}
 
 	/**
@@ -380,12 +385,14 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the account data doesn't exist or hasn't been queried yet.
 	 */
 	public EOS_Connect_ExternalAccountInfo copyProductUserExternalAccountByAccountId(EOS_Connect_CopyProductUserExternalAccountByAccountIdOptions options) throws EOSException {
-		final EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo = new EOS_Connect_ExternalAccountInfo.ByReference();
+		final PointerByReference outExternalAccountInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyProductUserExternalAccountByAccountId(this, options, outExternalAccountInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outExternalAccountInfo;
+		final EOS_Connect_ExternalAccountInfo accountInfo = new EOS_Connect_ExternalAccountInfo(outExternalAccountInfo.getValue());
+		accountInfo.read();
+		return accountInfo;
 	}
 
 	/**
@@ -401,12 +408,14 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the account data doesn't exist or hasn't been queried yet.
 	 */
 	public EOS_Connect_ExternalAccountInfo copyProductUserInfo(EOS_Connect_CopyProductUserInfoOptions options) throws EOSException {
-		final EOS_Connect_ExternalAccountInfo.ByReference outExternalAccountInfo = new EOS_Connect_ExternalAccountInfo.ByReference();
+		final PointerByReference outExternalAccountInfo = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyProductUserInfo(this, options, outExternalAccountInfo);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outExternalAccountInfo;
+		final EOS_Connect_ExternalAccountInfo accountInfo = new EOS_Connect_ExternalAccountInfo(outExternalAccountInfo.getValue());
+		accountInfo.read();
+		return accountInfo;
 	}
 
 	/**
@@ -514,12 +523,14 @@ public class EOS_Connect_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the ID token is not found or expired.
 	 */
 	public EOS_Connect_IdToken copyIdToken(EOS_Connect_CopyIdTokenOptions options) throws EOSException {
-		final EOS_Connect_IdToken.ByReference outIdToken = new EOS_Connect_IdToken.ByReference();
+		final PointerByReference outIdToken = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Connect_CopyIdToken(this, options, outIdToken);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outIdToken;
+		final EOS_Connect_IdToken idToken = new EOS_Connect_IdToken(outIdToken.getValue());
+		idToken.read();
+		return idToken;
 	}
 
 	/**

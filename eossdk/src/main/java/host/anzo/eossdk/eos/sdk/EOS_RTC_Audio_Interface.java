@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
@@ -402,12 +403,14 @@ public class EOS_RTC_Audio_Interface extends PointerType {
 	 * @see #addNotifyAudioDevicesChanged(EOS_RTCAudio_AddNotifyAudioDevicesChangedOptions, Pointer, EOS_RTCAudio_OnAudioDevicesChangedCallback)
 	 */
 	public EOS_RTCAudio_InputDeviceInformation copyInputDeviceInformationByIndex(EOS_RTCAudio_CopyInputDeviceInformationByIndexOptions options) throws EOSException {
-		final EOS_RTCAudio_InputDeviceInformation.ByReference outResult = new EOS_RTCAudio_InputDeviceInformation.ByReference();
+		final PointerByReference outResult = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_RTCAudio_CopyInputDeviceInformationByIndex(this, options, outResult);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outResult;
+		final EOS_RTCAudio_InputDeviceInformation deviceInfo = new EOS_RTCAudio_InputDeviceInformation(outResult.getValue());
+		deviceInfo.read();
+		return deviceInfo;
 	}
 
 	/**
@@ -451,12 +454,14 @@ public class EOS_RTC_Audio_Interface extends PointerType {
 	 * @see #addNotifyAudioDevicesChanged(EOS_RTCAudio_AddNotifyAudioDevicesChangedOptions, Pointer, EOS_RTCAudio_OnAudioDevicesChangedCallback)
 	 */
 	public EOS_RTCAudio_OutputDeviceInformation copyOutputDeviceInformationByIndex(EOS_RTCAudio_CopyOutputDeviceInformationByIndexOptions options) throws EOSException {
-		final EOS_RTCAudio_OutputDeviceInformation.ByReference outResult = new EOS_RTCAudio_OutputDeviceInformation.ByReference();
+		final PointerByReference outResult = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_RTCAudio_CopyOutputDeviceInformationByIndex(this, options, outResult);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outResult;
+		final EOS_RTCAudio_OutputDeviceInformation deviceInfo = new EOS_RTCAudio_OutputDeviceInformation(outResult.getValue());
+		deviceInfo.read();
+		return deviceInfo;
 	}
 
 	/**

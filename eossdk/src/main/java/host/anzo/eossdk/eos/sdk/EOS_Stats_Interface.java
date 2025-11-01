@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
+import com.sun.jna.ptr.PointerByReference;
 import host.anzo.eossdk.eos.exceptions.EOSException;
 import host.anzo.eossdk.eos.exceptions.EOSInvalidParametersException;
 import host.anzo.eossdk.eos.exceptions.EOSNotFoundException;
@@ -81,12 +82,14 @@ public class EOS_Stats_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the stat is not found
 	 */
 	public EOS_Stats_Stat copyStatByIndex(EOS_Stats_CopyStatByIndexOptions options) throws EOSException {
-		final EOS_Stats_Stat.ByReference outStat = new EOS_Stats_Stat.ByReference();
+		final PointerByReference outStat = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Stats_CopyStatByIndex(this, options, outStat);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outStat;
+		final EOS_Stats_Stat stat = new EOS_Stats_Stat(outStat.getValue());
+		stat.read();
+		return stat;
 	}
 
 	/**
@@ -101,11 +104,13 @@ public class EOS_Stats_Interface extends PointerType {
 	 * @throws EOSNotFoundException if the stat is not found
 	 */
 	public EOS_Stats_Stat copyStatByName(EOS_Stats_CopyStatByNameOptions options) throws EOSException {
-		final EOS_Stats_Stat.ByReference outStat = new EOS_Stats_Stat.ByReference();
+		final PointerByReference outStat = new PointerByReference();
 		final EOS_EResult result = EOSLibrary.instance.EOS_Stats_CopyStatByName(this, options, outStat);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
 		}
-		return outStat;
+		final EOS_Stats_Stat stat = new EOS_Stats_Stat(outStat.getValue());
+		stat.read();
+		return stat;
 	}
 }
