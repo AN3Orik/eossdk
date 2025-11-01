@@ -14,7 +14,7 @@ import static com.sun.jna.Structure.FieldOrder;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "Credentials", "ScopeFlags"})
+@FieldOrder({"ApiVersion", "Credentials", "ScopeFlags", "LoginFlags"})
 public class EOS_Auth_LoginOptions extends Structure {
 	/**
 	 * Specify login to be performed without SDK provided user interface.
@@ -31,9 +31,7 @@ public class EOS_Auth_LoginOptions extends Structure {
 	public int ApiVersion;
 	/** Credentials specified for a given login method */
 	public EOS_Auth_Credentials.ByReference Credentials;
-	/**
-	 * Auth scope flags are permissions to request from the user while they are logging in. This is a bitwise-or union of EOS_EAuthScopeFlags flags defined above
-	 */
+	/** Auth scope flags are permissions to request from the user while they are logging in. This is a bitwise-or union of EOS_EAuthScopeFlags flags defined above */
 	public EOS_EAuthScopeFlags ScopeFlags;
 	/** Optional flags for the desired login behavior, e.g. {@link #EOS_LF_NO_USER_INTERFACE}. This is a bitwise-or union of the defined flags. */
 	public NativeLong LoginFlags;

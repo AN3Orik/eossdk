@@ -3,12 +3,15 @@ package host.anzo.eossdk.eos.sdk.common.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 
+import static com.sun.jna.Structure.*;
+
 /**
  * Options for initializing login for IOS.
  *
  * @author Anton Lasevich
  * @since 11/7/2023
  */
+@FieldOrder({"ApiVersion", "PresentationContextProviding"})
 public class EOS_IOS_Auth_CredentialsOptions extends Structure {
 	/** API version of EOS_IOS_Auth_CredentialsOptions. */
 	public static final int EOS_IOS_AUTH_CREDENTIALSOPTIONS_API_LATEST = 1;

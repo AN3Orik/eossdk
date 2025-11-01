@@ -1,9 +1,3 @@
-buildscript {
-	dependencies {
-		classpath 'com.android.tools.build:gradle:8.1.1'
-	}
-}
-
 plugins {
 	id 'java'
 	id 'idea'
@@ -20,7 +14,7 @@ subprojects {
 	repositories {
 		mavenCentral()
 	}
-	version = "1.17.1.3"
+	version = "1.17.1.3.0"
 }
 
 allprojects {

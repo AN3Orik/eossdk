@@ -5,8 +5,11 @@ plugins {
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(8)
+	}
 }
 
 compileJava {
@@ -82,8 +85,8 @@ jreleaser {
                     url = 'https://central.sonatype.com/api/v1/publisher'
                     sign = true
                     checksums = true
-                    sourceJar = true
-                    javadocJar = true
+                    sourceJar = false
+                    javadocJar = false
                     stagingRepository('build/staging-deploy')
                 }
             }
