@@ -15,11 +15,11 @@ public class EOS {
 	/** EOS SDK major version */
 	public static final int EOS_MAJOR_VERSION = 1;
 	/** EOS SDK minor version */
-	public static final int EOS_MINOR_VERSION = 17;
+	public static final int EOS_MINOR_VERSION = 18;
 	/** EOS SDK patch version */
-	public static final int EOS_PATCH_VERSION = 1;
+	public static final int EOS_PATCH_VERSION = 0;
 	/** EOS SDK hotfix version */
-	public static final int EOS_HOTFIX_VERSION = 3;
+	public static final int EOS_HOTFIX_VERSION = 4;
 
 	/** EOS SDK version string */
 	public static final String EOS_VERSION_STRING_BASE = EOS_MAJOR_VERSION + "." + EOS_MINOR_VERSION + "." + EOS_PATCH_VERSION +  "." + EOS_HOTFIX_VERSION;

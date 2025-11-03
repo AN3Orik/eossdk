@@ -60,7 +60,7 @@ New releases are made available on Maven Central, enabling you to employ your pr
 // Gradle
 dependencies {
     // EOS SDK wrapper library
-    implementation "host.anzo:eossdk:1.17.1.3.+"
+    implementation "host.anzo:eossdk:1.18.0.4.+"
 }
 ```
 
@@ -71,11 +71,11 @@ Of course, for full-fledged work, you will need native EOS SDK libraries. There 
 // Gradle
 dependencies {
     // Windows native library
-    implementation "host.anzo:eossdk-native-windows:1.17.1.3"
+    implementation "host.anzo:eossdk-native-windows:1.18.0.4"
     // Linux native library
-    implementation "host.anzo:eossdk-native-linux:1.17.1.3"
+    implementation "host.anzo:eossdk-native-linux:1.18.0.4"
     // iOS native library
-    implementation "host.anzo:eossdk-native-ios:1.17.1.3"
+    implementation "host.anzo:eossdk-native-ios:1.18.0.4"
 }
 ```
 
