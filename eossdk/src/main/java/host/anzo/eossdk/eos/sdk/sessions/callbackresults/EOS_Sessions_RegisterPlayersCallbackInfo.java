@@ -2,12 +2,18 @@ package host.anzo.eossdk.eos.sdk.sessions.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the {@link EOSLibrary#EOS_Sessions_RegisterPlayers} function.
  * @author Anton Lasevich
  * @since 9/7/2023
  */
@@ -27,11 +33,11 @@ public class EOS_Sessions_RegisterPlayersCallbackInfo extends Structure {
 	/** Context that was passed into EOS_Sessions_RegisterPlayers */
 	public Pointer ClientData;
 	/** The players that were successfully registered */
-	public EOS_ProductUserId RegisteredPlayers; // TODO: Array
+	public Pointer RegisteredPlayers;
 	/** The number of players successfully registered */
 	public int RegisteredPlayersCount;
 	/** The players that failed to register because they are sanctioned */
-	public EOS_ProductUserId SanctionedPlayers; // TODO: Array
+	public Pointer SanctionedPlayers;
 	/** The number of players that failed to register because they are sanctioned */
 	public int SanctionedPlayersCount;
 
@@ -41,6 +47,40 @@ public class EOS_Sessions_RegisterPlayersCallbackInfo extends Structure {
 
 	public EOS_Sessions_RegisterPlayersCallbackInfo(Pointer peer) {
 		super(peer);
+	}
+
+	/**
+	 * @return list of registered players
+	 */
+	public List<EOS_ProductUserId> getRegisteredPlayers() {
+		if (RegisteredPlayers == null || RegisteredPlayersCount == 0) {
+			return Collections.emptyList();
+		}
+		final Pointer[] pointers = RegisteredPlayers.getPointerArray(0, RegisteredPlayersCount);
+		final List<EOS_ProductUserId> players = new ArrayList<>(RegisteredPlayersCount);
+		for (Pointer p : pointers) {
+			EOS_ProductUserId userId = new EOS_ProductUserId();
+			userId.setPointer(p);
+			players.add(userId);
+		}
+		return players;
+	}
+
+	/**
+	 * @return list of sanctioned players
+	 */
+	public List<EOS_ProductUserId> getSanctionedPlayers() {
+		if (SanctionedPlayers == null || SanctionedPlayersCount == 0) {
+			return Collections.emptyList();
+		}
+		final Pointer[] pointers = SanctionedPlayers.getPointerArray(0, SanctionedPlayersCount);
+		final List<EOS_ProductUserId> players = new ArrayList<>(SanctionedPlayersCount);
+		for (Pointer p : pointers) {
+			EOS_ProductUserId userId = new EOS_ProductUserId();
+			userId.setPointer(p);
+			players.add(userId);
+		}
+		return players;
 	}
 
 	public static class ByReference extends EOS_Sessions_RegisterPlayersCallbackInfo implements Structure.ByReference {

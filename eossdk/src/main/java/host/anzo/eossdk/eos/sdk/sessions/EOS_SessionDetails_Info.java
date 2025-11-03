@@ -43,6 +43,11 @@ public class EOS_SessionDetails_Info extends Structure implements AutoCloseable 
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with an EOS_SessionDetails_Info structure. This must be called on data retrieved from {@link EOSLibrary#EOS_SessionDetails_CopyInfo}.
+	 * @see EOS_SessionDetails_Info
+	 * @see EOSLibrary#EOS_SessionDetails_CopyInfo
+	 */
 	public void release() {
 		EOSLibrary.instance.EOS_SessionDetails_Info_Release(this);
 	}

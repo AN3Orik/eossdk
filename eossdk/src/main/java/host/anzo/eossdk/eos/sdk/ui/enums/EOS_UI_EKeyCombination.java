@@ -172,6 +172,7 @@ public @Getter class EOS_UI_EKeyCombination extends NativeMappedBitMask {
 	 * The Windows key on a Windows keyboard or the Command key on a Mac keyboard<br>
 	 */
 	public static final int EOS_UIK_Meta = 8 << EOS_UIK_ModifierShift;
+	/** A mask which contains all of the modifier keys */
 	public static final int EOS_UIK_ValidModifierMask = EOS_UIK_Shift | EOS_UIK_Control | EOS_UIK_Alt | EOS_UIK_Meta;
 
 	public static @NotNull EOS_UI_EKeyCombination of(int... flags) {

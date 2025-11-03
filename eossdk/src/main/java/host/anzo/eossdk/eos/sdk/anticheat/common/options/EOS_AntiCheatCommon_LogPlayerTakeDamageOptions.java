@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.common.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_LogPlayerUseWeaponData;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_Quat;
@@ -14,11 +15,13 @@ import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatServer_LogPlayerTakeDamage} function.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "VictimPlayerHandle", "VictimPlayerPosition", "VictimPlayerViewRotation", "AttackerPlayerHandle", "AttackerPlayerPosition", "AttackerPlayerViewRotation", "IsHitscanAttack", "HasLineOfSight", "IsCriticalHit", "HitBoneId_DEPRECATED", "DamageTaken", "HealthRemaining", "DamageSource", "DamageType", "DamageResult", "PlayerUseWeaponData", "TimeSincePlayerUseWeaponMs", "DamagePosition", "AttackerPlayerViewPosition"})
 public class EOS_AntiCheatCommon_LogPlayerTakeDamageOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatCommon_LogPlayerTakeDamageOptions struct. */
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERTAKEDAMAGE_API_LATEST = 4;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGPLAYERTAKEDAMAGE_API_LATEST}. */

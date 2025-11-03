@@ -2,15 +2,18 @@ package host.anzo.eossdk.eos.sdk.anticheat.client.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatClient_AddExternalIntegrityCatalog} function.
  * @author Anton Lasevich
  * @since 8/15/2023
  */
 @FieldOrder({"ApiVersion", "PathToBinFile"})
 public class EOS_AntiCheatClient_AddExternalIntegrityCatalogOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatClient_AddExternalIntegrityCatalog API. */
 	public static final int EOS_ANTICHEATCLIENT_ADDEXTERNALINTEGRITYCATALOG_API_LATEST = 1;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_ADDEXTERNALINTEGRITYCATALOG_API_LATEST}. */

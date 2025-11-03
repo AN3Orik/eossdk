@@ -2,12 +2,18 @@ package host.anzo.eossdk.eos.sdk.sessions.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the {@link EOSLibrary#EOS_Sessions_UnregisterPlayers} function.
  * @author Anton Lasevich
  * @since 9/7/2023
  */
@@ -25,7 +31,7 @@ public class EOS_Sessions_UnregisterPlayersCallbackInfo extends Structure {
 	/** Context that was passed into EOS_Sessions_UnregisterPlayers */
 	public Pointer ClientData;
 	/** The players that successfully unregistered */
-	public EOS_ProductUserId UnregisteredPlayers; // TODO: Array
+	public Pointer UnregisteredPlayers;
 	/** The number of players that successfully unregistered */
 	public int UnregisteredPlayersCount;
 
@@ -35,6 +41,23 @@ public class EOS_Sessions_UnregisterPlayersCallbackInfo extends Structure {
 
 	public EOS_Sessions_UnregisterPlayersCallbackInfo(Pointer peer) {
 		super(peer);
+	}
+
+	/**
+	 * @return list of unregistered players
+	 */
+	public List<EOS_ProductUserId> getUnregisteredPlayers() {
+		if (UnregisteredPlayers == null || UnregisteredPlayersCount == 0) {
+			return Collections.emptyList();
+		}
+		final Pointer[] pointers = UnregisteredPlayers.getPointerArray(0, UnregisteredPlayersCount);
+		final List<EOS_ProductUserId> players = new ArrayList<>(UnregisteredPlayersCount);
+		for (Pointer p : pointers) {
+			EOS_ProductUserId userId = new EOS_ProductUserId();
+			userId.setPointer(p);
+			players.add(userId);
+		}
+		return players;
 	}
 
 	public static class ByReference extends EOS_Sessions_UnregisterPlayersCallbackInfo implements Structure.ByReference {

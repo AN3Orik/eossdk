@@ -3,12 +3,13 @@ package host.anzo.eossdk.eos.sdk.integratedplatform.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.integratedplatform.enums.EOS_EIntegratedPlatformManagementFlags;
+import host.anzo.eossdk.eos.sdk.platform.options.EOS_Platform_Options;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
- * Data for the EOS_IntegratedPlatformOptionsContainer_Add function.
- *
+ * Initialization options to use with {@link EOS_Platform_Options} for integrated platforms.
+ * @see EOS_Platform_Options
  * @author Anton Lasevich
  * @since 8/20/2023
  */

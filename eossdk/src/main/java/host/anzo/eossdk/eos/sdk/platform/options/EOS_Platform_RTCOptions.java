@@ -12,10 +12,10 @@ import host.anzo.eossdk.eos.sdk.common.options.EOS_Windows_RTCOptions;
  * @author Anton Lasevich
  * @since 8/5/2023
  */
-@FieldOrder({"ApiVersion", "PlatformSpecificOptions", "BackgroundMode"})
+@FieldOrder({"ApiVersion", "PlatformSpecificOptions", "BackgroundMode", "Reserved"})
 public class EOS_Platform_RTCOptions extends Structure {
 	/** The most recent version of the EOS_Platform_RTCOptions API. */
-	public static int EOS_PLATFORM_RTCOPTIONS_API_LATEST = 2;
+	public static int EOS_PLATFORM_RTCOPTIONS_API_LATEST = 3;
 
 	/** API Version: Set this to {@link #EOS_PLATFORM_RTCOPTIONS_API_LATEST}. */
 	public int ApiVersion;
@@ -28,6 +28,10 @@ public class EOS_Platform_RTCOptions extends Structure {
 	public EOS_Windows_RTCOptions.ByReference PlatformSpecificOptions;
 	/** Configures RTC behavior upon entering to any background application statuses */
 	public EOS_ERTCBackgroundMode BackgroundMode;
+	/**
+	 * Reserved field, should be nullptr by default
+	 */
+	public Pointer Reserved;
 
 	public EOS_Platform_RTCOptions() {
 		super();

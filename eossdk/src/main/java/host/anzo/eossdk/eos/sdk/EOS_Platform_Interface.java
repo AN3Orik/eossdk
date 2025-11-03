@@ -287,11 +287,11 @@ public class EOS_Platform_Interface extends PointerType {
 	 * @throws EOSNotFoundException if there is not an override country code for the user
 	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the country code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
-	 * @see EOS_Platform_Options#EOS_COUNTRYCODE_MAX_LENGTH
+	 * @see EOS_Defines#EOS_COUNTRYCODE_MAX_LENGTH
 	 */
 	public String getActiveCountryCode(EOS_EpicAccountId localUserId) throws EOSException {
-		final IntByReference inOutBufferLength = new IntByReference(EOS_Platform_Options.EOS_COUNTRYCODE_MAX_LENGTH);
-		final byte[] outBuffer = new byte[EOS_Platform_Options.EOS_COUNTRYCODE_MAX_LENGTH];
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Defines.EOS_COUNTRYCODE_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Defines.EOS_COUNTRYCODE_MAX_LENGTH];
 		final EOS_EResult result = EOSLibrary.instance.EOS_Platform_GetActiveCountryCode(this, localUserId, outBuffer, inOutBufferLength);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
@@ -311,11 +311,11 @@ public class EOS_Platform_Interface extends PointerType {
 	 * @throws EOSNotFoundException if there is neither an override nor an available locale code for the user
 	 * @throws EOSLimitExceededException if there is neither an override nor an available locale code for the user
 	 *
-	 * @see EOS_Platform_Options#EOS_LOCALECODE_MAX_LENGTH
+	 * @see EOS_Defines#EOS_LOCALECODE_MAX_LENGTH
 	 */
 	public String getActiveLocaleCode(EOS_EpicAccountId localUserId) throws EOSException {
-		final IntByReference inOutBufferLength = new IntByReference(EOS_Platform_Options.EOS_LOCALECODE_MAX_LENGTH);
-		final byte[] outBuffer = new byte[EOS_Platform_Options.EOS_LOCALECODE_MAX_LENGTH];
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Defines.EOS_LOCALECODE_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Defines.EOS_LOCALECODE_MAX_LENGTH];
 		final EOS_EResult result = EOSLibrary.instance.EOS_Platform_GetActiveLocaleCode(this, localUserId, outBuffer, inOutBufferLength);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
@@ -332,11 +332,11 @@ public class EOS_Platform_Interface extends PointerType {
 	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
 	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the country code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
-	 * @see EOS_Platform_Options#EOS_COUNTRYCODE_MAX_LENGTH
+	 * @see EOS_Defines#EOS_COUNTRYCODE_MAX_LENGTH
 	 */
 	public String getOverrideCountryCode() throws EOSException {
-		final IntByReference inOutBufferLength = new IntByReference(EOS_Platform_Options.EOS_COUNTRYCODE_MAX_LENGTH);
-		final byte[] outBuffer = new byte[EOS_Platform_Options.EOS_COUNTRYCODE_MAX_LENGTH];
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Defines.EOS_COUNTRYCODE_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Defines.EOS_COUNTRYCODE_MAX_LENGTH];
 		final EOS_EResult result = EOSLibrary.instance.EOS_Platform_GetOverrideCountryCode(this, outBuffer, inOutBufferLength);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
@@ -353,11 +353,11 @@ public class EOS_Platform_Interface extends PointerType {
 	 * @throws EOSInvalidParametersException override locale code string
 	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the locale code string. InOutBufferLength contains the required minimum length to perform the operation successfully.
 	 *
-	 * @see EOS_Platform_Options#EOS_LOCALECODE_MAX_LENGTH
+	 * @see EOS_Defines#EOS_LOCALECODE_MAX_LENGTH
 	 */
 	public String getOverrideLocaleCode() throws EOSException {
-		final IntByReference inOutBufferLength = new IntByReference(EOS_Platform_Options.EOS_LOCALECODE_MAX_LENGTH);
-		final byte[] outBuffer = new byte[EOS_Platform_Options.EOS_LOCALECODE_MAX_LENGTH];
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Defines.EOS_LOCALECODE_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Defines.EOS_LOCALECODE_MAX_LENGTH];
 		final EOS_EResult result = EOSLibrary.instance.EOS_Platform_GetOverrideLocaleCode(this, outBuffer, inOutBufferLength);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);
@@ -373,7 +373,7 @@ public class EOS_Platform_Interface extends PointerType {
 	 *         {@link EOS_EResult#EOS_Success} if the country code was overridden<br>
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass an invalid country code
 	 *
-	 * @see EOS_Platform_Options#EOS_COUNTRYCODE_MAX_LENGTH
+	 * @see EOS_Defines#EOS_COUNTRYCODE_MAX_LENGTH
 	 */
 	public EOS_EResult setOverrideCountryCode(String newCountryCode) {
 		return EOSLibrary.instance.EOS_Platform_SetOverrideCountryCode(this, newCountryCode);
@@ -387,7 +387,7 @@ public class EOS_Platform_Interface extends PointerType {
 	 *         {@link EOS_EResult#EOS_Success} if the locale code was overridden<br>
 	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass an invalid locale code
 	 *
-	 * @see EOS_Platform_Options#EOS_LOCALECODE_MAX_LENGTH
+	 * @see EOS_Defines#EOS_LOCALECODE_MAX_LENGTH
 	 */
 	public EOS_EResult setOverrideLocaleCode(String newLocaleCode) {
 		return EOSLibrary.instance.EOS_Platform_SetOverrideLocaleCode(this, newLocaleCode);

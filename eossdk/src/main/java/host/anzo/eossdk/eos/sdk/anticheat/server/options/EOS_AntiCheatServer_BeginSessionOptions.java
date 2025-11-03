@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.server.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.EOS_Defines;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
@@ -11,18 +12,22 @@ import org.jetbrains.annotations.NotNull;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatServer_BeginSession} function.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "RegisterTimeoutSeconds", "ServerName", "EnableGameplayData", "LocalUserId"})
 public class EOS_AntiCheatServer_BeginSessionOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatServer_BeginSession API. */
 	public static int EOS_ANTICHEATSERVER_BEGINSESSION_API_LATEST = 3;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATSERVER_BEGINSESSION_API_LATEST}. */
 	public int ApiVersion;
 	/**
-	 * Time in seconds to allow newly registered clients to complete anti-cheat authentication.
-	 * Recommended value: 60
+	 * Time in seconds to allow newly registered clients to complete anti-cheat authentication.<br>
+	 * Recommended value: 60<br>
+	 * Minimum value: {@link EOS_Defines#EOS_ANTICHEATSERVER_BEGINSESSION_MIN_REGISTERTIMEOUT}<br>
+	 * Maximum value: {@link EOS_Defines#EOS_ANTICHEATSERVER_BEGINSESSION_MAX_REGISTERTIMEOUT}
 	 */
 	public int RegisterTimeoutSeconds;
 	/** Optional name of this game server */

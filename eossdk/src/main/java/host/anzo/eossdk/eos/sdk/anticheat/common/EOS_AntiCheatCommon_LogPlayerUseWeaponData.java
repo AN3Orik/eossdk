@@ -7,11 +7,13 @@ import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Log Player Use Weapon Data.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"PlayerHandle", "PlayerPosition", "PlayerViewRotation", "IsPlayerViewZoomed", "IsMeleeAttack", "WeaponName"})
 public class EOS_AntiCheatCommon_LogPlayerUseWeaponData extends Structure {
+	/** Max weapon name length in EOS_AntiCheatCommon_LogPlayerUseWeaponData. */
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_WEAPONNAME_MAX_LENGTH = 32;
 
 	/** Locally unique value used in RegisterClient/RegisterPeer */

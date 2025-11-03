@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.playerdatastorage;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
+import host.anzo.eossdk.eos.sdk.EOS_Defines;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -14,8 +15,6 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "FileSizeBytes", "MD5Hash", "Filename", "LastModifiedTime", "UnencryptedDataSizeBytes"})
 public class EOS_PlayerDataStorage_FileMetadata extends Structure implements AutoCloseable {
-	/** Timestamp value representing an undefined time for Player Data Storage. */
-	public static final int EOS_PLAYERDATASTORAGE_TIME_UNDEFINED = -1;
 	/** The most recent version of the EOS_PlayerDataStorage_FileMetadata API. */
 	public static final int EOS_PLAYERDATASTORAGE_FILEMETADATA_API_LATEST = 3;
 
@@ -28,7 +27,7 @@ public class EOS_PlayerDataStorage_FileMetadata extends Structure implements Aut
 	/** The file's name */
 	public String Filename;
 	/**
-	 * The POSIX timestamp when the file was saved last time or {@link #EOS_PLAYERDATASTORAGE_TIME_UNDEFINED} if the time is undefined.
+	 * The POSIX timestamp when the file was saved last time or {@link EOS_Defines#EOS_PLAYERDATASTORAGE_TIME_UNDEFINED} if the time is undefined.
 	 * It will be undefined after a file is written and uploaded at first before a query operation is completed.
 	 */
 	public long LastModifiedTime;

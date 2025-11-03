@@ -6,11 +6,13 @@ import com.sun.jna.Structure;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the EOS_AntiCheatClient_AddNotifyMessageToPeer function.
  * @author Anton Lasevich
  * @since 8/15/2023
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_AntiCheatClient_AddNotifyMessageToPeerOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatClient_AddNotifyMessageToPeer API. */
 	public static final int EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST = 1;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_ADDNOTIFYMESSAGETOPEER_API_LATEST}. */

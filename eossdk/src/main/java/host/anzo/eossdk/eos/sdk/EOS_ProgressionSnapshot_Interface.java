@@ -57,7 +57,7 @@ public class EOS_ProgressionSnapshot_Interface extends PointerType {
 	 * <p>
 	 * The order in which the Key/Value pairs are added is stored as is for later retrieval/display.
 	 * Ideally, you would make multiple calls to AddProgression() followed by a single call to SubmitSnapshot().
-	 *
+	 * @param options Object containing properties that identify the snapshot and the Key/Value pair to add.
 	 * @return {@link EOS_EResult#EOS_Success} when successful; otherwise, {@link EOS_EResult#EOS_NotFound}
 	 */
 	public EOS_EResult addProgression(EOS_ProgressionSnapshot_AddProgressionOptions options) {
@@ -68,6 +68,9 @@ public class EOS_ProgressionSnapshot_Interface extends PointerType {
 	 * Saves the previously added Key/Value pairs of a given Snapshot to the service.
 	 * <p>
 	 * Note: This will overwrite any prior progression data stored with the service that's associated with the user.
+	 * @param options Object containing properties that identify the snapshot to submit.
+	 * @param clientData Optional context that is passed back in the completion delegate.
+	 * @param completionDelegate A callback that is fired when the operation completes, either successfully or in error.
 	 */
 	public void submitSnapshot(EOS_ProgressionSnapshot_SubmitSnapshotOptions options,
 	                           Pointer clientData,
@@ -77,7 +80,7 @@ public class EOS_ProgressionSnapshot_Interface extends PointerType {
 
 	/**
 	 * Cleans up and releases resources associated with the given progression snapshot identifier.
-	 *
+	 * @param options Object containing properties that identify the snapshot to end.
 	 * @return {@link EOS_EResult#EOS_Success} when successful; otherwise, {@link EOS_EResult#EOS_NotFound}
 	 */
 	public EOS_EResult endSnapshot(EOS_ProgressionSnapshot_EndSnapshotOptions options) {
@@ -87,6 +90,9 @@ public class EOS_ProgressionSnapshot_Interface extends PointerType {
 	/**
 	 * Wipes out all progression data for the given user from the service. However, any previous progression data that haven't
 	 * been submitted yet are retained.
+	 * @param options Object containing properties that identify the PUID whose snapshot data should be deleted.
+	 * @param clientData Optional context that is passed back in the completion delegate.
+	 * @param completionDelegate A callback that is fired when the operation completes, either successfully or in error.
 	 */
 	public void deleteSnapshot(EOS_ProgressionSnapshot_DeleteSnapshotOptions options,
 	                           Pointer clientData,

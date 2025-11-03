@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.rtc;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOS_Defines;
 
 import static com.sun.jna.Structure.FieldOrder;
 
@@ -13,17 +14,14 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Key", "Value"})
 public class EOS_RTC_ParticipantMetadata extends Structure {
-	public static final int EOS_RTC_PARTICIPANTMETADATA_KEY_MAXCHARCOUNT = 256;
-	public static final int EOS_RTC_PARTICIPANTMETADATA_VALUE_MAXCHARCOUNT = 256;
-
 	/** The most recent version of the EOS_RTC_ParticipantMetadata struct. */
 	public static final int EOS_RTC_PARTICIPANTMETADATA_API_LATEST = 1;
 
 	/** API Version: Set this to {@link #EOS_RTC_PARTICIPANTMETADATA_API_LATEST}. */
 	public int ApiVersion;
-	/** The unique key of this metadata item. The max size of the string is {@link #EOS_RTC_PARTICIPANTMETADATA_KEY_MAXCHARCOUNT}. */
+	/** The unique key of this metadata item. The max size of the string is {@link EOS_Defines#EOS_RTC_PARTICIPANTMETADATA_KEY_MAXCHARCOUNT}. */
 	public String Key;
-	/** The value of this metadata item. The max size of the string is {@link #EOS_RTC_PARTICIPANTMETADATA_VALUE_MAXCHARCOUNT}. */
+	/** The value of this metadata item. The max size of the string is {@link EOS_Defines#EOS_RTC_PARTICIPANTMETADATA_VALUE_MAXCHARCOUNT}. */
 	public String Value;
 
 	public EOS_RTC_ParticipantMetadata() {

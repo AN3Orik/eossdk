@@ -2,16 +2,19 @@ package host.anzo.eossdk.eos.sdk.anticheat.client.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatClient_UnregisterPeer} function.
  * @author Anton Lasevich
  * @since 8/16/2023
  */
 @FieldOrder({"ApiVersion", "PeerHandle"})
 public class EOS_AntiCheatClient_UnregisterPeerOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatClient_UnregisterPeer API. */
 	public static final int EOS_ANTICHEATCLIENT_UNREGISTERPEER_API_LATEST = 1;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_UNREGISTERPEER_API_LATEST}. */

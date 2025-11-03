@@ -7,6 +7,7 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonEvent
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Register Event Parameter Definition.
  * @author Anton Lasevich
  * @since 8/5/2023
  */

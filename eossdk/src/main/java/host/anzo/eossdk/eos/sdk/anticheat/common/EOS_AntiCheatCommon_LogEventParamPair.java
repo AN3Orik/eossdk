@@ -8,11 +8,13 @@ import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonEvent
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Log Event Parameter.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ParamValueType", "ParamValue"})
 public class EOS_AntiCheatCommon_LogEventParamPair extends Structure {
+	/** Max string length for a log event param value. */
 	public static int EOS_ANTICHEATCOMMON_LOGEVENT_STRING_MAX_LENGTH = 39;
 
 	/** Parameter type */
@@ -21,15 +23,26 @@ public class EOS_AntiCheatCommon_LogEventParamPair extends Structure {
 	public ParamValue_union ParamValue;
 
 	public static class ParamValue_union extends Union {
+		/** Client handle. */
 		public EOS_AntiCheatCommon_ClientHandle ClientHandle;
-		/** Will be truncated if longer than {@link #EOS_ANTICHEATCOMMON_LOGEVENT_STRING_MAX_LENGTH} bytes. */
+		/**
+		 * The value as a string.
+		 * Will be truncated if longer than {@link #EOS_ANTICHEATCOMMON_LOGEVENT_STRING_MAX_LENGTH} bytes.
+		 */
 		public String String;
+		/** The value as a uint32_t. */
 		public int UInt32;
+		/** The value as an int32_t. */
 		public int Int32;
+		/** The value as a uint64_t. */
 		public long UInt64;
+		/** The value as an int64_t. */
 		public long Int64;
+		/** The value as an EOS_AntiCheatCommon_Vec3f. */
 		public EOS_AntiCheatCommon_Vec3f Vec3f;
+		/** The value as an EOS_AntiCheatCommon_Quat. */
 		public EOS_AntiCheatCommon_Quat Quat;
+		/** The value as a float. */
 		public float Float_;
 
 		public ParamValue_union() {

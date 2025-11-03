@@ -12,6 +12,7 @@ public interface EOS_Connect_OnLoginCallback extends Callback {
 	/**
 	 * Function prototype definition for callbacks passed to EOS_Connect_Login.
 	 * @param data A EOS_Connect_LoginCallbackInfo containing the output information and result.
+	 * @throws EOSException when an error occurs during callback processing.
 	 */
 	void run(EOS_Connect_LoginCallbackInfo data) throws EOSException;
 }

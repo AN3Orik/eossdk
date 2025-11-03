@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.lobby.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
@@ -9,6 +10,7 @@ import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the {@link EOSLibrary#EOS_Lobby_AddNotifyRTCRoomConnectionChanged} function.
  * @author Anton Lasevich
  * @since 8/19/2023
  */

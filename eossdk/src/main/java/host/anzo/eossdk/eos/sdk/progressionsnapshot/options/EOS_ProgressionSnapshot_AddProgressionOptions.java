@@ -2,15 +2,18 @@ package host.anzo.eossdk.eos.sdk.progressionsnapshot.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_ProgressionSnapshot_AddProgression} function.
  * @author Anton Lasevich
  * @since 8/22/2023
  */
 @FieldOrder({"ApiVersion", "SnapshotId", "Key", "Value"})
 public class EOS_ProgressionSnapshot_AddProgressionOptions extends Structure {
+	/** The most recent version of the EOS_ProgressionSnapshot_AddProgression API. */
 	public static final int EOS_PROGRESSIONSNAPSHOT_ADDPROGRESSION_API_LATEST = 1;
 
 	/** API Version: Set this to {@link #EOS_PROGRESSIONSNAPSHOT_ADDPROGRESSION_API_LATEST}. */

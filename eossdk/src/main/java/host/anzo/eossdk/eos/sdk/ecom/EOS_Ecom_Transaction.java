@@ -46,7 +46,8 @@ public class EOS_Ecom_Transaction extends PointerType implements AutoCloseable {
 	 * An EOS_Ecom_HTransaction handle can also be retrieved from an EOSEcom handle using EOS_Ecom_CopyTransactionByIndex.
 	 * It is expected that after a transaction that EOS_Ecom_Transaction_Release is called.
 	 * When EOS_Platform_Release is called any remaining transactions will also be released.
-	 *
+	 * @param outBuffer A buffer to receive the transaction ID string
+	 * @param inOutBufferLength On input, the size of the out buffer.
 	 * @see EOS_Ecom_CheckoutCallbackInfo
 	 * @see EOS_Ecom_Interface#getTransactionCount(EOS_Ecom_GetTransactionCountOptions)
 	 * @see EOS_Ecom_Interface#copyTransactionByIndex(EOS_Ecom_CopyTransactionByIndexOptions)

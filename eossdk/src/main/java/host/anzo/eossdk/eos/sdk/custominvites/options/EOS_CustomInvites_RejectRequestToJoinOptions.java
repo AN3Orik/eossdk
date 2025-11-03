@@ -2,11 +2,13 @@ package host.anzo.eossdk.eos.sdk.custominvites.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_CustomInvites_RejectRequestToJoin} function.
  * @author Anton Lasevich
  * @since 8/20/2023
  */

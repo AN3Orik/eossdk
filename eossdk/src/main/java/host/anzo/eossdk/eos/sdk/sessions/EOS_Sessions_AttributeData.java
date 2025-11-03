@@ -26,6 +26,7 @@ public class EOS_Sessions_AttributeData extends Structure {
 	/** Type of value stored in the union */
 	public EOS_EAttributeType ValueType;
 
+	/** Value of the session attribute */
 	public static class Value_union extends Union {
 		/** Stored as an 8 byte integer */
 		public long AsInt64;

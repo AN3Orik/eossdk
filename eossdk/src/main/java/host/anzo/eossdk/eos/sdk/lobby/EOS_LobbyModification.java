@@ -132,6 +132,10 @@ public class EOS_LobbyModification extends PointerType implements AutoCloseable 
 		return EOSLibrary.instance.EOS_LobbyModification_RemoveMemberAttribute(this, options);
 	}
 
+	/**
+	 * Release the memory associated with a lobby modification. This must be called on data retrieved from {@link EOSLibrary#EOS_Lobby_UpdateLobbyModification}.
+	 * @see EOSLibrary#EOS_Lobby_UpdateLobbyModification
+	 */
 	public void release() {
 		EOSLibrary.instance.EOS_LobbyModification_Release(this);
 	}

@@ -2,16 +2,18 @@ package host.anzo.eossdk.eos.sdk.custominvites.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_CustomInvites_AddNotifyRequestToJoinAccepted} function.
  * @author Anton Lasevich
  * @since 8/20/2023
  */
 @FieldOrder({"ApiVersion"})
 public class EOS_CustomInvites_AddNotifyRequestToJoinAcceptedOptions extends Structure {
-	/** The most recent version of the EOS_CustomInvites_AddNotifyCustomInviteAccepted API. */
+	/** The most recent version of the EOS_CustomInvites_AddNotifyRequestToJoinAccepted API. */
 	public static final int EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINACCEPTED_API_LATEST = 1;
 
 	/** API Version: Set this to {@link #EOS_CUSTOMINVITES_ADDNOTIFYREQUESTTOJOINACCEPTED_API_LATEST}. */

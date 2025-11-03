@@ -349,7 +349,7 @@ public class EOS_Ecom_Interface extends PointerType {
 
 	/**
 	 * Fetch the number of items that are associated with a given cached offer for a local user.
-	 *
+	 * @param options structure containing the Epic Account ID and offer ID being accessed
 	 * @return the number of items found.
 	 */
 	public int getOfferItemCount(EOS_Ecom_GetOfferItemCountOptions options) {
@@ -408,7 +408,7 @@ public class EOS_Ecom_Interface extends PointerType {
 
 	/**
 	 * Fetch the number of images that are associated with a given cached offer for a local user.
-	 *
+	 * @param options structure containing the offer ID being accessed
 	 * @return the number of images found.
 	 */
 	public int getOfferImageInfoCount(EOS_Ecom_GetOfferImageInfoCountOptions options) {
@@ -440,7 +440,7 @@ public class EOS_Ecom_Interface extends PointerType {
 
 	/**
 	 * Fetch the number of images that are associated with a given cached item for a local user.
-	 *
+	 * @param options structure containing the item ID being accessed
 	 * @return the number of images found.
 	 */
 	public int getItemImageInfoCount(EOS_Ecom_GetItemImageInfoCountOptions options) {
@@ -472,7 +472,7 @@ public class EOS_Ecom_Interface extends PointerType {
 
 	/**
 	 * Fetch the number of releases that are associated with a given cached item for a local user.
-	 *
+	 * @param options structure containing the item ID being accessed
 	 * @return the number of releases found.
 	 */
 	public int getItemReleaseCount(EOS_Ecom_GetItemReleaseCountOptions options) {
@@ -504,6 +504,7 @@ public class EOS_Ecom_Interface extends PointerType {
 
 	/**
 	 * Fetch the number of transactions that are cached for a given local user.
+	 * @param options structure containing the Epic Account ID being accessed
 	 *
 	 * @see EOS_Ecom_CheckoutCallbackInfo
 	 * @see #copyTransactionByIndex(EOS_Ecom_CopyTransactionByIndexOptions)
@@ -524,6 +525,7 @@ public class EOS_Ecom_Interface extends PointerType {
 	 *
 	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
 	 * @throws EOSNotFoundException if the transaction is not found
+	 * @return the transaction handle
 	 */
 	public EOS_Ecom_Transaction copyTransactionByIndex(EOS_Ecom_CopyTransactionByIndexOptions options) throws EOSException {
 		final PointerByReference outTransaction = new PointerByReference();
@@ -544,6 +546,7 @@ public class EOS_Ecom_Interface extends PointerType {
 	 *
 	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
 	 * @throws EOSNotFoundException if the transaction is not found
+	 * @return the transaction handle
 	 */
 	public EOS_Ecom_Transaction copyTransactionById(EOS_Ecom_CopyTransactionByIdOptions options) throws EOSException {
 		final PointerByReference outTransaction = new PointerByReference();

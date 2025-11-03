@@ -36,6 +36,14 @@ public class EOS_Lobby_Attribute extends Structure implements AutoCloseable {
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with a lobby attribute. This must be called on data retrieved from the various Copy functions in the
+	 * LobbyDetails interface which return an EOS_Lobby_Attribute.
+	 * @see EOSLibrary#EOS_LobbyDetails_CopyAttributeByIndex
+	 * @see EOSLibrary#EOS_LobbyDetails_CopyAttributeByKey
+	 * @see EOSLibrary#EOS_LobbyDetails_CopyMemberAttributeByIndex
+	 * @see EOSLibrary#EOS_LobbyDetails_CopyMemberAttributeByKey
+	 */
 	public void release() {
 		EOSLibrary.instance.EOS_Lobby_Attribute_Release(this);
 	}

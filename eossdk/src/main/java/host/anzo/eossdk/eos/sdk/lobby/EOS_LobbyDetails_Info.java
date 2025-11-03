@@ -6,15 +6,18 @@ import com.sun.jna.ptr.IntByReference;
 import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
+import host.anzo.eossdk.eos.sdk.common.enums.EOS_OnlinePlatformType;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Contains information about a single lobby.
  * @author Anton Lasevich
  * @since 8/16/2023
  */
 @FieldOrder({"ApiVersion", "LobbyId", "LobbyOwnerUserId", "PermissionLevel", "AvailableSlots", "MaxMembers", "IsAllowInvites", "BucketId", "IsAllowHostMigration", "IsRTCRoomEnabled", "IsAllowJoinById", "IsRejoinAfterKickRequiresInvite", "IsPresenceEnabled", "AllowedPlatformIds", "AllowedPlatformIdsCount"})
 public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
+	/** The most recent version of the EOS_LobbyDetails_Info API. */
 	public static final int EOS_LOBBYDETAILS_INFO_API_LATEST = 3;
 
 	/** API Version: Set this to {@link #EOS_LOBBYDETAILS_INFO_API_LATEST}. */
@@ -44,9 +47,9 @@ public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
 	/** If true, this lobby will be associated with the local user's presence information. */
 	public EOS_Bool IsPresenceEnabled;
 	/**
-	 * Array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are
-	 * found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific
-	 * header file. If null, the lobby will be unrestricted.
+	 * Array of platform IDs indicating the player platforms allowed to register with the lobby. Platform IDs are
+	 * found in the EOS header file (eos_common.h), for example {@link EOS_OnlinePlatformType#EOS_OPT_Epic}. For some platforms the value will be
+	 * in the EOS Platform specific header file. If null, the lobby will be unrestricted.
 	 */
 	public IntByReference AllowedPlatformIds;
 	/** Number of platform IDs in the array */
@@ -61,6 +64,10 @@ public class EOS_LobbyDetails_Info extends Structure implements AutoCloseable {
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with a lobby details info. This must be called on data retrieved from {@link EOSLibrary#EOS_LobbyDetails_CopyInfo}.
+	 * @see EOSLibrary#EOS_LobbyDetails_CopyInfo
+	 */
 	public void release() {
 		EOSLibrary.instance.EOS_LobbyDetails_Info_Release(this);
 	}

@@ -14,7 +14,7 @@ import java.util.Map;
  * can affect compatibility between clients with different settings.<br>
  * Connections between clients using Incompatible settings may succeed in limited scenarios but should be treated as though they will consistently fail.<br>
  * <table border="1" >
- *     <caption></caption>
+ *     <caption>Information table</caption>
  *     <tr><th>Type</th><th>EOS_RC_NoRelays</th><th>EOS_RC_AllowRelays (Default)</th><th>EOS_RC_ForceRelays</th></tr>
  *     <tr><td>EOS_RC_NoRelays</td><td>Compatible</td><td>Compatible</td><td>Incompatible</td></tr>
  *     <tr><td>EOS_RC_AllowRelays (Default)</td><td>Compatible</td><td>Compatible</td><td>Compatible</td></tr>

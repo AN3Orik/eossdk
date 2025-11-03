@@ -2,16 +2,19 @@ package host.anzo.eossdk.eos.sdk.anticheat.common.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_LogPlayerUseWeaponData;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatServer_LogPlayerUseWeapon} function.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "UseWeaponData"})
 public class EOS_AntiCheatCommon_LogPlayerUseWeaponOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatCommon_LogPlayerUseWeaponOptions struct. */
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_API_LATEST = 2;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGPLAYERUSEWEAPON_API_LATEST}. */

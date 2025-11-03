@@ -31,9 +31,6 @@ import java.nio.IntBuffer;
  * @since 8/16/2023
  */
 public class EOS_Lobby_Interface extends PointerType {
-	/** Max length of an invite ID */
-	public static final int EOS_LOBBY_INVITEID_MAX_LENGTH = 64;
-
 	public EOS_Lobby_Interface(Pointer address) {
 		super(address);
 	}
@@ -47,7 +44,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * <p>
 	 * If the lobby is successfully created with an RTC Room enabled, the lobby system will automatically join and maintain the connection to the RTC room as long as the
 	 * local user remains in the lobby. Applications can use the EOS_Lobby_GetRTCRoomName to get the name of the RTC Room associated with a lobby, which may be used with
-	 * many of the EOS_RTC_* suite of functions. This can be useful to: register for notifications for talking status; to mute or unmute the local user's audio output;
+	 * many of the functions in the RTC interface. This can be useful to: register for notifications for talking status; to mute or unmute the local user's audio output;
 	 * to block or unblock room participants; to set local audio device settings; and more.
 	 *
 	 * @param options Required fields for the creation of a lobby such as a user count and its starting advertised state
@@ -78,7 +75,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * <p>
 	 * If the lobby is successfully join has an RTC Room enabled, the lobby system will automatically join and maintain the connection to the RTC room as long as the
 	 * local user remains in the lobby. Applications can use the EOS_Lobby_GetRTCRoomName to get the name of the RTC Room associated with a lobby, which may be used with
-	 * many of the EOS_RTC_* suite of functions. This can be useful to: register for notifications for talking status; to mute or unmute the local user's audio output;
+	 * many of the functions in the RTC interface. This can be useful to: register for notifications for talking status; to mute or unmute the local user's audio output;
 	 * to block or unblock room participants; to set local audio device settings; and more.
 	 *
 	 * @param options Structure containing information about the lobby to be joined
@@ -339,7 +336,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @see #copyLobbyDetailsHandleByInviteId(EOS_Lobby_CopyLobbyDetailsHandleByInviteIdOptions, PointerByReference)
 	 */
 	public String getInviteIdByIndex(EOS_Lobby_GetInviteIdByIndexOptions options) throws EOSException {
-		final ByteBuffer outBuffer = ByteBuffer.allocate(EOS_LOBBY_INVITEID_MAX_LENGTH + 1);
+		final ByteBuffer outBuffer = ByteBuffer.allocate(EOS_Defines.EOS_LOBBY_INVITEID_MAX_LENGTH + 1);
 		final IntByReference inOutBufferLength = new IntByReference(outBuffer.capacity());
 		final EOS_EResult result = EOSLibrary.instance.EOS_Lobby_GetInviteIdByIndex(this, options, outBuffer, inOutBufferLength);
 		if (result.isSuccess()) {
@@ -576,6 +573,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	}
 
 	/**
+	 * TODO: Rework to return string
 	 * Get the name of the RTC room associated with a specific lobby a local user belongs to.
 	 * <p>
 	 * This value can be used whenever you need a RoomName value in the RTC_* suite of functions. RTC Room Names must not be used with
@@ -608,7 +606,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate
 	 * @param completionDelegate A callback that is fired when the join RTC Room operation completes, either successfully or in error
 	 */
-	void joinRTCRoom(EOS_Lobby_JoinRTCRoomOptions options, Pointer clientData, EOS_Lobby_OnJoinRTCRoomCallback completionDelegate) {
+	public void joinRTCRoom(EOS_Lobby_JoinRTCRoomOptions options, Pointer clientData, EOS_Lobby_OnJoinRTCRoomCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Lobby_JoinRTCRoom(this, options, clientData, completionDelegate);
 	}
 
@@ -622,7 +620,7 @@ public class EOS_Lobby_Interface extends PointerType {
 	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate
 	 * @param completionDelegate A callback that is fired when the join RTC Room operation completes, either successfully or in error
 	 */
-	void leaveRTCRoom(EOS_Lobby_LeaveRTCRoomOptions options, Pointer clientData, EOS_Lobby_OnLeaveRTCRoomCallback completionDelegate) {
+	public void leaveRTCRoom(EOS_Lobby_LeaveRTCRoomOptions options, Pointer clientData, EOS_Lobby_OnLeaveRTCRoomCallback completionDelegate) {
 		EOSLibrary.instance.EOS_Lobby_LeaveRTCRoom(this, options, clientData, completionDelegate);
 	}
 
@@ -693,6 +691,72 @@ public class EOS_Lobby_Interface extends PointerType {
 	 */
 	public void removeNotifyRTCRoomConnectionChanged(EOS_NotificationId inId) {
 		EOSLibrary.instance.EOS_Lobby_RemoveNotifyRTCRoomConnectionChanged(this, inId);
+		CallbackUtils.unregisterNotificationCallback(inId);
+	}
+
+	/**
+	 * Get the Connection string for an EOS lobby. The connection string describes the presence of a player in terms of game state.
+	 * Xbox platforms expect titles to embed this into their MultiplayerActivity at creation.
+	 * When present, the SDK will use this value to populate session presence in the social overlay and facilitate platform invitations.
+	 *
+	 * @param options Structure containing the input parameters. API version, the LobbyID of the lobby to generate the string from and the PUID of the requesting user.
+	 * @throws EOSException if unable to get the connection string
+	 * @return connection string
+	 */
+	public String getConnectString(EOS_Lobby_GetConnectStringOptions options) throws EOSException {
+		final ByteBuffer outBuffer = ByteBuffer.allocate(EOS_Defines.EOS_LOBBY_GETCONNECTSTRING_BUFFER_SIZE + 1);
+		final IntByReference inOutBufferLength = new IntByReference(outBuffer.capacity());
+		final EOS_EResult result = EOSLibrary.instance.EOS_Lobby_GetConnectString(this, options, outBuffer, inOutBufferLength);
+		if (result.isSuccess()) {
+			return new String(outBuffer.array(), 0, inOutBufferLength.getValue()).trim();
+		}
+		throw EOSException.fromResult(result);
+	}
+
+	/**
+	 * Parse the ConnectString for an EOS lobby invitation to extract just the lobby ID.
+	 * Used for joining a lobby from a connection string (as generated by GetConnectString) found in a platform invitation or presence.
+	 *
+	 * @param options Structure containing the input parameters. API version and ConnectString.
+	 * @return lobby ID string
+	 * @throws EOSException if unable to parse the connection string
+	 */
+	public String parseConnectString(EOS_Lobby_ParseConnectStringOptions options) throws EOSException {
+		final ByteBuffer outBuffer = ByteBuffer.allocate(EOS_Defines.EOS_LOBBY_PARSECONNECTSTRING_BUFFER_SIZE + 1);
+		final IntByReference inOutBufferLength = new IntByReference(outBuffer.capacity());
+		final EOS_EResult result = EOSLibrary.instance.EOS_Lobby_ParseConnectString(this, options, outBuffer, inOutBufferLength);
+		if (result.isSuccess()) {
+			return new String(outBuffer.array(), 0, inOutBufferLength.getValue()).trim();
+		}
+		throw EOSException.fromResult(result);
+	}
+
+	/**
+	 * Register to receive notifications about leave lobby requests performed by the local user via the overlay.<br>
+	 * When user requests to leave the lobby in the social overlay, the SDK does not automatically leave the lobby, it is up to the game to perform any necessary cleanup and call the {@link #leaveLobby} method using the lobbyId sent in the notification function.<br>
+	 * <b>If the returned NotificationId is valid, you must call {@link #removeNotifyLeaveLobbyRequested} when you no longer wish to have your NotificationHandler called.</b>
+	 *
+	 * @param options Structure containing information about the request.
+	 * @param clientData Arbitrary data that is passed back to you in the CompletionDelegate.
+	 * @param notificationFn A callback that is fired when a notification is received.
+	 *
+	 * @return handle representing the registered callback
+	 */
+	public EOS_NotificationId addNotifyLeaveLobbyRequested(EOS_Lobby_AddNotifyLeaveLobbyRequestedOptions options, Pointer clientData,
+	                                                       EOS_Lobby_OnLeaveLobbyRequestedCallback notificationFn) {
+		final EOS_NotificationId notificationId = EOSLibrary.instance.EOS_Lobby_AddNotifyLeaveLobbyRequested(this, options, clientData, notificationFn);
+		if (notificationId.isValid()) {
+			CallbackUtils.registerNotificationCallback(notificationId, notificationFn);
+		}
+		return notificationId;
+	}
+
+	/**
+	 * Unregister from receiving notifications when a user performs a leave lobby action via the overlay.
+	 * @param inId Handle representing the registered callback
+	 */
+	public void removeNotifyLeaveLobbyRequested(EOS_NotificationId inId) {
+		EOSLibrary.instance.EOS_Lobby_RemoveNotifyLeaveLobbyRequested(this, inId);
 		CallbackUtils.unregisterNotificationCallback(inId);
 	}
 }

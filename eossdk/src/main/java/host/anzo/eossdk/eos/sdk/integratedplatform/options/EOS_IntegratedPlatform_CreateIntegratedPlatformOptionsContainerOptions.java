@@ -2,11 +2,12 @@ package host.anzo.eossdk.eos.sdk.integratedplatform.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
- * Data for the EOS_IntegratedPlatform_CreateIntegratedPlatformOptionsContainer function.
+ * Data for the {@link EOSLibrary#EOS_IntegratedPlatform_CreateIntegratedPlatformOptionsContainer} function.
  *
  * @author Anton Lasevich
  * @since 9/11/2023

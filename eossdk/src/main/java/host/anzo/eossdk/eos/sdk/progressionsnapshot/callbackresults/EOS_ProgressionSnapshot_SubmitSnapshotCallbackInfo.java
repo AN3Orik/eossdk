@@ -2,11 +2,13 @@ package host.anzo.eossdk.eos.sdk.progressionsnapshot.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the {@link EOSLibrary#EOS_ProgressionSnapshot_SubmitSnapshot} Function.
  * @author Anton Lasevich
  * @since 8/22/2023
  */

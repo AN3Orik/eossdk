@@ -17,6 +17,9 @@ public interface EOS_AllocateMemoryFunc extends Callback {
 	 * The returned pointer should have at least SizeInBytes available capacity and the memory address should be a multiple of Alignment.
 	 * The SDK will always call the provided function with an Alignment that is a power of 2.
 	 * Allocation failures should return a null pointer.
+	 * @param sizeInBytes The size in bytes of the memory block to allocate
+	 * @param alignment The alignment in bytes of the memory block to allocate
+	 * @return A pointer to the allocated memory block
 	 */
 	Pointer run(NativeSize sizeInBytes, NativeSize alignment);
 }

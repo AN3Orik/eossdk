@@ -2,10 +2,12 @@ package host.anzo.eossdk.eos.sdk.sessions.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_Sessions_AddNotifySendSessionNativeInviteRequested} function.
  * @author Anton Lasevich
  * @since 9/7/2023
  */

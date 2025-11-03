@@ -667,6 +667,14 @@ public interface EOSLibrary extends Library {
 
 	void EOS_Lobby_RemoveNotifyRTCRoomConnectionChanged(EOS_Lobby_Interface handle, EOS_NotificationId InId);
 
+	EOS_EResult EOS_Lobby_GetConnectString(EOS_Lobby_Interface handle, EOS_Lobby_GetConnectStringOptions options, ByteBuffer outBuffer, IntByReference inOutBufferLength);
+
+	EOS_EResult EOS_Lobby_ParseConnectString(EOS_Lobby_Interface Handle, EOS_Lobby_ParseConnectStringOptions options, ByteBuffer outBuffer, IntByReference inOutBufferLength);
+
+	EOS_NotificationId EOS_Lobby_AddNotifyLeaveLobbyRequested(EOS_Lobby_Interface handle, EOS_Lobby_AddNotifyLeaveLobbyRequestedOptions options, Pointer clientData, EOS_Lobby_OnLeaveLobbyRequestedCallback notificationFn);
+
+	void EOS_Lobby_RemoveNotifyLeaveLobbyRequested(EOS_Lobby_Interface Handle, EOS_NotificationId InId);
+
 	// Lobby Modification
 	EOS_EResult EOS_LobbyModification_SetBucketId(EOS_LobbyModification handle, EOS_LobbyModification_SetBucketIdOptions options);
 
@@ -691,6 +699,8 @@ public interface EOSLibrary extends Library {
 
 	EOS_EResult EOS_LobbyDetails_CopyInfo(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyInfoOptions options, PointerByReference outLobbyDetailsInfo);
 
+	EOS_EResult EOS_LobbyDetails_CopyMemberInfo(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyMemberInfoOptions Options, PointerByReference outLobbyDetailsMemberInfo);
+
 	int EOS_LobbyDetails_GetAttributeCount(EOS_LobbyDetails handle, EOS_LobbyDetails_GetAttributeCountOptions options);
 
 	EOS_EResult EOS_LobbyDetails_CopyAttributeByIndex(EOS_LobbyDetails handle, EOS_LobbyDetails_CopyAttributeByIndexOptions options, PointerByReference outAttribute);
@@ -712,6 +722,8 @@ public interface EOSLibrary extends Library {
 	void EOS_Lobby_Attribute_Release(EOS_Lobby_Attribute lobbyAttribute);
 
 	void EOS_LobbyDetails_Release(EOS_LobbyDetails lobbyHandle);
+
+	void EOS_LobbyDetails_MemberInfo_Release(EOS_LobbyDetails_MemberInfo LobbyDetailsMemberInfo);
 
 	// Lobby Search
 	void EOS_LobbySearch_Find(EOS_LobbySearch handle, EOS_LobbySearch_FindOptions options, Pointer clientData, EOS_LobbySearch_OnFindCallback completionDelegate);
@@ -1116,6 +1128,10 @@ public interface EOSLibrary extends Library {
 	EOS_EResult EOS_Presence_GetJoinInfo(EOS_Presence_Interface handle, EOS_Presence_GetJoinInfoOptions options, byte[] outBuffer, IntByReference inOutBufferLength);
 
 	EOS_EResult EOS_PresenceModification_SetStatus(EOS_PresenceModification handle, EOS_PresenceModification_SetStatusOptions options);
+
+	EOS_EResult EOS_PresenceModification_SetTemplateId(EOS_PresenceModification handle, EOS_PresenceModification_SetTemplateIdOptions Options);
+
+	EOS_EResult EOS_PresenceModification_SetTemplateData(EOS_PresenceModification handle, EOS_PresenceModification_SetTemplateDataOptions Options);
 
 	EOS_EResult EOS_PresenceModification_SetRawRichText(EOS_PresenceModification handle, EOS_PresenceModification_SetRawRichTextOptions options);
 

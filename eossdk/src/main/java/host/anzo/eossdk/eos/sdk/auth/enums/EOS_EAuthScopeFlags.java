@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
  * @since 8/5/2023
  */
 public @Getter class EOS_EAuthScopeFlags extends NativeMappedBitMask {
+	/** Default value, no permissions required */
 	public static final int EOS_AS_NoFlags = 0x0;
 	/** Permissions to see your account ID, display name, and language */
 	public static final int EOS_AS_BasicProfile = 0x1;

@@ -122,6 +122,7 @@ public abstract class AEOSServer extends AEOSBase<EOSServerOptions> {
 	/**
 	 * Notify the Anti-Cheat client with message server want to send
 	 * @param callbackInfo info about a client and data to send
+	 * @throws EOSException on error
 	 */
 	protected void onMessageToClient(@NotNull EOS_AntiCheatCommon_OnMessageToClientCallbackInfo callbackInfo) throws EOSException {
 		final AEOSNetworkClient antiCheatClient = getNetworkClient(callbackInfo.ClientHandle);

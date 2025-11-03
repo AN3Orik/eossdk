@@ -2,11 +2,13 @@ package host.anzo.eossdk.eos.sdk.sessions.callbackresults;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EResult;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Output parameters for the {@link EOSLibrary#EOS_SessionSearch_Find} function.
  * @author Anton Lasevich
  * @since 9/6/2023
  */

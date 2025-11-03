@@ -20,9 +20,9 @@ public class EOS_SessionModification_SetAllowedPlatformIdsOptions extends Struct
 	/** API Version: Set this to {@link #EOS_SESSIONMODIFICATION_SETALLOWEDPLATFORMIDS_API_LATEST}. */
 	public int ApiVersion;
 	/**
-	 * Array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are
-	 * found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific
-	 * header file. If null, the session will be unrestricted.
+	 * Array of platform IDs indicating the player platforms allowed to register with the lobby. Platform IDs are
+	 * found in the EOS header file (eos_common.h), for example EOS_OPT_Epic. For some platforms the value will be
+	 * in the EOS Platform specific header file. If null, the lobby will be unrestricted.
 	 */
 	public IntByReference AllowedPlatformIds;
 	/** Number of platform IDs in the array */

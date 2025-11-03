@@ -10,6 +10,7 @@ import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link host.anzo.eossdk.eos.sdk.EOSLibrary#EOS_AntiCheatClient_RegisterPeer} function.
  * @author Anton Lasevich
  * @since 8/16/2023
  */
@@ -22,8 +23,14 @@ public class EOS_AntiCheatClient_RegisterPeerOptions extends Structure {
 	 * that they will not be able to join online play.
 	 */
 	public static final EOS_AntiCheatCommon_ClientHandle EOS_ANTICHEATCLIENT_PEER_SELF = new EOS_AntiCheatCommon_ClientHandle(-1);
+
+	/** The minimum value for the AuthenticationTimeout parameter in the EOS_AntiCheatClient_RegisterPeerOptions struct. */
 	public static final int EOS_ANTICHEATCLIENT_REGISTERPEER_MIN_AUTHENTICATIONTIMEOUT = 40;
+
+	/** The maximum value for the AuthenticationTimeout parameter in the EOS_AntiCheatClient_RegisterPeerOptions struct. */
 	public static final int EOS_ANTICHEATCLIENT_REGISTERPEER_MAX_AUTHENTICATIONTIMEOUT = 120;
+
+	/** The most recent version of the EOS_AntiCheatClient_RegisterPeerOptions API. */
 	public static final int EOS_ANTICHEATCLIENT_REGISTERPEER_API_LATEST = 3;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_REGISTERPEER_API_LATEST}. */
@@ -35,8 +42,9 @@ public class EOS_AntiCheatClient_RegisterPeerOptions extends Structure {
 	/** Remote user's platform, if known */
 	public EOS_EAntiCheatCommonClientPlatform ClientPlatform;
 	/**
-	 * Time in seconds to allow newly registered peers to send the initial message containing their token.
-	 * Recommended value: 60
+	 * Time in seconds to allow newly registered peers to send the initial message containing their token.<br>
+	 * Minimum value: {@link #EOS_ANTICHEATCLIENT_REGISTERPEER_MIN_AUTHENTICATIONTIMEOUT}<br>
+	 * Maximum value: {@link #EOS_ANTICHEATCLIENT_REGISTERPEER_MAX_AUTHENTICATIONTIMEOUT}
 	 */
 	public int AuthenticationTimeout;
 	/** Deprecated - use PeerProductUserId instead */

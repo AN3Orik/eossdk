@@ -69,6 +69,7 @@ public class EOS_Presence_Interface extends PointerType {
 	 * @return A pointer to a pointer of Presence Info. If the returned result is success, this will be set to data that must be later released, otherwise this will be set to NULL
 	 *
 	 * @see EOS_Presence_Info#release()
+	 * @throws EOSException if the result is an error code
 	 */
 	public EOS_Presence_Info copyPresence(EOS_Presence_CopyPresenceOptions options) throws EOSException {
 		final PointerByReference outPresence = new PointerByReference();
@@ -118,6 +119,7 @@ public class EOS_Presence_Interface extends PointerType {
 	 * Register to receive notifications when presence changes. If the returned NotificationId is valid, you must call RemoveNotifyOnPresenceChanged when you no longer wish to
 	 * have your NotificationHandler called
 	 *
+	 * @param options Structure containing information about the request.
 	 * @param clientData Data the is returned to when NotificationHandler is invoked
 	 * @param notificationHandler The callback to be fired when a presence change occurs
 	 * @return Notification ID representing the registered callback if successful, an invalid NotificationId if not
@@ -188,11 +190,11 @@ public class EOS_Presence_Interface extends PointerType {
 	 * @throws EOSNotFoundException if there is user or the location string was not found
 	 * @throws EOSLimitExceededException The OutBuffer is not large enough to receive the location string. InOutBufferLength contains the required minimum length to perform the operation successfully
 	 *
-	 * @see EOS_PresenceModification#EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH
+	 * @see EOS_Defines#EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH
 	 */
 	public String getJoinInfo(EOS_Presence_GetJoinInfoOptions options) throws EOSException {
-		final IntByReference inOutBufferLength = new IntByReference(EOS_PresenceModification.EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH);
-		final byte[] outBuffer = new byte[EOS_PresenceModification.EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH];
+		final IntByReference inOutBufferLength = new IntByReference(EOS_Defines.EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH);
+		final byte[] outBuffer = new byte[EOS_Defines.EOS_PRESENCEMODIFICATION_JOININFO_MAX_LENGTH];
 		final EOS_EResult result = EOSLibrary.instance.EOS_Presence_GetJoinInfo(this, options, outBuffer, inOutBufferLength);
 		if (!result.isSuccess()) {
 			throw EOSException.fromResult(result);

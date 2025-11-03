@@ -226,7 +226,7 @@ public class EOS_UI_Interface extends PointerType {
 
 	/**
 	 * Lets the SDK know that the given UI event ID has been acknowledged and should be released.
-	 *
+	 * @param options Structure containing the UI event ID to acknowledge.
 	 * @return {@link EOS_EResult#EOS_Success} is returned if the UI event ID has been acknowledged.<br>
 	 *         {@link EOS_EResult#EOS_NotFound} is returned if the UI event ID does not exist.
 	 *
@@ -270,6 +270,7 @@ public class EOS_UI_Interface extends PointerType {
 	/**
 	 * Requests that the Social Overlay open and display the "Block User" flow for the specified user.
 	 *
+	 * @param options Structure containing information about the user to be blocked.
 	 * @param clientData Arbitrary data that is passed back to you in the notificationFn.
 	 * @param completionDelegate A callback that is fired when the user exits the Block UI.
 	 */
@@ -279,7 +280,7 @@ public class EOS_UI_Interface extends PointerType {
 
 	/**
 	 * Requests that the Social Overlay open and display the "Report User" flow for the specified user.
-	 *
+	 * @param options Structure containing information about the user to be reported.
 	 * @param clientData Arbitrary data that is passed back to you in the notificationFn.
 	 * @param completionDelegate A callback that is fired when the user exits the Report UI.
 	 */
@@ -294,6 +295,7 @@ public class EOS_UI_Interface extends PointerType {
 	 * If the Overlay was visible before being paused then it will be hidden.
 	 * If it is known that the Overlay should now be visible after being paused then it will be shown.
 	 *
+	 * @param options Structure containing the desired IsPaused state.
 	 * @return {@link EOS_EResult#EOS_Success} If the overlay has been notified about the request.<br>
 	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect.<br>
 	 *         {@link EOS_EResult#EOS_InvalidParameters} If any of the options are incorrect.<br>
@@ -306,6 +308,7 @@ public class EOS_UI_Interface extends PointerType {
 	/**
 	 * Gets the IsPaused state of the overlay as set by any previous calls to EOS_UI_PauseSocialOverlay().
 	 *
+	 * @param options Structure containing any options that are needed to retrieve the IsPaused state.
 	 * @return {@code true} If the overlay is paused.
 	 *
 	 * @see #pauseSocialOverlay(EOS_UI_PauseSocialOverlayOptions)
@@ -346,6 +349,7 @@ public class EOS_UI_Interface extends PointerType {
 	/**
 	 * Requests that the native ID for a target player be identified and the native profile be displayed for that player.
 	 *
+	 * @param options Structure containing information about the user whose profile is to be shown.
 	 * @param clientData Arbitrary data that is passed back to you in the notificationFn.
 	 * @param completionDelegate A callback that is fired when the profile has been shown.
 	 */

@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.server.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientPlatform;
 import host.anzo.eossdk.eos.sdk.anticheat.common.enums.EOS_EAntiCheatCommonClientType;
@@ -12,11 +13,13 @@ import org.jetbrains.annotations.NotNull;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatServer_RegisterClient} function.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "ClientHandle", "ClientType", "ClientPlatform", "AccountId_DEPRECATED", "IpAddress", "UserId", "Reserved01"})
 public class EOS_AntiCheatServer_RegisterClientOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatServer_RegisterClient API. */
 	public static int EOS_ANTICHEATSERVER_REGISTERCLIENT_API_LATEST = 3;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATSERVER_REGISTERCLIENT_API_LATEST}. */

@@ -68,6 +68,7 @@ public class EOS_TitleStorage_Interface extends PointerType {
 	 *
 	 * @param options Object containing properties related to which user is requesting metadata, and for which filename
 	 * @return A copy of the FileMetadata structure will be set if successful. This data must be released by calling EOS_TitleStorage_FileMetadata_Release.
+	 * @throws EOSException on error
 	 */
 	public EOS_TitleStorage_FileMetadata copyFileMetadataByFilename(EOS_TitleStorage_CopyFileMetadataByFilenameOptions options) throws EOSException {
 		final PointerByReference outMetadata = new PointerByReference();

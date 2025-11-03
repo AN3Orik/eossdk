@@ -20,12 +20,19 @@ import java.util.Map;
  * @since 8/5/2023
  */
 public @Getter enum EOS_ELogLevel implements NativeMapped {
+	/** The default value, disables logging */
 	EOS_LOG_Off(0),
+	/** The Fatal logging level */
 	EOS_LOG_Fatal(100),
+	/** The Error logging level */
 	EOS_LOG_Error(200),
+	/** The Warning logging level */
 	EOS_LOG_Warning(300),
+	/** The Info logging level */
 	EOS_LOG_Info(400),
+	/** The Verbose logging level */
 	EOS_LOG_Verbose(500),
+	/** The VeryVerbose logging level */
 	EOS_LOG_VeryVerbose(600);
 
 	private final int id;

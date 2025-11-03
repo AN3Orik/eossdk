@@ -3,6 +3,7 @@ package host.anzo.eossdk.eos.sdk.sessions.options;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import com.sun.jna.ptr.IntByReference;
+import host.anzo.eossdk.eos.sdk.EOS_Defines;
 import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;
 import host.anzo.eossdk.eos.sdk.lobby.options.EOS_Lobby_CreateLobbyOptions;
@@ -19,15 +20,6 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "SessionName", "BucketId", "MaxPlayers", "LocalUserId", "IsPresenceEnabled", "SessionId", "IsSanctionsEnabled", "AllowedPlatformIds", "AllowedPlatformIdsCount"})
 public class EOS_Sessions_CreateSessionModificationOptions extends Structure {
-	/** Maximum number of attributes allowed on the session */
-	public static int EOS_SESSIONMODIFICATION_MAX_SESSION_ATTRIBUTES = 64;
-	/** Maximum length of the name of the attribute associated with the session */
-	public static int EOS_SESSIONMODIFICATION_MAX_SESSION_ATTRIBUTE_LENGTH = 64;
-
-	/** Minimum number of characters allowed in the session id override */
-	public static int EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH = 16;
-	/** Maximum number of characters allowed in the session id override */
-	public static int EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH = 64;
 	/** The most recent version of the EOS_Sessions_CreateSessionModification API. */
 	public static int EOS_SESSIONS_CREATESESSIONMODIFICATION_API_LATEST = 5;
 
@@ -60,7 +52,7 @@ public class EOS_Sessions_CreateSessionModificationOptions extends Structure {
 	/**
 	 * Optional session id - set to a globally unique value to override the backend assignment
 	 * If not specified the backend service will assign one to the session.  Do not mix and match.
-	 * This value can be of size [{@link EOS_Sessions_CreateSessionModificationOptions#EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH}, {@link EOS_Sessions_CreateSessionModificationOptions#EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH}]
+	 * This value can be of size [{@link EOS_Defines#EOS_SESSIONMODIFICATION_MIN_SESSIONIDOVERRIDE_LENGTH}, {@link EOS_Defines#EOS_SESSIONMODIFICATION_MAX_SESSIONIDOVERRIDE_LENGTH}]
 	 */
 	public String SessionId;
 	/**
@@ -70,8 +62,8 @@ public class EOS_Sessions_CreateSessionModificationOptions extends Structure {
 	public EOS_Bool IsSanctionsEnabled;
 	/**
 	 * Array of platform IDs indicating the player platforms allowed to register with the session. Platform IDs are
-	 * found in the EOS header file, e.g. EOS_OPT_Epic. For some platforms, the value will be in the EOS Platform specific
-	 * header file. If null, the session will be unrestricted.
+	 * found in the EOS header file (eos_common.h), for example EOS_OPT_Epic. For some platforms the value will be
+	 * in the EOS Platform specific header file. If null, the session will be unrestricted.
 	 */
 	public IntByReference AllowedPlatformIds;
 	/** Number of platform IDs in the array */

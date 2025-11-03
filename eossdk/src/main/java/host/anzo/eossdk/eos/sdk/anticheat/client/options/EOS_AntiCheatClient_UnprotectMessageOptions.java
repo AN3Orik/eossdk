@@ -3,16 +3,19 @@ package host.anzo.eossdk.eos.sdk.anticheat.client.options;
 import com.sun.jna.Memory;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import org.jetbrains.annotations.NotNull;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatClient_UnprotectMessage} function.
  * @author Anton Lasevich
  * @since 8/16/2023
  */
 @FieldOrder({"ApiVersion", "DataLengthBytes", "Data", "OutBufferSizeBytes"})
 public class EOS_AntiCheatClient_UnprotectMessageOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatClient_UnprotectMessage API. */
 	public static final int EOS_ANTICHEATCLIENT_UNPROTECTMESSAGE_API_LATEST = 1;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCLIENT_UNPROTECTMESSAGE_API_LATEST}. */

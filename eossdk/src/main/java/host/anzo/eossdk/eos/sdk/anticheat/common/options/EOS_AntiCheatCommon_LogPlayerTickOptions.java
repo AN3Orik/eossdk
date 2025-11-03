@@ -2,6 +2,7 @@ package host.anzo.eossdk.eos.sdk.anticheat.common.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_Quat;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_Vec3f;
@@ -10,11 +11,13 @@ import host.anzo.eossdk.eos.sdk.common.EOS_Bool;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatServer_LogPlayerTick} function.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "PlayerHandle", "PlayerPosition", "PlayerViewRotation", "IsPlayerViewZoomed", "PlayerHealth", "PlayerMovementState", "PlayerViewPosition"})
 public class EOS_AntiCheatCommon_LogPlayerTickOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatCommon_LogPlayerTickOptions struct. */
 	public static int EOS_ANTICHEATCOMMON_LOGPLAYERTICK_API_LATEST = 3;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGPLAYERTICK_API_LATEST}. */

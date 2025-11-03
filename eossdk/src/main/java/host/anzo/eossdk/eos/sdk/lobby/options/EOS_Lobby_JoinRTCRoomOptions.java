@@ -1,10 +1,5 @@
 package host.anzo.eossdk.eos.sdk.lobby.options;
 
-/**
- * @author ANZO
- * @since 2/26/2025
- */
-
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
 import host.anzo.eossdk.eos.sdk.common.EOS_ProductUserId;

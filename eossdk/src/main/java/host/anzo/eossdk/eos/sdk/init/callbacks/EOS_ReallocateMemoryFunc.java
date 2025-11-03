@@ -16,6 +16,9 @@ public interface EOS_ReallocateMemoryFunc extends Callback {
 	 * The returned pointer should have at least SizeInBytes available capacity and the memory address should be a multiple of alignment.
 	 * The SDK will always call the provided function with an Alignment that is a power of 2.
 	 * Reallocation failures should return a null pointer.
+	 * @param pointer A pointer to the existing memory block to reallocate. This pointer may be null, in which case the function should behave like an allocation function.
+	 * @param sizeInBytes The size in bytes of the memoryblock to allocate
+	 * @param alignment The alignment in bytes of the memory blockto allocate
 	 */
 	Pointer run(Pointer pointer, NativeSize sizeInBytes, NativeSize alignment);
 }

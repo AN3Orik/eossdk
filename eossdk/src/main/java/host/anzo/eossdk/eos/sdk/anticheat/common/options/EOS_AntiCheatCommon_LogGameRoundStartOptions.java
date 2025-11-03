@@ -2,16 +2,19 @@ package host.anzo.eossdk.eos.sdk.anticheat.common.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.common.enums.EOS_EAntiCheatCommonGameRoundCompetitionType;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatServer_LogGameRoundStart} function.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "SessionIdentifier", "LevelName", "ModeName", "RoundTimeSeconds", "CompetitionType"})
 public class EOS_AntiCheatCommon_LogGameRoundStartOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatCommon_LogGameRoundStartOptions struct. */
 	public static int EOS_ANTICHEATCOMMON_LOGGAMEROUNDSTART_API_LATEST = 2;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGGAMEROUNDSTART_API_LATEST}. */

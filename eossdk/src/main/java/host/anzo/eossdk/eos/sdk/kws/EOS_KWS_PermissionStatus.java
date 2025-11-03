@@ -8,6 +8,7 @@ import host.anzo.eossdk.eos.sdk.kws.enums.EOS_EKWSPermissionStatus;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Contains information about a KWS permission status.
  * @author Anton Lasevich
  * @since 8/21/2023
  */
@@ -32,6 +33,10 @@ public class EOS_KWS_PermissionStatus extends Structure implements AutoCloseable
 		super(peer);
 	}
 
+	/**
+	 * Release the memory associated with a KWS permission status. This must be called on data retrieved from {@link EOSLibrary#EOS_KWS_CopyPermissionByIndex}.
+	 * @see EOSLibrary#EOS_KWS_CopyPermissionByIndex
+	 */
 	public void release() {
 		EOSLibrary.instance.EOS_KWS_PermissionStatus_Release(this);
 	}

@@ -22,24 +22,7 @@ import static com.sun.jna.Structure.FieldOrder;
  */
 @FieldOrder({"ApiVersion", "Reserved", "ProductId", "SandboxId", "ClientCredentials", "IsServer", "EncryptionKey", "OverrideCountryCode", "OverrideLocaleCode", "DeploymentId", "Flags", "CacheDirectory", "TickBudgetInMilliseconds", "RTCOptions", "IntegratedPlatformOptionsContainerHandle", "SystemSpecificOptions", "TaskNetworkTimeoutSeconds"})
 public class EOS_Platform_Options extends Structure {
-	public static int EOS_COUNTRYCODE_MAX_LENGTH = 4;
-	public static int EOS_COUNTRYCODE_MAX_BUFFER_LEN = EOS_COUNTRYCODE_MAX_LENGTH + 1;
-	public static int EOS_LOCALECODE_MAX_LENGTH = 9;
-	public static int EOS_LOCALECODE_MAX_BUFFER_LEN = EOS_LOCALECODE_MAX_LENGTH + 1;
-
-	/** Max length of a product id, not including the terminating null. */
-	public static int EOS_PLATFORM_OPTIONS_PRODUCTID_MAX_LENGTH = 64;
-
-	/** Max length of a sandbox id, not including the terminating null. */
-	public static int EOS_PLATFORM_OPTIONS_SANDBOXID_MAX_LENGTH = 64;
-
-	/** Length of an encryption key, not including the terminating null. */
-	public static int EOS_PLATFORM_OPTIONS_ENCRYPTIONKEY_LENGTH = 64;
-
-	/** Max length of a deployment id, not including the terminating null. */
-	public static int EOS_PLATFORM_OPTIONS_DEPLOYMENTID_MAX_LENGTH = 64;
-
-	/** The most recent version of the EOS_Platform_Create API. */
+	/** The most recent version of the EOS_Platform_Options API. */
 	public static int EOS_PLATFORM_OPTIONS_API_LATEST = 14;
 
 	/** API Version: Set this to {@link #EOS_PLATFORM_OPTIONS_API_LATEST}. */

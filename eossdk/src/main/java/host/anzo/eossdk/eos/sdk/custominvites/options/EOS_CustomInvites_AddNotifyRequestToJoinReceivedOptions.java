@@ -6,6 +6,7 @@ import com.sun.jna.Structure;
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link host.anzo.eossdk.eos.sdk.EOSLibrary#EOS_CustomInvites_AddNotifyRequestToJoinReceived} function.
  * @author Anton Lasevich
  * @since 8/20/2023
  */

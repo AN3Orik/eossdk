@@ -2,17 +2,20 @@ package host.anzo.eossdk.eos.sdk.anticheat.common.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_ClientHandle;
 import host.anzo.eossdk.eos.sdk.anticheat.common.EOS_AntiCheatCommon_LogEventParamPair;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_AntiCheatServer_LogEvent} function.
  * @author Anton Lasevich
  * @since 8/5/2023
  */
 @FieldOrder({"ApiVersion", "ClientHandle", "EventId", "ParamsCount", "Params"})
 public class EOS_AntiCheatCommon_LogEventOptions extends Structure {
+	/** The most recent version of the EOS_AntiCheatCommon_LogEventOptions struct. */
 	public static int EOS_ANTICHEATCOMMON_LOGEVENT_API_LATEST = 1;
 
 	/** API Version: Set this to {@link #EOS_ANTICHEATCOMMON_LOGEVENT_API_LATEST}. */

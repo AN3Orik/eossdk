@@ -2,10 +2,12 @@ package host.anzo.eossdk.eos.sdk.lobby.options;
 
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
+import host.anzo.eossdk.eos.sdk.EOSLibrary;
 
 import static com.sun.jna.Structure.FieldOrder;
 
 /**
+ * Input parameters for the {@link EOSLibrary#EOS_Lobby_AddNotifyLobbyMemberUpdateReceived} function.
  * @author Anton Lasevich
  * @since 8/18/2023
  */

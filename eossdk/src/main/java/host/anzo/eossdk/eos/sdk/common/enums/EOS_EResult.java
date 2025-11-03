@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * All possible states of the network
+ * Enum flags for all possible result values of operations in the SDK.
  *
  * @author Anton Lasevich
  * @since 8/5/2023
@@ -99,6 +99,8 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_ApplicationSuspended(40),
 	/** Network is disconnected */
 	EOS_NetworkDisconnected(41),
+	/** Given output buffer is insufficient to complete the operation */
+	EOS_InsufficientOutputBuffer(42),
 	/** Account locked due to login failures */
 	EOS_Auth_AccountLocked(1001),
 	/** Account locked by update operation. */
@@ -205,6 +207,26 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_Presence_RichTextLengthInvalid(3007),
 	/** Request contained an invalid status state */
 	EOS_Presence_StatusInvalid(3008),
+	/** Request created with a template - rich text is not supported */
+	EOS_Presence_RichTextNotSupported(3009),
+	/** Request not created with a template - rich text expected */
+	EOS_Presence_TemplateNotSupported(3010),
+	/** Invalid Rich Presence Template ID */
+	EOS_Presence_TemplateIdInvalid(3011),
+	/** Template type value is not supported */
+	EOS_Presence_TemplateTypeInvalid(3012),
+	/** Template key is null or not supplied */
+	EOS_Presence_TemplateKeyInvalid(3013),
+	/** Template value(if type is a string, is null or not supplie */
+	EOS_Presence_TemplateValueInvalid(3014),
+	/** Template id was not found for the product or deployment */
+	EOS_Presence_TemplateNotFound(3015),
+	/** Failed to format template with given vairable data */
+	EOS_Presence_TemplateInvalidVariableInput(3016),
+	/** Localization server failed to format template */
+	EOS_Presence_TemplateLocalizationServerError(3017),
+	/** Unknown error formatting template */
+	EOS_Presence_TemplateUnknownError(3018),
 	/** The entitlement retrieved is stale(requery for updated information */
 	EOS_Ecom_EntitlementStale(4000),
 	/** The offer retrieved is stale(requery for updated information */
@@ -437,6 +459,10 @@ public @Getter enum EOS_EResult implements NativeMapped {
 	EOS_RTC_AllocationFailed(13009),
 	/** Failed to join room due to voice moderation mode mismatch */
 	EOS_RTC_VoiceModerationModeMismatch(13010),
+	/** EOS RTC record buffer was empty */
+	EOS_RTC_EmptyRecord(13011),
+	/** Failed to join room due to room options mismatch */
+	EOS_RTC_RoomOptionsMismatch(13012),
 	/** The number of available Snapshot IDs have all been exhausted. */
 	EOS_ProgressionSnapshot_SnapshotIdUnavailable(14000),
 	/** The KWS user does not have a parental email associated with the account.  The parent account was unlinked or deleted */

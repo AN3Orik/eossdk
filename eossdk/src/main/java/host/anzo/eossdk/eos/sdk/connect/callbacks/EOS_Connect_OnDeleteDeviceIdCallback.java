@@ -9,9 +9,8 @@ import host.anzo.eossdk.eos.sdk.connect.callbackresults.EOS_Connect_DeleteDevice
  */
 public interface EOS_Connect_OnDeleteDeviceIdCallback extends Callback {
 	/**
-	 * Function prototype definition for callbacks passed to EOS_Connect_QueryProductUserIdMappings.
-	 *
-	 * @param data A EOS_Connect_QueryProductUserIdMappingsCallbackInfo containing the output information and result.
+	 * Function prototype definition for callbacks passed to EOS_Connect_DeleteDeviceId.
+	 * @param data A {@link EOS_Connect_DeleteDeviceIdCallbackInfo} containing the output information and result.
 	 */
 	void run(EOS_Connect_DeleteDeviceIdCallbackInfo data);
 }

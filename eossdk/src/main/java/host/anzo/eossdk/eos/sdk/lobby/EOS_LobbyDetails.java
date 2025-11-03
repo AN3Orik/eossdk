@@ -64,6 +64,36 @@ public class EOS_LobbyDetails extends PointerType implements AutoCloseable {
 	}
 
 	/**
+	 * EOS_LobbyDetails_CopyMemberInfo is used to immediately retrieve a copy of lobby member information from an existing lobby.<br>
+	 * If the call returns an EOS_Success result, the out parameter, OutLobbyDetailsMemberInfo, must be passed to {@link EOS_LobbyDetails_MemberInfo#release} to release the memory associated with it.<br>
+	 * Note: this information is only available if you are actively in the lobby. It is not available for search results.<br>
+	 * <br>
+	 * @param options Structure containing the input parameters
+	 * <br>
+	 * @return {@link EOS_EResult#EOS_Success} if the information is available and passed out in OutLobbyMemberDetailsInfo<br>
+	 *         {@link EOS_EResult#EOS_InvalidParameters} if you pass a null pointer for the out parameter<br>
+	 *         {@link EOS_EResult#EOS_IncompatibleVersion} if the API version passed in is incorrect<br>
+	 *         {@link EOS_EResult#EOS_NotFound if searching} for a target user ID returns no results<br>
+	 * <br>
+	 * @see EOS_LobbyDetails_MemberInfo
+	 * @see EOS_LobbyDetails_CopyMemberInfoOptions
+	 * @see EOS_LobbyDetails_MemberInfo#release()
+	 *
+	 * @throws EOSInvalidParametersException if you pass a null pointer for the out parameter
+	 * @throws EOSIncompatibleVersionException if the API version passed in is incorrect
+	 */
+	public EOS_LobbyDetails_MemberInfo copyMemberInfo(EOS_LobbyDetails_CopyMemberInfoOptions options) throws EOSException {
+		final PointerByReference outLobbyDetailsInfo = new PointerByReference();
+		final EOS_EResult result = EOSLibrary.instance.EOS_LobbyDetails_CopyMemberInfo(this, options, outLobbyDetailsInfo);
+		if (!result.isSuccess()) {
+			throw EOSException.fromResult(result);
+		}
+		final EOS_LobbyDetails_MemberInfo lobbyMemberInfo = new EOS_LobbyDetails_MemberInfo(outLobbyDetailsInfo.getValue());
+		lobbyMemberInfo.read();
+		return lobbyMemberInfo;
+	}
+
+	/**
 	 * Get the number of attributes associated with this lobby
 	 *
 	 * @param options the Options associated with retrieving the attribute count
