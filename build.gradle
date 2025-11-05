@@ -14,7 +14,7 @@ subprojects {
 	repositories {
 		mavenCentral()
 	}
-	version = "1.18.0.4.1"
+	version = "1.18.1.2.0"
 }
 
 allprojects {
